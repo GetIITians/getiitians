@@ -14,16 +14,16 @@ class CreateTransactionsTable extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->increments('id');
-			$table->integer('user_id')->unsigned()->index();
+			$table->integer('user_id', false, true)->index();
 			$table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
 			$table->json('content');
 			$table->integer('eot_balance');
-			$table->integer('debit');
-			$table->integer('credit');
-			$table->integer('class_id')->unsigned()->index();
-			$table->foreign('class_id')->references('id')->on('classes')->onUpdate('cascade')->onDelete('cascade');
-			$table->integer('payumoney');
-			$table->string('payumoney_txn_id');
+			$table->integer('debit')->nullable()->default(null);
+			$table->integer('credit')->nullable()->default(null);
+			$table->integer('session_id', false, true)->index()->nullable()->default(null);
+			$table->foreign('session_id')->references('id')->on('sessions')->onUpdate('cascade')->onDelete('cascade');
+			$table->integer('payumoney')->nullable()->default(null);
+			$table->string('payumoney_txn_id')->nullable()->default(null);
             $table->timestamps();
         });
     }
@@ -37,8 +37,8 @@ class CreateTransactionsTable extends Migration
     {
 		Schema::table('transactions', function (Blueprint $table){
 			$table->dropForeign('transactions_user_id_foreign');
-			$table->dropForeign('transactions_class_id_foreign');
-		})
+			$table->dropForeign('transactions_session_id_foreign');
+		});
         Schema::drop('transactions');
     }
 }

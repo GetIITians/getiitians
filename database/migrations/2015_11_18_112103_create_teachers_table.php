@@ -14,11 +14,11 @@ class CreateTeachersTable extends Migration
     {
         Schema::create('teachers', function (Blueprint $table) {
             $table->increments('id');
-			$table->boolean('home_tuition')->nullable()->default(0);
-			$table->json('language')->nullable()->default(NULL);
-			$table->integer('experience', 2)->nullable()->default(0);
-			$table->string('resume', 250)->nullable()->default(NULL);
-			$table->integer('balance')->nullable()->default(0);
+			$table->boolean('home_tuition')->nullable()->default(null);
+			$table->json('language')->nullable()->default(null);
+			$table->integer('experience', false, true)->nullable()->default(null);
+			$table->string('resume', 250)->nullable()->default(null);
+			$table->integer('balance', false, false)->nullable()->default(null);
             $table->timestamps();
         });
     }

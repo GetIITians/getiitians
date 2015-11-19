@@ -13,11 +13,11 @@ class CreateTeacherTopicPivotTable extends Migration
     public function up()
     {
         Schema::create('teacher_topic', function (Blueprint $table) {
-			$table->integer('teacher_id')->unsigned()->index();
+			$table->integer('teacher_id', false, true)->index();
 			$table->foreign('teacher_id')->references('id')->on('teachers')->onUpdate('cascade')->onDelete('cascade');
-			$table->integer('topic_id')->unsigned()->index();
+			$table->integer('topic_id', false, true)->index();
 			$table->foreign('topic_id')->references('id')->on('topics')->onUpdate('cascade')->onDelete('cascade');
-			$table->integer('fees');
+			$table->integer('fees', false, true);
 			$table->timestamps();
         });
     }
@@ -32,7 +32,7 @@ class CreateTeacherTopicPivotTable extends Migration
 		Schema::table('teacher_topic', function (Blueprint $table){
 			$table->dropForeign('teacher_topic_teacher_id_foreign');
 			$table->dropForeign('teacher_topic_topic_id_foreign');
-		})
+		});
         Schema::drop('teacher_topic');
     }
 }

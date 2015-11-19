@@ -12,9 +12,9 @@ class CreateTeacherEducationTable extends Migration
      */
     public function up()
     {
-        Schema::create('teacher_education', function (Blueprint $table) {
+        Schema::create('qualifications', function (Blueprint $table) {
             $table->increments('id');
-			$table->integer('teacher_id')->unsigned()->index();
+			$table->integer('teacher_id', false, true)->index();
 			$table->foreign('teacher_id')->references('id')->on('teachers')->onUpdate('cascade')->onDelete('cascade');
 			$table->string('college');
 			$table->string('degree');
@@ -30,9 +30,9 @@ class CreateTeacherEducationTable extends Migration
      */
     public function down()
     {
-		Schema::table('teacher_education', function (Blueprint $table){
-			$table->dropForeign('teacher_education_teacher_id_foreign');
-		})
-        Schema::drop('teacher_education');
+		Schema::table('qualifications', function (Blueprint $table){
+			$table->dropForeign('qualifications_teacher_id_foreign');
+		});
+        Schema::drop('qualifications');
     }
 }

@@ -36,4 +36,25 @@ class User extends Model implements AuthenticatableContract,
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
+
+	/**
+	 * Get all of the owning deriveable models.
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\MorphTo
+	 */
+	public function deriveable()
+	{
+		return $this->morphTo();
+	}
+
+	/**
+	 * Get the Transactions for the User.
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function transactions()
+	{
+		return $this->hasMany('App\Transaction');
+	}
+
 }

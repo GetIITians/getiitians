@@ -16,7 +16,7 @@ class CreateTopicsTable extends Migration
             $table->increments('id');
 			$table->string('class');
 			$table->string('subject');
-			$table->string('topic');
+			$table->string('topic')->index();
 			$table->timestamps();
         });
     }

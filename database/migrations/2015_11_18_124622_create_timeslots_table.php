@@ -14,7 +14,7 @@ class CreateTimeslotsTable extends Migration
     {
         Schema::create('timeslots', function (Blueprint $table) {
             $table->increments('id');
-			$table->integer('teacher_id')->unsigned()->index();
+			$table->integer('teacher_id', false, true)->index();
 			$table->foreign('teacher_id')->references('id')->on('teachers')->onUpdate('cascade')->onDelete('cascade');
 			$table->timestamp('start_time');
             $table->timestamps();
@@ -30,7 +30,7 @@ class CreateTimeslotsTable extends Migration
     {
 		Schema::table('timeslots', function (Blueprint $table){
 			$table->dropForeign('timeslots_teacher_id_foreign');
-		})
+		});
         Schema::drop('timeslots');
     }
 }
