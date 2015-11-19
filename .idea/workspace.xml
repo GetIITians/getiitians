@@ -1,34 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="641c4e26-0d5f-4bdf-9416-ada2885ee1ab" name="Default" comment="Migrations &amp; Models complete, pending testing">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/database/migrations/2015_11_18_144138_create_sessions_table.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Admin.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Chat.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Demo.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Enquiry.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Qualification.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Review.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Session.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Student.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Teacher.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Timeslot.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Topic.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Transaction.php" />
-      <change type="DELETED" beforePath="C:\Users\AB219TX\code\getiitians\database\migrations\2015_11_18_135134_create_classes_table.php" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2015_11_18_112103_create_teachers_table.php" afterPath="$PROJECT_DIR$/database/migrations/2015_11_18_112103_create_teachers_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2015_11_18_120810_create_topics_table.php" afterPath="$PROJECT_DIR$/database/migrations/2015_11_18_120810_create_topics_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2015_11_18_120959_create_teacher_topic_pivot_table.php" afterPath="$PROJECT_DIR$/database/migrations/2015_11_18_120959_create_teacher_topic_pivot_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2015_11_18_121807_create_teacher_education_table.php" afterPath="$PROJECT_DIR$/database/migrations/2015_11_18_121807_create_teacher_education_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2015_11_18_124622_create_timeslots_table.php" afterPath="$PROJECT_DIR$/database/migrations/2015_11_18_124622_create_timeslots_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2015_11_18_144335_create_transactions_table.php" afterPath="$PROJECT_DIR$/database/migrations/2015_11_18_144335_create_transactions_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2015_11_18_145858_create_chats_table.php" afterPath="$PROJECT_DIR$/database/migrations/2015_11_18_145858_create_chats_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2015_11_18_151022_create_reviews_table.php" afterPath="$PROJECT_DIR$/database/migrations/2015_11_18_151022_create_reviews_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2015_11_18_152259_create_demos_table.php" afterPath="$PROJECT_DIR$/database/migrations/2015_11_18_152259_create_demos_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2015_11_18_152500_create_enquiries_table.php" afterPath="$PROJECT_DIR$/database/migrations/2015_11_18_152500_create_enquiries_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/User.php" afterPath="$PROJECT_DIR$/app/User.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/readme.md" afterPath="$PROJECT_DIR$/readme.md" />
+    <list default="true" id="641c4e26-0d5f-4bdf-9416-ada2885ee1ab" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="getiitians.iws" />
@@ -260,6 +233,13 @@
       <option name="number" value="Default" />
       <updated>1447671388887</updated>
     </task>
+    <task id="LOCAL-00001" summary="Migrations &amp; Models complete, pending testing">
+      <created>1447941270385</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1447941270385</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
