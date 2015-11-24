@@ -15,7 +15,7 @@ class CreateTeachersTable extends Migration
         Schema::create('teachers', function (Blueprint $table) {
             $table->increments('id');
 			$table->boolean('home_tuition')->nullable()->default(null);
-			$table->json('language')->nullable()->default(null);
+			$table->string('language', 200)->nullable()->default(null);
 			$table->integer('experience', false, true)->nullable()->default(null);
 			$table->string('resume', 250)->nullable()->default(null);
             $table->timestamps();
