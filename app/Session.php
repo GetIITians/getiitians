@@ -7,6 +7,28 @@ use Illuminate\Database\Eloquent\Model;
 class Session extends Model
 {
 	/**
+	 * The database table used by the model.
+	 *
+	 * @var string
+	 */
+	protected $table = 'sessions';
+
+	/**
+	 * The attributes that are mass assignable.
+	 *
+	 * @var array
+	 */
+	protected $fillable = [
+		'topic_id',
+		'teacher_id',
+		'student_id',
+		'start_time',
+		'duration',
+		'link',
+		'wiziq_id'
+	];
+
+	/**
 	 * Get the Topic that this Session belongsTo.
 	 *
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

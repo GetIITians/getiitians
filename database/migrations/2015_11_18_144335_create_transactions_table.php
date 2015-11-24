@@ -17,7 +17,7 @@ class CreateTransactionsTable extends Migration
 			$table->integer('user_id', false, true)->index();
 			$table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
 			$table->json('content');
-			$table->integer('eot_balance');
+			$table->integer('eot_balance')->nullable()->default(0);
 			$table->integer('debit')->nullable()->default(null);
 			$table->integer('credit')->nullable()->default(null);
 			$table->integer('session_id', false, true)->index()->nullable()->default(null);

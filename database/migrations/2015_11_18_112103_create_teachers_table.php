@@ -18,7 +18,6 @@ class CreateTeachersTable extends Migration
 			$table->json('language')->nullable()->default(null);
 			$table->integer('experience', false, true)->nullable()->default(null);
 			$table->string('resume', 250)->nullable()->default(null);
-			$table->integer('balance', false, false)->nullable()->default(null);
             $table->timestamps();
         });
     }

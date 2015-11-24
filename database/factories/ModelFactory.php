@@ -16,6 +16,13 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'name' => $faker->name,
         'email' => $faker->email,
         'password' => bcrypt(str_random(10)),
+		'gender' => 'male',
+		'date_of_birth' => $faker->dateTimeThisCentury->format('Y-m-d'),
+		'address_country' => $faker->country,
+		'address_city' => $faker->city,
+		'address_state' => $faker->state,
+		'address_pin' => $faker->postcode,
+		'phone' => $faker->phoneNumber,
         'remember_token' => str_random(10),
     ];
 });
