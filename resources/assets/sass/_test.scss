@@ -1,0 +1,7 @@
+@include media-breakpoint-up(sm) {
+	color: #FFF;
+}
+
+@include media-breakpoint-down(xs) {
+	color: #000;
+}

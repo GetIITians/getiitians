@@ -1,0 +1,21 @@
+#signup{
+	a.oauth{
+		display: inline-block;
+		background-color: $flat-purple;
+		color: $flat-white;
+		padding: 0 2rem;
+		font-size:2rem;
+		font-family: $font-medium;
+		border-radius: 2px;
+		margin-bottom: 1rem;
+	}
+	.input-group{
+		width: 100%;
+	}
+	.input-group-addon{
+		background-color: $flat-purple;
+		color: $flat-white;
+		border-color: $flat-purple;
+		width: 35%;
+	}
+}

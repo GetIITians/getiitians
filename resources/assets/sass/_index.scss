@@ -1,0 +1,122 @@
+.banner{
+	p{
+		font-family: 	$font-light;
+		color: 			$flat-purple;
+		font-size: 		4rem;
+		text-align: 	center;
+	}
+	form{
+		div.col-sm-8{
+			padding-right: 0;
+			small{
+				font-size: .8rem;
+			}
+		}
+		div.col-sm-4{
+			padding-left: 0;
+			.checkbox{
+				font-size: .75rem;
+				.c-input + .c-input{
+					margin-left: .3rem; 
+				}
+			}
+		}
+	}
+	@include media-breakpoint-down(xs){
+		p{
+			font-size: 2rem;
+			font-family: $font-regular;
+			font-weight: normal;
+			margin-top: 1rem;
+		}
+		.gutter-md{
+			height: 2rem;
+		}
+		.c-input + .c-input {
+			margin-left: 3rem;
+		}
+	}
+}
+
+form.indexSearch{
+	div.col-sm-10{
+		padding-right: 0;
+	}
+	div.col-sm-2{
+		padding-left: 0;
+		.checkbox{
+			font-size: .8rem;
+			.c-input + .c-input{
+				margin-left: 0; 
+			}
+		}
+	}
+	@include media-breakpoint-down(xs){
+		label.c-input {
+			margin-left: 1rem;
+		}
+	}
+}
+
+.howitworks{
+	background-color: $flat-purple;
+	color: $flat-white;
+	h1{
+		font-family: $font-thin;
+	}
+	h2{
+		color: $white;
+		font-family: $font-light;
+	}
+	p{
+		font-size: .9rem;
+	}
+	@include media-breakpoint-down(xs){
+		h1.display-3{
+			font-size: 3rem;
+		}
+	}
+}
+
+.features{
+	background-color: $white;
+	color: $flat-purple;
+}
+
+.numbers{
+	color: $flat-purple;
+	div{
+		text-align: center;
+		font-size: 2rem;
+		ul{
+			border-right: 1px solid $white-dark;
+			padding: 0;
+			li{
+				display: inline-block;
+				color: $flat-red;
+				background-color: transparent;
+				border-radius: 3px;
+				border: 1px solid $white-dark;
+				font-size: 3rem;
+				padding: 3px 15px;
+				margin: 0 5px;
+			}
+		}
+		&:last-of-type ul{
+			border-right: none;
+		}
+	}
+	@include media-breakpoint-down(xs){
+		div{
+			font-size: 1.5rem;
+			ul{
+				border: 0;
+				li{
+					font-size: 1.2rem;
+					padding: 3px 6px;
+					margin: 0 1px;
+				}
+			}
+		}
+	}
+}

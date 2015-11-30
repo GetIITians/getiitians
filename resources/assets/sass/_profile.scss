@@ -1,0 +1,514 @@
+#profile{
+	padding: 0;
+	margin-bottom: 0;
+	background-color: $flat-white;
+	aside{
+		background-color: $flat-white;
+		color: $flat-purple;
+		padding: 0;
+		a.btn{
+			width: auto;
+		}
+		h3 a{
+			color: $flat-purple;
+		}
+		.list-group{
+			.list-group-item{
+				font-size: 1.1rem;
+				color: $flat-navy;
+				background-color: $flat-white;
+				border-right: 0;
+				border-left: 0;
+				border-color: darken($flat-white,3%);
+				&:hover{
+					color: $flat-blue;
+				}
+				&:last-child{
+					border-bottom: 0;
+				}
+			}
+			.active{
+				color: $flat-purple;
+			}
+		}
+	}
+	main{
+		padding-right: 0;
+		padding-top: 1rem;
+		> div.row{
+			margin-right: 0;
+		}
+		#messageTeacher{
+			font-size: 1rem;
+			padding: 1rem;
+			background-color: $flat-purple;
+			color: $flat-white;
+		}
+		.media-body h4{
+			display: inline-block;
+		}
+		.incomplete{
+			background-color: lighten($flat-red, 20%);
+			padding: .5rem 1rem;
+			border-radius: 5px;
+			margin-bottom: 1rem;
+			
+			p{
+				display: inline-block;
+				vertical-align: middle;
+				margin-bottom: 0;
+			}
+			i{
+				vertical-align: middle;
+			}
+			a{
+				color: darken($flat-purple, 5%);
+			}
+		}
+	}
+	.schedule{
+		h2{
+			font-family: $font-medium;
+		}
+		i.material-icons{
+			line-height: 38px;
+			a{
+				color: $flat-purple;
+			}
+		}
+		hr{
+			margin: 0;
+			border-color: $flat-purple;
+		}
+		.table-responsive{
+			//border-left: 1px solid $flat-purple;
+		}
+		table{
+			width: 100%;
+			max-width: 100%;
+			font-family: $font-regular;
+			thead{
+				font-size: 1.4rem;
+				border-left: 1px solid $flat-purple;
+				border-right: 1px solid $flat-purple;
+				th{
+					text-align: center;
+					padding: .5rem;
+					border-left:1px solid $flat-white;
+					background-color: $flat-purple;
+					color: $flat-white;
+					font-family: $font-light;
+					font-weight: normal;
+					&:first-child{
+						border-left: 0;
+					}
+				}
+			}
+			tbody{
+				font-size: 1.7rem;
+				border-left: 1px solid $flat-purple;
+				border-top: 1px solid $flat-purple;
+				ul{
+					font-size: .8rem;
+					font-family: $font-bold;
+					padding-left: 0;
+					margin-bottom: 0;
+					float: right;
+					li{
+						list-style-type: none;
+					}
+				}
+				td{
+					width: 14.25%;
+					border: 1px solid $flat-purple;
+					padding: .2rem .5rem;
+					&.free{
+						cursor: pointer;
+					}
+					&.blocked{
+						color: $white-darker;
+						cursor: not-allowed;
+					}
+					&.today{
+						background-color: $flat-red;
+						color: $flat-white;
+					}
+				}
+			}
+		}
+	}
+	.subjects{
+		.media-heading:hover{
+			cursor: pointer;
+		}
+		table{
+			width: 100%;
+			td{
+				padding: .5rem;
+				text-align: center;
+				background-color: darken($flat-white, 5%);
+				color: $flat-purple;
+				border: 1px solid $flat-white;
+				&:hover{
+					background-color: darken($flat-white, 10%);
+				}
+			}
+		}
+	}
+	.reviews{
+		.media{
+			margin-bottom: 3rem;
+		}
+		p{
+			margin-bottom: .5rem;
+		}
+	}
+	.classes{
+		.nav-tabs{
+			border-color: transparent;
+			.nav-link{
+				background-color: $flat-white;
+				border-color: $flat-purple;
+				border-radius: 0;
+			}
+			.active{
+				border-color: $flat-purple $flat-purple transparent;
+			}
+			.nav-item{
+				width: 50%;
+				text-align: center;
+			}
+			.nav-item + .nav-item{
+				margin: 0;
+				border-left-color: transparent;
+			}
+		}
+		table{
+			width: 100%;
+			td,th{
+				border: 1px solid darken($flat-white, 10%);
+				padding: .3rem .5rem;
+			}
+			th{
+				font-family: $font-light;
+				font-weight: normal;
+				background-color: $flat-purple;
+				color: $flat-white;
+				font-size: 1.2rem;
+			}
+		}
+		button{
+			width: 32%;
+			padding: .1rem 1rem;
+			font-size: 1rem;
+		}
+	}
+	.messages{
+		.names,.chat{
+			height: 30rem;
+			max-height: 30rem;
+		}
+		.names{
+			overflow-y: scroll;
+			ul{
+				overflow: auto;
+				li{
+					background-color: $flat-white;
+					border-color: $flat-purple;
+					color: $flat-purple;
+					font-size: 1.1rem;
+					&.active{
+						background-color: $flat-purple;
+						color: $flat-white;
+					}
+					&:hover{
+						cursor: pointer;
+						background-color: $flat-purple;
+						color: $flat-white;
+					}
+				}
+			}
+		}
+		.chat{
+			border: 1px solid $flat-purple;
+			overflow-y: scroll;
+			padding-left: 0;
+			button{
+				margin-top: 2rem;
+			}
+			.chat-data{
+				padding: 1rem;
+				.single-message{
+					padding: 1rem;
+					border-radius: 5px;
+					border: 1px solid darken($flat-white, 10%);
+					margin-bottom: .5rem;
+					background-color: lighten($flat-white, 2%);
+				}
+				.other{
+					margin-left: 1rem;
+				}
+			}
+		}
+	}
+	.class{
+		.calendar{
+			@include make-row(0);
+			border-right: 1px solid $flat-purple;
+			border-bottom: 1px solid $flat-purple;
+			.cell{
+				@include make-col(0);
+				@include make-col-span(1,7);
+				border-left:1px solid $flat-purple;
+				border-top:1px solid $flat-purple;
+				text-align: center;
+				cursor: pointer;
+				padding: .95rem .5rem;
+				font-size: 1.1rem;
+				margin:0;
+				&.blocked{
+					color: $white-darker;
+					cursor: not-allowed;
+				}
+				&.heading{
+					background-color: $flat-purple;
+					color: $flat-white;
+					border-color: darken($flat-purple, 10%);
+				}
+			}
+			input[type="checkbox"]:checked + label{
+				background-color: $flat-red;
+				color: $flat-white;
+				transition: background .15s ease-in-out;
+			}
+		}
+		.timeslot{
+			@include make-row(0);
+			border-right: 1px solid $flat-purple;
+			border-bottom: 1px solid $flat-purple;
+			.time{
+				@include make-col(0);
+				@include make-col-span(1,4);
+				border-left:1px solid $flat-purple;
+				border-top:1px solid $flat-purple;
+				text-align: center;
+				cursor: pointer;
+				padding: .3rem .5rem;
+				font-size: 1rem;
+				margin: 0;
+				&.available{
+					color: $flat-white;
+					background-color: $flat-blue;
+				}
+				&.booked{
+					color: $flat-white;
+					background-color: $flat-purple;
+					cursor: not-allowed;
+				}
+			}
+			input[type="checkbox"]:checked + label{
+				background-color: $flat-red;
+				color: $flat-white;
+				transition: background .15s ease-in-out;
+			}
+			div.col-xs-4{
+				background-color: $flat-blue;
+				color: $flat-white;
+				border: 1px solid darken($flat-purple, 10%);
+				border-bottom: 0;
+				border-right: 0;
+				font-size: 1.4rem;
+				font-family: $font-light;
+				text-align: center;
+				&:nth-child(2){
+					background-color: $flat-purple;
+				}
+				&:nth-child(3){
+					background-color: $flat-white;
+					color: $flat-purple;
+				}
+			}
+		}
+		.message{
+			p:first-child{
+				font-size: 2rem;
+				font-family: $font-thin;
+				font-weight: normal;
+				background-color: $flat-purple;
+				color: $flat-white;
+				padding: .2rem 1rem;
+				margin-bottom: 0;
+			}
+			p:last-child{
+				border: 1px solid $flat-purple;
+				padding: 1rem;
+				font-size: 1.1rem;
+			}
+		}
+		.details{
+			p{
+				font-size: 1.1rem;
+			}
+			b{
+				font-family: $font-medium;
+				font-weight: normal;
+				font-size: 1.4rem;
+			}
+			button{
+				width: auto;
+				font-size:3rem;
+				font-family: $font-bold;
+				padding:1rem 3rem;
+			}
+		}
+	}
+	.signup{
+		h2{
+			display: inline-block;
+		}
+		.sections a{
+			background-color: $flat-purple;
+			color: $flat-white;
+			padding: 1.2rem 2rem;
+			border-radius: 1px;
+			span{
+				font-size: 3rem;
+				vertical-align: middle;
+				margin-right: 1rem;
+			}
+		}
+		h5{
+			font-family: $font-light;
+			font-weight: normal;
+		}
+		.signupsubjects{
+			.price{
+				label{
+					float: right;
+					padding: .2rem .5rem;
+					border: 1px solid $flat-purple;
+					margin-right: 1rem;
+					cursor: pointer;
+				}
+				input[type="radio"]:checked + label{
+					&.five{
+						background-color: #FFF;
+					}
+					&.eight{
+						background-color: #CCC;
+						border-color: #CCC;
+					}
+					&.ten{
+						background-color: #999;
+						color: $flat-white;
+						border-color: #999;
+					}
+					&.twelve{
+						background-color: #666;
+						color: $flat-white;
+						border-color: #666;
+					}
+					&.fifteen{
+						background-color: #333;
+						color: $flat-white;
+						border-color: #333;
+					}
+					&.twenty{
+						background-color: #000;
+						color: $flat-white;
+						border-color: #000;
+					}
+				}
+			}
+			.subject{
+				border-right: 1px solid $flat-purple;
+				border-bottom: 1px solid $flat-purple;
+				label{
+					@include make-col(0);
+					@include make-col-span(1,4);
+					border-left:1px solid $flat-purple;
+					border-top:1px solid $flat-purple;
+					text-align: center;
+					cursor: pointer;
+					padding: .3rem .5rem;
+					font-size: 1rem;
+					margin: 0;
+					&.five{
+						background-color: #FFF;
+					}
+					&.eight{
+						background-color: #CCC;
+						border-color: #CCC;
+					}
+					&.ten{
+						background-color: #999;
+						color: $flat-white;
+						border-color: #999;
+					}
+					&.twelve{
+						background-color: #666;
+						color: $flat-white;
+						border-color: #666;
+					}
+					&.fifteen{
+						background-color: #333;
+						color: $flat-white;
+						border-color: #333;
+					}
+					&.twenty{
+						background-color: #000;
+						color: $flat-white;
+						border-color: #000;
+					}
+				}
+			}
+			.media-heading{
+				cursor: pointer;
+			}
+		}
+		.signupcalendar{
+			.timeslot{
+				@include make-row(0);
+				border-right: 1px solid $flat-purple;
+				border-bottom: 1px solid $flat-purple;
+				.time{
+					@include make-col(0);
+					@include make-col-span(1,4);
+					border-left:1px solid $flat-purple;
+					border-top:1px solid $flat-purple;
+					text-align: center;
+					cursor: pointer;
+					padding: .3rem .5rem;
+					font-size: 1rem;
+					margin: 0;
+				}
+				input[type="checkbox"]:checked + label{
+					background-color: $flat-red;
+					color: $flat-white;
+					transition: background .15s ease-in-out;
+				}
+			}
+			.days{
+				@include make-row(0);
+				border-right: 1px solid $flat-purple;
+				border-bottom: 1px solid $flat-purple;
+				.day{
+					@include make-col(0);
+					@include make-col-span(1,7);
+					border-left:1px solid $flat-purple;
+					border-top:1px solid $flat-purple;
+					text-align: center;
+					cursor: pointer;
+					padding: .3rem .5rem;
+					font-size: 1rem;
+					margin: 0;
+				}
+				input[type="checkbox"]:checked + label{
+					background-color: $flat-red;
+					color: $flat-white;
+					transition: background .15s ease-in-out;
+				}
+			}
+		}
+	}
+}

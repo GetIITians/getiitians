@@ -1,0 +1,166 @@
+#teachers{
+	section{
+		.col-sm-offset-4{
+			h3{
+				display: inline-block;
+				margin-right: 1rem;
+				padding-right: 1rem;
+				border-right: 1px solid $white-dark;
+			}
+			a{
+				font-size: .9rem;
+			}
+			ul{
+				padding-left: 0;
+				vertical-align: middle;
+				li{
+					font-family: $font-medium;
+					list-style-type: none;
+					display: inline-block;
+					margin: 0 .1rem;
+					padding: .1rem 1rem .1rem;
+					color: $flat-white;
+					background-color: $flat-purple;
+					vertical-align: middle;
+					&:first-child{
+						margin-left: 0;
+					}
+					&:hover{
+						cursor: pointer;
+					}
+				}
+				i.material-icons{
+					vertical-align: middle;
+					background-color: $flat-purple;
+					color: $flat-white;
+					margin-right: .5rem;
+					&:hover{
+						cursor: pointer;
+					}
+				}
+			}
+		}
+		h5{
+			display: inline-block;
+		}
+	}
+
+	aside{
+		border-top: 1px solid $white-darker;
+		padding-top: 1rem;
+		p{
+			font-size: .85rem;
+			padding: 0.375rem 1.75rem 0.375rem 0.75rem;
+			border: 1px solid #CCC;
+		}
+		.topics, .time{
+			font-size: .8rem;
+		}
+		.feeRange{
+			::-moz-range-track {
+				background: #ccc;
+				border: 0;
+			}
+
+			input::-moz-focus-inner { 
+				border: 0; 
+			}
+			#feeInput{
+				-webkit-appearance: none;
+				width: 300px;
+				height: 10px;
+				border-radius: 5px;
+				background: #ccc;
+				outline: none;
+
+				// Slider Handle
+				&::-webkit-slider-thumb {
+					-webkit-appearance: none;
+					width: 20px;
+					height: 20px;
+					border-radius: 50%;
+					background: $flat-purple;
+					cursor: pointer;
+					-webkit-transition: background .15s ease-in-out;
+					transition: background .15s ease-in-out;
+
+					&:hover {
+						background: $flat-red;
+					}
+				}
+
+				&:active::-webkit-slider-thumb {
+					background: $flat-red;
+				}
+
+				&::-moz-range-thumb {
+					width:20px;
+					height: 20px;
+					border: 0;
+					border-radius: 50%;
+					background: $flat-purple;
+					cursor: pointer;
+					-webkit-transition: background .15s ease-in-out;
+					transition: background .15s ease-in-out;
+
+					&:hover {
+						background: $flat-red;
+					}
+				}
+
+				&:active::-moz-range-thumb {
+					background: $flat-red;
+				}
+			}
+			span{
+				display: inline-block;
+				line-height: 20px;
+				text-align: center;
+				background-color: $flat-purple;
+				color: $flat-white;
+				padding: .2rem 1rem;
+				border-radius: 2px;
+			}
+		}
+	}
+	main{
+		border-top: 1px solid $white-darker;
+		padding-top: 1rem;
+	}
+	.teacher{
+		margin-bottom: 2rem;
+		img{
+			width: 40%;
+			float: left;
+			margin-right: .5rem;
+			margin-bottom: .5rem;
+		}
+		h4{
+			margin-bottom: 0;
+		}
+		hr{
+			margin: 0;
+		}
+		p{
+			font-size: .9rem;
+			margin-bottom: 0;
+			i{
+				vertical-align: middle;
+			}
+			span{
+				vertical-align: middle;
+				small{
+					padding-right: .5rem;
+					margin-right: .5rem;
+					border-right: 1px solid $white-darker;
+				}
+			}
+			&.footer{
+				margin-bottom: .5rem;
+			}
+		}
+		a.btn{
+			width: 49%;
+		}
+	}
+}

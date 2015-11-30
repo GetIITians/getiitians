@@ -1,0 +1,21 @@
+.navbar-light {
+
+	.navbar-brand {
+		padding: 0;
+	}
+	.navbar-nav {
+		.nav-link {
+			font-family: $font-regular;
+			color: $navbar-light-color;
+
+			@include hover-focus {
+				color: $navbar-light-hover-color;
+			}
+		}
+		.active{
+			.nav-link{
+				color: $flat-purple;
+			}
+		}
+	}
+}
