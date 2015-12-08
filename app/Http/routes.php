@@ -23,7 +23,7 @@ Route::get('/', function () {
 //Route::get('auth/register', 'Auth\AuthController@getRegister');
 //Route::post('auth/register', 'Auth\AuthController@postRegister');
 
-Route::get('auth/register/confirm/{token}', 'AuthController@confirmEmail');
+Route::get('auth/register/confirm/{token}', 'Auth\AuthController@confirmEmail');
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password'	=>	'Auth\PasswordController',

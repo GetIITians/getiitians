@@ -1,1 +1,1 @@
-Click here to confirm your email: {{ url('register/confirm/{$user->token}') }}
+Click here to confirm your email: {{ url('register/confirm/'.$user->confirmation_code) }}

@@ -71,14 +71,17 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
-		$user = new User;
-        $newuser = $user->save([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
 			'confirmation_code' => str_random(30),
-        ])->roles()->attach($this->user_roles[$data['signuptype']]);
-		return $newuser;
+        ]);
+		$lastInsertId = $user->id;
+		$user->roles()->attach($this->user_roles[$data['signuptype']]);
+		$user = User::find($lastInsertId);
+
+		return $user;
     }
 
 	protected function authenticated(Request $request, User $user)
@@ -123,7 +126,7 @@ class AuthController extends Controller
 		$user->confirmed = 1;
 		$user->confirmation_code = null;
 		$user->save();
-		flash('You are now confirmed. Please login.');
+		session()->flash('message','You are now confirmed. Please login.');
 		return redirect('login');
 	}
 
