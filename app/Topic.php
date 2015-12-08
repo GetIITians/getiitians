@@ -29,9 +29,9 @@ class Topic extends Model
 	 *
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
 	 */
-	public function teachers()
+	public function users()
 	{
-		return $this->belongsToMany('App\Teacher')->withTimestamps()->withPivot('fees');
+		return $this->belongsToMany('App\User')->withTimestamps()->withPivot('fees');
 	}
 
 	/**

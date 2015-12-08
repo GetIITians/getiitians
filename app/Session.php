@@ -45,7 +45,7 @@ class Session extends Model
 	 */
 	public function teacher()
 	{
-		return $this->belongsTo('App\Teacher');
+		return $this->belongsTo('App\User','teacher_id');
 	}
 
 	/**
@@ -55,7 +55,7 @@ class Session extends Model
 	 */
 	public function student()
 	{
-		return $this->belongsTo('App\Student');
+		return $this->belongsTo('App\User','student_id');
 	}
 
 	/**

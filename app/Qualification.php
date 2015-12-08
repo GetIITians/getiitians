@@ -30,8 +30,8 @@ class Qualification extends Model
 	 *
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
 	 */
-	public function teacher()
+	public function user()
 	{
-		return $this->belongsTo('App\Teacher');
+		return $this->belongsTo('App\User');
 	}
 }

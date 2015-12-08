@@ -15,9 +15,7 @@ class CreateChatsTable extends Migration
         Schema::create('chats', function (Blueprint $table) {
             $table->increments('id');
 			$table->integer('teacher_id', false, true)->index();
-			$table->foreign('teacher_id')->references('id')->on('teachers')->onUpdate('cascade')->onDelete('cascade');
 			$table->integer('student_id', false, true)->index();
-			$table->foreign('student_id')->references('id')->on('students')->onUpdate('cascade')->onDelete('cascade');
 			$table->text('message');
             $table->timestamps();
         });
@@ -30,10 +28,6 @@ class CreateChatsTable extends Migration
      */
     public function down()
     {
-		Schema::table('chats', function (Blueprint $table){
-			$table->dropForeign('chats_teacher_id_foreign');
-			$table->dropForeign('chats_student_id_foreign');
-		});
         Schema::drop('chats');
     }
 }

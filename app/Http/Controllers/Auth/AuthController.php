@@ -22,7 +22,10 @@ class AuthController extends Controller
     */
 
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
+
 	private $maxLoginAttempts = 10;
+
+	protected $redirectPath = '/';
 
     /**
      * Create a new authentication controller instance.

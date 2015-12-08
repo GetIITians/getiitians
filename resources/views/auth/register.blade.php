@@ -44,18 +44,16 @@
         <div class="radio">
             Sign up as :
             <label class="radio-inline">
-                <input type="radio" name="signuptype" id="signuptype" value="student"> Student
+                <input type="radio" name="signuptype" id="signuptype" value="App\Student"> Student
             </label>
             <label class="radio-inline">
-                <input type="radio" name="signuptype" id="signuptype" value="teacher"> Teacher
+                <input type="radio" name="signuptype" id="signuptype" value="App\Teacher"> Teacher
             </label>
         </div>
+        <div class="col-xs-offset-3 col-xs-6">
+            <button type="submit" class="btn btn-primary">SIGNUP</button>
+            <small class="text-muted text-left">By clicking on submit, you agree to our terms of use.</small>
+        </div>
     </form>
-</div>
-<div class="row">
-    <div class="col-xs-offset-3 col-xs-6">
-        <button type="submit" class="btn btn-primary">SIGNUP</button>
-        <small class="text-muted text-left">By clicking on submit, you agree to our terms of use.</small>
-    </div>
 </div>
 @endsection

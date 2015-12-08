@@ -4,27 +4,23 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Timeslot extends Model
+class Info extends Model
 {
-	/**
-	 * The database table used by the model.
-	 *
-	 * @var string
-	 */
-	protected $table = 'timeslots';
-
 	/**
 	 * The attributes that are mass assignable.
 	 *
 	 * @var array
 	 */
 	protected $fillable = [
-		'teacher_id',
-		'start_time'
+		'user_id',
+		'home_tuition',
+		'language',
+		'experience',
+		'resume',
 	];
 
 	/**
-	 * Get the Teacher that owns the Timeslot.
+	 * Get the Teacher that owns the Info.
 	 *
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
 	 */

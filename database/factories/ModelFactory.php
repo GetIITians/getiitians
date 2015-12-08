@@ -16,6 +16,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'name' => $faker->name,
         'email' => $faker->email,
         'password' => bcrypt('getIITians'),
+		'image_url' => str_random(20),
 		'gender' => 'male',
 		'date_of_birth' => $faker->dateTimeThisCentury->format('Y-m-d'),
 		'address_country' => $faker->country,
@@ -24,22 +25,6 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 		'address_pin' => $faker->postcode,
 		'phone' => $faker->phoneNumber,
         'remember_token' => str_random(10),
+		'confirmed' => 1,
     ];
-});
-
-$factory->define(App\Teacher::class, function (Faker\Generator $faker) {
-	return [
-		'home_tuition' => '1',
-		'language' => '["English","Hindi","Punjabi"]',
-		'experience' => $faker->numberBetween($min = 0, $max = 50),
-		'resume' => str_random(20),
-	];
-});
-
-$factory->define(App\Topic::class, function (Faker\Generator $faker) {
-	return [
-		'class' => $faker->word,
-		'subject' => $faker->word,
-		'topic' => $faker->sentence($nbWords = 4),
-	];
 });

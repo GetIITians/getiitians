@@ -19,7 +19,7 @@
         &#9776;
     </button>
     <div class="collapse navbar-toggleable-xs" id="collapsingNavbar">
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand" href="/">
             <img src="/img/logo.png">
         </a>
         <ul class="nav navbar-nav pull-right">

@@ -14,8 +14,7 @@ class CreateTimeslotsTable extends Migration
     {
         Schema::create('timeslots', function (Blueprint $table) {
             $table->increments('id');
-			$table->integer('teacher_id', false, true)->index();
-			$table->foreign('teacher_id')->references('id')->on('teachers')->onUpdate('cascade')->onDelete('cascade');
+			$table->integer('user_id', false, true)->index();
 			$table->timestamp('start_time');
             $table->timestamps();
         });
@@ -28,9 +27,6 @@ class CreateTimeslotsTable extends Migration
      */
     public function down()
     {
-		Schema::table('timeslots', function (Blueprint $table){
-			$table->dropForeign('timeslots_teacher_id_foreign');
-		});
         Schema::drop('timeslots');
     }
 }
