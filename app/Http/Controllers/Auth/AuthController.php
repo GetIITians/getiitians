@@ -7,6 +7,9 @@ use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Mailers\AppMailer;
 
 class AuthController extends Controller
 {
@@ -25,7 +28,14 @@ class AuthController extends Controller
 
 	private $maxLoginAttempts = 10;
 
-	protected $redirectPath = '/';
+	protected $redirectPath = '/profile';
+
+	protected $user_roles = [
+		'student' => 1,
+		'teacher' => 2,
+		'admin' => 3,
+		'superadmin' => 4
+	];
 
     /**
      * Create a new authentication controller instance.
@@ -49,6 +59,7 @@ class AuthController extends Controller
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|confirmed|min:6',
+			'signuptype' => 'required',
         ]);
     }
 
@@ -60,10 +71,74 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+		$user = new User;
+        $newuser = $user->save([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-        ]);
+			'confirmation_code' => str_random(30),
+        ])->roles()->attach($this->user_roles[$data['signuptype']]);
+		return $newuser;
     }
+
+	protected function authenticated(Request $request, User $user)
+	{
+		return redirect()->intended('/profile');
+	}
+
+	/**
+	 * Handle a registration request for the application.
+	 *
+	 * @param  \Illuminate\Http\Request  $request
+	 * @return \Illuminate\Http\Response
+	 */
+	public function postRegister(Request $request, AppMailer $mailer)
+	{
+		$validator = $this->validator($request->all());
+
+		if ($validator->fails()) {
+			$this->throwValidationException(
+				$request, $validator
+			);
+		}
+
+		$user = $this->create($request->all());
+
+		$mailer->sendEmailConfirmationTo($user);
+
+		$request->session()->flash('message', 'Thanks for signing up! Please confirm your email address.');
+
+		return redirect()->back();
+	}
+
+	/**
+	 * Confirm a user's email address.
+	 *
+	 * @param  string $token
+	 * @return mixed
+	 */
+	public function confirmEmail($token)
+	{
+		$user = User::whereConfirmationCode($token)->firstOrFail();
+		$user->confirmed = 1;
+		$user->confirmation_code = null;
+		$user->save();
+		flash('You are now confirmed. Please login.');
+		return redirect('login');
+	}
+
+	/**
+	 * Get the needed authorization credentials from the request.
+	 *
+	 * @param  \Illuminate\Http\Request  $request
+	 * @return array
+	 */
+	protected function getCredentials(Request $request)
+	{
+		$credentials = $request->only($this->loginUsername(), 'password');
+
+		return array_add($credentials, 'confirmed', '1');
+	}
+
+
 }

@@ -44,10 +44,10 @@
         <div class="radio">
             Sign up as :
             <label class="radio-inline">
-                <input type="radio" name="signuptype" id="signuptype" value="App\Student"> Student
+                <input type="radio" name="signuptype" id="signuptype" value="student"> Student
             </label>
             <label class="radio-inline">
-                <input type="radio" name="signuptype" id="signuptype" value="App\Teacher"> Teacher
+                <input type="radio" name="signuptype" id="signuptype" value="teacher"> Teacher
             </label>
         </div>
         <div class="col-xs-offset-3 col-xs-6">
