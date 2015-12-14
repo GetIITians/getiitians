@@ -1,8 +1,9 @@
 @extends ('layouts.master')
 @section('content')
+    <div class="gutter-md"></div>
 
 <!-- Display Validation Errors -->
-@include('errors.errors')
+@include('layouts.includes.errors')
 
 <div class="row">
     <form class="col-xs-offset-2 col-xs-8" action="/auth/login" method="POST">

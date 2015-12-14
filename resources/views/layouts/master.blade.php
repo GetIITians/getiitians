@@ -58,13 +58,10 @@
         </ul>
     </div>
 </nav>
-<div class="gutter-md"></div>
 <!-- Header Ends -->
-
+@include('layouts.includes.flash')
 @yield('content')
-
 <!-- Footer Begins -->
-<div class="gutter-md"></div>
 <div class="jumbotron jumbotron-fluid doubt">
     <div class="container-fluid">
         <h1>Have a doubt ?</h1>

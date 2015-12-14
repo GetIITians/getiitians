@@ -19,6 +19,7 @@ Route::get('/', function () {
 //Route::get('auth/login', 'Auth\AuthController@getLogin');
 //Route::post('auth/login', 'Auth\AuthController@postLogin');
 //Route::get('auth/logout', 'Auth\AuthController@getLogout');
+
 // Registration routes...
 //Route::get('auth/register', 'Auth\AuthController@getRegister');
 //Route::post('auth/register', 'Auth\AuthController@postRegister');
@@ -29,4 +30,16 @@ Route::controllers([
 	'password'	=>	'Auth\PasswordController',
 ]);
 
-Route::resource('demo', 'DemoController');
+
+Route::group(['middleware' => 'auth', 'prefix' => 'profile'], function () {
+	Route::get('/', 'ProfileController@index');
+
+	Route::get('update/personal', function (){
+		return view('frontend.profile.personal');
+	});
+	Route::get('update/qualification', function (){
+		return view('frontend.profile.qualification');
+	});
+});
+
+//Route::resource('demo', 'DemoController');

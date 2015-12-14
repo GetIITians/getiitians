@@ -1,6 +1,8 @@
 @extends ('layouts.master')
 @section('content')
-		<div class="container-fluid">
+    <div class="gutter-md"></div>
+
+    <div class="container-fluid">
 			<div class="row banner">
 				<div class="col-sm-7">
 					<img src="img/laptop.png" class="img-responsive">

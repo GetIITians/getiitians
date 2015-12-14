@@ -1,7 +1,9 @@
 @extends('layouts.master')
 @section('content')
-<!-- Display Validation Errors -->
-@include('errors.errors')
+    <div class="gutter-md"></div>
+
+    <!-- Display Validation Errors -->
+@include('layouts.includes.errors')
 <div class="row">
     <form class="col-xs-offset-2 col-xs-8" action="/password/email" method="POST">
         {!! csrf_field() !!}
