@@ -33,4 +33,5 @@
         <small><a href="/password/email">Forgot password ?</a></small>
     </form>
 </div>
+    <div class="gutter-md"></div>
 @endsection

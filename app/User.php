@@ -200,4 +200,36 @@ class User extends Model implements AuthenticatableContract,
 		return $this->hasMany('App\Chat', 'student_id');
 	}
 
+	public function isStudent()
+	{
+		foreach($this->roles as $role){
+			if($role->name == 'student') return true;
+		}
+
+		return false;
+	}
+
+	public function isTeacher()
+	{
+		foreach($this->roles as $role){
+			if($role->name == 'teacher') return true;
+		}
+
+		return false;
+	}
+
+	public function isAdmin()
+	{
+		foreach($this->roles as $role){
+			if($role->name == 'admin') return true;
+		}
+
+		return false;
+	}
+
+	public function isSuperadmin()
+	{
+		return $this->roles->first()->name == 'superadmin';
+	}
+
 }

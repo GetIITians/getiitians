@@ -28,7 +28,7 @@ class AuthController extends Controller
 
 	private $maxLoginAttempts = 10;
 
-	protected $redirectPath = '/profile';
+	protected $redirectPath = '/';
 
 	protected $user_roles = [
 		'student' => 1,
@@ -86,7 +86,7 @@ class AuthController extends Controller
 
 	protected function authenticated(Request $request, User $user)
 	{
-		return redirect()->intended('/profile');
+		return redirect()->intended('/profile/'.$user->id);
 	}
 
 	/**
@@ -127,7 +127,7 @@ class AuthController extends Controller
 		$user->confirmation_code = null;
 		$user->save();
 		flash('You are now confirmed. Please login.');
-		return redirect('profile/update/personal');
+		return redirect('profile/'.$user->id.'/update/personal');
 	}
 
 	/**

@@ -22,7 +22,7 @@
                         <p><i class="material-icons md-18">attach_money</i><span class="pull-right">? 500 -1200 / per hour</span></p>
                     </div>
                     <div class="col-xs-12 col-sm-6">
-                        <p><i class="material-icons md-18">perm_identity</i><span class="pull-right">Male</span></p>
+                        <p><i class="material-icons md-18">perm_identity</i><span class="pull-right">{!! ucfirst($user->gender) !!}</span></p>
                         <p><i class="material-icons md-18">mode_edit</i><span class="pull-right">9th-12th</span></p>
                         <p><i class="material-icons md-18">star_rate</i><span class="pull-right"><small class="text-muted">(122 ratings) </small>4.8</span></p>
                     </div>

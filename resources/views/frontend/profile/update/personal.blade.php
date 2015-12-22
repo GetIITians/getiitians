@@ -21,7 +21,8 @@
     </div>
     <div class="gutter-sm"></div>
     <div class="signuppersonal">
-        <form>
+        {!! Form::model(array('url' => '/profile/update/personal', 'method' => 'POST')) !!}
+            {{ csrf_field() }}
             <div class="row">
                 <div class="col-xs-3">
                     <h5>Gender</h5>
@@ -44,7 +45,7 @@
                 </div>
                 <div class="col-xs-2">
                     <fieldset class="form-group">
-                        <input type="text" class="form-control">
+                        <input type="text" name="date_of_birth" class="form-control" value="{{ old('name') }}">
                     </fieldset>
                 </div>
             </div>
@@ -54,26 +55,26 @@
                 </div>
                 <div class="col-xs-2">
                     <fieldset class="form-group">
-                        <input type="text" class="form-control" placeholder="City">
+                        <input type="text" name="address_city" class="form-control" placeholder="City" value="{{ old('address_city') }}">
                     </fieldset>
                 </div>
                 <div class="col-xs-2">
                     <fieldset class="form-group">
-                        <input type="text" class="form-control" placeholder="State">
+                        <input type="text" name="address_state" class="form-control" placeholder="State" value="{{ old('address_state') }}">
                     </fieldset>
                 </div>
                 <div class="col-xs-2">
                     <fieldset class="form-group">
-                        <input type="text" class="form-control" placeholder="ZIP Code">
+                        <input type="text" name="address_pin" class="form-control" placeholder="ZIP Code" value="{{ old('address_pin') }}">
                     </fieldset>
                 </div>
                 <div class="col-xs-2">
                     <fieldset class="form-group">
-                        <select class="form-control c-select">
+                        <select name="address_country" class="form-control c-select">
                             <option selected>Country</option>
-                            <option value="1">India</option>
-                            <option value="2">UAE</option>
-                            <option value="3">Singapore</option>
+                            <option value="India">India</option>
+                            <option value="UAE">UAE</option>
+                            <option value="Singapore">Singapore</option>
                         </select>
                     </fieldset>
                 </div>
@@ -83,12 +84,9 @@
                 <div class="col-xs-2">
                     <button type="submit" class="btn btn-primary">SAVE</button>
                 </div>
-                <div class="col-xs-offset-1 col-xs-2">
-                    <button type="submit" class="btn btn-primary">SKIP FOR NOW</button>
-                </div>
             </div>
             <div class="gutter-md"></div>
-        </form>
+        {!! Form::close() !!}
     </div>
 </main>
 @endsection

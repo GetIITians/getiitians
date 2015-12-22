@@ -15,14 +15,16 @@ Route::get('/', function () {
     return view('frontend.index');
 });
 
-// Authentication routes...
-//Route::get('auth/login', 'Auth\AuthController@getLogin');
-//Route::post('auth/login', 'Auth\AuthController@postLogin');
-//Route::get('auth/logout', 'Auth\AuthController@getLogout');
+/*
+Authentication routes...
+Route::get('auth/login', 'Auth\AuthController@getLogin');
+Route::post('auth/login', 'Auth\AuthController@postLogin');
+Route::get('auth/logout', 'Auth\AuthController@getLogout');
 
-// Registration routes...
-//Route::get('auth/register', 'Auth\AuthController@getRegister');
-//Route::post('auth/register', 'Auth\AuthController@postRegister');
+Registration routes...
+Route::get('auth/register', 'Auth\AuthController@getRegister');
+Route::post('auth/register', 'Auth\AuthController@postRegister');
+*/
 
 Route::get('auth/register/confirm/{token}', 'Auth\AuthController@confirmEmail');
 Route::controllers([
@@ -30,16 +32,21 @@ Route::controllers([
 	'password'	=>	'Auth\PasswordController',
 ]);
 
+Route::get('profile/{id}', 'ProfileController@index')->where('id', '[0-9]+');
+Route::get('profile/', ['middleware' => 'auth', 'uses' => 'ProfileController@index']);
 
-Route::group(['middleware' => 'auth', 'prefix' => 'profile'], function () {
-	Route::get('/', 'ProfileController@index');
+Route::group(['middleware' => 'auth', 'prefix' => 'profile/{id}/'], function () {
 
 	Route::get('update/personal', function (){
-		return view('frontend.profile.personal');
+		return view('frontend.profile.update.personal', ['user' => Auth::user()]);
 	});
+
+	Route::post('update/personal', 'ProfileController@postPersonal');
+
 	Route::get('update/qualification', function (){
-		return view('frontend.profile.qualification');
+		return view('frontend.profile.update.qualification');
 	});
+
 });
 
 //Route::resource('demo', 'DemoController');
