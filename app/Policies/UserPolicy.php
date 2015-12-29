@@ -19,14 +19,16 @@ class UserPolicy
 
     }
 
+	/*
 	public function before(User $user)
 	{
 		return $user->isSuperadmin();
 	}
+	*/
 
-	public function see(User $user, $id)
+	public function see(User $authUser, User $currentProfile)
 	{
-		return $id == $user->id;
+		return $currentProfile->id === $authUser->id;
 	}
 
 }

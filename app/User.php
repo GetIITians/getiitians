@@ -151,7 +151,7 @@ class User extends Model implements AuthenticatableContract,
 	}
 
 	/**
-	 * Get the Transactions for the User.
+	 * Get the Teacher Info for the User.
 	 *
 	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
 	 */

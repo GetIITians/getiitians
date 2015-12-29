@@ -26,26 +26,31 @@ Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
 */
 
+Route::get('test/{user}', 'ProfileController@test');
+//	www.getiitians.com/profile/5
+Route::get('profile/{user}', function(App\User $user){
+	return view('frontend.profile.index', ['user' => $user]);
+});
+
 Route::get('auth/register/confirm/{token}', 'Auth\AuthController@confirmEmail');
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password'	=>	'Auth\PasswordController',
 ]);
 
-Route::get('profile/{id}', 'ProfileController@index')->where('id', '[0-9]+');
-Route::get('profile/', ['middleware' => 'auth', 'uses' => 'ProfileController@index']);
-
-Route::group(['middleware' => 'auth', 'prefix' => 'profile/{id}/'], function () {
-
-	Route::get('update/personal', function (){
-		return view('frontend.profile.update.personal', ['user' => Auth::user()]);
+Route::group(['middleware' => 'auth', 'prefix' => 'profile/{user}/update'], function () {
+	//	www.getiitians.com/profile/4/update/personal
+	Route::get('personal', function (App\User $user){
+		return view('frontend.profile.update.personal', ['user' => $user]);
 	});
+	Route::post('personal', 'UserController@update');
+	Route::post('info', 'InfoController@update');
 
-	Route::post('update/personal', 'ProfileController@postPersonal');
-
-	Route::get('update/qualification', function (){
-		return view('frontend.profile.update.qualification');
+	//	www.getiitians.com/profile/4/update/qualification
+	Route::get('qualification', function (App\User $user){
+		return view('frontend.profile.update.qualification', ['user' => $user]);
 	});
+	Route::post('qualifications', 'ProfileController@postQualifications');
 
 });
 

@@ -137,21 +137,21 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
-        /*
-         * Application Service Providers...
-         */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
-		App\Providers\RocketShipServiceProvider::class,
-
-
 		/*
 		 * Other Service Providers...
 		 */
 		Collective\Html\HtmlServiceProvider::class,
 		//Barryvdh\Debugbar\ServiceProvider::class,
+
+
+		/*
+		 * Application Service Providers...
+		 */
+        App\Providers\AppServiceProvider::class,
+        App\Providers\AuthServiceProvider::class,
+        App\Providers\EventServiceProvider::class,
+        App\Providers\RouteServiceProvider::class,
+		App\Providers\RocketShipServiceProvider::class,
 
     ],
 

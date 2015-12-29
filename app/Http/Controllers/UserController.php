@@ -69,9 +69,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+		$request->user()->update($request->all());
+		flash('Your information has been updated.');
+		return redirect('/profile/'.$request->user()->id);
     }
 
     /**
@@ -82,6 +84,6 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+
     }
 }

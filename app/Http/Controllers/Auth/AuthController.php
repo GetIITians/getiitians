@@ -32,9 +32,7 @@ class AuthController extends Controller
 
 	protected $user_roles = [
 		'student' => 1,
-		'teacher' => 2,
-		'admin' => 3,
-		'superadmin' => 4
+		'teacher' => 2
 	];
 
     /**

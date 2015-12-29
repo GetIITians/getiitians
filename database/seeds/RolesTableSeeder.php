@@ -11,9 +11,9 @@ class RolesTableSeeder extends Seeder
      */
     public function run()
     {
-		factory(App\Role::class, 'student', 1)->create();
-		factory(App\Role::class, 'teacher', 1)->create();
-		factory(App\Role::class, 'admin', 1)->create();
-		factory(App\Role::class, 'superadmin', 1)->create();
+		factory(App\Role::class, 'roleStudent', 1)->create();
+		factory(App\Role::class, 'roleTeacher', 1)->create();
+		factory(App\Role::class, 'roleAdmin', 1)->create();
+		factory(App\Role::class, 'roleSuperadmin', 1)->create();
     }
 }

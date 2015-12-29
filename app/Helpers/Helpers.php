@@ -7,3 +7,11 @@ function flash($message = null)
 		return $flash;
 	return $flash->message($message);
 }
+
+function authDetails()
+{
+	return [
+		'user' 	=> Auth::user(),
+		'id'	=> Auth::user()->id
+	];
+}
