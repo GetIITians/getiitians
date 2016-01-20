@@ -19,7 +19,8 @@ class InfoController extends Controller
 	 */
 	public function store(Request $request)
 	{
-		//
+		Info::create($request->all());
+		return redirect('/profile/'.$request->user()->id);
 	}
 
 	/**
@@ -31,17 +32,16 @@ class InfoController extends Controller
 	 */
 	public function update(Request $request)
 	{
-		if($user->info()->get()->isEmpty())
+		if($request->user()->info()->get()->isEmpty())
 		{
 			$this->store($request);
 		}
 		else
 		{
-			Info::create();
+			$request->user()->info()->update($request->all());
+			flash('Your information has been updated.');
+			return redirect('/profile/'.$request->user()->id);
 		}
-		$request->user()->update($request->all());
-		flash('Your information has been updated.');
-		return redirect('/profile/'.$request->user()->id);
 	}
 
 }

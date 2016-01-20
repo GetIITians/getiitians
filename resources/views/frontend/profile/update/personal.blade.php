@@ -113,32 +113,32 @@
                             English
                         </label>
                         <label class="c-input c-checkbox">
-                            <input id="radioStacked1" name="lanugage[]" type="checkbox" value="Hindi">
+                            <input id="radioStacked1" name="language" type="checkbox" value="Hindi">
                             <span class="c-indicator"></span>
                             Hindi
                         </label>
                         <label class="c-input c-checkbox">
-                            <input id="radioStacked1" name="lanugage[]" type="checkbox" value="Assamese">
+                            <input id="radioStacked1" name="language" type="checkbox" value="Assamese">
                             <span class="c-indicator"></span>
                             Assamese
                         </label>
                         <label class="c-input c-checkbox">
-                            <input id="radioStacked1" name="lanugage[]" type="checkbox" value="Sanskrit">
+                            <input id="radioStacked1" name="language" type="checkbox" value="Sanskrit">
                             <span class="c-indicator"></span>
                             Sanskrit
                         </label>
                         <label class="c-input c-checkbox">
-                            <input id="radioStacked1" name="lanugage[]" type="checkbox" value="Bengali">
+                            <input id="radioStacked1" name="language" type="checkbox" value="Bengali">
                             <span class="c-indicator"></span>
                             Bengali
                         </label>
                         <label class="c-input c-checkbox">
-                            <input id="radioStacked1" name="lanugage[]" type="checkbox" value="Malyalam">
+                            <input id="radioStacked1" name="language" type="checkbox" value="Malyalam">
                             <span class="c-indicator"></span>
                             Malyalam
                         </label>
                         <label class="c-input c-checkbox">
-                            <input id="radioStacked1" name="lanugage[]" type="checkbox" value="Tamil">
+                            <input id="radioStacked1" name="language" type="checkbox" value="Tamil">
                             <span class="c-indicator"></span>
                             Tamil
                         </label>
@@ -147,43 +147,44 @@
                 <div class="col-xs-3">
                     <div class="c-inputs-stacked">
                         <label class="c-input c-checkbox">
-                            <input id="radioStacked1" name="lanugage[]" type="checkbox" value="Gujarati">
+                            <input id="radioStacked1" name="language" type="checkbox" value="Gujarati">
                             <span class="c-indicator"></span>
                             Gujarati
                         </label>
                         <label class="c-input c-checkbox">
-                            <input id="radioStacked1" name="lanugage[]" type="checkbox" value="Marathi">
+                            <input id="radioStacked1" name="language" type="checkbox" value="Marathi">
                             <span class="c-indicator"></span>
                             Marathi
                         </label>
                         <label class="c-input c-checkbox">
-                            <input id="radioStacked1" name="lanugage[]" type="checkbox" value="Telugu">
+                            <input id="radioStacked1" name="language" type="checkbox" value="Telugu">
                             <span class="c-indicator"></span>
                             Telugu
                         </label>
                         <label class="c-input c-checkbox">
-                            <input id="radioStacked1" name="lanugage[]" type="checkbox" value="Oriya">
+                            <input id="radioStacked1" name="language" type="checkbox" value="Oriya">
                             <span class="c-indicator"></span>
                             Oriya
                         </label>
                         <label class="c-input c-checkbox">
-                            <input id="radioStacked1" name="lanugage[]" type="checkbox" value="Urdu">
+                            <input id="radioStacked1" name="language" type="checkbox" value="Urdu">
                             <span class="c-indicator"></span>
                             Urdu
                         </label>
                         <label class="c-input c-checkbox">
-                            <input id="radioStacked1" name="lanugage[]" type="checkbox" value="Kannada">
+                            <input id="radioStacked1" name="language" type="checkbox" value="Kannada">
                             <span class="c-indicator"></span>
                             Kannada
                         </label>
                         <label class="c-input c-checkbox">
-                            <input id="radioStacked1" name="lanugage[]" type="checkbox" value="Punjabi">
+                            <input id="radioStacked1" name="language" type="checkbox" value="Punjabi">
                             <span class="c-indicator"></span>
                             Punjabi
                         </label>
                     </div>
                 </div>
             </div>
+            <div class="gutter-xs"></div>
             <div class="row">
                 <div class="col-xs-3">
                     <h5>Experience</h5>

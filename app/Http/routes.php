@@ -41,7 +41,7 @@ Route::controllers([
 Route::group(['middleware' => 'auth', 'prefix' => 'profile/{user}/update'], function () {
 	//	www.getiitians.com/profile/4/update/personal
 	Route::get('personal', function (App\User $user){
-		return view('frontend.profile.update.personal', ['user' => $user]);
+		return view('frontend.profile.update.personal', ['user' => $user, 'info' => $user->info]);
 	});
 	Route::post('personal', 'UserController@update');
 	Route::post('info', 'InfoController@update');
