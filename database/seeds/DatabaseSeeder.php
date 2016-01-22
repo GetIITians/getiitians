@@ -13,21 +13,6 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         Model::unguard();
-
-		$this->call(RolesTableSeeder::class);
-        $this->call(UsersTableSeeder::class);
-
-		DB::table('role_user')->insert([
-			'user_id' => 1,
-			'role_id' => 2,
-		],[
-			'user_id' => 1,
-			'role_id' => 3,
-		],[
-			'user_id' => 2,
-			'role_id' => 1,
-		]);
-
-        Model::reguard();
+		Model::reguard();
     }
 }

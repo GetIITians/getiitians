@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('frontend.index');
 });
 
+Route::get('teachers', 'TeacherController@show');
+Route::post('teachers', 'TeacherController@show');
+
+
 /*
 Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
@@ -26,6 +30,7 @@ Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
 */
 
+/*
 Route::get('test/{user}', 'ProfileController@test');
 //	www.getiitians.com/profile/5
 Route::get('profile/{user}', function(App\User $user){
@@ -53,5 +58,5 @@ Route::group(['middleware' => 'auth', 'prefix' => 'profile/{user}/update'], func
 	Route::post('qualifications', 'ProfileController@postQualifications');
 
 });
-
+*/
 //Route::resource('demo', 'DemoController');
