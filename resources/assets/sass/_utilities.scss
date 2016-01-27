@@ -38,6 +38,14 @@
 	}
 }
 
+.btn-inline-sm{
+	width: auto;
+	padding: $input-padding-y-sm $input-padding-x-sm;
+	font-size: $font-size-sm;
+	line-height: $line-height-sm;
+	border-radius: $input-border-radius-sm;
+}
+
 .required{
 	color: $flat-red;
 }
@@ -127,5 +135,49 @@ hr.purple{
 	.close{
 		right: 0;
 		top: 0;
+	}
+}
+
+img.round{
+	border-radius: 10%;
+	border: 1px solid rgba(0, 0, 0, 0.12);
+	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.18);
+}
+
+div.centered{
+	text-align: center;
+}
+
+span.label{
+	letter-spacing: .05rem;
+	font-family: $font-regular;
+	font-weight: normal;
+	padding: .3rem;
+	border-radius: .15rem;
+}
+
+div.one-line{
+    flex-wrap: nowrap;
+}
+
+.full-width{
+	width: 100%;
+}
+
+#backToTop{
+	display: none;
+	position: fixed;
+	z-index: 999;
+	right: 1rem;
+	bottom: 3rem;
+	padding: .25rem;
+	border-radius: .25rem;
+	border: 1px solid transparent;
+	background-color: $flat-red;
+	color: $flat-purple;
+	font-family: $font-bold;
+	line-height: .5;
+	&:hover{
+		color: $flat-white;
 	}
 }

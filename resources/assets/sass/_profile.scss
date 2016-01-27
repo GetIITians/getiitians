@@ -3,41 +3,43 @@
 	margin-bottom: 0;
 	background-color: $flat-white;
 	aside{
-		background-color: $flat-white;
-		color: $flat-purple;
+		font-family: $font-thin;
+		background-color: $flat-purple;
 		padding: 0;
 		a.btn{
 			width: auto;
 		}
 		h3 a{
-			color: $flat-purple;
+			padding-left: 1rem;
+			color: $flat-white;
 		}
-		.list-group{
-			.list-group-item{
-				font-size: 1.1rem;
-				color: $flat-navy;
-				background-color: $flat-white;
-				border-right: 0;
-				border-left: 0;
-				border-color: darken($flat-white,3%);
-				&:hover{
-					color: $flat-blue;
+		ul{
+			padding-left: 0;
+			li{
+				a{
+					text-transform: uppercase;
+					display: block;
+					color: darken($flat-white, 30%);
+					font-family: $font-regular;
+					font-size: .9rem;
+					letter-spacing: .1rem;
+					border-bottom: 1px solid lighten($flat-purple, 5%);
+					padding: .5rem 1rem;
+					&:hover{
+						color: $flat-red;
+					}
 				}
-				&:last-child{
+				&.active a{
+					color: $flat-red;
+				}
+				&:last-child a{
 					border-bottom: 0;
 				}
-			}
-			.active{
-				color: $flat-purple;
 			}
 		}
 	}
 	main{
-		padding-right: 0;
 		padding-top: 1rem;
-		> div.row{
-			margin-right: 0;
-		}
 		#messageTeacher{
 			font-size: 1rem;
 			padding: 1rem;
@@ -164,36 +166,38 @@
 		}
 	}
 	.classes{
+		padding: 0;
 		.nav-tabs{
-			border-color: transparent;
+			border-bottom: 0;
 			.nav-link{
 				background-color: $flat-white;
-				border-color: $flat-purple;
 				border-radius: 0;
 			}
 			.active{
-				border-color: $flat-purple $flat-purple transparent;
+				background-color: lighten($flat-purple, 65%);
+//				border-color: $flat-purple $flat-purple transparent;
 			}
 			.nav-item{
 				width: 50%;
 				text-align: center;
+				border: 0;
 			}
 			.nav-item + .nav-item{
 				margin: 0;
-				border-left-color: transparent;
+				border: 0;
 			}
 		}
 		table{
 			width: 100%;
 			td,th{
-				border: 1px solid darken($flat-white, 10%);
+				border: 1px solid darken($flat-white, 5%);
 				padding: .3rem .5rem;
 			}
 			th{
 				font-family: $font-light;
 				font-weight: normal;
-				background-color: $flat-purple;
-				color: $flat-white;
+				background-color: darken($flat-white, 1%);
+				color: $flat-purple;
 				font-size: 1.2rem;
 			}
 		}
@@ -382,84 +386,24 @@
 			font-weight: normal;
 		}
 		.signupsubjects{
-			.price{
-				label{
-					float: right;
-					padding: .2rem .5rem;
-					border: 1px solid $flat-purple;
-					margin-right: 1rem;
-					cursor: pointer;
-				}
-				input[type="radio"]:checked + label{
-					&.five{
-						background-color: #FFF;
-					}
-					&.eight{
-						background-color: #CCC;
-						border-color: #CCC;
-					}
-					&.ten{
-						background-color: #999;
-						color: $flat-white;
-						border-color: #999;
-					}
-					&.twelve{
-						background-color: #666;
-						color: $flat-white;
-						border-color: #666;
-					}
-					&.fifteen{
-						background-color: #333;
-						color: $flat-white;
-						border-color: #333;
-					}
-					&.twenty{
-						background-color: #000;
-						color: $flat-white;
-						border-color: #000;
-					}
-				}
-			}
 			.subject{
-				border-right: 1px solid $flat-purple;
-				border-bottom: 1px solid $flat-purple;
+				display: flex;
+				flex-wrap: wrap;
 				label{
-					@include make-col(0);
-					@include make-col-span(1,4);
-					border-left:1px solid $flat-purple;
-					border-top:1px solid $flat-purple;
+					flex-basis: 18%;
+					border:1px solid $flat-purple;
 					text-align: center;
 					cursor: pointer;
-					padding: .3rem .5rem;
 					font-size: 1rem;
-					margin: 0;
-					&.five{
-						background-color: #FFF;
-					}
-					&.eight{
-						background-color: #CCC;
-						border-color: #CCC;
-					}
-					&.ten{
-						background-color: #999;
-						color: $flat-white;
-						border-color: #999;
-					}
-					&.twelve{
-						background-color: #666;
-						color: $flat-white;
-						border-color: #666;
-					}
-					&.fifteen{
-						background-color: #333;
-						color: $flat-white;
-						border-color: #333;
-					}
-					&.twenty{
-						background-color: #000;
-						color: $flat-white;
-						border-color: #000;
-					}
+					padding: .5rem;
+					margin-right: 1%;
+				}
+				input[type="checkbox"]:checked + label{
+					background-color: $flat-green;
+					color: $flat-white;
+					border:1px solid $flat-green;
+				}
+				div{
 				}
 			}
 			.media-heading{
@@ -483,7 +427,7 @@
 					margin: 0;
 				}
 				input[type="checkbox"]:checked + label{
-					background-color: $flat-red;
+					background-color: $flat-navy;
 					color: $flat-white;
 					transition: background .15s ease-in-out;
 				}
@@ -504,7 +448,7 @@
 					margin: 0;
 				}
 				input[type="checkbox"]:checked + label{
-					background-color: $flat-red;
+					background-color: $flat-blue;
 					color: $flat-white;
 					transition: background .15s ease-in-out;
 				}
