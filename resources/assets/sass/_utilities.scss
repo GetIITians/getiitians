@@ -38,6 +38,15 @@
 	}
 }
 
+.btn-dark {
+	width: 100%;
+	@include button-variant($flat-white, $flat-purple, $flat-purple);
+	&:hover{
+		background-color: $flat-white;
+		color: $flat-purple;
+	}
+}
+
 .btn-inline-sm{
 	width: auto;
 	padding: $input-padding-y-sm $input-padding-x-sm;
@@ -51,7 +60,7 @@
 }
 
 .img-responsive-flex{
-	width: 100%;
+	//width: 100%;
 	@include img-responsive();
 }
 

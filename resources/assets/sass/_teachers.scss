@@ -128,12 +128,10 @@
 		padding-top: 1rem;
 	}
 	.teacher{
-		margin-bottom: 2rem;
-		img{
-			width: 40%;
-			float: left;
-			margin-right: .5rem;
-			margin-bottom: .5rem;
+		margin-bottom: 5rem;
+		.dp{
+			height: 10rem;
+			overflow: hidden;
 		}
 		h4{
 			margin-bottom: 0;
@@ -154,9 +152,6 @@
 					margin-right: .5rem;
 					border-right: 1px solid $white-darker;
 				}
-			}
-			&.footer{
-				margin-bottom: .5rem;
 			}
 		}
 		a.btn{

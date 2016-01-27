@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('frontend.index');
+    return view('frontend.index', ['page' => 'home']);
 });
 
 Route::get('teachers', 'TeacherController@show');
