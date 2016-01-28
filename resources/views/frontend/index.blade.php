@@ -10,8 +10,8 @@
 				<div class="col-sm-5">
 					<p>1-on-1 online tuition by IITians</p>
 					<div class="gutter-md"></div>
-					<form  action="/teachers" method="POST">
-			            {{ csrf_field() }}
+					<form action="/teachers" method="POST">
+						{{ csrf_field() }}
 						<div class="form-group row">
 							<div class="col-sm-8">
 								<input type="text" class="form-control" id="indexSearch" placeholder="Mathematics / Electromagnetics / IITJEE">

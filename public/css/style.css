@@ -5025,7 +5025,7 @@ a.bg-danger:focus, a.bg-danger:hover {
     background-color: #2C3E50;
     border-color: #2C3E50; }
   .btn-dark:hover {
-    background-color: #ECF0F1;
+    background-color: transparent;
     color: #2C3E50; }
 
 .btn-inline-sm {
@@ -5262,7 +5262,7 @@ form.indexSearch div.col-sm-2 {
   color: #2C3E50; }
 
 #index-reviews {
-  margin-bottom: 10rem; }
+  margin-bottom: 5rem; }
   #index-reviews .carousel-inner {
     background-color: #2C3E50; }
   #index-reviews .carousel-caption p {
@@ -5416,6 +5416,9 @@ form.indexSearch div.col-sm-2 {
         border-right: 1px solid #BBBBBB; }
   #teachers .teacher a.btn {
     width: 49%; }
+    #teachers .teacher a.btn i, #teachers .teacher a.btn span {
+      vertical-align: middle;
+      margin-left: 1rem; }
 
 #profile {
   padding: 0;

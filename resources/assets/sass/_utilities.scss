@@ -42,7 +42,7 @@
 	width: 100%;
 	@include button-variant($flat-white, $flat-purple, $flat-purple);
 	&:hover{
-		background-color: $flat-white;
+		background-color: transparent;
 		color: $flat-purple;
 	}
 }

@@ -10,7 +10,6 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-Route::get('/', function(){ echo "Why won't you work?"; return "Still not working" ;});
 
 Route::get('/', function () {
     return view('frontend.index', ['page' => 'home']);
@@ -19,6 +18,8 @@ Route::get('/', function () {
 Route::get('teachers', 'TeacherController@show');
 Route::post('teachers', 'TeacherController@show');
 
+Route::post('teachers/message', 'TeacherController@postMessage');
+//Route::get('teachers/message', 'TeacherController@getMessage');
 
 /*
 Authentication routes...
