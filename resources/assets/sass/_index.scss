@@ -83,8 +83,21 @@ form.indexSearch{
 	color: $flat-purple;
 }
 
+#index-reviews{
+	margin-bottom: 10rem;
+	.carousel-inner{
+		background-color: $flat-purple;
+	}
+	.carousel-caption p{
+		font-family: $font-light;
+		letter-spacing: .75px;
+		font-size: .95rem;
+	}
+}
+
 .numbers{
 	color: $flat-purple;
+	margin-bottom: 5rem;
 	div{
 		text-align: center;
 		font-size: 2rem;

@@ -16,8 +16,10 @@ var elixir = require('laravel-elixir');
 //require('laravel-elixir-vueify');
 
 elixir(function(mix) {
-//    mix.browserify('main.js');
-    mix.sass('app.scss');
-    mix.version('css/app.css');
-    mix.browserSync({proxy: 'getiitians.dev:8000'});
+    mix.sass('style.scss');
+    mix.scriptsIn('resources/assets/js');
+    mix.version('css/style.css');
+    mix.browserSync({
+    	proxy: 'redesign.dev'
+    });
 });

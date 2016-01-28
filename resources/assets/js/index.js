@@ -35,4 +35,9 @@ $(function() {
 		if (!numberScroll.animationDone)
 			numberScroll.checkAnimation();
 	});
+
+	$('#index-reviews').carousel();
+	$('#index-reviews').on('slide.bs.carousel', function () {
+		//
+	})
 });

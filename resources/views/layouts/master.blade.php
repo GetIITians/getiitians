@@ -10,8 +10,7 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <!-- Place favicon.ico in the root directory -->
 
-    <link rel="stylesheet" href="/css/style.css">
-    <script src="/js/vendor/holder.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <nav class="navbar navbar-light bg-red">
@@ -163,10 +162,6 @@
 </footer>
 
 <script src="js/vendor/jquery-2.1.4.min.js"></script>
-<script src="js/helpers.js"></script>
-
-<script src="js/index.js"></script>
-
 <script src="js/vendor/bootstrap/alert.js"></script>
 <script src="js/vendor/bootstrap/button.js"></script>
 <script src="js/vendor/bootstrap/carousel.js"></script>
@@ -178,6 +173,8 @@
 <script src="js/vendor/bootstrap/scrollspy.js"></script>
 <script src="js/vendor/bootstrap/tab.js"></script>
 <script src="js/vendor/bootstrap/util.js"></script>
+
+<script src="js/all.js"></script>
 
 <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></'
             + 'script>')</script>

@@ -182,7 +182,7 @@
 				</div>
 			</div>
 		</div>
-<!--
+
 		<div id="index-reviews" class="carousel slide" data-ride="carousel">
 			<ol class="carousel-indicators">
 				<li data-target="#index-reviews" data-slide-to="0" class="active"></li>
@@ -194,27 +194,54 @@
 					<div class="row">
 						<div class="col-xs-8">
 							<div class="carousel-caption">
-								<h3>ABCDEFGHI</h3>
-								<p>...</p>
+								<h3>Yug Dassani</h3>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+								tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+								quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+								consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+								cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+								proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 							</div>
 						</div>
 						<div class="col-xs-4">
-							<img data-src="holder.js/150x500/auto/#777:#555/text:First slide" alt="First slide" class="pull-right">
+							<img src="img/man.jpg" alt="First slide" class="img-responsive">
 						</div>
 					</div>
 				</div>
 				<div class="carousel-item">
-					<img data-src="holder.js/200x500/auto/#666:#444/text:Second slide" alt="Second slide">
-					<div class="carousel-caption">
-						<h3>JKLMNOPQR</h3>
-						<p>...</p>
+					<div class="row">
+						<div class="col-xs-8">
+							<div class="carousel-caption">
+								<h3>Yug Dassani</h3>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+								tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+								quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+								consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+								cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+								proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+							</div>
+						</div>
+						<div class="col-xs-4">
+							<img src="img/man.jpg" alt="First slide" class="img-responsive">
+						</div>
 					</div>
 				</div>
 				<div class="carousel-item">
-					<img data-src="holder.js/300x500/auto/#555:#333/text:Third slide" alt="Third slide">
-					<div class="carousel-caption">
-						<h3>STUVWXYZ</h3>
-						<p>...</p>
+					<div class="row">
+						<div class="col-xs-8">
+							<div class="carousel-caption">
+								<h3>Yug Dassani</h3>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+								tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+								quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+								consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+								cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+								proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+							</div>
+						</div>
+						<div class="col-xs-4">
+							<img src="img/man.jpg" alt="First slide" class="img-responsive">
+						</div>
 					</div>
 				</div>
 			</div>
@@ -227,7 +254,6 @@
 				<span class="sr-only">Next</span>
 			</a>
 		</div>
--->
 
 		<div class="container-fluid">
 			<div class="row numbers">
