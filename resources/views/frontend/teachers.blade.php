@@ -9,7 +9,7 @@
 							<div class="col-xs-12 col-sm-4 teacher">
 								<div class="row">
 									<div class="col-xs-4 dp">
-										<img src="{{ $imglink.$teacher['image'] }}" class="img-responsive-flex">
+										<img src="http://getiitians.com/teaching/{{$teacher['image']}}" class="img-responsive-flex">
 									</div>
 									<div class="col-xs-8">
 										<h4 class="card-title">{{ ucwords(strtolower($teacher['name'])) }}</h4>

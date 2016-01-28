@@ -18,7 +18,7 @@ class TeacherController extends Controller
     public function show()
     {
         $dataAddress = env('TEACHING_LINK', 'http://dev.getiitians.com/');
-        $teachers = json_decode(file_get_contents($dataAddress.'test'), true);
+        $teachers = json_decode(file_get_contents($dataAddress.'narayan'), true);
         //var_dump($teachers);
         return view('frontend.teachers', ['teachers' => $teachers, 'imglink' => $dataAddress, 'page' => 'teachers']);
     }

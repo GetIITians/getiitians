@@ -10,6 +10,7 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+Route::get('/', function(){ echo "Why won't you work?"; return "Still not working" ;});
 
 Route::get('/', function () {
     return view('frontend.index', ['page' => 'home']);
