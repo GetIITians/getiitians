@@ -36,7 +36,7 @@ class TeacherController extends Controller
         //return "Email successfully sent.";
         return response()->json(['message' => "Email successfully sent."]);
     }
-/*
+
     public function getMessage(Request $request)
     {
         Mail::send(
@@ -47,5 +47,4 @@ class TeacherController extends Controller
                     $message->to('narayanwaraich@gmail.com')->subject('Student Enquiry for a Teacher');
                 });
     }
-*/
 }

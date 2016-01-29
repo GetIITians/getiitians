@@ -19,7 +19,7 @@ Route::get('teachers', 'TeacherController@show');
 Route::post('teachers', 'TeacherController@show');
 
 Route::post('teachers/message', 'TeacherController@postMessage');
-//Route::get('teachers/message', 'TeacherController@getMessage');
+Route::get('teachers/message', 'TeacherController@getMessage');
 
 /*
 Authentication routes...
