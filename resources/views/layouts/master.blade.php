@@ -67,7 +67,8 @@
     <div class="container-fluid">
         <h1>Have a doubt ?</h1>
         <div class="gutter-sm"></div>
-        <form class="row">
+        <form class="row" action="/teachers/enquiry" method="POST">
+            {{ csrf_field() }}
             <div class="col-xs-12 col-sm-4">
                 <div class="form-group row">
                     <label for="class" class="col-sm-3 form-control-label">Class</label>
@@ -117,8 +118,7 @@
                     <label for="topic" class="col-sm-3 form-control-label"></label>
                     <div class="col-sm-9">
                         <button type="submit" class="btn btn-primary-reverse">Submit</button>
-                        <small class="text-muted"><span class="required">&nbsp;*&nbsp;</span> Starred fields are compulsory</small>
-
+                        <span class="required">&nbsp;*&nbsp;</span><small class="text-muted"> Starred fields are compulsory</small>
                     </div>
                 </div>
             </div>
@@ -135,8 +135,15 @@
             <div class="col-xs-12 col-sm-5">
                 <ul>
                     <li>
-                        <a href="">Home</a>
+                        <a href="/">Home</a>
                     </li>
+                    <li>
+                        <a href="#">+91 93133 94403</a>
+                    </li>
+                    <li>
+                        <a href="#">info@getiitians.com</a>
+                    </li>
+                    <!--
                     <li>
                         <a href="">About Us</a>
                     </li>
@@ -152,14 +159,20 @@
                     <li>
                         <a href="">Contact Us</a>
                     </li>
+                    -->
                 </ul>
             </div>
             <div class="col-xs-12  col-sm-4">
-                <span class="pull-right">Social icons</span>
+                <!--
+                    <span class="pull-right">Social icons</span>
+                -->
             </div>
         </div>
     </div>
 </footer>
+<div id="flashMessage">
+    
+</div>
 
 <script src="js/vendor/jquery-2.1.4.min.js"></script>
 <script src="js/vendor/bootstrap/alert.js"></script>
@@ -178,6 +191,5 @@
 
 <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></'
             + 'script>')</script>
-
 </body>
 </html>

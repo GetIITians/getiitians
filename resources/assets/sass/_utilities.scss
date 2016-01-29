@@ -190,3 +190,29 @@ div.one-line{
 		color: $flat-white;
 	}
 }
+
+#flashMessage{
+	display: none;
+	position: fixed;
+	bottom: 1rem;
+	right: 1rem;
+	padding: 1rem;
+	background-color: $flat-purple;
+	color: $flat-white;
+	border: 1px solid $flat-white;
+	z-index: 999;
+	border-radius: 0.2rem;
+	padding: 0.5rem 1rem;
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 255, 255, 0.52);
+}
+
+.modal-custom-footer{
+	background-color: $flat-red;
+	color: $flat-white;
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+	font-size: 0.9rem;
+	span, i.material-icons{
+		vertical-align: middle;
+	}
+}

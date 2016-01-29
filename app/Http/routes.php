@@ -21,6 +21,9 @@ Route::post('teachers', 'TeacherController@show');
 Route::post('teachers/message', 'TeacherController@postMessage');
 Route::get('teachers/message', 'TeacherController@getMessage');
 
+Route::post('teachers/enquiry', 'TeacherController@postEnquiry');
+Route::get('teachers/enquiry', 'TeacherController@getEnquiry');
+
 /*
 Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');

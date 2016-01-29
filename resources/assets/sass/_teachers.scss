@@ -163,3 +163,18 @@
 		}
 	}
 }
+
+#enquiryModal{
+	h2{
+		font-family: $font-medium;
+		text-align: center;
+	}
+	h5{
+		font-family: $font-light;
+		text-align: center;
+	}
+	p{
+		text-align: center;
+		font-size: 0.9rem;
+	}
+}

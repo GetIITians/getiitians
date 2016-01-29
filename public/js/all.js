@@ -1,4 +1,6 @@
 var helper = {
+	dateRegex : new RegExp("^(?:(?:31(-)(?:0?[13578]|1[02]|(?:Jan|Mar|May|Jul|Aug|Oct|Dec)))\1|(?:(?:29|30)(-)(?:0?[1,3-9]|1[0-2]|(?:Jan|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec))\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(-)(?:0?2|(?:Feb))\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(-)(?:(?:0?[1-9]|(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep))|(?:1[0-2]|(?:Oct|Nov|Dec)))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$"),
+	monthNames : ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
 	setStorage : function(key,value){
 		localStorage.setItem(key,JSON.stringify(value));
 	},
@@ -45,6 +47,25 @@ var helper = {
 		} else{
 			$(obj).next('.display_other').slideUp(500);
 		};
+	},
+	calculateAge : function(birthday){
+		var ageDifMs = Date.now() - birthday.getTime();
+		var ageDate = new Date(ageDifMs); // miliseconds from epoch
+		return Math.abs(ageDate.getUTCFullYear() - 1970);
+	},
+	tareekh : function(timestamp){
+		var tareek = new Date(timestamp);
+		return tareek.getDate() + "-" + helper.monthNames[tareek.getMonth()] + "-" + tareek.getFullYear();
+	},
+	flash : function(message, icon){
+		var div = $('#flashMessage');
+		div.html(message);
+		div.show('fast');
+		setTimeout(
+			function(){
+				$('#flashMessage').hide('fast');
+			},
+		5000);
 	}
 }
 var numberScroll = {
@@ -90,7 +111,51 @@ $(function() {
 		//
 	})
 });
-
+$(function () {
+	$(document).on('submit','.doubt form', function(event) {
+		event.preventDefault();
+		var form = $(this);
+		//var modal = $('#enquiryModal');
+		if(form.find('#enquiry').val() == ''){
+			form.find('small').html('Enquiry field can\'t be empty.');
+			form.find('#enquiry').focus();
+			return false;
+		}
+		if(form.find('#email').val() == ''){
+			form.find('small').html('Email field can\'t be empty.');
+			form.find('#email').focus();
+			return false;
+		}
+		$.ajax({
+			url		: form.prop('action'),
+			method	: 'POST',
+			data 	: {
+				_token		: form.find('input[name=_token]').val(),
+				'class'		: form.find('#class').val(),
+				subject		: form.find('#subject').val(),
+				topic		: form.find('#topic').val(),
+				enquiry		: form.find('#enquiry').val(),
+				email		: form.find('#email').val(),
+				phone		: form.find('#phone').val()
+			},
+			beforeSend: function(){
+				form.find('small').html('processing ...');
+			},
+			success: function(response){
+				helper.flash(response.message);
+			},
+			error: function(response){
+				helper.flash(response.message);
+			},
+			complete: function(response){
+				console.log(response);
+				helper.flash(response.message);
+				form.find('small').html('Starred fields are compulsory');
+			}
+		});
+		return false;
+	});	
+});
 $(function () {
 	$('[data-toggle="popover"]').popover({
 		trigger: 'focus',
@@ -193,7 +258,7 @@ $(function () {
 		modal.find('small').hide();
 		var button = $(event.relatedTarget); // Button that triggered the modal
 		var recipient = button.data('name'); // Extract info from data-* attributes
-		modal.find('.modal-title').text('Send a Message to ' + recipient);
+		//modal.find('.modal-title').text('Send a Message to ' + recipient);
 		modal.find('.modal-body #recipient').val(recipient);
 	});
 	/*------------------------------------*/
@@ -202,6 +267,7 @@ $(function () {
 		var form = modal.find('form');
 		if(form.find('#message').val() == ''){
 			modal.find('small').fadeIn('slow');
+			form.find('#message').focus();
 			return false;
 		}
 		$.ajax({
@@ -212,13 +278,77 @@ $(function () {
 				recipient	: form.find('#recipient').val(),
 				message		: form.find('#message').val()
 			},
+			beforeSend: function(){
+				modal.find('small').html('processing ...').fadeIn('slow');
+			},
 			success: function(response){
-				console.log(response);
-				modal.modal('hide');
+				helper.flash(response.message);
+			},
+			error: function(response){
+				helper.flash(response.message);
+			},
+			complete: function(response){
+				helper.flash(response.message);
 			}
-			//dataType : 'json'
 		});
 		return false;
 	});
+	/*------------------------------------*/
+	$(window).on('load',function() {
+		var enquiryOpened = false;
+		//console.log('interval set');
+		intervalID = window.setInterval(function(){
+			//console.log('showEnquiry called; enquiryOpened = '+enquiryOpened);
+			if (!$('#messageModal').is(":visible") && !enquiryOpened) {
+				$('#enquiryModal').modal('show');
+				enquiryOpened = true;
+				clearInterval(intervalID);
+			};
+		}, 5000);
+	});
+
+	$(document).on('submit','#enquiryModal form', function(event) {
+		event.preventDefault();
+		var form = $(this);
+		var modal = $('#enquiryModal');
+		if(form.find('#enquiry').val() == ''){
+			form.find('small').html('Enquiry field can\'t be empty.').fadeIn('slow');
+			form.find('#enquiry').focus();
+			return false;
+		}
+		if(form.find('#email').val() == ''){
+			form.find('small').html('Email field can\'t be empty.').fadeIn('slow');
+			form.find('#email').focus();
+			return false;
+		}
+		$.ajax({
+			url		: form.prop('action'),
+			method	: 'POST',
+			data 	: {
+				_token		: form.find('input[name=_token]').val(),
+				'class'		: form.find('#class').val(),
+				subject		: form.find('#subject').val(),
+				topic		: form.find('#topic').val(),
+				enquiry		: form.find('#enquiry').val(),
+				email		: form.find('#email').val(),
+				phone		: form.find('#phone').val()
+			},
+			beforeSend: function(){
+				modal.find('small').html('processing ...').fadeIn('slow');
+			},
+			success: function(response){
+				helper.flash(response.message);
+			},
+			error: function(response){
+				helper.flash(response.message);
+			},
+			complete: function(response){
+				console.log(response);
+				modal.modal('hide');
+				helper.flash(response.message);
+			}
+		});
+		return false;
+	});	
 });
 //# sourceMappingURL=all.js.map

@@ -25,26 +25,58 @@ class TeacherController extends Controller
 
     public function postMessage(Request $request)
     {
-        //return response()->json(['message' => $request->input('message')]);
         Mail::send(
                 'emails.enquiry.message',
                 ['teacher' => $request->input('recipient'), 'content' => $request->input('message')],
                 function ($message) {
-                    $message->from('narayansinghwaraich@gmail.com', 'getIITians');
-                    $message->to('narayanwaraich@gmail.com');
+                    $message->from('getiitians@gmail.com', 'getIITians');
+                    $message->to('narayanwaraich@gmail.com')->subject('Student Enquiry for a Teacher');
                 });
-        //return "Email successfully sent.";
-        return response()->json(['message' => "Email successfully sent."]);
+        return response()->json(['message' => "Your message has been sent to ".$request->input('recipient')]);
     }
 
+    /*
     public function getMessage(Request $request)
     {
         Mail::send(
                 'emails.enquiry.message',
                 ['teacher' => $request->input('recipient'), 'content' => $request->input('message')],
                 function ($message) {
-                    $message->from('narayansinghwaraich@gmail.com', 'getIITians');
+                    $message->from('getiitians@gmail.com', 'getIITians');
                     $message->to('narayanwaraich@gmail.com')->subject('Student Enquiry for a Teacher');
                 });
     }
+    */
+
+    public function postEnquiry(Request $request)
+    {
+        Mail::send(
+                'emails.enquiry.enquiry',
+                [
+                    'class' => $request->input('class'),
+                    'subject' => $request->input('subject'),
+                    'topic' => $request->input('topic'),
+                    'enquiry' => $request->input('enquiry'),
+                    'email' => $request->input('email'),
+                    'phone' => $request->input('phone')
+                ],
+                function ($message) {
+                    $message->from('getiitians@gmail.com', 'getIITians');
+                    $message->to('narayanwaraich@gmail.com')->subject('Student Enquiry');
+                });
+        return response()->json(['message' => "Your enquiry has been successfully submitted."]);
+    }
+
+    /*
+    public function getEnquiry(Request $request)
+    {
+        Mail::send(
+                'emails.enquiry.message',
+                ['teacher' => $request->input('recipient'), 'content' => $request->input('message')],
+                function ($message) {
+                    $message->from('getiitians@gmail.com', 'getIITians');
+                    $message->to('narayanwaraich@gmail.com')->subject('Student Enquiry for a Teacher');
+                });
+    }
+    */
 }

@@ -1,4 +1,6 @@
 var helper = {
+	dateRegex : new RegExp("^(?:(?:31(-)(?:0?[13578]|1[02]|(?:Jan|Mar|May|Jul|Aug|Oct|Dec)))\1|(?:(?:29|30)(-)(?:0?[1,3-9]|1[0-2]|(?:Jan|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec))\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(-)(?:0?2|(?:Feb))\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(-)(?:(?:0?[1-9]|(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep))|(?:1[0-2]|(?:Oct|Nov|Dec)))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$"),
+	monthNames : ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
 	setStorage : function(key,value){
 		localStorage.setItem(key,JSON.stringify(value));
 	},
@@ -45,5 +47,24 @@ var helper = {
 		} else{
 			$(obj).next('.display_other').slideUp(500);
 		};
+	},
+	calculateAge : function(birthday){
+		var ageDifMs = Date.now() - birthday.getTime();
+		var ageDate = new Date(ageDifMs); // miliseconds from epoch
+		return Math.abs(ageDate.getUTCFullYear() - 1970);
+	},
+	tareekh : function(timestamp){
+		var tareek = new Date(timestamp);
+		return tareek.getDate() + "-" + helper.monthNames[tareek.getMonth()] + "-" + tareek.getFullYear();
+	},
+	flash : function(message, icon){
+		var div = $('#flashMessage');
+		div.html(message);
+		div.show('fast');
+		setTimeout(
+			function(){
+				$('#flashMessage').hide('fast');
+			},
+		5000);
 	}
 }
