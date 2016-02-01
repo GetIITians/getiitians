@@ -5,55 +5,22 @@
 		font-size: 		4rem;
 		text-align: 	center;
 	}
-	form{
-		div.col-sm-8{
-			padding-right: 0;
-			small{
-				font-size: .8rem;
-			}
-		}
-		div.col-sm-4{
-			padding-left: 0;
-			.checkbox{
-				font-size: .75rem;
-				.c-input + .c-input{
-					margin-left: .3rem; 
-				}
-			}
-		}
+	div.row{
+		margin-bottom: 0;
 	}
-	@include media-breakpoint-down(xs){
-		p{
-			font-size: 2rem;
-			font-family: $font-regular;
-			font-weight: normal;
-			margin-top: 1rem;
-		}
-		.gutter-md{
-			height: 2rem;
-		}
-		.c-input + .c-input {
-			margin-left: 3rem;
-		}
-	}
-}
-
-form.indexSearch{
-	div.col-sm-10{
+	div.col-sm-8{
 		padding-right: 0;
+		small{
+			font-size: .8rem;
+		}
 	}
-	div.col-sm-2{
+	div.col-sm-4{
 		padding-left: 0;
 		.checkbox{
-			font-size: .8rem;
+			font-size: .75rem;
 			.c-input + .c-input{
-				margin-left: 0; 
+				margin-left: .3rem; 
 			}
-		}
-	}
-	@include media-breakpoint-down(xs){
-		label.c-input {
-			margin-left: 1rem;
 		}
 	}
 }
@@ -85,13 +52,18 @@ form.indexSearch{
 
 #index-reviews{
 	margin-bottom: 5rem;
+	//max-height: 25rem;
+	overflow: hidden;
 	.carousel-inner{
 		background-color: $flat-purple;
 	}
-	.carousel-caption p{
+	.carousel-caption{
+		position: static;
+	}
+	p {
 		font-family: $font-light;
 		letter-spacing: .75px;
-		font-size: .95rem;
+		font-size: 1.2rem;
 	}
 }
 
@@ -119,17 +91,63 @@ form.indexSearch{
 			border-right: none;
 		}
 	}
-	@include media-breakpoint-down(xs){
+}
+
+.joinus{
+	padding-top: 3rem;
+	padding-bottom: 3rem;
+	h2{
+		font-family: $font-medium;
+	}
+}
+
+@include media-breakpoint-down(xs){
+	.banner{
+		div.row{
+			margin-bottom: 5px;
+		}
+		p{
+			font-size: 2rem;
+			font-family: $font-regular;
+			font-weight: normal;
+			margin-top: 1rem;
+		}
+		.gutter-md{
+			height: 2rem;
+		}
+		.c-input + .c-input {
+			margin-left: 3rem;
+		}
+	}
+	.carousel-indicators{
+		bottom: 0;
+		li{
+			width: 5px;
+			height: 5px;
+		}
+		.active{
+			width: 6px;
+			height: 6px;
+		}
+	}
+	.numbers{
+		margin-bottom: 1rem;
 		div{
-			font-size: 1.5rem;
+			font-size: 1.3rem;
 			ul{
 				border: 0;
 				li{
-					font-size: 1.2rem;
+					font-size: 1rem;
 					padding: 3px 6px;
 					margin: 0 1px;
 				}
 			}
+		}
+	}
+	.joinus{
+		h2{
+			font-family: $font-regular;
+			font-size: .9rem;
 		}
 	}
 }

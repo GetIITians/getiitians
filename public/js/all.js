@@ -282,13 +282,15 @@ $(function () {
 				modal.find('small').html('processing ...').fadeIn('slow');
 			},
 			success: function(response){
+				modal.modal('hide');
 				helper.flash(response.message);
 			},
 			error: function(response){
 				helper.flash(response.message);
 			},
 			complete: function(response){
-				helper.flash(response.message);
+				modal.modal('hide');
+				helper.flash(response.message); 
 			}
 		});
 		return false;

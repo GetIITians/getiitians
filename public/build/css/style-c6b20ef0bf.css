@@ -5152,7 +5152,7 @@ div.one-line {
   bottom: 1rem;
   right: 1rem;
   padding: 1rem;
-  background-color: #2C3E50;
+  background-color: #E74C3C;
   color: #ECF0F1;
   border: 1px solid #ECF0F1;
   z-index: 999;
@@ -5229,42 +5229,20 @@ footer {
   font-size: 4rem;
   text-align: center; }
 
-.banner form div.col-sm-8 {
+.banner div.row {
+  margin-bottom: 0; }
+
+.banner div.col-sm-8 {
   padding-right: 0; }
-  .banner form div.col-sm-8 small {
+  .banner div.col-sm-8 small {
     font-size: .8rem; }
 
-.banner form div.col-sm-4 {
+.banner div.col-sm-4 {
   padding-left: 0; }
-  .banner form div.col-sm-4 .checkbox {
+  .banner div.col-sm-4 .checkbox {
     font-size: .75rem; }
-    .banner form div.col-sm-4 .checkbox .c-input + .c-input {
+    .banner div.col-sm-4 .checkbox .c-input + .c-input {
       margin-left: .3rem; }
-
-@media (max-width: 33.9em) {
-  .banner p {
-    font-size: 2rem;
-    font-family: "robotoregular", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-weight: normal;
-    margin-top: 1rem; }
-  .banner .gutter-md {
-    height: 2rem; }
-  .banner .c-input + .c-input {
-    margin-left: 3rem; } }
-
-form.indexSearch div.col-sm-10 {
-  padding-right: 0; }
-
-form.indexSearch div.col-sm-2 {
-  padding-left: 0; }
-  form.indexSearch div.col-sm-2 .checkbox {
-    font-size: .8rem; }
-    form.indexSearch div.col-sm-2 .checkbox .c-input + .c-input {
-      margin-left: 0; }
-
-@media (max-width: 33.9em) {
-  form.indexSearch label.c-input {
-    margin-left: 1rem; } }
 
 .howitworks {
   background-color: #2C3E50;
@@ -5285,13 +5263,16 @@ form.indexSearch div.col-sm-2 {
   color: #2C3E50; }
 
 #index-reviews {
-  margin-bottom: 5rem; }
+  margin-bottom: 5rem;
+  overflow: hidden; }
   #index-reviews .carousel-inner {
     background-color: #2C3E50; }
-  #index-reviews .carousel-caption p {
+  #index-reviews .carousel-caption {
+    position: static; }
+  #index-reviews p {
     font-family: "robotolight", "Helvetica Neue", Helvetica, Arial, sans-serif;
     letter-spacing: .75px;
-    font-size: .95rem; }
+    font-size: 1.2rem; }
 
 .numbers {
   color: #2C3E50;
@@ -5313,15 +5294,46 @@ form.indexSearch div.col-sm-2 {
         margin: 0 5px; }
     .numbers div:last-of-type ul {
       border-right: none; }
-  @media (max-width: 33.9em) {
+
+.joinus {
+  padding-top: 3rem;
+  padding-bottom: 3rem; }
+  .joinus h2 {
+    font-family: "robotomedium", "Helvetica Neue", Helvetica, Arial, sans-serif; }
+
+@media (max-width: 33.9em) {
+  .banner div.row {
+    margin-bottom: 5px; }
+  .banner p {
+    font-size: 2rem;
+    font-family: "robotoregular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: normal;
+    margin-top: 1rem; }
+  .banner .gutter-md {
+    height: 2rem; }
+  .banner .c-input + .c-input {
+    margin-left: 3rem; }
+  .carousel-indicators {
+    bottom: 0; }
+    .carousel-indicators li {
+      width: 5px;
+      height: 5px; }
+    .carousel-indicators .active {
+      width: 6px;
+      height: 6px; }
+  .numbers {
+    margin-bottom: 1rem; }
     .numbers div {
-      font-size: 1.5rem; }
+      font-size: 1.3rem; }
       .numbers div ul {
         border: 0; }
         .numbers div ul li {
-          font-size: 1.2rem;
+          font-size: 1rem;
           padding: 3px 6px;
-          margin: 0 1px; } }
+          margin: 0 1px; }
+  .joinus h2 {
+    font-family: "robotoregular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: .9rem; } }
 
 #teachers section .col-sm-offset-4 h3 {
   display: inline-block;

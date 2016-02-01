@@ -5,7 +5,7 @@
     <div class="container-fluid">
 			<div class="row banner">
 				<div class="col-sm-7">
-					<img src="img/laptop.png" class="img-responsive">
+					<img src="img/laptop.jpg" class="img-responsive">
 				</div>
 				<div class="col-sm-5">
 					<p>1-on-1 online tuition by IITians</p>
@@ -13,13 +13,16 @@
 					<form action="/teachers" method="POST">
 						{{ csrf_field() }}
 						<div class="form-group row">
-							<div class="col-sm-8">
+							<div class="col-xs-8 col-sm-8">
 								<input type="text" class="form-control" id="indexSearch" placeholder="Mathematics / Electromagnetics / IITJEE">
 								<small class="text-muted hidden-xs-down">You can search for any subject , class , topic or a particular teacher</small>
 							</div>
-							<div class="col-sm-4">
+							<div class="col-xs-4 col-sm-4">
 								<button type="submit" class="btn btn-primary">Search</button>
-								<div class="gutter-xs"></div>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-xs-offset-1 col-xs-11 col-sm-offset-8 col-sm-4">
 								<div class="checkbox">
 									<label class="c-input c-checkbox">
 										<input type="checkbox" checked><span class="c-indicator"></span> Home Tuition
@@ -28,48 +31,20 @@
 										<input type="checkbox" checked><span class="c-indicator"></span> Online Tuition
 									</label>
 								</div>
-
 							</div>
 						</div>
-					</div>
-				</form>
-
-
+					</form>
 				</div>
 			</div>
 			<div class="gutter-md"></div>
-
-<!-- 			<form class="indexSearch">
-	<div class="form-group row">				
-		<div class="col-sm-10">
-			<label class="sr-only" for="indexSearch">Search</label>
-			<input type="text" class="form-control" id="indexSearch" placeholder="Mathematics / Electromagnetics / IITJEE">
-			<small class="text-muted hidden-xs-down">You can search for any subject , class , topic or a particular teacher</small>
-		</div>
-		<div class="col-sm-2">
-			<button type="submit" class="btn btn-primary">Search</button>
-			<div class="gutter-xs"></div>
-			<div class="checkbox">
-				<label class="c-input c-checkbox">
-					<input type="checkbox" checked><span class="c-indicator"></span> Home Tuition
-				</label>
-				<label class="c-input c-checkbox">
-					<input type="checkbox" checked><span class="c-indicator"></span> Online Tuition
-				</label>
-			</div>
-		</div>
-	</div>
-</form>
- -->
-
 		</div>
 
 		<div class="jumbotron jumbotron-fluid howitworks">
-			<div class="container">
+			<div class="container-fluid">
 				<h1 class="display-3 text-center">How it works</h1>
 				<div class="gutter-sm"></div>
 				<div class="row">
-					<div class="col-sm-3">
+					<div class="col-xs-6 col-sm-offset-1 col-sm-2">
 						<img src="img/placeholder.png" class="img-responsive">
 						<div class="gutter-xs"></div>
 						<h2 class="text-center">Lorem Ipsum</h2>
@@ -78,7 +53,7 @@
 							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sapien dui, efficitur facilisis suscipit eget, volutpat sed felis. Morbi sed tincidunt dolor. Cras iaculis nec massa et ullamcorper. Fusce pretium nulla ac placerat porta.
 						</p>
 					</div>
-					<div class="col-sm-3">
+					<div class="col-xs-6 col-sm-2">
 						<img src="img/placeholder.png" class="img-responsive">
 						<div class="gutter-xs"></div>
 						<h2 class="text-center">Lorem Ipsum</h2>
@@ -87,7 +62,7 @@
 							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sed tincidunt dolor. Cras iaculis nec massa et ullamcorper. Fusce pretium nulla ac placerat porta.
 						</p>
 					</div>
-					<div class="col-sm-3">
+					<div class="col-xs-6 col-sm-2">
 						<img src="img/placeholder.png" class="img-responsive">
 						<div class="gutter-xs"></div>
 						<h2 class="text-center">Lorem Ipsum</h2>
@@ -96,7 +71,16 @@
 							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sapien dui, efficitur facilisis suscipit eget, volutpat sed felis.
 						</p>
 					</div>
-					<div class="col-sm-3">
+					<div class="col-xs-6 col-sm-2">
+						<img src="img/placeholder.png" class="img-responsive">
+						<div class="gutter-xs"></div>
+						<h2 class="text-center">Lorem Ipsum</h2>
+						<hr>
+						<p class="text-justify">
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sapien dui, efficitur facilisis suscipit eget, volutpat sed felis. Morbi sed tincidunt dolor. Cras iaculis nec massa et ullamcorper.
+						</p>
+					</div>
+					<div class="col-xs-6 col-sm-2">
 						<img src="img/placeholder.png" class="img-responsive">
 						<div class="gutter-xs"></div>
 						<h2 class="text-center">Lorem Ipsum</h2>
@@ -113,37 +97,39 @@
 			<div class="container">
 				<h1 class="display-2 text-center">Features</h1>
 				<hr>
-				<p class="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+				<!--
+					<p class="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+				-->
 				<div class="gutter-sm"></div>
 				<div class="row">
 					<div class="col-xs-12 col-sm-6">
 						<div class="media">
 							<div class="media-left">
+								<i class="material-icons md-60">list</i>
+							</div>
+							<div class="media-body">
+								<h4 class="media-heading">Teachers for every topic</h4>
+								770+ Topics and 57+ Subjects to choose from.
+							</div>
+						</div>
+						<div class="gutter-sm"></div>
+						<div class="media">
+							<div class="media-left">
 								<i class="material-icons md-60">account_balance</i>
 							</div>
 							<div class="media-body">
-								<h4 class="media-heading">Feature heading</h4>
-								Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo.
+								<h4 class="media-heading">Best of IITians</h4>
+								Learn only from IITian Tutors.
 							</div>
 						</div>
 						<div class="gutter-sm"></div>
 						<div class="media">
 							<div class="media-left">
-								<i class="material-icons md-60">question_answer</i>
+								<i class="material-icons md-60">home</i>
 							</div>
 							<div class="media-body">
-								<h4 class="media-heading">Feature heading</h4>
-								Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo.
-							</div>
-						</div>
-						<div class="gutter-sm"></div>
-						<div class="media">
-							<div class="media-left">
-								<i class="material-icons md-60">verified_user</i>
-							</div>
-							<div class="media-body">
-								<h4 class="media-heading">Feature heading</h4>
-								Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo.
+								<h4 class="media-heading">Online/Offline</h4>
+								Study from the comfort of your home.
 							</div>
 						</div>
 						<div class="gutter-sm"></div>
@@ -151,96 +137,48 @@
 					<div class="col-xs-12 col-sm-6">
 						<div class="media">
 							<div class="media-left">
-								<i class="material-icons md-60">trending_up</i>
+								<i class="material-icons md-60">star</i>
 							</div>
 							<div class="media-body">
-								<h4 class="media-heading">Feature heading</h4>
-								Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo.
+								<h4 class="media-heading">Feedback System</h4>
+								Select the best tutor through reviews and ratings.
 							</div>
 						</div>
 						<div class="gutter-sm"></div>
 						<div class="media">
 							<div class="media-left">
-								<i class="material-icons md-60">videocam</i>
+								<i class="material-icons md-60">book</i>
 							</div>
 							<div class="media-body">
-								<h4 class="media-heading">Feature heading</h4>
-								Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo.
+								<h4 class="media-heading">Education Quality</h4>
+								Because we care about Quality Education more.
 							</div>
 						</div>
 						<div class="gutter-sm"></div>
-						<div class="media">
-							<div class="media-left">
-								<i class="material-icons md-60">headset_mic</i>
-							</div>
-							<div class="media-body">
-								<h4 class="media-heading">Feature heading</h4>
-								Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo.
-							</div>
-						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 
 		<div id="index-reviews" class="carousel slide" data-ride="carousel">
+<!--
 			<ol class="carousel-indicators">
 				<li data-target="#index-reviews" data-slide-to="0" class="active"></li>
 				<li data-target="#index-reviews" data-slide-to="1"></li>
 				<li data-target="#index-reviews" data-slide-to="2"></li>
 			</ol>
+-->
 			<div class="carousel-inner" role="listbox">
 				<div class="carousel-item active">
 					<div class="row">
-						<div class="col-xs-8">
+						<div class="col-xs-offset-1 col-xs-10 col-sm-8">
 							<div class="carousel-caption">
 								<h3>Yug Dassani</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-								tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-								quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-								consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-								cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-								proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+								<p>Excellent class. Exceptional explanations and extremely helpful made chemistry easy!!</p>
 							</div>
 						</div>
-						<div class="col-xs-4">
-							<img src="img/man.jpg" alt="First slide" class="img-responsive">
-						</div>
-					</div>
-				</div>
-				<div class="carousel-item">
-					<div class="row">
-						<div class="col-xs-8">
-							<div class="carousel-caption">
-								<h3>Yug Dassani</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-								tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-								quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-								consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-								cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-								proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-							</div>
-						</div>
-						<div class="col-xs-4">
-							<img src="img/man.jpg" alt="First slide" class="img-responsive">
-						</div>
-					</div>
-				</div>
-				<div class="carousel-item">
-					<div class="row">
-						<div class="col-xs-8">
-							<div class="carousel-caption">
-								<h3>Yug Dassani</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-								tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-								quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-								consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-								cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-								proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-							</div>
-						</div>
-						<div class="col-xs-4">
-							<img src="img/man.jpg" alt="First slide" class="img-responsive">
+						<div class="col-sm-offset-1 col-sm-2 hidden-xs-down">
+							<img src="{{ env('TEACHING_LINK') }}data/files/1447573588_38_7418d51ec.jpg" alt="First slide" class="img-responsive">
 						</div>
 					</div>
 				</div>
@@ -259,16 +197,18 @@
 			<div class="row numbers">
 				<div class="col-xs-4">
 					Teachers
-					<ul class="count" data-count="86">
-						<li>8</li>
-						<li>6</li>
+					<ul class="count" data-count="102">
+						<li>1</li>
+						<li>0</li>
+						<li>2</li>
 					</ul>
 				</div>
 				<div class="col-xs-4">
 					Students
-					<ul class="count" data-count="87">
-						<li>8</li>
-						<li>7</li>
+					<ul class="count" data-count="100">
+						<li>1</li>
+						<li>0</li>
+						<li>0</li>
 					</ul>
 				</div>
 				<div class="col-xs-4">
@@ -278,6 +218,18 @@
 						<li>7</li>
 						<li>0</li>
 					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="container-fluid joinus">
+			<div class="row">
+				<div class="col-xs-8 col-sm-offset-1 col-sm-7">
+					<h2>Are you an IITian?</h2>
+					<h2>Dou you like tutoring students?</h2>
+					<h2>If yes, then be part of our community.</h2>
+				</div>
+				<div class="col-xs-4">
+					<a href="http://getiitians.com/teaching/joinus" role="button" class="btn btn-dark">Join Us</a>
 				</div>
 			</div>
 		</div>

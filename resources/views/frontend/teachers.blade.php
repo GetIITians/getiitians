@@ -9,7 +9,7 @@
 							<div class="col-xs-12 col-sm-4 teacher">
 								<div class="row">
 									<div class="col-xs-4 dp">
-										<img src="http://getiitians.com/teaching/{{$teacher['image']}}" class="img-responsive-flex">
+										<img src="{{ $imglink }}{{$teacher['image'] }}" class="img-responsive-flex">
 									</div>
 									<div class="col-xs-8">
 										<h4 class="card-title">{{ ucwords(strtolower($teacher['name'])) }}</h4>
@@ -67,7 +67,7 @@
 						<form action="/teachers/message" method="POST">
 							{{ csrf_field() }}
 							<div class="form-group">
-								<label for="recipient" class="form-control-label">Recipient:</label>
+								<label for="recipient" class="form-control-label">Teacher:</label>
 								<input type="text" class="form-control" id="recipient">
 							</div>
 							<div class="form-group">
@@ -106,28 +106,26 @@
 									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 										<span aria-hidden="true">&times;</span>
 									</button>
-									<h2>Welcome to getIITians</h2>
-									<h5>get 1-on-1 tuition by IITians, online or at home</h5>
+									<h5>Have a doubt? Need personal tuition? Please enter the details below &amp; we will revert within 24 Hours.</h5>
 								</div>
 							</div>
 							<hr>
-							<p>Have a doubt? Need personal tuition? Please enter the details below &amp; we will revert within 24 Hours.</p>
 							<form action="/teachers/enquiry" method="POST">
 								{{ csrf_field() }}
 								<div class="row">
-									<div class="col-xs-4">
+									<div class="col-xs-12 col-md-4">
 										<div class="form-group">
 											<label for="class" class="form-control-label">Class</label>
 											<input type="text" class="form-control" id="class">
 										</div>
 									</div>
-									<div class="col-xs-4">
+									<div class="col-xs-12 col-md-4">
 										<div class="form-group">
 											<label for="subject" class="form-control-label">Subject</label>
 											<input type="text" class="form-control" id="subject">
 										</div>
 									</div>
-									<div class="col-xs-4">
+									<div class="col-xs-12 col-md-4">
 										<div class="form-group">
 											<label for="topic" class="form-control-label">Topic</label>
 											<input type="text" class="form-control" id="topic">
@@ -143,13 +141,13 @@
 									</div>
 								</div>
 								<div class="row">
-									<div class="col-xs-6">
+									<div class="col-xs-12 col-md-6">
 										<div class="form-group">
 											<label for="email" class="form-control-label">Email <span class="required">*</span></label>
 											<input type="text" class="form-control" id="email">
 										</div>
 									</div>
-									<div class="col-xs-6">
+									<div class="col-xs-12 col-md-6">
 										<div class="form-group">
 											<label for="phone" class="form-control-label">Phone</label>
 											<input type="text" class="form-control" id="phone">

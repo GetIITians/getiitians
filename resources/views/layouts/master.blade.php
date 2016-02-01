@@ -71,52 +71,51 @@
             {{ csrf_field() }}
             <div class="col-xs-12 col-sm-4">
                 <div class="form-group row">
-                    <label for="class" class="col-sm-3 form-control-label">Class</label>
-                    <div class="col-sm-9">
+                    <label for="class" class="col-xs-3 form-control-label">Class</label>
+                    <div class="col-xs-9">
                         <input type="text" class="form-control" id="class" placeholder="Class">
                     </div>
                 </div>
                 <div class="gutter-xs"></div>
                 <div class="form-group row">
-                    <label for="subject" class="col-sm-3 form-control-label">Subject</label>
-                    <div class="col-sm-9">
+                    <label for="subject" class="col-xs-3 form-control-label">Subject</label>
+                    <div class="col-xs-9">
                         <input type="text" class="form-control" id="subject" placeholder="Subject">
                     </div>
                 </div>
                 <div class="gutter-xs"></div>
                 <div class="form-group row">
-                    <label for="topic" class="col-sm-3 form-control-label">Topic</label>
-                    <div class="col-sm-9">
+                    <label for="topic" class="col-xs-3 form-control-label">Topic</label>
+                    <div class="col-xs-9">
                         <input type="text" class="form-control" id="topic" placeholder="Topic">
                     </div>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-4">
                 <div class="form-group row">
-                    <label for="enquiry" class="col-sm-3 form-control-label">Enquiry<span class="required">&nbsp;*&nbsp;</span></label>
-                    <div class="col-sm-9">
+                    <label for="enquiry" class="col-xs-3 form-control-label">Enquiry<span class="required">&nbsp;*&nbsp;</span></label>
+                    <div class="col-xs-8 col-sm-9">
                         <textarea class="form-control" id="enquiry" rows="5"></textarea>
                     </div>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-4">
                 <div class="form-group row">
-                    <label for="email" class="col-sm-3 form-control-label">Email<span class="required">&nbsp;*&nbsp;</span></label>
-                    <div class="col-sm-9">
+                    <label for="email" class="col-xs-3 form-control-label">Email<span class="required">&nbsp;*&nbsp;</span></label>
+                    <div class="col-xs-9">
                         <input type="email" class="form-control" id="email" placeholder="Email">
                     </div>
                 </div>
                 <div class="gutter-xs"></div>
                 <div class="form-group row">
-                    <label for="phone" class="col-sm-3 form-control-label">Phone</label>
-                    <div class="col-sm-9">
+                    <label for="phone" class="col-xs-3 form-control-label">Phone</label>
+                    <div class="col-xs-9">
                         <input type="text" class="form-control" id="phone" placeholder="Phone">
                     </div>
                 </div>
                 <div class="gutter-xs"></div>
                 <div class="form-group row">
-                    <label for="topic" class="col-sm-3 form-control-label"></label>
-                    <div class="col-sm-9">
+                    <div class="col-xs-12 col-sm-offset-3 col-sm-9">
                         <button type="submit" class="btn btn-primary-reverse">Submit</button>
                         <span class="required">&nbsp;*&nbsp;</span><small class="text-muted"> Starred fields are compulsory</small>
                     </div>
