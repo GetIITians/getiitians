@@ -5169,6 +5169,12 @@ div.one-line {
   .modal-custom-footer span, .modal-custom-footer i.material-icons {
     vertical-align: middle; }
 
+.form-control-label {
+  padding-left: 0; }
+
+.form-control {
+  border-color: #2C3E50; }
+
 body {
   font-family: "robotoregular", "Helvetica Neue", Helvetica, Arial, sans-serif;
   /* Support for all WebKit browsers. */
@@ -5251,7 +5257,8 @@ footer {
     font-family: "robotothin", "Helvetica Neue", Helvetica, Arial, sans-serif; }
   .howitworks h2 {
     color: #FFFFFF;
-    font-family: "robotolight", "Helvetica Neue", Helvetica, Arial, sans-serif; }
+    font-family: "robotolight", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 1.3rem; }
   .howitworks p {
     font-size: .9rem; }
   @media (max-width: 33.9em) {
@@ -5260,7 +5267,27 @@ footer {
 
 .features {
   background-color: #FFFFFF;
-  color: #2C3E50; }
+  color: #2C3E50;
+  margin-bottom: 5rem; }
+
+.features-feature {
+  margin-bottom: 2rem; }
+  .features-feature span {
+    padding: .5rem 1rem;
+    border: 1px solid #BBBBBB;
+    border-radius: .1rem; }
+    .features-feature span i {
+      vertical-align: middle;
+      color: #E74C3C; }
+  .features-feature h5 {
+    display: inline-block;
+    vertical-align: middle;
+    font-family: "robotoregular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    padding-left: 1rem;
+    font-size: 2rem;
+    letter-spacing: 1px; }
+  .features-feature p {
+    margin-top: 1rem; }
 
 #index-reviews {
   margin-bottom: 5rem;
@@ -5276,7 +5303,8 @@ footer {
 
 .numbers {
   color: #2C3E50;
-  margin-bottom: 5rem; }
+  margin-bottom: 5rem;
+  margin-top: 5rem; }
   .numbers div {
     text-align: center;
     font-size: 2rem; }
@@ -5288,7 +5316,7 @@ footer {
         color: #E74C3C;
         background-color: transparent;
         border-radius: 3px;
-        border: 1px solid #DDDDDD;
+        border: 1px solid #2C3E50;
         font-size: 3rem;
         padding: 3px 15px;
         margin: 0 5px; }
@@ -5879,6 +5907,16 @@ footer {
   color: #ECF0F1;
   border-color: #2C3E50;
   width: 35%; }
+
+#contact p {
+  display: inline-block; }
+
+#contact i.material-icons {
+  vertical-align: middle;
+  margin-right: 1rem; }
+
+#map-canvas {
+  height: 25rem; }
 
 #dashboard {
   font-family: "robotolight", "Helvetica Neue", Helvetica, Arial, sans-serif;

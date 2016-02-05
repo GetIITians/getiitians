@@ -1,3 +1,38 @@
+var myCenter = new google.maps.LatLng(28.542381, 77.203569);
+function initialize() {
+  var mapCanvas = document.getElementById('map-canvas');
+  var mapOptions = {
+    center:myCenter,
+    zoom: 17,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  }
+  var map = new google.maps.Map(mapCanvas, mapOptions);
+  var marker=new google.maps.Marker({
+    position:myCenter,
+  });
+  marker.setMap(map);
+}
+google.maps.event.addDomListener(window, 'load', initialize);
+
+$(document).on('submit','#contact form', function(event) {
+  console.log(JSON.stringify($(this).serializeObject()));
+  event.preventDefault();
+  $.ajax({
+    type: "POST", 
+    url: $(this).attr('action'),
+    data: {
+        _token    : $(this).find('input[name=_token]').val(),
+        name : $(this).find('input[name=name]').val(),
+        email   : $(this).find('input[name=email]').val(),
+        phone   : $(this).find('input[name=phone]').val(),
+        message   : $(this).find('input[name=message]').val()
+    },
+    success: function(response){ 
+      console.log(response);
+      helper.flash(response.message);
+    }
+  })
+});
 var helper = {
 	dateRegex : new RegExp("^(?:(?:31(-)(?:0?[13578]|1[02]|(?:Jan|Mar|May|Jul|Aug|Oct|Dec)))\1|(?:(?:29|30)(-)(?:0?[1,3-9]|1[0-2]|(?:Jan|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec))\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(-)(?:0?2|(?:Feb))\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(-)(?:(?:0?[1-9]|(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep))|(?:1[0-2]|(?:Oct|Nov|Dec)))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$"),
 	monthNames : ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
@@ -68,6 +103,29 @@ var helper = {
 		5000);
 	}
 }
+
+/*
+*
+*	Extend Jquery
+*
+*/
+
+$.fn.serializeObject = function()
+{
+    var o = {};
+    var a = this.serializeArray();
+    $.each(a, function() {
+        if (o[this.name] !== undefined) {
+            if (!o[this.name].push) {
+                o[this.name] = [o[this.name]];
+            }
+            o[this.name].push(this.value || '');
+        } else {
+            o[this.name] = this.value || '';
+        }
+    });
+    return o;
+};
 var numberScroll = {
 	animationDone : false,
 	checkAnimation : function(){
@@ -290,7 +348,7 @@ $(function () {
 			},
 			complete: function(response){
 				modal.modal('hide');
-				helper.flash(response.message); 
+				helper.flash(response.message);
 			}
 		});
 		return false;
@@ -301,12 +359,16 @@ $(function () {
 		//console.log('interval set');
 		intervalID = window.setInterval(function(){
 			//console.log('showEnquiry called; enquiryOpened = '+enquiryOpened);
-			if (!$('#messageModal').is(":visible") && !enquiryOpened) {
+			if (!$('#messageModal').is(":visible") && !enquiryOpened && !helper.getStorage('enquiryModal')) {
 				$('#enquiryModal').modal('show');
 				enquiryOpened = true;
 				clearInterval(intervalID);
 			};
 		}, 5000);
+	});
+
+	$(document).on('click','#enquiryModalDismiss', function(event) {
+		helper.setStorage('enquiryModal', true);
 	});
 
 	$(document).on('submit','#enquiryModal form', function(event) {
@@ -345,12 +407,13 @@ $(function () {
 				helper.flash(response.message);
 			},
 			complete: function(response){
-				console.log(response);
 				modal.modal('hide');
 				helper.flash(response.message);
+				helper.setStorage('enquiryModal', true);
 			}
 		});
 		return false;
-	});	
+	});
+
 });
 //# sourceMappingURL=all.js.map

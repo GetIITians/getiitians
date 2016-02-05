@@ -12,15 +12,25 @@ class TeacherController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  Request $request
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show(Request $request)
     {
-        $dataAddress = env('TEACHING_LINK', 'http://dev.getiitians.com/');
-        $teachers = json_decode(file_get_contents($dataAddress.'narayan'), true);
-        //var_dump($teachers);
-        return view('frontend.teachers', ['teachers' => $teachers, 'imglink' => $dataAddress, 'page' => 'teachers']);
+        $request->flashOnly('search');
+        $dataAddress    = env('TEACHING_LINK', 'http://dev.getiitians.com/');
+        $teachers       = json_decode(file_get_contents($dataAddress.'narayan/'.$request->search), true);
+        $results        = true;
+        if (empty($teachers)) {
+            $teachers   = json_decode(file_get_contents($dataAddress.'narayan/'), true);
+            $results    = false;
+        }
+        return view('frontend.teachers', [
+            'teachers'  => $teachers, 
+            'imglink'   => $dataAddress, 
+            'page'      => 'teachers',
+            'results'   => $results
+            ]);
     }
 
     public function postMessage(Request $request)
@@ -79,4 +89,29 @@ class TeacherController extends Controller
                 });
     }
     */
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function postContact(Request $request)
+    {
+        Mail::send(
+                'emails.contact',
+                [
+                    'name' => $request->input('name'),
+                    'email' => $request->input('email'),
+                    'phone' => $request->input('phone'),
+                    'messageBody' => $request->input('message')
+                ],
+                function ($message) {
+                    $message->from('getiitians@gmail.com', 'getIITians');
+                    $message->to('narayanwaraich@gmail.com')->subject('Student Enquiry');
+                });
+        return response()->json(['message' => "Your enquiry has been successfully submitted."]);
+        //return $request->input('email');
+    }
+
 }

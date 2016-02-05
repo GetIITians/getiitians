@@ -14,7 +14,7 @@
 						{{ csrf_field() }}
 						<div class="form-group row">
 							<div class="col-xs-8 col-sm-8">
-								<input type="text" class="form-control" id="indexSearch" placeholder="Mathematics / Electromagnetics / IITJEE">
+								<input type="text" class="form-control" id="indexSearch" name="search" placeholder="Mathematics / Physics / Chemistry">
 								<small class="text-muted hidden-xs-down">You can search for any subject , class , topic or a particular teacher</small>
 							</div>
 							<div class="col-xs-4 col-sm-4">
@@ -44,51 +44,70 @@
 				<h1 class="display-3 text-center">How it works</h1>
 				<div class="gutter-sm"></div>
 				<div class="row">
-					<div class="col-xs-6 col-sm-offset-1 col-sm-2">
+					<div class="col-xs-6 col-sm-offset-2 col-sm-2">
 						<img src="img/placeholder.png" class="img-responsive">
 						<div class="gutter-xs"></div>
-						<h2 class="text-center">Lorem Ipsum</h2>
+						<h2 class="text-center">Search</h2>
 						<hr>
 						<p class="text-justify">
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sapien dui, efficitur facilisis suscipit eget, volutpat sed felis. Morbi sed tincidunt dolor. Cras iaculis nec massa et ullamcorper. Fusce pretium nulla ac placerat porta.
+							Search for any topic, subject or class that you want to study.
 						</p>
 					</div>
 					<div class="col-xs-6 col-sm-2">
 						<img src="img/placeholder.png" class="img-responsive">
 						<div class="gutter-xs"></div>
-						<h2 class="text-center">Lorem Ipsum</h2>
+						<h2 class="text-center">Shortlist Teacher</h2>
 						<hr>
 						<p class="text-justify">
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sed tincidunt dolor. Cras iaculis nec massa et ullamcorper. Fusce pretium nulla ac placerat porta.
+							Shortlist a teacher from the list of teachers.
 						</p>
 					</div>
 					<div class="col-xs-6 col-sm-2">
 						<img src="img/placeholder.png" class="img-responsive">
 						<div class="gutter-xs"></div>
-						<h2 class="text-center">Lorem Ipsum</h2>
+						<h2 class="text-center">Connect with Teacher</h2>
 						<hr>
 						<p class="text-justify">
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sapien dui, efficitur facilisis suscipit eget, volutpat sed felis.
+							Call @ +91-9313394403 to connect with the teacher.
 						</p>
 					</div>
 					<div class="col-xs-6 col-sm-2">
 						<img src="img/placeholder.png" class="img-responsive">
 						<div class="gutter-xs"></div>
-						<h2 class="text-center">Lorem Ipsum</h2>
+						<h2 class="text-center">Demo Class</h2>
 						<hr>
 						<p class="text-justify">
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sapien dui, efficitur facilisis suscipit eget, volutpat sed felis. Morbi sed tincidunt dolor. Cras iaculis nec massa et ullamcorper.
+							Attend an 1 hour free trial class to finalize the teacher.
 						</p>
 					</div>
-					<div class="col-xs-6 col-sm-2">
-						<img src="img/placeholder.png" class="img-responsive">
-						<div class="gutter-xs"></div>
-						<h2 class="text-center">Lorem Ipsum</h2>
-						<hr>
-						<p class="text-justify">
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sapien dui, efficitur facilisis suscipit eget, volutpat sed felis. Morbi sed tincidunt dolor. Cras iaculis nec massa et ullamcorper.
-						</p>
-					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container-fluid">
+			<div class="row numbers">
+				<div class="col-xs-4">
+					Teachers
+					<ul class="count" data-count="102">
+						<li>1</li>
+						<li>0</li>
+						<li>2</li>
+					</ul>
+				</div>
+				<div class="col-xs-4">
+					Students
+					<ul class="count" data-count="100">
+						<li>1</li>
+						<li>0</li>
+						<li>0</li>
+					</ul>
+				</div>
+				<div class="col-xs-4">
+					Topics
+					<ul class="count" data-count="770">
+						<li>7</li>
+						<li>7</li>
+						<li>0</li>
+					</ul>
 				</div>
 			</div>
 		</div>
@@ -101,6 +120,25 @@
 					<p class="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
 				-->
 				<div class="gutter-sm"></div>
+				<div class="row">
+					<div class="col-xs-12 col-md-6 features-feature">
+						<span><i class="material-icons md-18">list</i></span><h5>770+ Topics</h5>
+						<p>More than 770 topics are covered by our teachers to make sure that your education is comprehensive.</p>
+					</div>
+					<div class="col-xs-12 col-md-6 features-feature">
+						<span><i class="material-icons md-18">account_balance</i></span><h5>IITian teachers</h5>
+						<p>Study from experienced &amp; qualified IITian teachers.</p>
+					</div>
+					<div class="col-xs-12 col-md-6 features-feature">
+						<span><i class="material-icons md-18">book</i></span><h5>1-on-1 Tuition</h5>
+						<p>We emphasize on 1-on-1 tuitions so that you get undivided attention from our teachers.</p>
+					</div>
+					<div class="col-xs-12 col-md-6 features-feature">
+						<span><i class="material-icons md-18">home</i></span><h5>Online/Offline</h5>
+						<p>Study from the comfort of your home, either in person or online.</p>
+					</div>
+				</div>
+<!--
 				<div class="row">
 					<div class="col-xs-12 col-sm-6">
 						<div class="media">
@@ -157,6 +195,7 @@
 						<div class="gutter-sm"></div>
 					</div>
 				</div>
+-->
 			</div>
 		</div>
 
@@ -178,7 +217,7 @@
 							</div>
 						</div>
 						<div class="col-sm-offset-1 col-sm-2 hidden-xs-down">
-							<img src="{{ env('TEACHING_LINK') }}data/files/1447573588_38_7418d51ec.jpg" alt="First slide" class="img-responsive">
+							<img src="http://getiitians.com/teaching/data/files/1447573588_38_7418d51ec.jpg" alt="First slide" class="img-responsive">
 						</div>
 					</div>
 				</div>
@@ -193,34 +232,6 @@
 			</a>
 		</div>
 
-		<div class="container-fluid">
-			<div class="row numbers">
-				<div class="col-xs-4">
-					Teachers
-					<ul class="count" data-count="102">
-						<li>1</li>
-						<li>0</li>
-						<li>2</li>
-					</ul>
-				</div>
-				<div class="col-xs-4">
-					Students
-					<ul class="count" data-count="100">
-						<li>1</li>
-						<li>0</li>
-						<li>0</li>
-					</ul>
-				</div>
-				<div class="col-xs-4">
-					Topics
-					<ul class="count" data-count="770">
-						<li>7</li>
-						<li>7</li>
-						<li>0</li>
-					</ul>
-				</div>
-			</div>
-		</div>
 		<div class="container-fluid joinus">
 			<div class="row">
 				<div class="col-xs-8 col-sm-offset-1 col-sm-7">

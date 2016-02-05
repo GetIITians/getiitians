@@ -33,10 +33,10 @@
             <li class="nav-item {{matchValue('teachers',$page,'active')}}">
                 <a class="nav-link" href="/teachers">Teachers</a>
             </li>
-            <!--
-            <li class="nav-item">
-                <a class="nav-link" href="/about">About Us</a>
+            <li class="nav-item {{matchValue('contact',$page,'active')}}">
+                <a class="nav-link" href="/contact">Contact Us</a>
             </li>
+            <!--
             <li class="nav-item">
                 <a class="nav-link" href="#">Enquiry</a>
             </li>
@@ -71,21 +71,27 @@
             {{ csrf_field() }}
             <div class="col-xs-12 col-sm-4">
                 <div class="form-group row">
-                    <label for="class" class="col-xs-3 form-control-label">Class</label>
+                    <div class="col-xs-3">
+                        <label for="class" class="form-control-label">Class</label>
+                    </div>
                     <div class="col-xs-9">
                         <input type="text" class="form-control" id="class" placeholder="Class">
                     </div>
                 </div>
                 <div class="gutter-xs"></div>
                 <div class="form-group row">
-                    <label for="subject" class="col-xs-3 form-control-label">Subject</label>
+                    <div class="col-xs-3">
+                        <label for="subject" class="form-control-label">Subject</label>
+                    </div>
                     <div class="col-xs-9">
                         <input type="text" class="form-control" id="subject" placeholder="Subject">
                     </div>
                 </div>
                 <div class="gutter-xs"></div>
                 <div class="form-group row">
-                    <label for="topic" class="col-xs-3 form-control-label">Topic</label>
+                    <div class="col-xs-3">
+                        <label for="topic" class="form-control-label">Topic</label>
+                    </div>
                     <div class="col-xs-9">
                         <input type="text" class="form-control" id="topic" placeholder="Topic">
                     </div>
@@ -93,7 +99,9 @@
             </div>
             <div class="col-xs-12 col-sm-4">
                 <div class="form-group row">
-                    <label for="enquiry" class="col-xs-3 form-control-label">Enquiry<span class="required">&nbsp;*&nbsp;</span></label>
+                    <div class="col-xs-3">
+                        <label for="enquiry" class="form-control-label">Enquiry<span class="required">&nbsp;*&nbsp;</span></label>
+                    </div>
                     <div class="col-xs-8 col-sm-9">
                         <textarea class="form-control" id="enquiry" rows="5"></textarea>
                     </div>
@@ -101,14 +109,18 @@
             </div>
             <div class="col-xs-12 col-sm-4">
                 <div class="form-group row">
-                    <label for="email" class="col-xs-3 form-control-label">Email<span class="required">&nbsp;*&nbsp;</span></label>
+                    <div class="col-xs-3">
+                        <label for="email" class="form-control-label">Email<span class="required">&nbsp;*&nbsp;</span></label>
+                    </div>
                     <div class="col-xs-9">
-                        <input type="email" class="form-control" id="email" placeholder="Email">
+                        <input type="email" class="form-control" id="email" placeholder="Email" required>
                     </div>
                 </div>
                 <div class="gutter-xs"></div>
                 <div class="form-group row">
-                    <label for="phone" class="col-xs-3 form-control-label">Phone</label>
+                    <div class="col-xs-3">
+                        <label for="phone" class="form-control-label">Phone</label>
+                    </div>
                     <div class="col-xs-9">
                         <input type="text" class="form-control" id="phone" placeholder="Phone">
                     </div>
@@ -186,9 +198,11 @@
 <script src="js/vendor/bootstrap/tab.js"></script>
 <script src="js/vendor/bootstrap/util.js"></script>
 
+<script src="https://maps.googleapis.com/maps/api/js"></script>
 <script src="js/all.js"></script>
-
+<!--
 <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></'
             + 'script>')</script>
+-->
 </body>
 </html>

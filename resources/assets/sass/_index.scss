@@ -34,6 +34,7 @@
 	h2{
 		color: $white;
 		font-family: $font-light;
+		font-size: 1.3rem;
 	}
 	p{
 		font-size: .9rem;
@@ -48,6 +49,31 @@
 .features{
 	background-color: $white;
 	color: $flat-purple;
+	margin-bottom: 5rem;
+}
+
+.features-feature {
+	margin-bottom: 2rem;
+  span {
+    padding: .5rem 1rem;
+    border: 1px solid $white-darker;
+    border-radius: .1rem;
+    i{
+      vertical-align: middle;
+      color: $flat-red;
+    }
+  }
+  h5 {
+  	display: inline-block;
+  	vertical-align: middle;
+    font-family: $font-regular; 
+    padding-left: 1rem;
+    font-size: 2rem;
+    letter-spacing: 1px;
+  }
+  p{
+    margin-top: 1rem;
+  }
 }
 
 #index-reviews{
@@ -70,6 +96,7 @@
 .numbers{
 	color: $flat-purple;
 	margin-bottom: 5rem;
+	margin-top: 5rem;
 	div{
 		text-align: center;
 		font-size: 2rem;
@@ -81,7 +108,7 @@
 				color: $flat-red;
 				background-color: transparent;
 				border-radius: 3px;
-				border: 1px solid $white-dark;
+				border: 1px solid $flat-purple;
 				font-size: 3rem;
 				padding: 3px 15px;
 				margin: 0 5px;

@@ -24,6 +24,14 @@ Route::get('teachers/message', 'TeacherController@getMessage');
 Route::post('teachers/enquiry', 'TeacherController@postEnquiry');
 Route::get('teachers/enquiry', 'TeacherController@getEnquiry');
 
+Route::get('contact', function (){
+	return view('frontend.contact', ['page' => 'contact']);
+});
+Route::post('contact', 'TeacherController@postContact');
+
+Route::get('test', function(){
+	return view('frontend.test');
+});
 /*
 Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');

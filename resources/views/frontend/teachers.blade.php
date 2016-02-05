@@ -3,6 +3,34 @@
 		<div class="gutter-sm"></div>
 		<div class="container-fluid" id="teachers">
 			<div class="row">
+				<div class="col-xs-12">
+					<form action="/teachers" method="POST">
+						{{ csrf_field() }}
+						<div class="form-group row">
+							<div class="col-xs-offset-1 col-xs-7">
+								<input type="text" class="form-control" id="indexSearch" name="search" placeholder="Mathematics / Electromagnetics / IITJEE">
+								<small class="text-muted hidden-xs-down">You can search for any subject , class , topic or a particular teacher</small>
+							</div>
+							<div class="col-xs-3">
+								<button type="submit" class="btn btn-primary">Search</button>
+							</div>
+						</div>
+					</form>
+				</div>
+				@if (old('search') != '')
+				<div class="col-xs-offset-1 col-xs-11">
+					@if ($results)
+					<p>Showing results for '{{ old('search') }}'</p>
+					@else
+					<p>
+						We're sorry but we couldn't find any results for '{{ old('search') }}'. 
+						Please try changing your search query to something more relevant.
+					</p>
+					@endif
+				</div>
+				@endif
+			</div>
+			<div class="row">
 				<main class="col-xs-12">
 					<div class="row">
 						@foreach ($teachers as $teacher)
@@ -13,7 +41,7 @@
 									</div>
 									<div class="col-xs-8">
 										<h4 class="card-title">{{ ucwords(strtolower($teacher['name'])) }}</h4>
-										<small>{{ $teacher['degree'] }} [ IIT {{ $teacher['college'] }} ]</small>
+										<small>{{ $teacher['degree'] }} [ {{ $teacher['college'] }} ]</small>
 										<hr>
 										<p>{{ $teacher['introduction'] }}</p>
 									</div>
@@ -72,7 +100,7 @@
 							</div>
 							<div class="form-group">
 								<label for="message" class="form-control-label">Message:</label>
-								<textarea class="form-control" id="message"></textarea>
+								<textarea class="form-control" id="message" required></textarea>
 							</div>
 						</form>
 						<small>The message to be sent can't be empty</small>
@@ -103,7 +131,7 @@
 						<div class="container-fluid">
 							<div class="row">
 								<div class="col-xs-12">
-									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<button type="button" class="close" id="enquiryModalDismiss" data-dismiss="modal" aria-label="Close">
 										<span aria-hidden="true">&times;</span>
 									</button>
 									<h5>Have a doubt? Need personal tuition? Please enter the details below &amp; we will revert within 24 Hours.</h5>
@@ -136,7 +164,7 @@
 									<div class="col-xs-12">
 										<div class="form-group">
 											<label for="enquiry" class="form-control-label">Enquiry <span class="required">*</span></label>
-											<textarea class="form-control" id="enquiry" rows="4"></textarea>
+											<textarea class="form-control" id="enquiry" rows="4" required></textarea>
 										</div>
 									</div>
 								</div>
@@ -144,7 +172,7 @@
 									<div class="col-xs-12 col-md-6">
 										<div class="form-group">
 											<label for="email" class="form-control-label">Email <span class="required">*</span></label>
-											<input type="text" class="form-control" id="email">
+											<input type="text" class="form-control" id="email" required>
 										</div>
 									</div>
 									<div class="col-xs-12 col-md-6">
