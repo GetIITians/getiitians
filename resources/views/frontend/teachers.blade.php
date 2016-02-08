@@ -89,17 +89,17 @@
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
-						<h4 class="modal-title" id="messageModalLabel">Send a Message</h4>
+						<h4 class="modal-title" id="messageModalLabel">Send a Message to teacher</h4>
 					</div>
 					<div class="modal-body">
 						<form action="/teachers/message" method="POST">
 							{{ csrf_field() }}
 							<div class="form-group">
-								<label for="recipient" class="form-control-label">Teacher:</label>
+								<label for="recipient" class="form-control-label">Teacher's Name:</label>
 								<input type="text" class="form-control" id="recipient">
 							</div>
 							<div class="form-group">
-								<label for="message" class="form-control-label">Message:</label>
+								<label for="message" class="form-control-label">Your Message:</label>
 								<textarea class="form-control" id="message" required></textarea>
 							</div>
 						</form>
@@ -117,7 +117,7 @@
 								<i class="material-icons md-18">contact_phone</i>
 							</div>
 							<div class="col-xs-11">
-								<span>Any Queries? Don't hesitate to call us @ +91 93133 94403 or email us at info@getiitians.com</span>
+								<span>Don't hesitate to call us @ +91 93133 94403 or email at info@getiitians.com</span>
 							</div>
 						</div>
 					</div>
@@ -201,7 +201,7 @@
 								<i class="material-icons md-18">contact_phone</i>
 							</div>
 							<div class="col-xs-11">
-								<span>Any Queries? Don't hesitate to call us @ +91 93133 94403 or email us at info@getiitians.com</span>
+								<span>Any Queries? Don't hesitate to call us @ +91 93133 94403 or email at info@getiitians.com</span>
 							</div>
 						</div>
 					</div>

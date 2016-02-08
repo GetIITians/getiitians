@@ -45,7 +45,7 @@
 				<div class="gutter-sm"></div>
 				<div class="row">
 					<div class="col-xs-6 col-sm-offset-2 col-sm-2">
-						<img src="img/placeholder.png" class="img-responsive">
+						<img src="img/howitworks/search.png" class="img-responsive">
 						<div class="gutter-xs"></div>
 						<h2 class="text-center">Search</h2>
 						<hr>
@@ -54,30 +54,30 @@
 						</p>
 					</div>
 					<div class="col-xs-6 col-sm-2">
-						<img src="img/placeholder.png" class="img-responsive">
+						<img src="img/howitworks/select.png" class="img-responsive">
 						<div class="gutter-xs"></div>
-						<h2 class="text-center">Shortlist Teacher</h2>
+						<h2 class="text-center">Select a Teacher</h2>
 						<hr>
 						<p class="text-justify">
 							Shortlist a teacher from the list of teachers.
 						</p>
 					</div>
 					<div class="col-xs-6 col-sm-2">
-						<img src="img/placeholder.png" class="img-responsive">
+						<img src="img/howitworks/call.png" class="img-responsive">
 						<div class="gutter-xs"></div>
-						<h2 class="text-center">Connect with Teacher</h2>
+						<h2 class="text-center">Call to connect</h2>
 						<hr>
 						<p class="text-justify">
 							Call @ +91-9313394403 to connect with the teacher.
 						</p>
 					</div>
 					<div class="col-xs-6 col-sm-2">
-						<img src="img/placeholder.png" class="img-responsive">
+						<img src="img/howitworks/learn.png" class="img-responsive">
 						<div class="gutter-xs"></div>
-						<h2 class="text-center">Demo Class</h2>
+						<h2 class="text-center">Learn 1-on-1</h2>
 						<hr>
 						<p class="text-justify">
-							Attend an 1 hour free trial class to finalize the teacher.
+							Start your 1-on-1 session.
 						</p>
 					</div>
 				</div>
