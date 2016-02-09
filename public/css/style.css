@@ -5169,6 +5169,15 @@ div.one-line {
   .modal-custom-footer span, .modal-custom-footer i.material-icons {
     vertical-align: middle; }
 
+.modal-custom {
+  background-color: #2C3E50;
+  color: #ECF0F1;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  font-size: 0.9rem; }
+  .modal-custom i.material-icons {
+    vertical-align: middle; }
+
 .form-control-label {
   padding-left: 0; }
 
@@ -5494,6 +5503,32 @@ footer {
 #enquiryModal p {
   text-align: center;
   font-size: 0.9rem; }
+
+.what-to-do {
+  margin-top: 2rem;
+  margin-bottom: 3rem; }
+
+.modal-call {
+  width: 500px; }
+
+.modal-call .modal-custom {
+  padding: 0; }
+  .modal-call .modal-custom > div {
+    padding: 0; }
+  .modal-call .modal-custom button {
+    position: absolute;
+    right: 1rem;
+    top: .5rem; }
+  .modal-call .modal-custom p {
+    position: absolute;
+    bottom: 0px;
+    padding: .5rem;
+    font-size: 1.1rem;
+    color: #ECF0F1;
+    margin-bottom: 0;
+    background-color: #2C3E50;
+    width: 100%;
+    text-align: center; }
 
 #profile {
   padding: 0;

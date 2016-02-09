@@ -2,6 +2,17 @@
 @section('content')
 		<div class="gutter-sm"></div>
 		<div class="container-fluid" id="teachers">
+			<div class="row what-to-do">
+				<div class="col-xs-12 col-md-offset-1 col-md-2">
+					<img src="img/howitworks/teachers/select.png" class="img-responsive">
+				</div>
+				<div class="col-xs-12 col-md-offset-2 col-md-2">
+					<img src="img/howitworks/teachers/message.png" class="img-responsive">
+				</div>
+				<div class="col-xs-12 col-md-offset-2 col-md-2">
+					<img src="img/howitworks/teachers/learn.png" class="img-responsive">
+				</div>
+			</div>
 			<div class="row">
 				<div class="col-xs-12">
 					<form action="/teachers" method="POST">
@@ -66,7 +77,7 @@
 								</div>
 								<div class="row">
 									<div class="col-xs-12">
-										<a href="#" role="button" class="btn btn-dark">
+										<a href="#" role="button" class="btn btn-dark" data-toggle="modal" data-target="#callModal">
 											<i class="material-icons md-18">ring_volume</i>
 											<span>Call</span>
 										</a>
@@ -202,6 +213,23 @@
 							</div>
 							<div class="col-xs-11">
 								<span>Any Queries? Don't hesitate to call us @ +91 93133 94403 or email at info@getiitians.com</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="callModal" tabindex="-1" role="dialog" aria-labelledby="callModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-call" role="document">
+				<div class="modal-content">
+					<div class="container-fluid">
+						<div class="row modal-custom">
+							<div class="col-xs-12">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+								<img src="img/call.png" class="img-responsive">
+								<p>Call us @ +91 93133 94403 to connect with the teacher. </p>
 							</div>
 						</div>
 					</div>

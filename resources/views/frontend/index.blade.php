@@ -45,7 +45,7 @@
 				<div class="gutter-sm"></div>
 				<div class="row">
 					<div class="col-xs-6 col-sm-offset-2 col-sm-2">
-						<img src="img/howitworks/search.png" class="img-responsive">
+						<img src="img/howitworks/home/search.png" class="img-responsive">
 						<div class="gutter-xs"></div>
 						<h2 class="text-center">Search</h2>
 						<hr>
@@ -54,7 +54,7 @@
 						</p>
 					</div>
 					<div class="col-xs-6 col-sm-2">
-						<img src="img/howitworks/select.png" class="img-responsive">
+						<img src="img/howitworks/home/select.png" class="img-responsive">
 						<div class="gutter-xs"></div>
 						<h2 class="text-center">Select a Teacher</h2>
 						<hr>
@@ -63,7 +63,7 @@
 						</p>
 					</div>
 					<div class="col-xs-6 col-sm-2">
-						<img src="img/howitworks/call.png" class="img-responsive">
+						<img src="img/howitworks/home/call.png" class="img-responsive">
 						<div class="gutter-xs"></div>
 						<h2 class="text-center">Call to connect</h2>
 						<hr>
@@ -72,7 +72,7 @@
 						</p>
 					</div>
 					<div class="col-xs-6 col-sm-2">
-						<img src="img/howitworks/learn.png" class="img-responsive">
+						<img src="img/howitworks/home/learn.png" class="img-responsive">
 						<div class="gutter-xs"></div>
 						<h2 class="text-center">Learn 1-on-1</h2>
 						<hr>
