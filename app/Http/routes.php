@@ -32,6 +32,9 @@ Route::post('contact', 'TeacherController@postContact');
 Route::get('test', function(){
 	return view('frontend.test');
 });
+
+Route::post('teachers/call', 'TeacherController@postCall');
+
 /*
 Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');

@@ -18,7 +18,7 @@
 								<small class="text-muted hidden-xs-down">You can search for any subject , class , topic or a particular teacher</small>
 							</div>
 							<div class="col-xs-4 col-sm-4">
-								<button type="submit" class="btn btn-primary">Search</button>
+								<button type="submit" class="btn btn-red">Search</button>
 							</div>
 						</div>
 						<div class="form-group row">

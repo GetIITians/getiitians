@@ -5,3 +5,22 @@
 .form-control {
   border-color: $flat-purple;
 }
+
+#enquiryModal{
+	h2{
+		font-family: $font-medium;
+		text-align: center;
+	}
+	h5{
+		font-family: $font-light;
+		text-align: center;
+	}
+	p{
+		text-align: center;
+		font-size: 0.9rem;
+	}
+}
+
+.modal-content h5 {
+	font-size: 1rem;
+}

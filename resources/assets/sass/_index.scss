@@ -10,6 +10,9 @@
 	}
 	div.col-sm-8{
 		padding-right: 0;
+		input{
+			border-color: $flat-red;
+		}
 		small{
 			font-size: .8rem;
 		}

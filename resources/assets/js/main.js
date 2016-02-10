@@ -41,5 +41,58 @@ $(function () {
 			}
 		});
 		return false;
-	});	
+	});
+
+	/*------------------------------------*/
+	$(window).on('load',function() {
+		var enquiryOpened = false;
+		//console.log('interval set');
+		intervalID = window.setInterval(function(){
+			//console.log('showEnquiry called; enquiryOpened = '+enquiryOpened);
+			if (!$('#messageModal').is(":visible") && !$('#callModal').is(":visible") && !enquiryOpened && !helper.getStorage('enquiryModal')) {
+				$('#enquiryModal').modal('show');
+				enquiryOpened = true;
+				clearInterval(intervalID);
+			};
+		}, 5000);
+	});
+
+	$(document).on('click','#enquiryModalDismiss', function(event) {
+		helper.setStorage('enquiryModal', true);
+	});
+
+	$(document).on('submit','#enquiryModal form', function(event) {
+		event.preventDefault();
+		var form = $(this);
+		var modal = $('#enquiryModal');
+		if(form.find('#enquiry').val() == ''){
+			form.find('small').html('Enquiry field can\'t be empty.').fadeIn('slow');
+			form.find('#enquiry').focus();
+			return false;
+		}
+		if(form.find('#email').val() == ''){
+			form.find('small').html('Email field can\'t be empty.').fadeIn('slow');
+			form.find('#email').focus();
+			return false;
+		}
+		$.ajax({
+			url		: form.prop('action'),
+			method	: 'POST',
+			data 	: {
+				_token		: form.find('input[name=_token]').val(),
+				enquiry		: form.find('#enquiry').val(),
+				email		: form.find('#email').val(),
+				phone		: form.find('#phone').val()
+			},
+			beforeSend: function(){
+				modal.find('small').html('processing ...').fadeIn('slow');
+			},
+			complete: function(response){
+				modal.modal('hide');
+				helper.flash(response.message);
+				helper.setStorage('enquiryModal', true);
+			}
+		});
+		return false;
+	});
 });

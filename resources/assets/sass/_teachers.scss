@@ -164,28 +164,13 @@
 	}
 }
 
-#enquiryModal{
-	h2{
-		font-family: $font-medium;
-		text-align: center;
-	}
-	h5{
-		font-family: $font-light;
-		text-align: center;
-	}
-	p{
-		text-align: center;
-		font-size: 0.9rem;
-	}
-}
-
 .what-to-do {
 	margin-top: 2rem;
 	margin-bottom: 3rem;
 }
 
 .modal-call {
-	width: 500px;
+	width: 350px;
 }
 
 .modal-call .modal-custom {
@@ -201,11 +186,11 @@
 	p{
 		position: absolute;
 		bottom: 0px;
-		padding: .5rem;
-		font-size: 1.1rem;
-		color: #ECF0F1;
+		padding: .25rem;
+		font-size: .9rem;
+		color: $flat-white;
 		margin-bottom: 0;
-		background-color: #2C3E50;
+		background-color: $flat-red;
 		width: 100%;
 		text-align: center;
 	}

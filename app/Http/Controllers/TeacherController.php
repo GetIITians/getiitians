@@ -63,9 +63,6 @@ class TeacherController extends Controller
         Mail::send(
                 'emails.enquiry.enquiry',
                 [
-                    'class' => $request->input('class'),
-                    'subject' => $request->input('subject'),
-                    'topic' => $request->input('topic'),
                     'enquiry' => $request->input('enquiry'),
                     'email' => $request->input('email'),
                     'phone' => $request->input('phone')
@@ -105,6 +102,28 @@ class TeacherController extends Controller
                     'email' => $request->input('email'),
                     'phone' => $request->input('phone'),
                     'messageBody' => $request->input('message')
+                ],
+                function ($message) {
+                    $message->from('getiitians@gmail.com', 'getIITians');
+                    $message->to('narayanwaraich@gmail.com')->subject('Student Enquiry');
+                });
+        return response()->json(['message' => "Your enquiry has been successfully submitted."]);
+        //return $request->input('email');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function postCall(Request $request)
+    {
+        Mail::send(
+                'emails.enquiry.call',
+                [
+                    'email' => $request->input('email'),
+                    'phone' => $request->input('phone'),
                 ],
                 function ($message) {
                     $message->from('getiitians@gmail.com', 'getIITians');

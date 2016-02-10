@@ -47,6 +47,15 @@
 	}
 }
 
+
+.btn-red {
+	width: 100%;
+	@include button-variant($flat-white, $flat-red, $flat-red);
+	&:hover{
+		background-color: darken($flat-red, 10%);
+	}
+}
+
 .btn-inline-sm{
 	width: auto;
 	padding: $input-padding-y-sm $input-padding-x-sm;
@@ -215,6 +224,14 @@ div.one-line{
 	span, i.material-icons{
 		vertical-align: middle;
 	}
+}
+
+.modal-custom-header{
+	background-color: $flat-yellow;
+	color: $flat-purple;
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+	font-size: 0.9rem;
 }
 
 .modal-custom{

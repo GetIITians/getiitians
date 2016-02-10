@@ -36,6 +36,9 @@
             <li class="nav-item {{matchValue('contact',$page,'active')}}">
                 <a class="nav-link" href="/contact">Contact Us</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="http://getiitians.com/teaching/joinus">Become a teacher</a>
+            </li>
             <!--
             <li class="nav-item">
                 <a class="nav-link" href="#">Enquiry</a>
@@ -62,6 +65,68 @@
 <!-- Header Ends -->
 @include('layouts.includes.flash')
 @yield('content')
+        <div class="modal fade" id="enquiryModal" tabindex="-1" role="dialog" aria-labelledby="enquiryModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="container-fluid">
+                        <div class="row modal-custom-header">
+                            <div class="col-xs-12">
+                                <button type="button" class="close" id="enquiryModalDismiss" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <h5>Have a doubt? Need personal tuition? Please enter the details below &amp; we will revert within 24 Hours.</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                            <form action="/teachers/enquiry" method="POST">
+                                {{ csrf_field() }}
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <div class="form-group">
+                                            <label for="email" class="form-control-label">Email <span class="required">*</span></label>
+                                            <input type="text" class="form-control" id="email" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <div class="form-group">
+                                            <label for="phone" class="form-control-label">Phone</label>
+                                            <input type="text" class="form-control" id="phone">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <div class="form-group">
+                                            <label for="enquiry" class="form-control-label">Enquiry <span class="required">*</span></label>
+                                            <textarea class="form-control" id="enquiry" rows="4" required></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <small></small>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="container-fluid">
+                        <div class="row modal-custom-footer">
+                            <div class="col-xs-12">
+                                <i class="material-icons md-18">contact_phone</i>&nbsp;&nbsp;<span>Any Queries? Don't hesitate to call us @ +91 93133 94403 or email at info@getiitians.com</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 <!-- Footer Begins -->
 <div class="jumbotron jumbotron-fluid doubt">
     <div class="container-fluid">
