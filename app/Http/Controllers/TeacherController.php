@@ -18,16 +18,15 @@ class TeacherController extends Controller
     public function show(Request $request)
     {
         $request->flashOnly('search');
-        $dataAddress    = env('TEACHING_LINK', 'http://dev.getiitians.com/');
-        $teachers       = json_decode(file_get_contents($dataAddress.'narayan/'.$request->search), true);
+        $dataAddress    = env('TEACHING_LINK');
+        $teachers       = json_decode(file_get_contents(env('TEACHING_LINK').'narayan/'.$request->search), true);
         $results        = true;
         if (empty($teachers)) {
-            $teachers   = json_decode(file_get_contents($dataAddress.'narayan/'), true);
+            $teachers   = json_decode(file_get_contents(env('TEACHING_LINK').'narayan/'), true);
             $results    = false;
         }
         return view('frontend.teachers', [
-            'teachers'  => $teachers, 
-            'imglink'   => $dataAddress, 
+            'teachers'  => $teachers,
             'page'      => 'teachers',
             'results'   => $results
             ]);

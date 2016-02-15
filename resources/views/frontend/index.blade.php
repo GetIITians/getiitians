@@ -217,7 +217,7 @@
 							</div>
 						</div>
 						<div class="col-sm-offset-1 col-sm-2 hidden-xs-down">
-							<img src="http://getiitians.com/teaching/data/files/1447573588_38_7418d51ec.jpg" alt="First slide" class="img-responsive">
+							<img src="{{ env('TEACHING_LINK') }}data/files/1447573588_38_7418d51ec.jpg" alt="First slide" class="img-responsive">
 						</div>
 					</div>
 				</div>
@@ -230,7 +230,7 @@
 							</div>
 						</div>
 						<div class="col-sm-offset-1 col-sm-2 hidden-xs-down">
-							<img src="http://getiitians.com/teaching/data/files/1448888698_76_30e7c9678.png" alt="First slide" class="img-responsive">
+							<img src="{{ env('TEACHING_LINK') }}data/files/1448888698_76_30e7c9678.png" alt="First slide" class="img-responsive">
 						</div>
 					</div>
 				</div>
@@ -253,7 +253,7 @@
 					<h2>If yes, then be part of our community.</h2>
 				</div>
 				<div class="col-xs-4">
-					<a href="http://getiitians.com/teaching/joinus" role="button" class="btn btn-dark">Join Us</a>
+					<a href="{{ env('TEACHING_LINK') }}joinus" role="button" class="btn btn-dark">Join Us</a>
 				</div>
 			</div>
 		</div>

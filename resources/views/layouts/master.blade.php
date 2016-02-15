@@ -38,10 +38,10 @@
                 <a class="nav-link" href="/contact">Contact Us</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="http://getiitians.com/teaching/joinus">Become a teacher</a>
+                <a class="nav-link" href="{{ env('TEACHING_LINK') }}joinus">Become a teacher</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="http://getiitians.com/teaching/login">Login</a>
+                <a class="nav-link" href="{{ env('TEACHING_LINK') }}login">Login</a>
             </li>
             <!--
             <li class="nav-item">
