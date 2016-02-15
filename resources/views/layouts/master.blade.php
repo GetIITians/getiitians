@@ -21,6 +21,7 @@
         <a class="navbar-brand" href="/">
             <img src="/img/logo.png">
         </a>
+        <span class="tagline pull-left">private tutoring by IITians</span>
         <ul class="nav navbar-nav pull-right">
             <li class="nav-item">
                 <a class="nav-link">
@@ -38,6 +39,9 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="http://getiitians.com/teaching/joinus">Become a teacher</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="http://getiitians.com/teaching/login">Login</a>
             </li>
             <!--
             <li class="nav-item">

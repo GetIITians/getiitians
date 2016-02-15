@@ -94,6 +94,10 @@
 		letter-spacing: .75px;
 		font-size: 1.2rem;
 	}
+	.hidden-xs-down{
+		max-height: 200px;
+		overflow: hidden;
+	}
 }
 
 .numbers{

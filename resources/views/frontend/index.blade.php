@@ -8,7 +8,7 @@
 					<img src="img/laptop.jpg" class="img-responsive">
 				</div>
 				<div class="col-sm-5">
-					<p>1-on-1 online tuition by IITians</p>
+					<p>1-on-1 tuition by IITians</p>
 					<div class="gutter-md"></div>
 					<form action="/teachers" method="POST">
 						{{ csrf_field() }}
@@ -218,6 +218,19 @@
 						</div>
 						<div class="col-sm-offset-1 col-sm-2 hidden-xs-down">
 							<img src="http://getiitians.com/teaching/data/files/1447573588_38_7418d51ec.jpg" alt="First slide" class="img-responsive">
+						</div>
+					</div>
+				</div>
+				<div class="carousel-item">
+					<div class="row">
+						<div class="col-xs-offset-1 col-xs-10 col-sm-8">
+							<div class="carousel-caption">
+								<h3>Stuti Sharma</h3>
+								<p>Sir thank you so much for helping me clarify my doubts. Your teaching was very clear and I could understand it easily.</p>
+							</div>
+						</div>
+						<div class="col-sm-offset-1 col-sm-2 hidden-xs-down">
+							<img src="http://getiitians.com/teaching/data/files/1448888698_76_30e7c9678.png" alt="First slide" class="img-responsive">
 						</div>
 					</div>
 				</div>

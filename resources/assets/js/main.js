@@ -49,7 +49,7 @@ $(function () {
 		//console.log('interval set');
 		intervalID = window.setInterval(function(){
 			//console.log('showEnquiry called; enquiryOpened = '+enquiryOpened);
-			if (!$('#messageModal').is(":visible") && !$('#callModal').is(":visible") && !enquiryOpened && !helper.getStorage('enquiryModal')) {
+			if (!$('#messageModal').is(":visible") && !$('#callModal').is(":visible") && !enquiryOpened && !helper.getStorage('enquiry')) {
 				$('#enquiryModal').modal('show');
 				enquiryOpened = true;
 				clearInterval(intervalID);
@@ -58,7 +58,7 @@ $(function () {
 	});
 
 	$(document).on('click','#enquiryModalDismiss', function(event) {
-		helper.setStorage('enquiryModal', true);
+		helper.setStorage('enquiry', true);
 	});
 
 	$(document).on('submit','#enquiryModal form', function(event) {
@@ -90,7 +90,7 @@ $(function () {
 			complete: function(response){
 				modal.modal('hide');
 				helper.flash(response.message);
-				helper.setStorage('enquiryModal', true);
+				helper.setStorage('enquiry', true);
 			}
 		});
 		return false;

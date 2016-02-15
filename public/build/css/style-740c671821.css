@@ -5250,6 +5250,10 @@ body {
   color: #2C3E50;
   outline: 0; }
 
+.navbar-light .tagline {
+  color: #ECF0F1;
+  font-size: 1.5rem; }
+
 .navbar-light .navbar-brand {
   padding: 0; }
 
@@ -5363,6 +5367,9 @@ footer {
     font-family: "robotolight", "Helvetica Neue", Helvetica, Arial, sans-serif;
     letter-spacing: .75px;
     font-size: 1.2rem; }
+  #index-reviews .hidden-xs-down {
+    max-height: 200px;
+    overflow: hidden; }
 
 .numbers {
   color: #2C3E50;

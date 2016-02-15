@@ -1,19 +1,3 @@
-var myCenter = new google.maps.LatLng(28.542381, 77.203569);
-function initialize() {
-  var mapCanvas = document.getElementById('map-canvas');
-  var mapOptions = {
-    center:myCenter,
-    zoom: 17,
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-  }
-  var map = new google.maps.Map(mapCanvas, mapOptions);
-  var marker=new google.maps.Marker({
-    position:myCenter,
-  });
-  marker.setMap(map);
-}
-google.maps.event.addDomListener(window, 'load', initialize);
-
 $(document).on('submit','#contact form', function(event) {
   console.log(JSON.stringify($(this).serializeObject()));
   event.preventDefault();
@@ -220,7 +204,7 @@ $(function () {
 		//console.log('interval set');
 		intervalID = window.setInterval(function(){
 			//console.log('showEnquiry called; enquiryOpened = '+enquiryOpened);
-			if (!$('#messageModal').is(":visible") && !$('#callModal').is(":visible") && !enquiryOpened && !helper.getStorage('enquiryModal')) {
+			if (!$('#messageModal').is(":visible") && !$('#callModal').is(":visible") && !enquiryOpened && !helper.getStorage('enquiry')) {
 				$('#enquiryModal').modal('show');
 				enquiryOpened = true;
 				clearInterval(intervalID);
@@ -229,7 +213,7 @@ $(function () {
 	});
 
 	$(document).on('click','#enquiryModalDismiss', function(event) {
-		helper.setStorage('enquiryModal', true);
+		helper.setStorage('enquiry', true);
 	});
 
 	$(document).on('submit','#enquiryModal form', function(event) {
@@ -261,7 +245,7 @@ $(function () {
 			complete: function(response){
 				modal.modal('hide');
 				helper.flash(response.message);
-				helper.setStorage('enquiryModal', true);
+				helper.setStorage('enquiry', true);
 			}
 		});
 		return false;
