@@ -1,4 +1,5 @@
 .navbar-light {
+	background-color: $flat-red;
 	.tagline{
 		color: $flat-white;
 		font-size: 1.5rem;
@@ -7,6 +8,7 @@
 		padding: 0;
 	}
 	.navbar-nav {
+		float: right;
 		.nav-link {
 			font-family: $font-regular;
 			color: $navbar-light-color;
@@ -19,6 +21,23 @@
 			.nav-link{
 				color: $flat-purple;
 			}
+		}
+	}
+}
+
+@include media-breakpoint-down(xs){
+	.navbar-toggler{
+		position: absolute;
+		right: 1rem;
+		top: 1rem;
+	}
+	#collapsingNavbar {
+		width: 100%;
+	}
+	.navbar-nav{
+		float: none;
+		.nav-item{
+			float: none;
 		}
 	}
 }

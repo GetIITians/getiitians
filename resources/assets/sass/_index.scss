@@ -134,8 +134,42 @@
 		font-family: $font-medium;
 	}
 }
+@include media-breakpoint-down(lg){
+	.howitworks div.col-lg-2{
+		padding-right: 5rem;
+		padding-left: 5rem;
+		margin-bottom: 1rem;
+	}
+	.banner{
+		p{
+			margin-top: 2rem;
+		}
+	}
+}
+
+@include media-breakpoint-down(sm){
+	.banner{
+		p{
+			margin-top: 2rem;
+		}
+	}
+	.features-feature {
+		h5{
+			font-size: 1.4rem;
+		}
+		p{
+			font-size: .9rem;
+		}
+	}
+}
 
 @include media-breakpoint-down(xs){
+	.howitworks div.col-lg-2{
+		padding-right: .9375rem;
+		padding-left: .9375rem;
+		margin-bottom: 1rem;
+	}
+
 	.banner{
 		div.row{
 			margin-bottom: 5px;

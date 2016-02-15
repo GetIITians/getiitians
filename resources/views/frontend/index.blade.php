@@ -4,10 +4,10 @@
 
     <div class="container-fluid">
 			<div class="row banner">
-				<div class="col-sm-7">
+				<div class="col-xs-12 col-lg-7">
 					<img src="img/laptop.jpg" class="img-responsive">
 				</div>
-				<div class="col-sm-5">
+				<div class="col-xs-12 col-lg-5">
 					<p>1-on-1 tuition by IITians</p>
 					<div class="gutter-md"></div>
 					<form action="/teachers" method="POST">
@@ -44,7 +44,7 @@
 				<h1 class="display-3 text-center">How it works</h1>
 				<div class="gutter-sm"></div>
 				<div class="row">
-					<div class="col-xs-6 col-sm-offset-2 col-sm-2">
+					<div class="col-xs-6 col-lg-offset-2 col-lg-2">
 						<img src="img/howitworks/home/search.png" class="img-responsive">
 						<div class="gutter-xs"></div>
 						<h2 class="text-center">Search</h2>
@@ -53,7 +53,7 @@
 							Search for any topic, subject or class that you want to study.
 						</p>
 					</div>
-					<div class="col-xs-6 col-sm-2">
+					<div class="col-xs-6 col-lg-2">
 						<img src="img/howitworks/home/select.png" class="img-responsive">
 						<div class="gutter-xs"></div>
 						<h2 class="text-center">Select a Teacher</h2>
@@ -62,7 +62,7 @@
 							Shortlist a teacher from the list of teachers.
 						</p>
 					</div>
-					<div class="col-xs-6 col-sm-2">
+					<div class="col-xs-6 col-lg-2">
 						<img src="img/howitworks/home/call.png" class="img-responsive">
 						<div class="gutter-xs"></div>
 						<h2 class="text-center">Call to connect</h2>
@@ -71,7 +71,7 @@
 							Call @ +91-9313394403 to connect with the teacher.
 						</p>
 					</div>
-					<div class="col-xs-6 col-sm-2">
+					<div class="col-xs-6 col-lg-2">
 						<img src="img/howitworks/home/learn.png" class="img-responsive">
 						<div class="gutter-xs"></div>
 						<h2 class="text-center">Learn 1-on-1</h2>
@@ -121,19 +121,19 @@
 				-->
 				<div class="gutter-sm"></div>
 				<div class="row">
-					<div class="col-xs-12 col-md-6 features-feature">
+					<div class="col-xs-12 col-sm-6 features-feature">
 						<span><i class="material-icons md-18">list</i></span><h5>770+ Topics</h5>
 						<p>More than 770 topics are covered by our teachers to make sure that your education is comprehensive.</p>
 					</div>
-					<div class="col-xs-12 col-md-6 features-feature">
+					<div class="col-xs-12 col-sm-6 features-feature">
 						<span><i class="material-icons md-18">account_balance</i></span><h5>IITian teachers</h5>
 						<p>Study from experienced &amp; qualified IITian teachers.</p>
 					</div>
-					<div class="col-xs-12 col-md-6 features-feature">
+					<div class="col-xs-12 col-sm-6 features-feature">
 						<span><i class="material-icons md-18">book</i></span><h5>1-on-1 Tuition</h5>
 						<p>We emphasize on 1-on-1 tuitions so that you get undivided attention from our teachers.</p>
 					</div>
-					<div class="col-xs-12 col-md-6 features-feature">
+					<div class="col-xs-12 col-sm-6 features-feature">
 						<span><i class="material-icons md-18">home</i></span><h5>Online/Offline</h5>
 						<p>Study from the comfort of your home, either in person or online.</p>
 					</div>

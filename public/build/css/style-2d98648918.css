@@ -5250,21 +5250,34 @@ body {
   color: #2C3E50;
   outline: 0; }
 
-.navbar-light .tagline {
-  color: #ECF0F1;
-  font-size: 1.5rem; }
+.navbar-light {
+  background-color: #00A693; }
+  .navbar-light .tagline {
+    color: #ECF0F1;
+    font-size: 1.5rem; }
+  .navbar-light .navbar-brand {
+    padding: 0; }
+  .navbar-light .navbar-nav {
+    float: right; }
+    .navbar-light .navbar-nav .nav-link {
+      font-family: "robotoregular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      color: #FFFFFF; }
+      .navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
+        color: #ECF0F1; }
+    .navbar-light .navbar-nav .active .nav-link {
+      color: #2C3E50; }
 
-.navbar-light .navbar-brand {
-  padding: 0; }
-
-.navbar-light .navbar-nav .nav-link {
-  font-family: "robotoregular", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #FFFFFF; }
-  .navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
-    color: #ECF0F1; }
-
-.navbar-light .navbar-nav .active .nav-link {
-  color: #2C3E50; }
+@media (max-width: 33.9em) {
+  .navbar-toggler {
+    position: absolute;
+    right: 1rem;
+    top: 1rem; }
+  #collapsingNavbar {
+    width: 100%; }
+  .navbar-nav {
+    float: none; }
+    .navbar-nav .nav-item {
+      float: none; } }
 
 div.jumbotron.doubt {
   background-color: #2C3E50;
@@ -5399,7 +5412,27 @@ footer {
   .joinus h2 {
     font-family: "robotomedium", "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
+@media (max-width: 74.9em) {
+  .howitworks div.col-lg-2 {
+    padding-right: 5rem;
+    padding-left: 5rem;
+    margin-bottom: 1rem; }
+  .banner p {
+    margin-top: 2rem; } }
+
+@media (max-width: 47.9em) {
+  .banner p {
+    margin-top: 2rem; }
+  .features-feature h5 {
+    font-size: 1.4rem; }
+  .features-feature p {
+    font-size: .9rem; } }
+
 @media (max-width: 33.9em) {
+  .howitworks div.col-lg-2 {
+    padding-right: .9375rem;
+    padding-left: .9375rem;
+    margin-bottom: 1rem; }
   .banner div.row {
     margin-bottom: 5px; }
   .banner p {

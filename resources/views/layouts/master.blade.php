@@ -13,16 +13,17 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
 <nav class="navbar navbar-light bg-red">
+    <a class="navbar-brand" href="/">
+        <img src="/img/logo.png">
+    </a>
+    <span class="tagline pull-left hidden-md-down">private tutoring by IITians</span>
     <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
         &#9776;
     </button>
     <div class="collapse navbar-toggleable-xs" id="collapsingNavbar">
-        <a class="navbar-brand" href="/">
-            <img src="/img/logo.png">
-        </a>
-        <span class="tagline pull-left">private tutoring by IITians</span>
-        <ul class="nav navbar-nav pull-right">
+        <ul class="nav navbar-nav">
             <li class="nav-item">
                 <a class="nav-link">
                     +91-9313394403
@@ -43,26 +44,6 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ env('TEACHING_LINK') }}login">Login</a>
             </li>
-            <!--
-            <li class="nav-item">
-                <a class="nav-link" href="#">Enquiry</a>
-            </li>
-            @if (Auth::guest())
-                <li class="nav-item">
-                    <a class="nav-link" href="/auth/login">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/auth/register">Signup</a>
-                </li>
-            @else
-                <li class="nav-item">
-                    <a class="nav-link" href="/auth/logout">Logout</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/profile/{{ Auth::user()->id }}">{{ Auth::user()->name }}</a>
-                </li>
-            @endif
-            -->
         </ul>
     </div>
 </nav>
@@ -138,7 +119,7 @@
         <div class="gutter-sm"></div>
         <form class="row" action="/teachers/enquiry" method="POST">
             {{ csrf_field() }}
-            <div class="col-xs-12 col-sm-4">
+            <div class="col-xs-12 col-lg-4">
                 <div class="form-group row">
                     <div class="col-xs-3">
                         <label for="class" class="form-control-label">Class</label>
@@ -166,7 +147,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-4">
+            <div class="col-xs-12 col-lg-4">
                 <div class="form-group row">
                     <div class="col-xs-3">
                         <label for="enquiry" class="form-control-label">Enquiry<span class="required">&nbsp;*&nbsp;</span></label>
@@ -176,7 +157,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-4">
+            <div class="col-xs-12 col-lg-4">
                 <div class="form-group row">
                     <div class="col-xs-3">
                         <label for="email" class="form-control-label">Email<span class="required">&nbsp;*&nbsp;</span></label>
@@ -212,7 +193,7 @@
             <div class="col-xs-12 col-sm-3">
                 Copyright &copy; getIITians.com
             </div>
-            <div class="col-xs-12 col-sm-5">
+            <div class="col-xs-12 col-sm-6 col-md-5">
                 <ul>
                     <li>
                         <a href="/">Home</a>
@@ -242,7 +223,7 @@
                     -->
                 </ul>
             </div>
-            <div class="col-xs-12  col-sm-4">
+            <div class="col-xs-12 col-sm-3 col-md-4">
                 <!--
                     <span class="pull-right">Social icons</span>
                 -->
