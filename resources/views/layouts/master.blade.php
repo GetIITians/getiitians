@@ -25,7 +25,7 @@
     <div class="collapse navbar-toggleable-xs" id="collapsingNavbar">
         <ul class="nav navbar-nav">
             <li class="nav-item">
-                <a class="nav-link">
+                <a class="nav-link phone-no">
                     +91-9313394403
                 </a>
             </li>
@@ -44,9 +44,16 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ env('TEACHING_LINK') }}login">Login</a>
             </li>
+            <li class="nav-item">
+                <a id="signup" class="nav-link" href="{{ env('TEACHING_LINK') }}signup" >Signup</a>
+            </li>
         </ul>
     </div>
 </nav>
+<div id="signup-tooltip">
+    <span class="arrow-up"></span>
+    Sign up and get a <b>FREE</b> Demo now!
+</div>
 <!-- Header Ends -->
 @include('layouts.includes.flash')
 @yield('content')
@@ -236,6 +243,7 @@
 </div>
 
 <script src="js/vendor/jquery-2.1.4.min.js"></script>
+<script src="js/vendor/tether.min.js"></script>
 <script src="js/vendor/bootstrap/alert.js"></script>
 <script src="js/vendor/bootstrap/button.js"></script>
 <script src="js/vendor/bootstrap/carousel.js"></script>

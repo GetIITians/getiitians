@@ -3,13 +3,13 @@
 		<div class="gutter-sm"></div>
 		<div class="container-fluid" id="teachers">
 			<div class="row what-to-do">
-				<div class="col-xs-12 col-md-offset-1 col-md-2">
+				<div class="col-xs-4 col-md-offset-1 col-md-2">
 					<img src="img/howitworks/teachers/select.png" class="img-responsive">
 				</div>
-				<div class="col-xs-12 col-md-offset-2 col-md-2">
+				<div class="col-xs-4 col-md-offset-2 col-md-2">
 					<img src="img/howitworks/teachers/message.png" class="img-responsive">
 				</div>
-				<div class="col-xs-12 col-md-offset-2 col-md-2">
+				<div class="col-xs-4 col-md-offset-2 col-md-2">
 					<img src="img/howitworks/teachers/learn.png" class="img-responsive">
 				</div>
 			</div>
@@ -18,11 +18,11 @@
 					<form action="/teachers" method="POST">
 						{{ csrf_field() }}
 						<div class="form-group row">
-							<div class="col-xs-offset-1 col-xs-7">
+							<div class="col-xs-8 col-sm-offset-1 col-sm-7">
 								<input type="text" class="form-control" id="indexSearch" name="search" placeholder="Mathematics / Electromagnetics / IITJEE">
 								<small class="text-muted hidden-xs-down">You can search for any subject , class , topic or a particular teacher</small>
 							</div>
-							<div class="col-xs-3">
+							<div class="col-xs-4 col-sm-3">
 								<button type="submit" class="btn btn-primary">Search</button>
 							</div>
 						</div>
@@ -45,7 +45,7 @@
 				<main class="col-xs-12">
 					<div class="row">
 						@foreach ($teachers as $teacher)
-							<div class="col-xs-12 col-sm-4 teacher">
+							<div class="col-xs-12 col-md-4 teacher">
 								<div class="row">
 									<div class="col-xs-4 dp">
 										<img src="{{ env('TEACHING_LINK') }}{{$teacher['image'] }}" class="img-responsive-flex">

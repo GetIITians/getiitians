@@ -24,3 +24,36 @@
 .modal-content h5 {
 	font-size: 1rem;
 }
+
+.phone-no {
+	font-size: 1.4rem;
+	font-family: "roboto", "robotomedium";
+	color: white;
+	letter-spacing: 1px;
+}
+
+#signup-tooltip {
+	width: 150px;
+	height: 50px;
+	background-color: $flat-yellow;
+	color: $flat-purple;
+	position: absolute;
+	display: none;
+	padding: 5px;
+	font-size: .95rem;
+	border-radius: 2px;
+	letter-spacing: .3px;
+	b{
+		font-family: "robotomedium";
+	}
+	.arrow-up {
+		width: 0; 
+		height: 0; 
+		border-left: 10px solid transparent;
+		border-right: 10px solid transparent;
+		border-bottom: 10px solid $flat-yellow;
+		position: absolute;
+		left: 120px;
+		top: -10px;
+	}
+}

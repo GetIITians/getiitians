@@ -7,19 +7,31 @@ var helper = {
 	getStorage : function(key){
 		return JSON.parse(localStorage.getItem(key));
 	},
-	isElementInViewport : function(elem){
-		var $elem = $(elem);
+	isElementInViewport : function(el){
+		//special bonus for those using jQuery
+		if (typeof jQuery === "function" && el instanceof jQuery) {
+			el = el[0];
+		}
 
-		// Get the scroll position of the page.
-		var scrollElem = ((navigator.userAgent.toLowerCase().indexOf('webkit') != -1) ? 'body' : 'html');
-		var viewportTop = $(scrollElem).scrollTop();
-		var viewportBottom = viewportTop + $(window).height();
+		var rect = el.getBoundingClientRect();
 
-		// Get the position of the element on the page.
-		var elemTop = Math.round( $elem.offset().top );
-		var elemBottom = elemTop + $elem.height();
+		return (
+			rect.top >= 0 &&
+			rect.left >= 0 &&
+			rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && /*or $(window).height() */
+			rect.right <= (window.innerWidth || document.documentElement.clientWidth) /*or $(window).width() */
+		);
+	},
+	getPosition : function (element, variable) {
+		if (typeof jQuery === "function" && element instanceof jQuery) {
+			element = element[0];
+		}
 
-		return ((elemTop < viewportBottom) && (elemBottom > viewportTop));
+		var rect = element.getBoundingClientRect();
+		if(arguments.length == 1)
+			return rect;
+		else
+			return rect[variable];
 	},
 	toType : function(obj){
 		return ({}).toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase();

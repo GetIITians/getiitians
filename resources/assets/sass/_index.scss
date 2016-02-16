@@ -37,29 +37,34 @@
 	h2{
 		color: $white;
 		font-family: $font-light;
-		font-size: 1.3rem;
+		font-size: 1.5rem;
+		margin-top: 1rem;
 	}
 	p{
-		font-size: .9rem;
+		font-size: .95rem;
+		letter-spacing: .5px;
 	}
 	@include media-breakpoint-down(xs){
 		h1.display-3{
 			font-size: 3rem;
 		}
 	}
+	.step{
+		padding-left: 6rem;
+		padding-right: 6rem;
+	}
 }
 
 .features{
 	background-color: $white;
 	color: $flat-purple;
-	margin-bottom: 5rem;
 }
 
 .features-feature {
 	margin-bottom: 2rem;
   span {
     padding: .5rem 1rem;
-    border: 1px solid $white-darker;
+    border: 2px solid $flat-red;
     border-radius: .1rem;
     i{
       vertical-align: middle;
@@ -71,11 +76,17 @@
   	vertical-align: middle;
     font-family: $font-regular; 
     padding-left: 1rem;
-    font-size: 2rem;
-    letter-spacing: 1px;
+    font-size: 1.7rem;
+    letter-spacing: .3px;
   }
-  p{
-    margin-top: 1rem;
+  ul{
+  	padding-left: 0;
+  	list-style-type: none;
+  	li{
+	border-left: 2px solid $flat-red;
+    padding-left: 1rem;
+    margin-bottom: .3rem;
+    margin-top: .3rem;  	}
   }
 }
 
@@ -102,8 +113,8 @@
 
 .numbers{
 	color: $flat-purple;
-	margin-bottom: 5rem;
-	margin-top: 5rem;
+	margin-bottom: 3rem;
+	margin-top: 2rem;
 	div{
 		text-align: center;
 		font-size: 2rem;
@@ -134,7 +145,40 @@
 		font-family: $font-medium;
 	}
 }
-@include media-breakpoint-down(lg){
+
+.why-getIITians {
+	.why-single{
+		margin-top: 1rem;
+		margin-bottom: 5rem;
+	}
+	ul{
+		padding-left: 0;
+		list-style-type: none;
+	}
+	span{
+		padding: 0.5rem;
+		border: 2px solid $flat-red;
+	}
+	i{
+		vertical-align: middle;
+		color: $flat-red;
+	}
+	h5{
+		vertical-align: middle;
+		margin-left: 1rem;
+		display: inline-block;
+		font-family: $font-medium;
+	}
+	li{
+		margin: .3rem auto;
+		i{
+			margin-right: .2rem;
+		}
+	}
+}
+
+/*
+@include media-breakpoint-up(sm){
 	.howitworks div.col-lg-2{
 		padding-right: 5rem;
 		padding-left: 5rem;
@@ -146,6 +190,7 @@
 		}
 	}
 }
+*/
 
 @include media-breakpoint-down(sm){
 	.banner{
@@ -161,15 +206,16 @@
 			font-size: .9rem;
 		}
 	}
+	.numbers{
+		margin-bottom: 1rem;
+		div ul li{
+			margin: 0 1px;
+			padding: 3px 10px;
+		}
+	}
 }
 
 @include media-breakpoint-down(xs){
-	.howitworks div.col-lg-2{
-		padding-right: .9375rem;
-		padding-left: .9375rem;
-		margin-bottom: 1rem;
-	}
-
 	.banner{
 		div.row{
 			margin-bottom: 5px;
@@ -217,5 +263,15 @@
 			font-family: $font-regular;
 			font-size: .9rem;
 		}
+	}
+	.why-getIITians h2{
+		font-size: 3rem;
+	}
+	.features h1{
+		font-size: 2rem;
+	}
+	.howitworks .step {
+		padding-left: 1rem;
+		padding-right: 1rem;
 	}
 }

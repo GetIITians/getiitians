@@ -5200,7 +5200,7 @@ div.one-line {
     vertical-align: middle; }
 
 .modal-custom-header {
-  background-color: #E4D422;
+  background-color: #f1c40f;
   color: #2C3E50;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
@@ -5214,6 +5214,10 @@ div.one-line {
   font-size: 0.9rem; }
   .modal-custom i.material-icons {
     vertical-align: middle; }
+
+b {
+  font-family: "robotomedium";
+  font-weight: 500; }
 
 .form-control-label {
   padding-left: 0; }
@@ -5235,6 +5239,35 @@ div.one-line {
 
 .modal-content h5 {
   font-size: 1rem; }
+
+.phone-no {
+  font-size: 1.4rem;
+  font-family: "roboto", "robotomedium";
+  color: white;
+  letter-spacing: 1px; }
+
+#signup-tooltip {
+  width: 150px;
+  height: 50px;
+  background-color: #f1c40f;
+  color: #2C3E50;
+  position: absolute;
+  display: none;
+  padding: 5px;
+  font-size: .95rem;
+  border-radius: 2px;
+  letter-spacing: .3px; }
+  #signup-tooltip b {
+    font-family: "robotomedium"; }
+  #signup-tooltip .arrow-up {
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #f1c40f;
+    position: absolute;
+    left: 120px;
+    top: -10px; }
 
 body {
   font-family: "robotoregular", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -5340,23 +5373,27 @@ footer {
   .howitworks h2 {
     color: #FFFFFF;
     font-family: "robotolight", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 1.3rem; }
+    font-size: 1.5rem;
+    margin-top: 1rem; }
   .howitworks p {
-    font-size: .9rem; }
+    font-size: .95rem;
+    letter-spacing: .5px; }
   @media (max-width: 33.9em) {
     .howitworks h1.display-3 {
       font-size: 3rem; } }
+  .howitworks .step {
+    padding-left: 6rem;
+    padding-right: 6rem; }
 
 .features {
   background-color: #FFFFFF;
-  color: #2C3E50;
-  margin-bottom: 5rem; }
+  color: #2C3E50; }
 
 .features-feature {
   margin-bottom: 2rem; }
   .features-feature span {
     padding: .5rem 1rem;
-    border: 1px solid #BBBBBB;
+    border: 2px solid #00A693;
     border-radius: .1rem; }
     .features-feature span i {
       vertical-align: middle;
@@ -5366,10 +5403,16 @@ footer {
     vertical-align: middle;
     font-family: "robotoregular", "Helvetica Neue", Helvetica, Arial, sans-serif;
     padding-left: 1rem;
-    font-size: 2rem;
-    letter-spacing: 1px; }
-  .features-feature p {
-    margin-top: 1rem; }
+    font-size: 1.7rem;
+    letter-spacing: .3px; }
+  .features-feature ul {
+    padding-left: 0;
+    list-style-type: none; }
+    .features-feature ul li {
+      border-left: 2px solid #00A693;
+      padding-left: 1rem;
+      margin-bottom: .3rem;
+      margin-top: .3rem; }
 
 #index-reviews {
   margin-bottom: 5rem;
@@ -5388,8 +5431,8 @@ footer {
 
 .numbers {
   color: #2C3E50;
-  margin-bottom: 5rem;
-  margin-top: 5rem; }
+  margin-bottom: 3rem;
+  margin-top: 2rem; }
   .numbers div {
     text-align: center;
     font-size: 2rem; }
@@ -5414,27 +5457,61 @@ footer {
   .joinus h2 {
     font-family: "robotomedium", "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
-@media (max-width: 74.9em) {
-  .howitworks div.col-lg-2 {
-    padding-right: 5rem;
-    padding-left: 5rem;
-    margin-bottom: 1rem; }
-  .banner p {
-    margin-top: 2rem; } }
+.why-getIITians .why-single {
+  margin-top: 1rem;
+  margin-bottom: 5rem; }
 
+.why-getIITians ul {
+  padding-left: 0;
+  list-style-type: none; }
+
+.why-getIITians span {
+  padding: 0.5rem;
+  border: 2px solid #00A693; }
+
+.why-getIITians i {
+  vertical-align: middle;
+  color: #00A693; }
+
+.why-getIITians h5 {
+  vertical-align: middle;
+  margin-left: 1rem;
+  display: inline-block;
+  font-family: "robotomedium", "Helvetica Neue", Helvetica, Arial, sans-serif; }
+
+.why-getIITians li {
+  margin: .3rem auto; }
+  .why-getIITians li i {
+    margin-right: .2rem; }
+
+/*
+@include media-breakpoint-up(sm){
+	.howitworks div.col-lg-2{
+		padding-right: 5rem;
+		padding-left: 5rem;
+		margin-bottom: 1rem;
+	}
+	.banner{
+		p{
+			margin-top: 2rem;
+		}
+	}
+}
+*/
 @media (max-width: 47.9em) {
   .banner p {
     margin-top: 2rem; }
   .features-feature h5 {
     font-size: 1.4rem; }
   .features-feature p {
-    font-size: .9rem; } }
+    font-size: .9rem; }
+  .numbers {
+    margin-bottom: 1rem; }
+    .numbers div ul li {
+      margin: 0 1px;
+      padding: 3px 10px; } }
 
 @media (max-width: 33.9em) {
-  .howitworks div.col-lg-2 {
-    padding-right: .9375rem;
-    padding-left: .9375rem;
-    margin-bottom: 1rem; }
   .banner div.row {
     margin-bottom: 5px; }
   .banner p {
@@ -5466,7 +5543,14 @@ footer {
           margin: 0 1px; }
   .joinus h2 {
     font-family: "robotoregular", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: .9rem; } }
+    font-size: .9rem; }
+  .why-getIITians h2 {
+    font-size: 3rem; }
+  .features h1 {
+    font-size: 2rem; }
+  .howitworks .step {
+    padding-left: 1rem;
+    padding-right: 1rem; } }
 
 #teachers section .col-sm-offset-4 h3 {
   display: inline-block;
