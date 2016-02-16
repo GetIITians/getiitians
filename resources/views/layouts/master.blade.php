@@ -20,7 +20,7 @@
     </a>
     <span class="tagline pull-left hidden-md-down">private tutoring by IITians</span>
     <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
-        &#9776;
+        <i class="material-icons md-18">dehaze</i>
     </button>
     <div class="collapse navbar-toggleable-xs" id="collapsingNavbar">
         <ul class="nav navbar-nav">
