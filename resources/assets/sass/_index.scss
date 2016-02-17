@@ -56,12 +56,16 @@
 }
 
 .features{
-	background-color: $white;
-	color: $flat-purple;
+	background-color: $flat-purple;
+	color: $flat-white;
 }
 
 .features-feature {
 	margin-bottom: 2rem;
+	.icon{
+		text-align: center;
+		color: $flat-rednew;
+	}
   span {
     padding: .5rem 1rem;
     border: 2px solid $flat-red;
@@ -73,21 +77,19 @@
     }
   }
   h5 {
+  	color: $flat-red;
   	display: inline;
-  	vertical-align: middle;
-    font-family: $font-regular; 
-    padding-left: 1rem;
-    font-size: 1.7rem;
+    font-family: $font-medium;
+    font-weight: 500;
+    font-size: 1.2rem;
     letter-spacing: .3px;
+    text-transform: uppercase;
   }
   ul{
   	padding-left: 0;
-  	list-style-type: none;
   	li{
-	border-left: 2px solid $flat-red;
-    padding-left: 1rem;
-    margin-bottom: .3rem;
-    margin-top: .3rem;  	}
+    	margin-bottom: .3rem;
+    	margin-top: .3rem;  	}
   }
 }
 
@@ -148,35 +150,12 @@
 }
 
 .why-getIITians {
-	.why-single{
-		margin-top: 1rem;
-		margin-bottom: 5rem;
-	}
-	ul{
-		padding-left: 0;
-		list-style-type: none;
-	}
-	span{
-		padding: 0.5rem;
-		border: 2px solid $flat-red;
-		display: inline-block;
-	}
-	i{
-		vertical-align: middle;
-		color: $flat-red;
-	}
-	h5{
-		vertical-align: middle;
-		margin-left: 1rem;
-		display: inline;
+	.card-title{
+		font-size: 1.7rem;
 		font-family: $font-medium;
 	}
-	li{
-		margin: .3rem auto;
-		i{
-			margin-right: .2rem;
-		}
-	}
+	margin-bottom: 5rem;
+	margin-top: 5rem;
 }
 
 @include media-breakpoint-down(sm){
@@ -247,10 +226,10 @@
 			ul{
 				border: 0;
 				li{
-					font-size: 1.9rem;
-					padding: 3px 6px;
+					font-size: 1.7rem;
+					padding: 3px 5px;
 					margin: 0 1px;
-					border-color: #ccc;
+					border: 0;
 				}
 			}
 		}
@@ -262,7 +241,10 @@
 		}
 	}
 	.why-getIITians h2{
-		font-size: 3rem;
+		font-size: 2rem;
+	}
+	.why-single {
+		margin-bottom: 2rem;
 	}
 	.features h1{
 		font-size: 2rem;

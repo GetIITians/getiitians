@@ -4906,6 +4906,9 @@ a.bg-danger:focus, a.bg-danger:hover {
 .material-icons.md-72 {
   font-size: 72px; }
 
+.material-icons.md-120 {
+  font-size: 120px; }
+
 .material-icons.md-dark {
   color: rgba(0, 0, 0, 0.54); }
 
@@ -5387,11 +5390,14 @@ footer {
     padding-right: 6rem; }
 
 .features {
-  background-color: #FFFFFF;
-  color: #2C3E50; }
+  background-color: #2C3E50;
+  color: #ECF0F1; }
 
 .features-feature {
   margin-bottom: 2rem; }
+  .features-feature .icon {
+    text-align: center;
+    color: #E74C3C; }
   .features-feature span {
     padding: .5rem 1rem;
     border: 2px solid #00A693;
@@ -5401,18 +5407,16 @@ footer {
       vertical-align: middle;
       color: #00A693; }
   .features-feature h5 {
+    color: #00A693;
     display: inline;
-    vertical-align: middle;
-    font-family: "robotoregular", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    padding-left: 1rem;
-    font-size: 1.7rem;
-    letter-spacing: .3px; }
+    font-family: "robotomedium", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 500;
+    font-size: 1.2rem;
+    letter-spacing: .3px;
+    text-transform: uppercase; }
   .features-feature ul {
-    padding-left: 0;
-    list-style-type: none; }
+    padding-left: 0; }
     .features-feature ul li {
-      border-left: 2px solid #00A693;
-      padding-left: 1rem;
       margin-bottom: .3rem;
       margin-top: .3rem; }
 
@@ -5460,33 +5464,12 @@ footer {
   .joinus h2 {
     font-family: "robotomedium", "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
-.why-getIITians .why-single {
-  margin-top: 1rem;
-  margin-bottom: 5rem; }
-
-.why-getIITians ul {
-  padding-left: 0;
-  list-style-type: none; }
-
-.why-getIITians span {
-  padding: 0.5rem;
-  border: 2px solid #00A693;
-  display: inline-block; }
-
-.why-getIITians i {
-  vertical-align: middle;
-  color: #00A693; }
-
-.why-getIITians h5 {
-  vertical-align: middle;
-  margin-left: 1rem;
-  display: inline;
-  font-family: "robotomedium", "Helvetica Neue", Helvetica, Arial, sans-serif; }
-
-.why-getIITians li {
-  margin: .3rem auto; }
-  .why-getIITians li i {
-    margin-right: .2rem; }
+.why-getIITians {
+  margin-bottom: 5rem;
+  margin-top: 5rem; }
+  .why-getIITians .card-title {
+    font-size: 1.7rem;
+    font-family: "robotomedium", "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
 @media (max-width: 47.9em) {
   .banner p {
@@ -5533,15 +5516,17 @@ footer {
       .numbers div ul {
         border: 0; }
         .numbers div ul li {
-          font-size: 1.9rem;
-          padding: 3px 6px;
+          font-size: 1.7rem;
+          padding: 3px 5px;
           margin: 0 1px;
-          border-color: #ccc; }
+          border: 0; }
   .joinus h2 {
     font-family: "robotoregular", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: .9rem; }
   .why-getIITians h2 {
-    font-size: 3rem; }
+    font-size: 2rem; }
+  .why-single {
+    margin-bottom: 2rem; }
   .features h1 {
     font-size: 2rem; }
   .howitworks .step {
@@ -5644,6 +5629,11 @@ footer {
 
 #teachers .teacher {
   margin-bottom: 5rem; }
+  #teachers .teacher span.label {
+    background-color: #2C3E50;
+    margin-left: 1rem;
+    font-size: .8rem;
+    padding: .2rem; }
   #teachers .teacher .dp {
     height: 10rem;
     overflow: hidden; }

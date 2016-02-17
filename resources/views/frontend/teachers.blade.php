@@ -51,7 +51,7 @@
 										<img src="{{ env('TEACHING_LINK') }}{{$teacher['image'] }}" class="img-responsive-flex">
 									</div>
 									<div class="col-xs-8">
-										<h4 class="card-title">{{ ucwords(strtolower($teacher['name'])) }}</h4>
+										<h4 class="card-title">{{ ucwords(strtolower($teacher['name'])) }}<span class="label">GT<?php printf("%04d", $teacher['id']); ?></span></h4>
 										<small>{{ $teacher['degree'] }} [ {{ $teacher['college'] }} ]</small>
 										<hr>
 										<p>{{ $teacher['introduction'] }}</p>

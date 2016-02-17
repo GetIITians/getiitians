@@ -107,85 +107,138 @@
 				<div class="gutter-sm"></div>
 				<div class="row">
 					<div class="col-xs-12 col-sm-6 features-feature">
-						<span><i class="material-icons md-18">person</i></span><h5>Personalized 1-to-1 tutoring</h5>
-						<ul>
-							<li>Dedicated attention to the student</li>
-							<li>Moving at student's speed</li>
-						</ul>
+						<div class="row">
+							<div class="col-xs-3 icon">
+								<i class="material-icons md-48">person</i>
+							</div>
+							<div class="col-xs-9">
+								<ul>
+									<h5>Personalized 1-to-1 tutoring</h5>
+									<li>Dedicated attention to the student</li>
+									<li>Moving at student's speed</li>
+								</ul>
+							</div>
+						</div>
 					</div>
 					<div class="col-xs-12 col-sm-6 features-feature">
-						<span><i class="material-icons md-18">access_time</i></span><h5>Flexibility of time</h5>
-						<ul>
-							<li>Save on commute time</li>
-							<li>Study at your own convenient time</li>
-						</ul>
+						<div class="row">
+							<div class="col-xs-3 icon">
+								<i class="material-icons md-48">access_time</i>
+							</div>
+							<div class="col-xs-9">
+								<ul>
+									<h5>Flexibility of time</h5>
+									<li>Save on commute time</li>
+									<li>Study at your own convenient time</li>
+								</ul>
+							</div>
+						</div>
 					</div>
 					<div class="col-xs-12 col-sm-6 features-feature">
-						<span><i class="material-icons md-18">playlist_add</i></span><h5>Study any topic</h5>
-						<ul>
-							<li>Study any particular topic</li>
-							<li>Take multiple sessions for one topic</li>
-						</ul>
+						<div class="row">
+							<div class="col-xs-3 icon">
+								<i class="material-icons md-48">playlist_add</i>
+							</div>
+							<div class="col-xs-9">
+								<ul>
+									<h5>Study any topic</h5>
+									<li>Study any particular topic</li>
+									<li>Take multiple sessions for one topic</li>
+								</ul>
+							</div>
+						</div>
 					</div>
 					<div class="col-xs-12 col-sm-6 features-feature">
-						<span><i class="material-icons md-18">group_work</i></span><h5>Better than coaching</h5>
-						<ul>
-							<li>Ask any number of doubts without hesitation</li>
-							<li>Design your own study plan</li>
-						</ul>
+						<div class="row">
+							<div class="col-xs-3 icon">
+								<i class="material-icons md-48">group_work</i>
+							</div>
+							<div class="col-xs-9">
+								<ul>
+									<h5>Better than coaching</h5>
+									<li>Ask any number of doubts without hesitation</li>
+									<li>Design your own study plan</li>
+								</ul>
+							</div>
+						</div>
 					</div>
 					<div class="col-xs-12 col-sm-6 features-feature">
-						<span><i class="material-icons md-18">desktop_mac</i></span><h5>Superior to recorded lecture</h5>
-						<ul>
-							<li>Ask doubts anytime during the session</li>
-							<li>Personal counselling</li>
-						</ul>
+						<div class="row">
+							<div class="col-xs-3 icon">
+								<i class="material-icons md-48">desktop_mac</i>
+							</div>
+							<div class="col-xs-9">
+								<ul>
+									<h5>Superior to recorded lecture</h5>
+									<li>Ask doubts anytime during the session</li>
+									<li>Personal counselling</li>
+								</ul>
+							</div>
+						</div>
 					</div>
 					<div class="col-xs-12 col-sm-6 features-feature">
-						<span><i class="material-icons md-18">home</i></span><h5>Study anywhere</h5>
-						<ul>
-							<li>Study at place of your choice - Home, Online or Center</li>
-							<li>Hassle free parents of drop , pick-up tension</li>
-						</ul>
+						<div class="row">
+							<div class="col-xs-3 icon">
+								<i class="material-icons md-48">home</i>
+							</div>
+							<div class="col-xs-9">
+								<ul>
+									<h5>Study anywhere</h5>
+									<li>Study at place of your choice - Home, Online or Center</li>
+									<li>Hassle free parents of drop , pick-up tension</li>
+								</ul>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="container-fluid why-getIITians">
+		<div class="container why-getIITians">
 			<div class="row">
 				<div class="col-xs-12">
 					<h2 class="display-1 text-center">Why getIITians?</h2>
 					<hr>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-xs-12 col-sm-4 why-single">
-					<span><i class="material-icons md-24">group</i></span><h5>IITian teachers</h5>
-					<ul>
-						<li><i class="material-icons md-18">check</i>Teacher who have successful cleared these exams</li>
-						<li><i class="material-icons md-18">check</i>Strong emphasis on concepts</li>
-						<li><i class="material-icons md-18">check</i>Personal mentoring for facing competition</li>
-						<li><i class="material-icons md-18">check</i>Well versed with students psychology</li>
-					</ul>
-				</div>
-				<div class="col-xs-12 col-sm-4 why-single">
-					<span><i class="material-icons md-24">email</i></span><h5>Dedicated academic team</h5>
-					<ul>
-						<li><i class="material-icons md-18">check</i>Updated curriculum for competitive,board exams</li>
-						<li><i class="material-icons md-18">check</i>Designing tests &amp; analysis</li>
-						<li><i class="material-icons md-18">check</i>Rigorous study of exam pattern,last year paper</li>
-						<li><i class="material-icons md-18">check</i>Formulating revision strategy</li>
-						<li><i class="material-icons md-18">check</i>Regular follow up with Parents - Teacher meet</li>
-					</ul>
-				</div>
-				<div class="col-xs-12 col-sm-4 why-single">
-					<span><i class="material-icons md-24">event_note</i></span><h5>Customized syllabus</h5>
-					<ul>
-						<li><i class="material-icons md-18">check</i>Register for a single topic also</li>
-						<li><i class="material-icons md-18">check</i>Learn at your own pace</li>
-						<li><i class="material-icons md-18">check</i>Balance between school,self-study and other classes</li>
-						<li><i class="material-icons md-18">check</i>Detailed study planner per student</li>
-					</ul>
+			<div class="card-deck">
+				<div class="row">
+					<div class="card text-xs-center col-xs-12 col-sm-4">
+						<div class="card-block">
+							<h4 class="card-title">IITian teachers</h4>
+							<i class="material-icons md-120">group</i>
+						</div>
+						<ul class="list-group list-group-flush">
+							<li class="list-group-item">Teacher who have successful cleared these exams</li>
+							<li class="list-group-item">Strong emphasis on concepts</li>
+							<li class="list-group-item">Personal mentoring for facing competition</li>
+							<li class="list-group-item">Well versed with students psychology</li>
+						</ul>				
+					</div>
+					<div class="card text-xs-center col-xs-12 col-sm-4">
+						<div class="card-block">
+							<h4 class="card-title">Dedicated academic team</h4>
+							<i class="material-icons md-120">email</i>
+						</div>
+						<ul class="list-group list-group-flush">
+							<li class="list-group-item">Updated curriculum for competitive,board exams</li>
+							<li class="list-group-item">Designing tests &amp; analysis</li>
+							<li class="list-group-item">Rigorous study of exam pattern,last year paper</li>
+							<li class="list-group-item">Formulating revision strategy</li>
+							<li class="list-group-item">Regular follow up with Parents - Teacher meet</li>
+						</ul>				
+					</div>
+					<div class="card text-xs-center col-xs-12 col-sm-4">
+						<div class="card-block">
+							<h4 class="card-title">Customized syllabus</h4>
+							<i class="material-icons md-120">event_note</i>
+						</div>
+						<ul class="list-group list-group-flush">
+							<li class="list-group-item">Register for a single topic also</li>
+							<li class="list-group-item">Learn at your own pace</li>
+							<li class="list-group-item">Balance between school,self-study and other classes</li>
+							<li class="list-group-item">Detailed study planner per student</li>
+						</ul>				
+					</div>
 				</div>
 			</div>
 		</div>
