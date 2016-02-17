@@ -5395,12 +5395,13 @@ footer {
   .features-feature span {
     padding: .5rem 1rem;
     border: 2px solid #00A693;
-    border-radius: .1rem; }
+    border-radius: .1rem;
+    display: inline-block; }
     .features-feature span i {
       vertical-align: middle;
       color: #00A693; }
   .features-feature h5 {
-    display: inline-block;
+    display: inline;
     vertical-align: middle;
     font-family: "robotoregular", "Helvetica Neue", Helvetica, Arial, sans-serif;
     padding-left: 1rem;
@@ -5469,7 +5470,8 @@ footer {
 
 .why-getIITians span {
   padding: 0.5rem;
-  border: 2px solid #00A693; }
+  border: 2px solid #00A693;
+  display: inline-block; }
 
 .why-getIITians i {
   vertical-align: middle;
@@ -5478,7 +5480,7 @@ footer {
 .why-getIITians h5 {
   vertical-align: middle;
   margin-left: 1rem;
-  display: inline-block;
+  display: inline;
   font-family: "robotomedium", "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
 .why-getIITians li {
@@ -5489,6 +5491,8 @@ footer {
 @media (max-width: 47.9em) {
   .banner p {
     margin-top: 2rem; }
+  .features h1 {
+    font-size: 2.5rem; }
   .features-feature h5 {
     font-size: 1.4rem; }
   .features-feature p {

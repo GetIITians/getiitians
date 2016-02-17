@@ -66,13 +66,14 @@
     padding: .5rem 1rem;
     border: 2px solid $flat-red;
     border-radius: .1rem;
+    display: inline-block;
     i{
       vertical-align: middle;
       color: $flat-red;
     }
   }
   h5 {
-  	display: inline-block;
+  	display: inline;
   	vertical-align: middle;
     font-family: $font-regular; 
     padding-left: 1rem;
@@ -158,6 +159,7 @@
 	span{
 		padding: 0.5rem;
 		border: 2px solid $flat-red;
+		display: inline-block;
 	}
 	i{
 		vertical-align: middle;
@@ -166,7 +168,7 @@
 	h5{
 		vertical-align: middle;
 		margin-left: 1rem;
-		display: inline-block;
+		display: inline;
 		font-family: $font-medium;
 	}
 	li{
@@ -181,6 +183,11 @@
 	.banner{
 		p{
 			margin-top: 2rem;
+		}
+	}
+	.features{
+		h1{
+			font-size: 2.5rem;
 		}
 	}
 	.features-feature {
