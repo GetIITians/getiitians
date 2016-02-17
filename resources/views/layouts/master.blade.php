@@ -256,7 +256,6 @@
 <script src="js/vendor/bootstrap/tab.js"></script>
 <script src="js/vendor/bootstrap/util.js"></script>
 
-<script src="https://maps.googleapis.com/maps/api/js"></script>
 <script src="js/all.js"></script>
 <!--
 <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></'

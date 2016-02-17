@@ -45,6 +45,7 @@
 				</form>
 			</div>
 		</div>
+		<script src="https://maps.googleapis.com/maps/api/js"></script>
 		<script type="text/javascript">
 			var myCenter = new google.maps.LatLng(28.542381, 77.203569);
 			function initialize() {

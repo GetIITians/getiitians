@@ -222,6 +222,7 @@ $(function () {
 				clearInterval(intervalID);
 			};
 		}, 5000);
+		general.showSignup();
 	});
 
 	$(document).on('click','#enquiryModalDismiss', function(event) {
@@ -263,15 +264,20 @@ $(function () {
 		return false;
 	});
 
-	var signupLink = $('#signup');
-	if (signupLink.is(":visible")) {
-		var signupTooltip = $('#signup-tooltip');
-		var signupLeft = (helper.getPosition(signupLink, 'left')+helper.getPosition(signupLink, 'width')-150);
-		var signupTop = (helper.getPosition(signupLink, 'top') + helper.getPosition(signupLink, 'height')+10);
-		signupTooltip.css({top: signupTop, left: signupLeft});
-		signupTooltip.show();
-	};
 });
+
+var general = {
+	showSignup : function() {
+		var signupLink = $('#signup');
+		if (signupLink.is(":visible")) {
+			var signupTooltip = $('#signup-tooltip');
+			var signupLeft = (helper.getPosition(signupLink, 'left')+helper.getPosition(signupLink, 'width')-150);
+			var signupTop = (helper.getPosition(signupLink, 'top') + helper.getPosition(signupLink, 'height')+10);
+			signupTooltip.css({top: signupTop, left: signupLeft});
+			signupTooltip.fadeIn('slow');
+		};
+	}
+}
 $(function () {
 	$('[data-toggle="popover"]').popover({
 		trigger: 'focus',

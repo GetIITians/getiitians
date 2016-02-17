@@ -177,21 +177,6 @@
 	}
 }
 
-/*
-@include media-breakpoint-up(sm){
-	.howitworks div.col-lg-2{
-		padding-right: 5rem;
-		padding-left: 5rem;
-		margin-bottom: 1rem;
-	}
-	.banner{
-		p{
-			margin-top: 2rem;
-		}
-	}
-}
-*/
-
 @include media-breakpoint-down(sm){
 	.banner{
 		p{
@@ -212,6 +197,10 @@
 			margin: 0 1px;
 			padding: 3px 10px;
 		}
+	}
+	.howitworks .step {
+		padding-left: 1rem;
+		padding-right: 1rem;
 	}
 }
 
@@ -251,9 +240,10 @@
 			ul{
 				border: 0;
 				li{
-					font-size: 1rem;
+					font-size: 1.9rem;
 					padding: 3px 6px;
 					margin: 0 1px;
+					border-color: #ccc;
 				}
 			}
 		}

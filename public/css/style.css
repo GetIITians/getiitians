@@ -5256,7 +5256,8 @@ b {
   padding: 5px;
   font-size: .95rem;
   border-radius: 2px;
-  letter-spacing: .3px; }
+  letter-spacing: .3px;
+  z-index: 2; }
   #signup-tooltip b {
     font-family: "robotomedium"; }
   #signup-tooltip .arrow-up {
@@ -5484,20 +5485,6 @@ footer {
   .why-getIITians li i {
     margin-right: .2rem; }
 
-/*
-@include media-breakpoint-up(sm){
-	.howitworks div.col-lg-2{
-		padding-right: 5rem;
-		padding-left: 5rem;
-		margin-bottom: 1rem;
-	}
-	.banner{
-		p{
-			margin-top: 2rem;
-		}
-	}
-}
-*/
 @media (max-width: 47.9em) {
   .banner p {
     margin-top: 2rem; }
@@ -5509,7 +5496,10 @@ footer {
     margin-bottom: 1rem; }
     .numbers div ul li {
       margin: 0 1px;
-      padding: 3px 10px; } }
+      padding: 3px 10px; }
+  .howitworks .step {
+    padding-left: 1rem;
+    padding-right: 1rem; } }
 
 @media (max-width: 33.9em) {
   .banner div.row {
@@ -5538,9 +5528,10 @@ footer {
       .numbers div ul {
         border: 0; }
         .numbers div ul li {
-          font-size: 1rem;
+          font-size: 1.9rem;
           padding: 3px 6px;
-          margin: 0 1px; }
+          margin: 0 1px;
+          border-color: #ccc; }
   .joinus h2 {
     font-family: "robotoregular", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: .9rem; }
