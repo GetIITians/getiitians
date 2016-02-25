@@ -12,10 +12,9 @@ class CreateTeacherTopicPivotTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_topic', function (Blueprint $table) {
-			$table->integer('user_id', false, true)->index();
+        Schema::create('teacher_topic', function (Blueprint $table) {
+			$table->integer('teacher_id', false, true)->index();
 			$table->integer('topic_id', false, true)->index();
-			$table->integer('fees', false, true);
 			$table->timestamps();
         });
     }
@@ -27,6 +26,6 @@ class CreateTeacherTopicPivotTable extends Migration
      */
     public function down()
     {
-        Schema::drop('user_topic');
+        Schema::drop('teacher_topic');
     }
 }

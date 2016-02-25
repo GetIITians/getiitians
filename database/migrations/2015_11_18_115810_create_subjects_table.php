@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTimeslotsTable extends Migration
+class CreateSubjectsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,12 @@ class CreateTimeslotsTable extends Migration
      */
     public function up()
     {
-        Schema::create('timeslots', function (Blueprint $table) {
+        Schema::create('subjects', function (Blueprint $table) {
             $table->increments('id');
-			$table->integer('teacher_id', false, true)->index();
-            $table->integer('session_id', false, true)->index()->nullable()->default(null);
-			$table->timestamp('slot');
-            $table->timestamps();
+            $table->integer('grade_id', false, true)->index();
+			$table->string('name')->index();
+            $table->integer('fees', false, true);
+			$table->timestamps();
         });
     }
 
@@ -28,6 +28,6 @@ class CreateTimeslotsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('timeslots');
+        Schema::drop('subjects');
     }
 }

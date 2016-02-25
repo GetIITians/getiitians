@@ -14,14 +14,13 @@ class CreateTransactionsTable extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('amount', false, true);
 			$table->integer('user_id', false, true)->index();
-			$table->json('content');
-			$table->integer('eot_balance')->nullable()->default(0);
-			$table->integer('debit')->nullable()->default(null);
-			$table->integer('credit')->nullable()->default(null);
-			$table->integer('session_id', false, true)->index()->nullable()->default(null);
-			$table->integer('payumoney')->nullable()->default(null);
-			$table->string('payumoney_txn_id')->nullable()->default(null);
+			$table->boolean('type'); // withdrawal(0) / deposit(1)
+            $table->string('mode'); //  Virtual / PayU / Cash / Cheque / DD
+            $table->integer('eot_balance')->nullable()->default(0);
+            $table->string('category'); // Monthly Payment / Lumpsum / Class Booking
+            $table->string('note'); // January Monthly Payment
             $table->timestamps();
         });
     }

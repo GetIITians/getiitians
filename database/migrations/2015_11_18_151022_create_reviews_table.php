@@ -15,7 +15,7 @@ class CreateReviewsTable extends Migration
         Schema::create('reviews', function (Blueprint $table) {
             $table->increments('id');
 			$table->integer('student_id', false, true)->index();
-			$table->integer('session_id', false, true)->index();
+			$table->integer('session_id', false, true)->index()->nullable()->default(null);
 			$table->integer('teacher_id', false, true)->index();
 			$table->string('review', 1000);
 			$table->string('rating', 2);

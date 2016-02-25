@@ -18,7 +18,7 @@ class CreateEnquiriesTable extends Migration
 			$table->string('subject')->nullable()->default(null);
 			$table->string('topic')->nullable()->default(null);
 			$table->string('enquiry', 1000);
-			$table->string('email');
+			$table->string('email')->nullable()->default(null);
 			$table->bigInteger('phone')->nullable()->default(null);
             $table->timestamps();
         });

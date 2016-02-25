@@ -33,17 +33,23 @@ class User extends Model implements AuthenticatableContract,
 		'name',
 		'email',
 		'password',
+		'picture',
 		'gender',
 		'image_url',
 		'date_of_birth',
+		'introduction',
 		'address_country',
 		'address_city',
 		'address_state',
 		'address_pin',
 		'phone',
-		'confirmed',
-		'confirmation_code',
-		'remember_token'
+		'email_confirmed',
+		'email_confirmation_code',
+		'phone_confirmed',
+		'phone_confirmation_code',
+		'remember_token',
+		'deriveable_id',
+		'deriveable_type'
 	];
 
 	/**
@@ -71,165 +77,11 @@ class User extends Model implements AuthenticatableContract,
 	}
 
 	/**
-	 * Get the Roles for the User.
-	 *
-	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
-	 */
-	public function roles()
-	{
-		return $this->belongsToMany('App\Role')->withTimestamps();
-	}
-
-	/**
-	 * Get the Topics for the User.
-	 *
-	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
-	 */
-	public function topics()
-	{
-		return $this->belongsToMany('App\Topic')->withTimestamps()->withPivot('fees');
-	}
-
-	/**
-	 * Get the Qualifications for the User.
-	 *
-	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
-	 */
-	public function qualifications()
-	{
-		return $this->hasMany('App\Qualification');
-	}
-
-	/**
-	 * Get the Timeslots for the User.
-	 *
-	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
-	 */
-	public function timeslots()
-	{
-		return $this->hasMany('App\Timeslot');
-	}
-
-	/**
-	 * Get the Classes for the Teacher.
-	 *
-	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
-	 */
-	public function teachersessions()
-	{
-		return $this->hasMany('App\Session', 'teacher_id');
-	}
-
-	/**
-	 * Get the Classes for the Teacher.
-	 *
-	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
-	 */
-	public function studentsessions()
-	{
-		return $this->hasMany('App\Session', 'student_id');
-	}
-
-	/**
-	 * Get the Classes for the Teacher.
-	 *
-	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
-	 */
-	public function teacherreviews()
-	{
-		return $this->hasMany('App\Review', 'teacher_id');
-	}
-
-	/**
-	 * Get the Classes for the Teacher.
-	 *
-	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
-	 */
-	public function studentreviews()
-	{
-		return $this->hasMany('App\Review', 'student_id');
-	}
-
-	/**
-	 * Get the Teacher Info for the User.
-	 *
-	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
-	 */
-	public function info()
-	{
-		return $this->hasOne('App\Info');
-	}
-
-	/**
-	 * Get the Classes for the Teacher.
-	 *
-	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
-	 */
-	public function teacherdemos()
-	{
-		return $this->hasMany('App\Demo', 'teacher_id');
-	}
-
-	/**
-	 * Get the Classes for the Teacher.
-	 *
-	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
-	 */
-	public function studentdemos()
-	{
-		return $this->hasMany('App\Demo', 'student_id');
-	}
-
-	/**
-	 * Get the Classes for the Teacher.
-	 *
-	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
-	 */
-	public function teacherchats()
-	{
-		return $this->hasMany('App\Chat', 'teacher_id');
-	}
-
-	/**
-	 * Get the Classes for the Teacher.
-	 *
-	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
-	 */
-	public function studentchats()
-	{
-		return $this->hasMany('App\Chat', 'student_id');
-	}
-
-	public function isStudent()
-	{
-		foreach($this->roles as $role){
-			if($role->name == 'student') return true;
-		}
-
-		return false;
-	}
-
-	public function isTeacher()
-	{
-		foreach($this->roles as $role){
-			if($role->name == 'teacher') return true;
-		}
-
-		return false;
-	}
-
-	public function isAdmin()
-	{
-		foreach($this->roles as $role){
-			if($role->name == 'admin') return true;
-		}
-
-		return false;
-	}
-
-	public function isSuperadmin()
-	{
-		return $this->roles->first()->name == 'superadmin';
-	}
+     * Get all of the owning deriveable models.
+     */
+    public function deriveable()
+    {
+        return $this->morphTo();
+    }
 
 }

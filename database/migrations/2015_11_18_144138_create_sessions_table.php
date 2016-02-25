@@ -17,8 +17,7 @@ class CreateSessionsTable extends Migration
 			$table->integer('topic_id', false, true)->index();
 			$table->integer('teacher_id', false, true)->index();
 			$table->integer('student_id', false, true)->index();
-			$table->timestamp('start_time');
-			$table->string('duration', 10);
+            $table->boolean('demo')->default(0);
 			$table->string('link', 250);
 			$table->string('wiziq_id');
 			$table->timestamps();
@@ -34,4 +33,5 @@ class CreateSessionsTable extends Migration
 	{
 		Schema::drop('sessions');
 	}
+
 }
