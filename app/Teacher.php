@@ -42,7 +42,7 @@ class Teacher extends Model
 	 */
 	public function topics()
 	{
-		return $this->belongsToMany('App\Topic')->withTimestamps();
+		return $this->belongsToMany('App\Topic')->withTimestamps()->withPivot('fees');
 	}
 
 	/**
@@ -93,6 +93,16 @@ class Teacher extends Model
 	public function sessions()
 	{
 		return $this->hasMany('App\Session');
+	}
+
+	/**
+	 * Get the Topics for the User.
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function languages()
+	{
+		return $this->belongsToMany('App\Language');
 	}
 
 }

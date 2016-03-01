@@ -19,11 +19,11 @@ class CreateUsersTable extends Migration
             $table->string('password', 60);
 			$table->string('picture')->nullable();
 			$table->string('gender', 6)->nullable()->default(null);
-			$table->date('date_of_birth')->nullable()->default(null);
-			$table->string('address_country')->nullable()->default(null);
-			$table->string('address_city')->nullable()->default(null);
-			$table->string('address_state')->nullable()->default(null);
-			$table->string('address_pin')->nullable()->default(null);
+			$table->timestamp('date_of_birth')->nullable()->default(null);
+			$table->string('country')->nullable()->default(null);
+			$table->string('city')->nullable()->default(null);
+			$table->string('state')->nullable()->default(null);
+			$table->string('pin')->nullable()->default(null);
             $table->text('introduction');
 			$table->bigInteger('phone', false, true)->nullable()->default(null);
             $table->rememberToken()->nullable()->default(null);
@@ -31,7 +31,7 @@ class CreateUsersTable extends Migration
 			$table->string('email_confirmation_code')->nullable();
             $table->boolean('phone_confirmed')->default(0);
             $table->string('phone_confirmation_code')->nullable();
-            $table->morphs('derivable');
+            $table->morphs('deriveable');
 			$table->softDeletes();
             $table->timestamps();
         });

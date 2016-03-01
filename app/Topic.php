@@ -38,7 +38,7 @@ class Topic extends Model
      */
     public function teachers()
     {
-        return $this->belongsToMany('App\Teacher')->withTimestamps();
+        return $this->belongsToMany('App\Teacher')->withTimestamps()->withPivot('fees');
     }
 
 	/**

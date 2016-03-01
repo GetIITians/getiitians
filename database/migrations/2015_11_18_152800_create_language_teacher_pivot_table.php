@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSubjectsTable extends Migration
+class CreateLanguageTeacherPivotTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,10 +12,9 @@ class CreateSubjectsTable extends Migration
      */
     public function up()
     {
-        Schema::create('subjects', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('grade_id', false, true)->index();
-			$table->string('name')->index();
+        Schema::create('language_teacher', function (Blueprint $table) {
+			$table->integer('teacher_id', false, true)->index();
+			$table->integer('language_id', false, true)->index();
 			$table->timestamps();
         });
     }
@@ -27,6 +26,6 @@ class CreateSubjectsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('subjects');
+        Schema::drop('language_teacher');
     }
 }

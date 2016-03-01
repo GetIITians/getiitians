@@ -15,6 +15,7 @@ class CreateTeacherTopicPivotTable extends Migration
         Schema::create('teacher_topic', function (Blueprint $table) {
 			$table->integer('teacher_id', false, true)->index();
 			$table->integer('topic_id', false, true)->index();
+            $table->integer('fees', false, true);
 			$table->timestamps();
         });
     }
