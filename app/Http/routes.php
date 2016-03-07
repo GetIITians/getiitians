@@ -18,6 +18,11 @@ Route::get('/', function () {
 Route::get('teachers', 'TeacherController@show');
 Route::post('teachers', 'TeacherController@show');
 
+Route::get('tutors', 'ProfileController@show');
+Route::post('tutors', 'ProfileController@show');
+Route::get('tutor/{id}', 'ProfileController@profile');
+Route::get('tutor/{id}/topics', 'ProfileController@topics');
+
 Route::post('teachers/message', 'TeacherController@postMessage');
 Route::get('teachers/message', 'TeacherController@getMessage');
 

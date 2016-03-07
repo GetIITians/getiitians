@@ -242,21 +242,21 @@
     
 </div>
 
-<script src="js/vendor/jquery-2.1.4.min.js"></script>
-<script src="js/vendor/tether.min.js"></script>
-<script src="js/vendor/bootstrap/alert.js"></script>
-<script src="js/vendor/bootstrap/button.js"></script>
-<script src="js/vendor/bootstrap/carousel.js"></script>
-<script src="js/vendor/bootstrap/collapse.js"></script>
-<script src="js/vendor/bootstrap/dropdown.js"></script>
-<script src="js/vendor/bootstrap/modal.js"></script>
-<script src="js/vendor/bootstrap/tooltip.js"></script>
-<script src="js/vendor/bootstrap/popover.js"></script>
-<script src="js/vendor/bootstrap/scrollspy.js"></script>
-<script src="js/vendor/bootstrap/tab.js"></script>
-<script src="js/vendor/bootstrap/util.js"></script>
+<script src="/js/vendor/jquery-2.1.4.min.js"></script>
+<script src="/js/vendor/tether.min.js"></script>
+<script src="/js/vendor/bootstrap/alert.js"></script>
+<script src="/js/vendor/bootstrap/button.js"></script>
+<script src="/js/vendor/bootstrap/carousel.js"></script>
+<script src="/js/vendor/bootstrap/collapse.js"></script>
+<script src="/js/vendor/bootstrap/dropdown.js"></script>
+<script src="/js/vendor/bootstrap/modal.js"></script>
+<script src="/js/vendor/bootstrap/tooltip.js"></script>
+<script src="/js/vendor/bootstrap/popover.js"></script>
+<script src="/js/vendor/bootstrap/scrollspy.js"></script>
+<script src="/js/vendor/bootstrap/tab.js"></script>
+<script src="/js/vendor/bootstrap/util.js"></script>
 
-<script src="js/all.js"></script>
+<script src="/js/all.js"></script>
 <!--
 <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></'
             + 'script>')</script>

@@ -4,37 +4,95 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use DB;
 use Gate;
 use Auth;
 use App\User;
-use App\Info;
+use App\Teacher;
 use App\Qualification;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 class ProfileController extends Controller
 {
-
-	public function postQualifications(Request $request)
+	/**
+	 * Display the specified resource.
+	 *
+	 * @param  Request $request
+	 * @return \Illuminate\Http\Response
+	 */
+	public function show(Request $request)
 	{
-		dd($request->all());
-		//$request->user()->update($request->all());
-		//return redirect('/profile/'.$request->user()->id);
+
 		/*
-		$request->user()->update($request->all());
-		flash('Your information has been updated.');
-		return redirect('/profile'.$request->user()->id);
+		$users = DB::table('users')
+			->join('teachers', 'users.id', '=', 'teachers.id')
+			->select('users.*', 'teachers.*')
+			->get();
 		*/
+		//var_dump($users);
+		//var_dump(User::find(76));
+		//echo "<pre>";print_r(Teacher::find(76)->users);echo "</pre>";
+		//var_dump(User::find(76)->deriveable);
+		//var_dump(Teacher::find(76)->users[0]->name);
+		//var_dump($request->search);
+		//var_dump(Teacher::find(76)->users->first());
+		//var_dump(Teacher::with('users')->get());
+		//var_dump(Teacher::all());
+		$request->flashOnly('search');
+		$teachers = Teacher::with('users','qualifications')->where('display', '=', 1)->get();
+
+		$topIds = [76,272,230,128,52,38,181,43];
+		foreach ($teachers as $key => $teacher) {
+			if (in_array($teacher->id,$topIds)) {
+				unset($teachers[$key]);
+				$teachers->prepend($teacher);
+			}
+			if ($teacher->users->first()->picture == '') {
+				if (strtolower($teacher->users->first()->gender) == 'f') {
+					$teacher->users->first()->picture = "img/female.png";
+				} else {
+					$teacher->users->first()->picture = "img/male.png";
+				}
+			} else {
+				$teacher->users->first()->picture = env('TEACHING_LINK').$teacher->users->first()->picture;
+			}
+		}
+
+		//foreach ($teachers as $key => $teacher) { echo $teacher->users->first()->picture."<br>";	}
+
+		return view('frontend.tutors', ['teachers'  => $teachers, 'page' => 'teachers']);
 	}
 
-	public function test(User $user)
+	/**
+	 * Display the specified resource.
+	 *
+	 * @param  Request $request
+	 * @return \Illuminate\Http\Response
+	 */
+	public function profile($id)
 	{
-		dd($user->info()->get()->isEmpty());
-		//$app = app();
-		//var_dump(get_class($app));
-		//var_dump(Gate::getPolicyFor('App\User'));
-		//var_dump(policy('App\User')->see(Auth::user(), 1));
-		//var_dump(Gate::forUser(Auth::user())->allows('see', 1));
-		//dd(policy($user)->see(Auth::user(), $user));
+		//var_dump($id);
+		$teacher = Teacher::with('users','qualifications','languages','topics')->where('display', '=', 1)->find($id);
+		return view('frontend.profile.index', ['page' => 'profile', 'teacher' => $teacher]);
 	}
+
+	/**
+	 * Display the specified resource.
+	 *
+	 * @param  Request $request
+	 * @return \Illuminate\Http\Response
+	 */
+	public function topics($id)
+	{
+		$teacher = Teacher::with('users','topics')->where('display', '=', 1)->find($id);
+
+		foreach ($teacher->topics as $topic) {
+			$topics[$topic->subject->grade->name][$topic->subject->name][] = $topic->name;
+		}
+		//var_dump($topics);
+		//echo "<pre>";print_r($teacher->toArray());echo "</pre>";
+		return view('frontend.profile.topics', ['page' => 'profile', 'teacher' => $teacher, 'topics' => $topics]);
+	}
+
 }

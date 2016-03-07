@@ -15,7 +15,7 @@
 			</div>
 			<div class="row">
 				<div class="col-xs-12">
-					<form action="/teachers" method="POST">
+					<form action="/tutors" method="POST">
 						{{ csrf_field() }}
 						<div class="form-group row">
 							<div class="col-xs-8 col-sm-offset-1 col-sm-7">
@@ -48,30 +48,25 @@
 							<div class="col-xs-12 col-md-4 teacher">
 								<div class="row">
 									<div class="col-xs-4 dp">
-										<img src="{{ env('TEACHING_LINK') }}{{$teacher['image'] }}" class="img-responsive-flex">
+										<img src="{{ $teacher->users->first()->picture }}" class="img-responsive-flex">
 									</div>
 									<div class="col-xs-8">
-										<h4 class="card-title"><a href="teacher/{{ $teacher['id'] }}">{{ ucwords(strtolower($teacher['name'])) }}</a><span class="label">GT<?php printf("%04d", $teacher['id']); ?></span></h4>
-										<small>{{ $teacher['degree'] }} [ {{ $teacher['college'] }} ]</small>
+										<h4 class="card-title"><a href="tutor/{{ $teacher['id'] }}">{{ ucwords(strtolower($teacher->users->first()->name)) }}</a><span class="label">GT<?php printf("%04d", $teacher['id']); ?></span></h4>
+										<small>{{ $teacher->qualifications->first()->degree }} [ {{ $teacher->qualifications->first()->college }} ]</small>
 										<hr>
-										<p>{{ $teacher['introduction'] }}</p>
+										<p>{{ $teacher->users->first()->introduction }}</p>
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-xs-12">
-										<small class="text-muted">
-											@foreach ($teacher['subject'] as $subject)
-												{{ $subject."  " }}
-											@endforeach
-										</small>
 										<p>
 											<i class="material-icons md-14">star_border</i> <span>
-												@if ($teacher['rating'] == '0')
+												@if ($teacher->rating_count == 0)
 													Not rated yet
 												@else
-													{{ $teacher['rating'] }}
+													{{ $teacher->rating }}
 												@endif
-											<small></small> ₹ {{ $teacher['fees'] }}/ per hour</span>
+											<small></small> ₹ {{ $teacher->minfees }}/ per hour</span>
 										</p>
 									</div>
 								</div>
