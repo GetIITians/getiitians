@@ -61,7 +61,7 @@ class ProfileController extends Controller
 
 		//foreach ($teachers as $key => $teacher) { echo $teacher->users->first()->picture."<br>";	}
 
-		return view('frontend.tutors', ['teachers'  => $teachers, 'page' => 'teachers']);
+		//return view('frontend.tutors', ['teachers'  => $teachers, 'page' => 'teachers']);
 	}
 
 	/**
@@ -72,9 +72,9 @@ class ProfileController extends Controller
 	 */
 	public function profile($id)
 	{
-		//var_dump($id);
 		$teacher = Teacher::with('users','qualifications','languages','topics')->where('display', '=', 1)->find($id);
 		return view('frontend.profile.index', ['page' => 'profile', 'teacher' => $teacher]);
+		//var_dump(Teacher::with('users','qualifications','languages','topics')->where('display', '=', 1)->find($id));
 	}
 
 	/**
@@ -93,6 +93,21 @@ class ProfileController extends Controller
 		//var_dump($topics);
 		//echo "<pre>";print_r($teacher->toArray());echo "</pre>";
 		return view('frontend.profile.topics', ['page' => 'profile', 'teacher' => $teacher, 'topics' => $topics]);
+	}
+
+	/**
+	 * Display the specified resource.
+	 *
+	 * @param  Request $request
+	 * @return \Illuminate\Http\Response
+	 */
+	public function schedule($id)
+	{
+		$teacher = Teacher::with('users','timeslots')->where('display', '=', 1)->find($id);
+
+		//var_dump($topics);
+		//echo "<pre>";print_r($teacher->toArray());echo "</pre>";
+		return view('frontend.profile.schedule', ['page' => 'profile', 'teacher' => $teacher]);
 	}
 
 }

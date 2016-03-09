@@ -22,42 +22,14 @@
 								<h4 class="media-heading" data-toggle="collapse" href="#{{ $grade }}{{ $subject }}" aria-expanded="false" aria-controls="{{ $grade }}{{ $subject }}">{{ $subject }}</h4>
 								<div class="media collapse" id="{{ $grade }}{{ $subject }}">
 									<div class="media-body">
-
-										<table>
-											<tbody>
-												<?php
-													$i = 1;
-													echo "<tr>"; 
-													foreach ($topics as $topic) {
-														echo $topic;
-														if($i % 3 == 0) {echo '</tr><tr>';}
-														$i++;
-													}
-												?>
-<!--
-												<tr>
-													<td>Lorem Ipsum</td>
-													<td>Dolor Sit</td>
-													<td>Amet</td>
-												</tr>
-												<tr>
-													<td>Lorem Ipsum</td>
-													<td>Amet</td>
-													<td>Dolor Sit</td>
-												</tr>
-												<tr>
-													<td>Amet</td>
-													<td>Lorem Ipsum</td>
-													<td>Dolor Sit</td>
-												</tr>
-												<tr>
-													<td>Dolor Sit</td>
-													<td>Amet</td>
-													<td>Lorem Ipsum</td>
-												</tr>
--->
-											</tbody>
-										</table>
+										<?php
+											echo "<table><tbody><tr>";
+											foreach ($topics as $key => $topic) {
+												echo "<td>".$topic."</td>";
+												if(($key+1) % 3 == 0) {echo '</tr><tr>';}
+											}
+											echo "</tr></tbody></table>";
+										?>
 									</div>
 								</div>
 							</div>

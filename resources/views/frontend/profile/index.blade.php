@@ -1,20 +1,6 @@
 @extends ('layouts.profile')
 @section('main')
 <main class="col-xs-12 col-sm-10">
-	<!--
-	<div class="row">
-		<div class="col-xs-offset-1 col-xs-10">
-			<div class="alert alert-red alert-dismissible fade in" role="alert">
-				<i class="material-icons">error</i>
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-					<span class="sr-only">Close</span>
-				</button>
-				<p>You have completed 0 of 4 steps in the signup process. <a href="signuppersonal.html">Complete your signup now</a></p>
-			</div>
-		</div>
-	</div>
-	-->
 	<div class="row">
 		<div class="col-xs-12 col-sm-12">
 			<p class="text-justify">{{ $teacher->users->first()->introduction }}</p>
@@ -69,9 +55,15 @@
 			<h3>Topics</h3>
 			<hr>
 			<p class="text-justify">
-			@foreach ($teacher->topics as $topic)
-				{{ $topic->name }},
-			@endforeach
+			<?php
+				$i = 0;
+				foreach($teacher->topics as $topic) {
+					$i++;
+					echo $topic->name.", ";
+					if($i>20) break;
+				}
+				echo ".....";
+			?>
 			</p>
 			<small><a href="{{ $teacher->id }}/topics">View All</a></small>
 		</div>

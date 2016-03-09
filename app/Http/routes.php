@@ -22,6 +22,7 @@ Route::get('tutors', 'ProfileController@show');
 Route::post('tutors', 'ProfileController@show');
 Route::get('tutor/{id}', 'ProfileController@profile');
 Route::get('tutor/{id}/topics', 'ProfileController@topics');
+Route::get('tutor/{id}/schedule', 'ProfileController@schedule');
 
 Route::post('teachers/message', 'TeacherController@postMessage');
 Route::get('teachers/message', 'TeacherController@getMessage');
