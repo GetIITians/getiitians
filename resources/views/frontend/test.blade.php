@@ -1,6 +1,6 @@
 <?php
 
-$timeslots = ["2016-03-07 14:00:00","2016-03-08 13:00:00","2016-03-08 13:30:00","2016-03-08 14:00:00","2016-03-09 13:00:00", "2016-03-08 16:00:00", "2016-03-08 17:00:00", "2016-03-08 16:30:00"];
+$timeslots = ["2016-03-09 17:30:00","2016-03-09 13:00:00","2016-03-09 13:30:00","2016-03-09 14:00:00", "2016-03-09 16:00:00", "2016-03-09 17:00:00", "2016-03-09 16:30:00", "2016-03-09 19:00:00"];
 $day = date("j"); $month = date("n"); $year = date("Y");
 $slots = [];
 foreach ($timeslots as $timeslot) {
@@ -33,4 +33,25 @@ var_dump($times);
 
 //echo date("jnY", mktime(0, 0, 0, 3, 8, 2016));
 
+/*
+$users = DB::table('users')
+	->join('teachers', 'users.id', '=', 'teachers.id')
+	->select('users.*', 'teachers.*')
+	->get();
+*/
+//var_dump($users);
+//var_dump(User::find(76));
+//echo "<pre>";print_r(Teacher::find(76)->users);echo "</pre>";
+//var_dump(User::find(76)->deriveable);
+//var_dump(Teacher::find(76)->users[0]->name);
+//var_dump($request->search);
+//var_dump(Teacher::find(76)->users->first());
+//var_dump(Teacher::with('users')->get());
+//var_dump(Teacher::all());
+
+$search = null;
+
+$result = ($search) ? TRUE : FALSE ;
+
+var_dump($result);
 ?>

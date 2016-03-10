@@ -15,8 +15,8 @@ Route::get('/', function () {
     return view('frontend.index', ['page' => 'home']);
 });
 
-Route::get('teachers', 'TeacherController@show');
-Route::post('teachers', 'TeacherController@show');
+Route::get('teachers', 'ProfileController@show');
+Route::post('teachers', 'ProfileController@show');
 
 Route::get('tutors', 'ProfileController@show');
 Route::post('tutors', 'ProfileController@show');

@@ -15,6 +15,7 @@ use App\Http\Controllers\Controller;
 
 class ProfileController extends Controller
 {
+
 	/**
 	 * Display the specified resource.
 	 *
@@ -24,44 +25,60 @@ class ProfileController extends Controller
 	public function show(Request $request)
 	{
 
-		/*
-		$users = DB::table('users')
-			->join('teachers', 'users.id', '=', 'teachers.id')
-			->select('users.*', 'teachers.*')
-			->get();
-		*/
-		//var_dump($users);
-		//var_dump(User::find(76));
-		//echo "<pre>";print_r(Teacher::find(76)->users);echo "</pre>";
-		//var_dump(User::find(76)->deriveable);
-		//var_dump(Teacher::find(76)->users[0]->name);
+		$query = DB::table('teachers')
+			->join('users', 'teachers.id', '=', 'users.id')
+			->join('teacher_topic', 'teacher_topic.teacher_id', '=', 'teachers.id')
+			->join('topics', 'topics.id', '=', 'teacher_topic.topic_id')
+			->join('subjects', 'subjects.id', '=', 'topics.subject_id')
+			->join('grades', 'grades.id', '=', 'subjects.grade_id')
+			->join('qualifications', 'qualifications.teacher_id', '=', 'teachers.id')
+			->select('users.id', 'users.name', 'users.picture', 'users.gender','qualifications.college', 'qualifications.degree', 'users.introduction', 'teachers.rating', 'teachers.rating_count', 'teachers.minfees')
+			->where('teachers.display', '=', 1);
+		if ($request->search !== null){
+			$query->where('users.name', 'LIKE', '%'.$request->search.'%')
+					->orWhere('topics.name', 'LIKE', '%'.$request->search.'%')
+					->orWhere('subjects.name', 'LIKE', '%'.$request->search.'%')
+					->orWhere('grades.name', 'LIKE', '%'.$request->search.'%');			
+		}
+		$teachers = $query->distinct()->groupBy('name')->get();
+		$results = (empty($teachers)) ? FALSE : TRUE ;
+
+		if($request->search && empty($teachers)) {
+			$query = DB::table('teachers')
+				->join('users', 'teachers.id', '=', 'users.id')
+				->join('qualifications', 'qualifications.teacher_id', '=', 'teachers.id')
+				->select('users.id', 'users.name', 'users.picture', 'users.gender','qualifications.college', 'qualifications.degree', 'users.introduction', 'teachers.rating', 'teachers.rating_count', 'teachers.minfees')
+				->where('teachers.display', '=', 1);
+			$teachers = $query->distinct()->groupBy('name')->get();
+		}
+
+		//var_dump($results);
 		//var_dump($request->search);
-		//var_dump(Teacher::find(76)->users->first());
-		//var_dump(Teacher::with('users')->get());
-		//var_dump(Teacher::all());
+		//echo "<pre>";print_r($teachers);echo "</pre>";
+
 		$request->flashOnly('search');
-		$teachers = Teacher::with('users','qualifications')->where('display', '=', 1)->get();
 
 		$topIds = [76,272,230,128,52,38,181,43];
 		foreach ($teachers as $key => $teacher) {
 			if (in_array($teacher->id,$topIds)) {
 				unset($teachers[$key]);
-				$teachers->prepend($teacher);
+				array_unshift($teachers, $teacher);
 			}
-			if ($teacher->users->first()->picture == '') {
-				if (strtolower($teacher->users->first()->gender) == 'f') {
-					$teacher->users->first()->picture = "img/female.png";
+			if ($teacher->picture == '') {
+				if (strtolower($teacher->gender) == 'f') {
+					$teacher->picture = "img/female.png";
+
 				} else {
-					$teacher->users->first()->picture = "img/male.png";
+					$teacher->picture = "img/male.png";
 				}
 			} else {
-				$teacher->users->first()->picture = env('TEACHING_LINK').$teacher->users->first()->picture;
+				$teacher->picture = env('TEACHING_LINK').$teacher->picture;
 			}
 		}
 
 		//foreach ($teachers as $key => $teacher) { echo $teacher->users->first()->picture."<br>";	}
 
-		//return view('frontend.tutors', ['teachers'  => $teachers, 'page' => 'teachers']);
+		return view('frontend.tutors', ['teachers'  => $teachers, 'page' => 'teachers', 'results' => $results]);
 	}
 
 	/**
