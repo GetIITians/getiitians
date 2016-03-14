@@ -71,7 +71,7 @@
 												@else
 													{{ $teacher['rating'] }}
 												@endif
-											<small></small> ₹ {{ $teacher['fees'] }}/ per hour</span>
+											<!-- <small></small> ₹ {{ $teacher['fees'] }}/ per hour --></span>
 										</p>
 									</div>
 								</div>
