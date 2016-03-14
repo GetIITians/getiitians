@@ -79,4 +79,31 @@ $(function () {
 			};
 		});
 	})
+
+	$(document).on('submit','#messageTeacher', function(event) {
+		event.preventDefault();
+		var form = $(this);
+		if(form.find('#message').val() == ''){
+			form.find('small').html('The message to be sent can\'t be empty');
+			form.find('#message').focus();
+			return false;
+		}
+		$.ajax({
+			url		: form.prop('action'),
+			method	: 'POST',
+			data 	: {
+				_token		: form.find('input[name=_token]').val(),
+				recipient	: form.find('#recipient').val(),
+				message		: form.find('#message').val()
+			},
+			beforeSend: function(){
+				form.find('small').html('processing ...').fadeIn('slow');
+			},
+			complete: function(response){
+				form.modal('hide');
+				helper.flash(response.message);
+			}
+		});
+		return false;
+	});
 })

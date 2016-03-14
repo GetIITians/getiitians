@@ -7,29 +7,28 @@
 			<div class="row">
 				<div class="col-xs-2">
 					<i class="material-icons md-48">
-						<a href="">
+						<a href="{{ ($month-1) }}">
 							keyboard_arrow_left
 						</a>
 					</i>
 				</div>
 				<div class="col-xs-8">
 					<h2 class="text-center">
-						November 2015
+						{{ date('F', mktime(0, 0, 0, $month, 10)) }} {{ $year }}
 					</h2>
 				</div>
 				<div class="col-xs-2">
 					<i class="material-icons md-48 pull-right">
-						<a href="">
+						<a href="{{ ($month+1) }}">
 							keyboard_arrow_right
 						</a>
 					</i>
 				</div>
 			</div>
-			{!! draw_calendar(3,2016,$teacher->timeslots) !!}
+			{!! draw_calendar($month,$year,$teacher->timeslots) !!}
 			<div class="gutter-md"></div>
 		</div>
 	</div>
 </main>
-
 
 @endsection

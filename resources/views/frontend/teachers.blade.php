@@ -28,7 +28,7 @@
 						</div>
 					</form>
 				</div>
-				@if (old('search') != '')
+				@if (old('search') !== null)
 				<div class="col-xs-offset-1 col-xs-11">
 					@if ($results)
 					<p>Showing results for '{{ old('search') }}'</p>
@@ -48,30 +48,25 @@
 							<div class="col-xs-12 col-md-4 teacher">
 								<div class="row">
 									<div class="col-xs-4 dp">
-										<img src="{{ env('TEACHING_LINK') }}{{$teacher['image'] }}" class="img-responsive-flex">
+										<img src="{{ $teacher->picture }}" class="img-responsive-flex">
 									</div>
 									<div class="col-xs-8">
-										<h4 class="card-title"><a href="tutor/{{ $teacher['id'] }}">{{ ucwords(strtolower($teacher['name'])) }}</a><span class="label">GT<?php printf("%04d", $teacher['id']); ?></span></h4>
-										<small>{{ $teacher['degree'] }} [ {{ $teacher['college'] }} ]</small>
+										<h4 class="card-title"><a href="teacher/{{ $teacher->id }}">{{ ucwords(strtolower($teacher->name)) }}</a><span class="label">GT<?php printf("%04d", $teacher->id); ?></span></h4>
+										<small>{{ $teacher->degree }} [ {{ $teacher->college }} ]</small>
 										<hr>
-										<p>{{ $teacher['introduction'] }}</p>
+										<p>{{ $teacher->introduction }}</p>
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-xs-12">
-										<small class="text-muted">
-											@foreach ($teacher['subject'] as $subject)
-												{{ $subject."  " }}
-											@endforeach
-										</small>
 										<p>
 											<i class="material-icons md-14">star_border</i> <span>
-												@if ($teacher['rating'] == '0')
+												@if ($teacher->rating_count == 0)
 													Not rated yet
 												@else
-													{{ $teacher['rating'] }}
+													{{ $teacher->rating }}
 												@endif
-											<small></small> ₹ {{ $teacher['fees'] }}/ per hour</span>
+											<!-- <small></small>  ₹ {{ $teacher->minfees }}/ per hour --> </span>
 										</p>
 									</div>
 								</div>
@@ -81,7 +76,7 @@
 											<i class="material-icons md-18">ring_volume</i>
 											<span>Call</span>
 										</a>
-										<a href="#" role="button" class="btn btn-dark" data-toggle="modal" data-target="#messageModal" data-name="{{ ucwords(strtolower($teacher['name'])) }}">
+										<a href="#" role="button" class="btn btn-dark" data-toggle="modal" data-target="#messageModal" data-name="{{ ucwords(strtolower($teacher->name)) }}">
 											<i class="material-icons md-18">message</i>
 											<span>Message</span>
 										</a>

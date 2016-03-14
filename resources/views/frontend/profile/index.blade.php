@@ -2,7 +2,7 @@
 @section('main')
 <main class="col-xs-12 col-sm-10">
 	<div class="row">
-		<div class="col-xs-12 col-sm-12">
+		<div class="col-xs-12 col-sm-8">
 			<p class="text-justify">{{ $teacher->users->first()->introduction }}</p>
 			<hr>
 			<div class="row">
@@ -19,10 +19,12 @@
 							@endforeach
 						</span>
 					</p>
+					<!--
 					<p>
 						<i class="material-icons md-18">attach_money</i>
 						<span class="pull-right" data-toggle="tooltip" title="Teaching fees range">{{ $teacher->minfees }} / per hour</span>
 					</p>
+					-->
 					<!--
 					<p>
 						<i class="material-icons md-18">account_balance</i>
@@ -47,6 +49,18 @@
 					</p>
 				</div>
 			</div>
+		</div>
+		<div class="col-xs-12 col-sm-4">
+			<form id="messageTeacher" action="/teachers/message" method="POST">
+				{{ csrf_field() }}
+				<p>Send {{ ucwords(strtolower($teacher->users->first()->name)) }} a message explaining your needs and you will recieve a response by email.</p>
+				<input type="hidden" id="recipient" value="{{ ucwords(strtolower($teacher->users->first()->name)) }}">
+				<fieldset class="form-group">
+					<textarea class="form-control" id="message" rows="5" placeholder="Write your message here."></textarea>
+				</fieldset>
+				<small></small>
+				<button type="submit" class="btn btn-primary-reverse">MESSAGE {{ strtoupper($teacher->users->first()->name) }}</button>
+			</form>
 		</div>
 	</div>
 	<div class="gutter-sm"></div>

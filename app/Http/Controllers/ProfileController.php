@@ -78,7 +78,7 @@ class ProfileController extends Controller
 
 		//foreach ($teachers as $key => $teacher) { echo $teacher->users->first()->picture."<br>";	}
 
-		return view('frontend.tutors', ['teachers'  => $teachers, 'page' => 'teachers', 'results' => $results]);
+		return view('frontend.teachers', ['teachers'  => $teachers, 'page' => 'teachers', 'results' => $results]);
 	}
 
 	/**
@@ -118,13 +118,14 @@ class ProfileController extends Controller
 	 * @param  Request $request
 	 * @return \Illuminate\Http\Response
 	 */
-	public function schedule($id)
+	public function schedule($id,$month = null,$year = null)
 	{
 		$teacher = Teacher::with('users','timeslots')->where('display', '=', 1)->find($id);
-
-		//var_dump($topics);
-		//echo "<pre>";print_r($teacher->toArray());echo "</pre>";
-		return view('frontend.profile.schedule', ['page' => 'profile', 'teacher' => $teacher]);
+		$Month = ($month === null) ? date("n") : (int)$month ;
+		$Year = ($year === null) ? date("Y") : (int)$year ;
+		//var_dump($Month);
+		//var_dump($Year);
+		return view('frontend.profile.schedule', ['page' => 'profile', 'teacher' => $teacher, 'month' => $Month, 'year' => $Year]);
 	}
 
 }

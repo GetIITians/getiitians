@@ -18,28 +18,25 @@ Route::get('/', function () {
 Route::get('teachers', 'ProfileController@show');
 Route::post('teachers', 'ProfileController@show');
 
-Route::get('tutors', 'ProfileController@show');
-Route::post('tutors', 'ProfileController@show');
-Route::get('tutor/{id}', 'ProfileController@profile');
-Route::get('tutor/{id}/topics', 'ProfileController@topics');
-Route::get('tutor/{id}/schedule', 'ProfileController@schedule');
+Route::get('teacher/{id}', 'ProfileController@profile');
+Route::get('teacher/{id}/topics', 'ProfileController@topics');
+Route::get('teacher/{id}/schedule', 'ProfileController@schedule');
+Route::get('teacher/{id}/schedule/{month}', 'ProfileController@schedule');
+Route::get('teacher/{id}/schedule/{month}/{year}', 'ProfileController@schedule');
 
 Route::post('teachers/message', 'TeacherController@postMessage');
-Route::get('teachers/message', 'TeacherController@getMessage');
-
 Route::post('teachers/enquiry', 'TeacherController@postEnquiry');
-Route::get('teachers/enquiry', 'TeacherController@getEnquiry');
+Route::post('contact', 'TeacherController@postContact');
+Route::post('teachers/call', 'TeacherController@postCall');
 
 Route::get('contact', function (){
 	return view('frontend.contact', ['page' => 'contact']);
 });
-Route::post('contact', 'TeacherController@postContact');
 
 Route::get('test', function(){
 	return view('frontend.test');
 });
 
-Route::post('teachers/call', 'TeacherController@postCall');
 
 /*
 Authentication routes...
