@@ -8,7 +8,7 @@
 					<img src="img/laptop.jpg" class="img-responsive">
 				</div>
 				<div class="col-xs-12 col-lg-5">
-					<p>1-to-1 tuition by IITians</p>
+					<p>1-to-1 tuition by IITians from anywhere</p>
 					<div class="gutter-md"></div>
 					<form action="/teachers" method="POST">
 						{{ csrf_field() }}
@@ -38,7 +38,6 @@
 			</div>
 			<div class="gutter-md"></div>
 		</div>
-
 		<div class="jumbotron jumbotron-fluid howitworks">
 			<div class="container-fluid">
 				<h1 class="display-3 text-center">How it works</h1>

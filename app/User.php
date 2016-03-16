@@ -81,7 +81,7 @@ class User extends Model implements AuthenticatableContract,
      */
     public function deriveable()
     {
-        return $this->morphTo();
+        return $this->morphTo(); // polymorphic belongsTo
     }
 
 }

@@ -1,3 +1,4 @@
+<?php $page = 'signup'; ?>
 @extends ('layouts.master')
 @section('content')
     <div class="gutter-md"></div>
@@ -11,7 +12,7 @@
         <a class="oauth" href="">facebook</a><a href="" class="pull-right oauth">google</a>
     </div>
     -->
-    <form class="col-xs-offset-2 col-xs-8" action="/auth/register" method="POST">
+    <form class="col-xs-offset-4 col-xs-4" action="/signup" method="POST">
         {{ csrf_field() }}
         <fieldset class="form-group">
             <label class="sr-only" for="name">Full name</label>

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Teacher;
+use App\Student;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -30,10 +32,12 @@ class AuthController extends Controller
 
 	protected $redirectPath = '/';
 
+	/*
 	protected $user_roles = [
-		'student' => 1,
-		'teacher' => 2
+		'student' => 'App\Student',
+		'teacher' => 'App\Teacher'
 	];
+	*/
 
     /**
      * Create a new authentication controller instance.
@@ -69,15 +73,24 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
-        $user = User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-			'confirmation_code' => str_random(30),
-        ]);
-		$lastInsertId = $user->id;
-		$user->roles()->attach($this->user_roles[$data['signuptype']]);
-		$user = User::find($lastInsertId);
+		if($data['signuptype'] === 'teacher')
+		{
+			$parent = new Teacher();
+		}
+		elseif($data['signuptype'] === 'student')
+		{
+			$parent = new Student();
+		}
+
+		$parent->save();
+
+		$user = new User();
+		$user->name = $data['name'];
+		$user->email = $data['email'];
+		$user->password = bcrypt($data['password']);
+		$user->email_confirmation_code = str_random(30);
+
+		$parent->user()->save($user);
 
 		return $user;
     }
@@ -120,9 +133,9 @@ class AuthController extends Controller
 	 */
 	public function confirmEmail($token)
 	{
-		$user = User::whereConfirmationCode($token)->firstOrFail();
-		$user->confirmed = 1;
-		$user->confirmation_code = null;
+		$user = User::whereEmailConfirmationCode($token)->firstOrFail();
+		$user->email_confirmed = 1;
+		$user->email_confirmation_code = null;
 		$user->save();
 		flash('You are now confirmed. Please login.');
 		return redirect('profile/'.$user->id.'/update/personal');
@@ -140,6 +153,5 @@ class AuthController extends Controller
 
 		return array_add($credentials, 'confirmed', '1');
 	}
-
 
 }

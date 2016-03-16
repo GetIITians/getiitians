@@ -41,11 +41,11 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ env('TEACHING_LINK') }}joinus">Become a teacher</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ env('TEACHING_LINK') }}login">Login</a>
+            <li class="nav-item {{matchValue('signup',$page,'active')}}">
+                <a class="nav-link" href="/login">Login</a>
             </li>
-            <li class="nav-item">
-                <a id="signup" class="nav-link" href="{{ env('TEACHING_LINK') }}signup" >Signup</a>
+            <li class="nav-item {{matchValue('signup',$page,'active')}}">
+                <a id="signup" class="nav-link" href="/signup">Signup</a>
             </li>
         </ul>
     </div>

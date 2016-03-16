@@ -18,9 +18,9 @@ class Student extends Model
 	 *
 	 * @return \Illuminate\Database\Eloquent\Relations\MorphMany
 	 */
-	public function users()
+	public function user()
 	{
-		return $this->morphMany('App\User', 'deriveable');
+		return $this->morphOne('App\User', 'deriveable');
 	}
 
 	/**

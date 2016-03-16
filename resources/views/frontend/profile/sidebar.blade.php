@@ -4,7 +4,7 @@
 	<h3><a href="/teacher/{{ $teacher->id }}">{{ ucwords(strtolower($teacher->users->first()->name)) }}</a></h3>
 	<div class="gutter-sm"></div>
 	<ul>
-		<li><a href="/teacher/{{ $teacher->id }}/schedule">Schedule</a></li>
+		<li><a href="/teacher/{{ $teacher->id }}/schedule/{{ date('n') }}">Schedule</a></li>
 		<li><a href="/teacher/{{ $teacher->id }}/topics">Topics</a></li>
 	</ul>
 </aside>
