@@ -51,7 +51,7 @@
 										<img src="{{ $teacher->picture }}" class="img-responsive-flex">
 									</div>
 									<div class="col-xs-8">
-										<h4 class="card-title"><a href="teacher/{{ $teacher->id }}">{{ ucwords(strtolower($teacher->name)) }}</a><span class="label">GT<?php printf("%04d", $teacher->id); ?></span></h4>
+										<h4 class="card-title"><a href="profile/{{ $teacher->id }}">{{ ucwords(strtolower($teacher->name)) }}</a><span class="label">GT<?php printf("%04d", $teacher->id); ?></span></h4>
 										<small>{{ $teacher->degree }} [ {{ $teacher->college }} ]</small>
 										<hr>
 										<p>{{ $teacher->introduction }}</p>

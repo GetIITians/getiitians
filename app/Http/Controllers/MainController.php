@@ -16,4 +16,11 @@ class MainController extends Controller
 		$users = User::all();
 		return view('users.index', compact('users'));
 	}
+
+	public function testing()
+	{
+		$user = User::find(76);
+		//var_dump(User::find(299)->isStudent());
+		return view('frontend.test', compact('user'));
+	}
 }

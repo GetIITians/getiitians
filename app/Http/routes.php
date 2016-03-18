@@ -15,14 +15,14 @@ Route::get('/', function () {
     return view('frontend.index', ['page' => 'home']);
 });
 
-Route::get('teachers', 'ProfileController@show');
-Route::post('teachers', 'ProfileController@show');
+Route::get('teachers', 'TeacherController@search');
+Route::post('teachers', 'TeacherController@search');
 
-Route::get('teacher/{id}', 'ProfileController@profile');
-Route::get('teacher/{id}/topics', 'ProfileController@topics');
-Route::get('teacher/{id}/schedule', 'ProfileController@schedule');
-Route::get('teacher/{id}/schedule/{month}', 'ProfileController@schedule');
-Route::get('teacher/{id}/schedule/{month}/{year}', 'ProfileController@schedule');
+Route::get('profile/{id}', 'ProfileController@profile');
+Route::get('profile/{id}/topics', 'ProfileController@topics');
+Route::get('profile/{id}/schedule', 'ProfileController@schedule');
+Route::get('profile/{id}/schedule/{month}', 'ProfileController@schedule');
+Route::get('profile/{id}/schedule/{month}/{year}', 'ProfileController@schedule');
 
 Route::post('teachers/message', 'TeacherController@postMessage');
 Route::post('teachers/enquiry', 'TeacherController@postEnquiry');
@@ -36,7 +36,7 @@ Route::get('contact', function (){
 Route::get('test', function(){
 	return view('frontend.test');
 });
-
+Route::get('testing', 'MainController@testing');
 
 //Authentication routes...
 Route::get('login', 'Auth\AuthController@getLogin');

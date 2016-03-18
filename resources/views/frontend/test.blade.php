@@ -1,5 +1,5 @@
 <?php
-
+/*
 $timeslots = ["2016-03-09 17:30:00","2016-03-09 13:00:00","2016-03-09 13:30:00","2016-03-09 14:00:00", "2016-03-09 16:00:00", "2016-03-09 17:00:00", "2016-03-09 16:30:00", "2016-03-09 19:00:00"];
 $day = date("j"); $month = date("n"); $year = date("Y");
 $slots = [];
@@ -30,6 +30,7 @@ foreach ($slots as $key => $value) {
 	$i++;
 }
 var_dump($times);
+*/
 
 //echo date("jnY", mktime(0, 0, 0, 3, 8, 2016));
 
@@ -49,9 +50,9 @@ $users = DB::table('users')
 //var_dump(Teacher::with('users')->get());
 //var_dump(Teacher::all());
 
-$search = null;
+//$search = null;
+//$result = ($search) ? TRUE : FALSE ;
+//var_dump($result);
 
-$result = ($search) ? TRUE : FALSE ;
-
-var_dump($result);
+//var_dump($user->deriveable->qualifications->first());
 ?>

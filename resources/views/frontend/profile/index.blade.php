@@ -3,67 +3,66 @@
 <main class="col-xs-12 col-sm-10">
 	<div class="row">
 		<div class="col-xs-12 col-sm-8">
-			<p class="text-justify">{{ $teacher->users->first()->introduction }}</p>
+			<p class="text-justify">{{ $user->introduction }}</p>
 			<hr>
+            @if ($user->isTeacher())
 			<div class="row">
 				<div class="col-xs-12 col-sm-6">
+                    @if (!$user->deriveable->qualifications->isEmpty())
 					<p>
 						<i class="material-icons md-18">school</i>
-						<span class="pull-right" data-toggle="tooltip" title="Educational Qualifications">{{ $teacher->qualifications->first()->degree }} from {{ $teacher->qualifications->first()->college }}</span>
+						<span class="pull-right" data-toggle="tooltip" title="Educational Qualifications">{{ $user->deriveable->qualifications->first()->degree }} from {{ $user->deriveable->qualifications->first()->college }}</span>
 					</p>
+                    @endif
+                    @if (!$user->deriveable->languages->isEmpty())
 					<p>
 						<i class="material-icons md-18">language</i>
 						<span class="pull-right" data-toggle="tooltip" title="Teaching medium languages">
-							@foreach ($teacher->languages as $language)
+							@foreach ($user->deriveable->languages as $language)
 								{{ $language->language }},
 							@endforeach
 						</span>
 					</p>
-					<!--
-					<p>
-						<i class="material-icons md-18">attach_money</i>
-						<span class="pull-right" data-toggle="tooltip" title="Teaching fees range">{{ $teacher->minfees }} / per hour</span>
-					</p>
-					-->
-					<!--
-					<p>
-						<i class="material-icons md-18">account_balance</i>
-						<span class="pull-right" data-toggle="tooltip" title="Money earned from getIITians"><a href="account.html">₹ 5,400</a></span>
-					</p>
-					-->
+                    @endif
 				</div>
 				<div class="col-xs-12 col-sm-6">
+                    @if(!is_null($user->gender))
 					<p>
 						<i class="material-icons md-18">perm_identity</i>
-						<span class="pull-right">{{ ucfirst($teacher->users->first()->gender) }}</span>
+						<span class="pull-right">{{ ucfirst($user->gender) }}</span>
 					</p>
+                    @endif
 					<p>
 						<i class="material-icons md-18">star_rate</i>
-						@if ($teacher->rating_count === 0)
-							<span class="pull-right">4.8</span>
+						@if ($user->deriveable->rating_count === 0)
+							<span class="pull-right">Not rated yet</span>
 						@else
 							<span class="pull-right">
-								{{ (float)$teacher->rating }}
+								{{ (float)$user->deriveable->rating }}
 							</span>
 						@endif
 					</p>
 				</div>
 			</div>
+            @endif
 		</div>
 		<div class="col-xs-12 col-sm-4">
+            @if ($user->isTeacher() && ($user->id !== Auth::user()->id))
 			<form id="messageTeacher" action="/teachers/message" method="POST">
 				{{ csrf_field() }}
-				<p>Send {{ ucwords(strtolower($teacher->users->first()->name)) }} a message explaining your needs and you will recieve a response by email.</p>
-				<input type="hidden" id="recipient" value="{{ ucwords(strtolower($teacher->users->first()->name)) }}">
+				<p>Send {{ ucwords(strtolower($user->name)) }} a message explaining your needs and you will recieve a response by email.</p>
+				<input type="hidden" id="recipient" value="{{ ucwords(strtolower($user->name)) }}">
 				<fieldset class="form-group">
 					<textarea class="form-control" id="message" rows="5" placeholder="Write your message here."></textarea>
 				</fieldset>
 				<small></small>
-				<button type="submit" class="btn btn-primary-reverse">MESSAGE {{ strtoupper($teacher->users->first()->name) }}</button>
+				<button type="submit" class="btn btn-primary-reverse">MESSAGE {{ strtoupper($user->name) }}</button>
 			</form>
+            @endif
 		</div>
 	</div>
 	<div class="gutter-sm"></div>
+    @if ($user->isTeacher())
 	<div class="row">
 		<div class="col-xs-12">
 			<h3>Topics</h3>
@@ -71,7 +70,7 @@
 			<p class="text-justify">
 			<?php
 				$i = 0;
-				foreach($teacher->topics as $topic) {
+				foreach($user->deriveable->topics as $topic) {
 					$i++;
 					echo $topic->name.", ";
 					if($i>20) break;
@@ -79,30 +78,10 @@
 				echo ".....";
 			?>
 			</p>
-			<small><a href="{{ $teacher->id }}/topics">View All</a></small>
+			<small><a href="{{ $user->id }}/topics">View All</a></small>
 		</div>
 	</div>
-	<div class="gutter-sm"></div>
-	<!--
-	<div class="row">
-		<div class="col-xs-12">
-			<h3>Students Feedback</h3>
-			<hr>
-			<div class="media">
-				<div class="media-left">
-					<i class="material-icons md-60">format_quote</i>
-				</div>
-				<div class="media-body">
-					<h4 class="media-heading">Knowledgable &amp; patient tutor -</h4>
-					<i>Gaurav jain, Guwahati on 21/8/2015</i>
-					<div class="clearfix"></div>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras consequat ultricies urna, ac accumsan nulla tristique sit amet. Mauris lobortis posuere leo, sit amet efficitur turpis efficitur ac. In at tristique ipsum. Sed lobortis odio eget sapien mollis viverra. Nullam semper purus et sapien rhoncus porta.
-				</div>
-			</div>
-			<small><a href="reviews.html">View All</a></small>
-		</div>
-	</div>
-	-->
-	<div class="gutter-sm"></div>
+    @endif
+    <div class="gutter-sm"></div>
 </main>
 @endsection

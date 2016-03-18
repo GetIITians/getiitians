@@ -151,7 +151,7 @@ class AuthController extends Controller
 	{
 		$credentials = $request->only($this->loginUsername(), 'password');
 
-		return array_add($credentials, 'confirmed', '1');
+		return array_add($credentials, 'email_confirmed', '1');
 	}
 
 }

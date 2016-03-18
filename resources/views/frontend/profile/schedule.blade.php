@@ -25,7 +25,7 @@
 					</i>
 				</div>
 			</div>
-			{!! draw_calendar($month,$year,$teacher->timeslots) !!}
+			{!! draw_calendar($month,$year,$user->deriveable->timeslots) !!}
 			<div class="gutter-md"></div>
 		</div>
 	</div>

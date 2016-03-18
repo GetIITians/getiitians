@@ -1,3 +1,4 @@
+<?php $page = 'login'; ?>
 @extends ('layouts.master')
 @section('content')
     <div class="gutter-md"></div>
@@ -6,7 +7,7 @@
 @include('layouts.includes.errors')
 
 <div class="row">
-    <form class="col-xs-offset-2 col-xs-8" action="/auth/login" method="POST">
+    <form class="col-xs-offset-2 col-xs-8" action="/login" method="POST">
         {!! csrf_field() !!}
         <fieldset class="form-group">
             <label class="sr-only" for="email">Email address</label>

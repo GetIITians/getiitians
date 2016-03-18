@@ -24,6 +24,8 @@ class User extends Model implements AuthenticatableContract,
      */
     protected $table = 'users';
 
+	protected $types = array('App\Student' => 'student', 'App\Teacher' => 'teacher');
+
     /**
      * The attributes that are mass assignable.
      *
@@ -83,5 +85,20 @@ class User extends Model implements AuthenticatableContract,
     {
         return $this->morphTo(); // polymorphic belongsTo
     }
+
+	public function typeOfUser()
+	{
+		return $this->types[$this->deriveable_type];
+	}
+
+	public function isTeacher()
+	{
+		return ($this->deriveable_type === 'App\Teacher');
+	}
+
+	public function isStudent()
+	{
+		return ($this->deriveable_type === 'App\Student');
+	}
 
 }
