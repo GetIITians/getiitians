@@ -138,7 +138,7 @@ class AuthController extends Controller
 		$user->email_confirmation_code = null;
 		$user->save();
 		flash('You are now confirmed. Please login.');
-		return redirect('profile/'.$user->id.'/update/personal');
+		return redirect('/login');
 	}
 
 	/**

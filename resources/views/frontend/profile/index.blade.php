@@ -47,7 +47,7 @@
             @endif
 		</div>
 		<div class="col-xs-12 col-sm-4">
-            @if ($user->isTeacher() && ($user->id !== Auth::user()->id))
+            @if ($user->isTeacher())
 			<form id="messageTeacher" action="/teachers/message" method="POST">
 				{{ csrf_field() }}
 				<p>Send {{ ucwords(strtolower($user->name)) }} a message explaining your needs and you will recieve a response by email.</p>
