@@ -1,6 +1,8 @@
 <?php
+use App\User;
+use Carbon\Carbon;
 /*
-$timeslots = ["2016-03-09 17:30:00","2016-03-09 13:00:00","2016-03-09 13:30:00","2016-03-09 14:00:00", "2016-03-09 16:00:00", "2016-03-09 17:00:00", "2016-03-09 16:30:00", "2016-03-09 19:00:00"];
+$timeslots = ["2016-03-17 17:30:00","2016-03-18 13:00:00","2016-03-18 13:30:00","2016-03-18 14:00:00", "2016-03-18 16:00:00", "2016-03-18 17:00:00", "2016-03-18 16:30:00", "2016-03-18 19:00:00"];
 $day = date("j"); $month = date("n"); $year = date("Y");
 $slots = [];
 foreach ($timeslots as $timeslot) {
@@ -55,4 +57,39 @@ $users = DB::table('users')
 //var_dump($result);
 
 //var_dump($user->deriveable->qualifications->first());
+
+/*
+$users = User::all();
+foreach ($users as $key => $user) {
+	var_dump($user->password);
+	//$user->update(['password' => bcrypt($user->password)]);
+}
+*/
+
+$users = DB::connection('teaching')->table('users')->get();
+$dobs = [];
+foreach ($users as $key => $user) {
+	$date = new Carbon();
+	$date->setTimestamp($user->dob);
+	$dobs[$user->id]['date_of_birth'] = $date->format('Y-m-d H:i:s');
+}
+var_dump($dobs);
+
+echo "<hr>";
+
+$Users = DB::connection('mysql')->table('users')->get();
+foreach ($Users as $key => $user) {
+	//var_dump($user);
+
+	if (array_key_exists($user->id,$dobs)) {
+		//$Table->where('id', $user->id)->update(['date_of_birth' => $dobs[$user->id]['date_of_birth']]);
+		var_dump($user->id);
+		var_dump(DB::connection('mysql')->table('users')->where('id', $user->id)->update(['date_of_birth' => $dobs[$user->id]['date_of_birth']]));
+	}
+}
+
+$query = DB::getQueryLog();
+var_dump($query);
+
+
 ?>

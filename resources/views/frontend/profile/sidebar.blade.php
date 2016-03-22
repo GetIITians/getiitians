@@ -4,9 +4,12 @@
 	<h3><a href="/profile/{{ $user->id }}">{{ ucwords(strtolower($user->name)) }}</a></h3>
 	<div class="gutter-sm"></div>
 	<ul>
-        @if ($user->isTeacher())
+		@if ($user->isTeacher())
 		<li><a href="/profile/{{ $user->id }}/schedule/{{ date('n') }}">Schedule</a></li>
 		<li><a href="/profile/{{ $user->id }}/topics">Topics</a></li>
-        @endif
+		@endif
+		@if ($user->ownProfile())
+		<li><a href="/profile/{{ $user->id }}/update/personal">Update</a></li>
+		@endif
 	</ul>
 </aside>

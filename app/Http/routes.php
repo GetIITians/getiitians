@@ -11,38 +11,47 @@
 |
 */
 
-Route::get('/', function () {
-    return view('frontend.index', ['page' => 'home']);
-});
-
+//  Home Page
+Route::get('/', function () { return view('frontend.index', ['page' => 'home']); });
+//  Search Page
 Route::get('teachers', 'TeacherController@search');
 Route::post('teachers', 'TeacherController@search');
-
-Route::get('profile/{id}', 'ProfileController@profile');
-Route::get('profile/{id}/topics', 'ProfileController@topics');
-Route::get('profile/{id}/schedule', 'ProfileController@schedule');
-Route::get('profile/{id}/schedule/{month}', 'ProfileController@schedule');
-Route::get('profile/{id}/schedule/{month}/{year}', 'ProfileController@schedule');
-
+//  Profile - Guest
+Route::group(['prefix' => 'profile/{user}'], function () {
+  Route::get('/', function(App\User $user){
+    return view('frontend.profile.index', ['page' => 'profile', 'user' => $user]);
+  });
+  Route::get('topics', 'ProfileController@topics');
+  Route::get('schedule', 'ProfileController@schedule');
+  Route::get('schedule/{month}', 'ProfileController@schedule');
+  Route::get('schedule/{month}/{year}', 'ProfileController@schedule');
+});
+//  Profile - Login
+Route::group(['middleware' => 'auth', 'prefix' => 'profile/{user}/update'], function () {
+  Route::get('personal', function (App\User $user){
+    return view('frontend.profile.update.personal', ['user' => $user, 'page' => 'profile']);
+  });
+  Route::post('personal', 'ProfileController@updatePersonal');
+});
+//  Enquiry Messages
 Route::post('teachers/message', 'TeacherController@postMessage');
 Route::post('teachers/enquiry', 'TeacherController@postEnquiry');
 Route::post('contact', 'TeacherController@postContact');
 Route::post('teachers/call', 'TeacherController@postCall');
-
+//  Contact Us
 Route::get('contact', function (){
 	return view('frontend.contact', ['page' => 'contact']);
 });
-
+//  Testing
 Route::get('test', function(){
 	return view('frontend.test');
 });
 Route::get('testing', 'MainController@testing');
-
 //Authentication routes...
 Route::get('login', 'Auth\AuthController@getLogin');
+Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('login', 'Auth\AuthController@postLogin');
 Route::get('logout', 'Auth\AuthController@getLogout');
-
 //Registration routes...
 Route::get('signup', 'Auth\AuthController@getRegister');
 Route::post('signup', 'Auth\AuthController@postRegister');

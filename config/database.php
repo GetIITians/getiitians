@@ -64,6 +64,18 @@ return [
             'strict'    => false,
         ],
 
+        'teaching' => [
+            'driver'    => 'mysql',
+            'host'      => env('TEACHING_DB_HOST', 'localhost'),
+            'database'  => env('TEACHING_DB_DATABASE', 'forge'),
+            'username'  => env('TEACHING_DB_USERNAME', 'forge'),
+            'password'  => env('TEACHING_DB_PASSWORD', ''),
+            'charset'   => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix'    => '',
+            'strict'    => false,
+        ],
+
         'pgsql' => [
             'driver'   => 'pgsql',
             'host'     => env('DB_HOST', 'localhost'),

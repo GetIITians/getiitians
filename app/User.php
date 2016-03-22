@@ -10,28 +10,29 @@ use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+use Auth;
 
 class User extends Model implements AuthenticatableContract,
                                     AuthorizableContract,
                                     CanResetPasswordContract
 {
-    use Authenticatable, Authorizable, CanResetPassword, SoftDeletes;
+  use Authenticatable, Authorizable, CanResetPassword, SoftDeletes;
 
-    /**
-     * The database table used by the model.
-     *
-     * @var string
-     */
-    protected $table = 'users';
+  /**
+  * The database table used by the model.
+  *
+  * @var string
+  */
+  protected $table = 'users';
 
-	protected $types = array('App\Student' => 'student', 'App\Teacher' => 'teacher');
+  protected $types = array('App\Student' => 'student', 'App\Teacher' => 'teacher');
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
+  /**
+  * The attributes that are mass assignable.
+  *
+  * @var array
+  */
+  protected $fillable = [
 		'name',
 		'email',
 		'password',
@@ -40,10 +41,10 @@ class User extends Model implements AuthenticatableContract,
 		'image_url',
 		'date_of_birth',
 		'introduction',
-		'address_country',
-		'address_city',
-		'address_state',
-		'address_pin',
+		'country',
+		'city',
+		'state',
+		'pin',
 		'phone',
 		'email_confirmed',
 		'email_confirmation_code',
@@ -61,12 +62,12 @@ class User extends Model implements AuthenticatableContract,
 	 */
 	protected $dates = ['deleted_at'];
 
-    /**
-     * The attributes excluded from the model's JSON form.
-     *
-     * @var array
-     */
-    protected $hidden = ['password', 'remember_token'];
+  /**
+   * The attributes excluded from the model's JSON form.
+   *
+   * @var array
+   */
+  protected $hidden = ['password', 'remember_token'];
 
 	/**
 	 * Get the Transactions for the User.
@@ -79,12 +80,12 @@ class User extends Model implements AuthenticatableContract,
 	}
 
 	/**
-     * Get all of the owning deriveable models.
-     */
-    public function deriveable()
-    {
-        return $this->morphTo(); // polymorphic belongsTo
-    }
+   * Get all of the owning deriveable models.
+   */
+  public function deriveable()
+  {
+    return $this->morphTo(); // polymorphic belongsTo
+  }
 
 	public function typeOfUser()
 	{
@@ -99,6 +100,13 @@ class User extends Model implements AuthenticatableContract,
 	public function isStudent()
 	{
 		return ($this->deriveable_type === 'App\Student');
+	}
+
+	public function ownProfile()
+	{
+		if (!Auth::Guest())
+			return ($this->id === Auth::user()->id);
+		return false;
 	}
 
 }

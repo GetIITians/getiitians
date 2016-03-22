@@ -20,25 +20,12 @@ class ProfileController extends Controller
 	 * @param  Request $request
 	 * @return \Illuminate\Http\Response
 	 */
-	public function profile($id)
+	public function topics(User $user)
 	{
-		return view('frontend.profile.index', ['page' => 'profile', 'user' => User::find($id)]);
-	}
-
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  Request $request
-	 * @return \Illuminate\Http\Response
-	 */
-	public function topics($id)
-	{
-		$user = User::find($id);
 		$topics = [];
 		foreach ($user->deriveable->topics as $topic) {
 			$topics[$topic->subject->grade->name][$topic->subject->name][] = $topic->name;
 		}
-
 		return view('frontend.profile.topics', ['page' => 'profile', 'user' => $user, 'topics' => $topics]);
 	}
 
@@ -48,12 +35,18 @@ class ProfileController extends Controller
 	 * @param  Request $request
 	 * @return \Illuminate\Http\Response
 	 */
-	public function schedule($id,$month = null,$year = null)
+	public function schedule(User $user,$month = null,$year = null)
 	{
-		$user = User::find($id);
-		$Month = ($month === null) ? date("n") : (int)$month ;
+ 		$Month = ($month === null) ? date("n") : (int)$month ;
 		$Year = ($year === null) ? date("Y") : (int)$year ;
 		return view('frontend.profile.schedule', ['page' => 'profile', 'user' => $user, 'month' => $Month, 'year' => $Year]);
 	}
 
+	public function updatePersonal(Request $request)
+	{
+		//dd($request->all());
+		$request->user()->update($request->all());
+		flash('Your information has been updated.');
+		return redirect('/profile/'.$request->user()->id.'/update/personal');
+	}
 }
