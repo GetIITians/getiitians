@@ -54,7 +54,7 @@
 			padding: .5rem 1rem;
 			border-radius: 5px;
 			margin-bottom: 1rem;
-			
+
 			p{
 				display: inline-block;
 				vertical-align: middle;
@@ -142,6 +142,15 @@
 	.subjects{
 		.media-heading:hover{
 			cursor: pointer;
+		}
+		.subjects-grade.collapse{
+			display: none;
+		}
+		.subjects-grade.collapse.in{
+			display: block;
+		}
+		.subjects-topics{
+			width: 100%;
 		}
 		table{
 			width: 100%;

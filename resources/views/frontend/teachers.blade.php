@@ -4,13 +4,13 @@
 		<div class="container-fluid" id="teachers">
 			<div class="row what-to-do">
 				<div class="col-xs-4 col-md-offset-1 col-md-2">
-					<img src="img/howitworks/teachers/select.png" class="img-responsive">
+					<img src="img/howitworks/teachers/select.png">
 				</div>
 				<div class="col-xs-4 col-md-offset-2 col-md-2">
-					<img src="img/howitworks/teachers/message.png" class="img-responsive">
+					<img src="img/howitworks/teachers/message.png">
 				</div>
 				<div class="col-xs-4 col-md-offset-2 col-md-2">
-					<img src="img/howitworks/teachers/learn.png" class="img-responsive">
+					<img src="img/howitworks/teachers/learn.png">
 				</div>
 			</div>
 			<div class="row">
@@ -52,7 +52,7 @@
 							<div class="col-xs-12 col-md-4 teacher">
 								<div class="row">
 									<div class="col-xs-4 dp">
-										<img src="{{ $teacher->picture }}" class="img-responsive-flex">
+										<img src="{{ $teacher->picture }}" class="img-responsive">
 									</div>
 									<div class="col-xs-8">
 										<h4 class="card-title"><a href="profile/{{ $teacher->id }}">{{ ucwords(strtolower($teacher->name)) }}</a><span class="label">GT<?php printf("%04d", $teacher->id); ?></span></h4>

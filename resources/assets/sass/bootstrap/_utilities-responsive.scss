@@ -1,5 +1,5 @@
 //
-// Responsive utilities
+// Mixins
 //
 
 @each $bp in map-keys($grid-breakpoints) {
@@ -44,6 +44,6 @@
 
 .hidden-print {
   @media print {
-    display: none !important;
+    @include responsive-invisibility(".hidden-print");
   }
 }

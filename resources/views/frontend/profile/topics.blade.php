@@ -21,7 +21,7 @@
 							<div class="media-body">
 								<h4 class="media-heading" data-toggle="collapse" href="#{{ $grade }}{{ $subject }}" aria-expanded="false" aria-controls="{{ $grade }}{{ $subject }}">{{ $subject }}</h4>
 								<div class="collapse in" id="{{ $grade }}{{ $subject }}">
-									<div class="media">
+									<div class="media subjects-topics">
 										<div class="media-body">
 											<?php
 												echo "<table><tbody><tr>";

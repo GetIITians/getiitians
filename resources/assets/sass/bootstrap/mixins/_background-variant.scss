@@ -1,9 +1,10 @@
 // Contextual backgrounds
 
+// [converter] $parent hack
 @mixin bg-variant($parent, $color) {
   #{$parent} {
-    color: #fff !important;
-    background-color: $color !important;
+    color: #fff;
+    background-color: $color;
   }
   a#{$parent} {
     @include hover-focus {

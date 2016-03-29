@@ -5789,6 +5789,12 @@ footer {
           color: #ECF0F1; }
   #profile .subjects .media-heading:hover {
     cursor: pointer; }
+  #profile .subjects .subjects-grade.collapse {
+    display: none; }
+  #profile .subjects .subjects-grade.collapse.in {
+    display: block; }
+  #profile .subjects .subjects-topics {
+    width: 100%; }
   #profile .subjects table {
     width: 100%; }
     #profile .subjects table td {

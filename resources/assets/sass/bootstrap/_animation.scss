@@ -10,8 +10,14 @@
 .collapse {
   display: none;
 
-  &.in {
-    display: block;
+  @if $enable-flex == true {
+    &.in {
+      display: flex;
+    }
+  } @else {
+    &.in {
+      display: block;
+    }
   }
   // tr&.in    { display: table-row; }
   // tbody&.in { display: table-row-group; }
