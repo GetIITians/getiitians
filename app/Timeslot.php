@@ -23,6 +23,13 @@ class Timeslot extends Model
 	];
 
 	/**
+	 * The attributes that should be mutated to dates.
+	 *
+	 * @var array
+	 */
+	protected $dates = ['slot'];
+
+	/**
 	 * Get the User that that this Session belongsTo.
 	 *
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

@@ -77,13 +77,13 @@
 			<div class="row numbers">
 				<div class="col-xs-4">
 					Teachers
-					<ul class="count" data-count="120">
+					<ul class="count" data-count="150">
 						<li>0</li>
 					</ul>
 				</div>
 				<div class="col-xs-4">
 					Students
-					<ul class="count" data-count="112">
+					<ul class="count" data-count="200">
 						<li>0</li>
 					</ul>
 				</div>
@@ -211,7 +211,7 @@
 							<li class="list-group-item">Strong emphasis on concepts</li>
 							<li class="list-group-item">Personal mentoring for facing competition</li>
 							<li class="list-group-item">Well versed with students psychology</li>
-						</ul>				
+						</ul>
 					</div>
 					<div class="card text-xs-center col-xs-12 col-sm-4">
 						<div class="card-block">
@@ -224,7 +224,7 @@
 							<li class="list-group-item">Rigorous study of exam pattern,last year paper</li>
 							<li class="list-group-item">Formulating revision strategy</li>
 							<li class="list-group-item">Regular follow up with Parents - Teacher meet</li>
-						</ul>				
+						</ul>
 					</div>
 					<div class="card text-xs-center col-xs-12 col-sm-4">
 						<div class="card-block">
@@ -236,7 +236,7 @@
 							<li class="list-group-item">Learn at your own pace</li>
 							<li class="list-group-item">Balance between school,self-study and other classes</li>
 							<li class="list-group-item">Detailed study planner per student</li>
-						</ul>				
+						</ul>
 					</div>
 				</div>
 			</div>

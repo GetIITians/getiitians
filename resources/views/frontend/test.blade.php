@@ -1,5 +1,6 @@
 <?php
 use App\User;
+use App\Teacher;
 use Carbon\Carbon;
 /*
 $timeslots = ["2016-03-17 17:30:00","2016-03-18 13:00:00","2016-03-18 13:30:00","2016-03-18 14:00:00", "2016-03-18 16:00:00", "2016-03-18 17:00:00", "2016-03-18 16:30:00", "2016-03-18 19:00:00"];
@@ -66,6 +67,7 @@ foreach ($users as $key => $user) {
 }
 */
 
+/*
 $users = DB::connection('teaching')->table('users')->get();
 $dobs = [];
 foreach ($users as $key => $user) {
@@ -79,17 +81,61 @@ echo "<hr>";
 
 $Users = DB::connection('mysql')->table('users')->get();
 foreach ($Users as $key => $user) {
-	//var_dump($user);
-
 	if (array_key_exists($user->id,$dobs)) {
 		//$Table->where('id', $user->id)->update(['date_of_birth' => $dobs[$user->id]['date_of_birth']]);
-		var_dump($user->id);
-		var_dump(DB::connection('mysql')->table('users')->where('id', $user->id)->update(['date_of_birth' => $dobs[$user->id]['date_of_birth']]));
+		var_dump($user->date_of_birth);
+		//var_dump(DB::connection('mysql')->table('users')->where('id', $user->id)->update(['date_of_birth' => $dobs[$user->id]['date_of_birth']]));
 	}
 }
+*/
+/*
+$user = User::find(76);
+var_dump($user->date_of_birth);
+$date = Carbon::createFromFormat('Y-m-d G:i:s', $user->date_of_birth)->format('j M y');
+//$date = Carbon::createFromTimestamp();
+var_dump($date);
+*/
 
-$query = DB::getQueryLog();
-var_dump($query);
+/*
+foreach (User::all() as $id => $user) {
+	if(!$user->deriveable->timeslots->isEmpty()){
+		foreach ($user->deriveable->timeslots as $key => $timeslot) {
+			if($timeslot->slot->gte(Carbon::now()))
+				var_dump($user->name." = ".$timeslot->slot);
+		}
+	}
+}
+*/
 
+//	Random timeslots for 3 months
+$possibilities = ['2016-03-05 00:00:00','2016-03-05 00:30:00','2016-03-05 01:00:00','2016-03-05 08:00:00','2016-03-05 08:30:00','2016-03-05 09:00:00','2016-03-05 09:30:00','2016-03-05 10:00:00','2016-03-05 10:30:00','2016-03-05 11:00:00','2016-03-05 11:30:00','2016-03-05 12:00:00','2016-03-05 12:30:00','2016-03-05 13:00:00','2016-03-05 13:30:00','2016-03-05 14:00:00','2016-03-05 14:30:00','2016-03-05 15:00:00','2016-03-05 15:30:00','2016-03-05 16:00:00','2016-03-05 16:30:00','2016-03-05 17:00:00','2016-03-05 17:30:00','2016-03-05 18:00:00','2016-03-05 18:30:00','2016-03-05 19:00:00','2016-03-05 19:30:00','2016-03-05 20:00:00','2016-03-05 20:30:00','2016-03-05 21:00:00','2016-03-05 21:30:00','2016-03-05 22:00:00','2016-03-05 22:30:00','2016-03-05 23:00:00','2016-03-05 23:30:00'];
+function allDays($dates){
+	$random_entry = abs(array_rand($dates)-1);
+	$start 	= new DateTime($dates[$random_entry]);
+	$end 		= new DateTime($dates[$random_entry+1]);
+	$timeslots = [];
+	for ($i=0; $i < 100; $i++) {
+		$newStart = $start->add(new DateInterval('P1D'));
+		$newEnd 	= $end->add(new DateInterval('P1D'));
+		$timeslots[] = new DateTime($newStart->format('Y-m-d H:i:s'));
+		$timeslots[] = new DateTime($newEnd->format('Y-m-d H:i:s'));
+		//$timeslots[] = $i;
+	}
+	return $timeslots;
+}
+
+//var_dump(allDays($possibilities));
+
+$teachers = Teacher::all();
+foreach ($teachers as $number => $teacher) {
+	//var_dump($teacher->id);
+	if($teacher->id > 0){
+		$timeslots = allDays($possibilities);
+		foreach ($timeslots as $key => $time) {
+			//var_dump($teacher->id." : ".$time);
+			DB::table('timeslots')->insert(['teacher_id' => $teacher->id, 'slot' => $time, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()]);
+		}
+	}
+}
 
 ?>

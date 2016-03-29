@@ -28,16 +28,20 @@
 						</div>
 					</form>
 				</div>
-				@if (old('search') !== null)
+				@if ((old('search') != null) || (old('search') != ''))
 				<div class="col-xs-offset-1 col-xs-11">
-					@if ($results)
-					<p>Showing results for '{{ old('search') }}'</p>
+					@if ($results !== 0)
+					<p>Showing {{ $results }} results for '{{ old('search') }}'</p>
 					@else
 					<p>
-						We're sorry but we couldn't find any results for '{{ old('search') }}'. 
+						We're sorry but we couldn't find any results for '{{ old('search') }}'.
 						Please try changing your search query to something more relevant.
 					</p>
 					@endif
+				</div>
+				@else
+				<div class="col-xs-offset-1 col-xs-11">
+					<p>Showing {{ $results }} results</p>
 				</div>
 				@endif
 			</div>

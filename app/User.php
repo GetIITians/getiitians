@@ -60,7 +60,7 @@ class User extends Model implements AuthenticatableContract,
 	 *
 	 * @var array
 	 */
-	protected $dates = ['deleted_at'];
+	protected $dates = ['created_at','updated_at','deleted_at','date_of_birth'];
 
   /**
    * The attributes excluded from the model's JSON form.

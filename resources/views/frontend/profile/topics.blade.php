@@ -12,7 +12,7 @@
 				</div>
 				<div class="media-body">
 					<h4 class="media-heading">{{ $grade }}</h4>
-					<div id="{{ $grade }}" class="collapse">
+					<div id="{{ $grade }}" class="collapse in subjects-grade">
 						@foreach($subjects as $subject => $topics)
 						<div class="media">
 							<a class="media-left" href="#">
@@ -20,16 +20,18 @@
 							</a>
 							<div class="media-body">
 								<h4 class="media-heading" data-toggle="collapse" href="#{{ $grade }}{{ $subject }}" aria-expanded="false" aria-controls="{{ $grade }}{{ $subject }}">{{ $subject }}</h4>
-								<div class="media collapse" id="{{ $grade }}{{ $subject }}">
-									<div class="media-body">
-										<?php
-											echo "<table><tbody><tr>";
-											foreach ($topics as $key => $topic) {
-												echo "<td>".$topic."</td>";
-												if(($key+1) % 3 == 0) {echo '</tr><tr>';}
-											}
-											echo "</tr></tbody></table>";
-										?>
+								<div class="collapse in" id="{{ $grade }}{{ $subject }}">
+									<div class="media">
+										<div class="media-body">
+											<?php
+												echo "<table><tbody><tr>";
+												foreach ($topics as $key => $topic) {
+													echo "<td>".$topic."</td>";
+													if(($key+1) % 3 == 0) {echo '</tr><tr>';}
+												}
+												echo "</tr></tbody></table>";
+											?>
+										</div>
 									</div>
 								</div>
 							</div>

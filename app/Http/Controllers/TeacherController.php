@@ -29,14 +29,14 @@ class TeacherController extends Controller
 			->join('qualifications', 'qualifications.teacher_id', '=', 'teachers.id')
 			->select('users.id', 'users.name', 'users.picture', 'users.gender','qualifications.college', 'qualifications.degree', 'users.introduction', 'teachers.rating', 'teachers.rating_count', 'teachers.minfees')
 			->where('teachers.display', '=', 1);
-		if ($request->search !== null){
+		if ($request->search !== null && $request->search !== ''){
 			$query->where('users.name', 'LIKE', '%'.$request->search.'%')
 				->orWhere('topics.name', 'LIKE', '%'.$request->search.'%')
 				->orWhere('subjects.name', 'LIKE', '%'.$request->search.'%')
 				->orWhere('grades.name', 'LIKE', '%'.$request->search.'%');
 		}
 		$teachers = $query->distinct()->groupBy('name')->get();
-		$results = (empty($teachers)) ? FALSE : TRUE ;
+		$results = count($teachers);
 
 		if($request->search && empty($teachers)) {
 			$query = DB::table('teachers')
@@ -62,7 +62,6 @@ class TeacherController extends Controller
 			if ($teacher->picture == '') {
 				if (strtolower($teacher->gender) == 'f') {
 					$teacher->picture = "img/female.png";
-
 				} else {
 					$teacher->picture = "img/male.png";
 				}
