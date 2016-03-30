@@ -2,6 +2,9 @@
 use App\User;
 use App\Teacher;
 use Carbon\Carbon;
+use App\Subject;
+use App\Topic;
+use App\Grade;
 /*
 $timeslots = ["2016-03-17 17:30:00","2016-03-18 13:00:00","2016-03-18 13:30:00","2016-03-18 14:00:00", "2016-03-18 16:00:00", "2016-03-18 17:00:00", "2016-03-18 16:30:00", "2016-03-18 19:00:00"];
 $day = date("j"); $month = date("n"); $year = date("Y");
@@ -107,6 +110,7 @@ foreach (User::all() as $id => $user) {
 }
 */
 
+/*
 //	Random timeslots for 3 months
 $possibilities = ['2016-03-05 00:00:00','2016-03-05 00:30:00','2016-03-05 01:00:00','2016-03-05 08:00:00','2016-03-05 08:30:00','2016-03-05 09:00:00','2016-03-05 09:30:00','2016-03-05 10:00:00','2016-03-05 10:30:00','2016-03-05 11:00:00','2016-03-05 11:30:00','2016-03-05 12:00:00','2016-03-05 12:30:00','2016-03-05 13:00:00','2016-03-05 13:30:00','2016-03-05 14:00:00','2016-03-05 14:30:00','2016-03-05 15:00:00','2016-03-05 15:30:00','2016-03-05 16:00:00','2016-03-05 16:30:00','2016-03-05 17:00:00','2016-03-05 17:30:00','2016-03-05 18:00:00','2016-03-05 18:30:00','2016-03-05 19:00:00','2016-03-05 19:30:00','2016-03-05 20:00:00','2016-03-05 20:30:00','2016-03-05 21:00:00','2016-03-05 21:30:00','2016-03-05 22:00:00','2016-03-05 22:30:00','2016-03-05 23:00:00','2016-03-05 23:30:00'];
 function allDays($dates){
@@ -137,5 +141,68 @@ foreach ($teachers as $number => $teacher) {
 		}
 	}
 }
+*/
+
+/*
+$ratings = [ 3.50, 3.75, 4.00, 4.25, 4.50, 4.75, 5.00];
+$teachers = Teacher::all();
+foreach ($teachers as $number => $teacher) {
+	if($teacher->id > 0){
+		//var_dump($teacher->rating);
+		$teacher->rating = $ratings[array_rand($ratings)];
+		$teacher->rating_count = mt_rand(1,5);
+		$teacher->save();
+	}
+}
+*/
+/*
+$ids = [28,41,44,52,60,76,180,191,246,260,284];
+
+foreach ($ids as $id) {
+	$teacher = User::find($id)->deriveable;
+	foreach ($teacher->topics as $topic) {
+		$subject_id = $topic->subject->id;
+		$query 			= Topic::where('subject_id',$subject_id);
+		$count 			=	floor(($query->count())/2);
+		$collection = $query->get();
+		$topics			=	$collection->random($count);
+		foreach ($topics->all() as $topic) {
+			//var_dump($topic->name);
+			$teacher->topics()->save($topic);
+		}
+		echo '<hr>'.$count;
+		var_dump($teacher);
+	}
+}
+*/
+
+/*
+$users = User::all();
+foreach ($users as $user) {
+	var_dump($user->picture);
+	$user->picture = "img/profile/".$user->picture;
+	$user->save();
+	if ($user->picture != '0')
+	{
+		//var_dump(Storage::disk('local')->has($user->picture));
+		if(!Storage::disk('local')->has($user->picture))
+		{
+			if (strtolower($user->gender) == 'f')
+				$user->picture = "female.png";
+			else
+				$user->picture = "male.png";
+			$user->save();
+		}
+	}
+	else
+	{
+		if (strtolower($user->gender) == 'f')
+			$user->picture = "female.png";
+		else
+			$user->picture = "male.png";
+		$user->save();
+	}
+}
+*/
 
 ?>

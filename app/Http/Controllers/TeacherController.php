@@ -59,19 +59,10 @@ class TeacherController extends Controller
 				unset($teachers[$key]);
 				array_unshift($teachers, $teacher);
 			}
-			if ($teacher->picture == '') {
-				if (strtolower($teacher->gender) == 'f') {
-					$teacher->picture = "img/female.png";
-				} else {
-					$teacher->picture = "img/male.png";
-				}
-			} else {
-				$teacher->picture = env('TEACHING_LINK').$teacher->picture;
-			}
 		}
 
 
-		//foreach ($teachers as $key => $teacher) { echo $teacher->users->first()->picture."<br>";	}
+		//foreach ($teachers as $key => $teacher) { echo $teacher->picture."<br>";	}
 
 		return view('frontend.teachers', ['teachers'  => $teachers, 'page' => 'teachers', 'results' => $results]);
 	}
