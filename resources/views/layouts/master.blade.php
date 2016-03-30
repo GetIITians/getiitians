@@ -41,6 +41,13 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ env('TEACHING_LINK') }}joinus">Become a teacher</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ env('TEACHING_LINK') }}login">Login</a>
+            </li>
+            <li class="nav-item">
+                <a id="signup" class="nav-link" href="{{ env('TEACHING_LINK') }}signup">Signup</a>
+            </li>
+            <?php /* ?>
             @if (Auth::guest())
                 <li class="nav-item {{matchValue('signup',$page,'active')}}">
                     <a class="nav-link" href="/login">Login</a>
@@ -56,6 +63,7 @@
                     <a class="nav-link" href="/profile/{{Auth::user()->id}}">{{ Auth::user()->name }}</a>
                 </li>
             @endif
+            <?php */ ?>
         </ul>
     </div>
 </nav>
@@ -248,7 +256,7 @@
     </div>
 </footer>
 <div id="flashMessage">
-    
+
 </div>
 
 <script src="/js/vendor/jquery-2.1.4.min.js"></script>

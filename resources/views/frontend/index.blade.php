@@ -77,7 +77,7 @@
 			<div class="row numbers">
 				<div class="col-xs-4">
 					Teachers
-					<ul class="count" data-count="150">
+					<ul class="count" data-count="55">
 						<li>0</li>
 					</ul>
 				</div>

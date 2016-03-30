@@ -27,12 +27,14 @@ Route::group(['prefix' => 'profile/{user}'], function () {
   Route::get('schedule/{month}/{year}', 'ProfileController@schedule');
 });
 //  Profile - Login
+/*
 Route::group(['middleware' => 'auth', 'prefix' => 'profile/{user}/update'], function () {
   Route::get('personal', function (App\User $user){
     return view('frontend.profile.update.personal', ['user' => $user, 'page' => 'profile']);
   });
   Route::post('personal', 'ProfileController@updatePersonal');
 });
+*/
 //  Enquiry Messages
 Route::post('teachers/message', 'TeacherController@postMessage');
 Route::post('teachers/enquiry', 'TeacherController@postEnquiry');
@@ -47,6 +49,7 @@ Route::get('test', function(){
 	return view('frontend.test');
 });
 Route::get('testing', 'MainController@testing');
+/*
 //Authentication routes...
 Route::get('login', 'Auth\AuthController@getLogin');
 Route::get('auth/login', 'Auth\AuthController@getLogin');
@@ -56,7 +59,7 @@ Route::get('logout', 'Auth\AuthController@getLogout');
 Route::get('signup', 'Auth\AuthController@getRegister');
 Route::post('signup', 'Auth\AuthController@postRegister');
 Route::get('signup/confirm/{token}', 'Auth\AuthController@confirmEmail');
-
+*/
 /*
 Route::get('test/{user}', 'ProfileController@test');
 //	www.getiitians.com/profile/5
