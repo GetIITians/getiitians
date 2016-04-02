@@ -13,6 +13,10 @@
 
 //  Home Page
 Route::get('/', function () { return view('frontend.index', ['page' => 'home']); });
+//  Contact Us
+Route::get('about', function (){
+	return view('frontend.about', ['page' => 'about']);
+});
 //  Search Page
 Route::get('teachers', 'TeacherController@search');
 Route::post('teachers', 'TeacherController@search');

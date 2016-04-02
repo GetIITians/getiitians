@@ -26,11 +26,14 @@
         <ul class="nav navbar-nav">
             <li class="nav-item">
                 <a class="nav-link phone-no">
-                    +91-9313394403
+                    +91-8447731863
                 </a>
             </li>
             <li class="nav-item {{matchValue('home',$page,'active')}}">
                 <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item {{matchValue('about',$page,'active')}}">
+                <a class="nav-link" href="/about">About Us</a>
             </li>
             <li class="nav-item {{matchValue('teachers',$page,'active')}}">
                 <a class="nav-link" href="/teachers">Teachers</a>
