@@ -394,6 +394,16 @@
 			font-family: $font-light;
 			font-weight: normal;
 		}
+		.signuppersonal{
+			#profile-pic{
+				margin-bottom: 1rem;
+			}
+			#dp-upload{
+				background-color: white;
+				border: 1px dotted $flat-purple;
+				padding: .5rem;
+			}
+		}
 		.signupsubjects{
 			.subject{
 				display: flex;

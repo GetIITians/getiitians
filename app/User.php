@@ -11,6 +11,7 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Auth;
+use Carbon\Carbon;
 
 class User extends Model implements AuthenticatableContract,
                                     AuthorizableContract,
@@ -87,6 +88,8 @@ class User extends Model implements AuthenticatableContract,
     return $this->morphTo(); // polymorphic belongsTo
   }
 
+
+  //  Helper Functions
 	public function typeOfUser()
 	{
 		return $this->types[$this->deriveable_type];
@@ -108,5 +111,6 @@ class User extends Model implements AuthenticatableContract,
 			return ($this->id === Auth::user()->id);
 		return false;
 	}
+
 
 }

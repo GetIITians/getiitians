@@ -30,15 +30,7 @@ Route::group(['prefix' => 'profile/{user}'], function () {
   Route::get('schedule/{month}', 'ProfileController@schedule');
   Route::get('schedule/{month}/{year}', 'ProfileController@schedule');
 });
-//  Profile - Login
-/*
-Route::group(['middleware' => 'auth', 'prefix' => 'profile/{user}/update'], function () {
-  Route::get('personal', function (App\User $user){
-    return view('frontend.profile.update.personal', ['user' => $user, 'page' => 'profile']);
-  });
-  Route::post('personal', 'ProfileController@updatePersonal');
-});
-*/
+
 //  Enquiry Messages
 Route::post('teachers/message', 'TeacherController@postMessage');
 Route::post('teachers/enquiry', 'TeacherController@postEnquiry');
@@ -48,12 +40,22 @@ Route::post('teachers/call', 'TeacherController@postCall');
 Route::get('contact', function (){
 	return view('frontend.contact', ['page' => 'contact']);
 });
+
+/*
+//  Profile - Login
+Route::group(['middleware' => 'auth', 'prefix' => 'profile/{user}/update'], function () {
+  Route::get('personal', function (App\User $user){
+		return view('frontend.profile.update.personal', ['user' => $user, 'page' => 'profile']);
+  });
+  Route::post('personal', 'ProfileController@updatePersonal');
+	Route::post('personal/picture', 'ProfileController@updateProfilePic');
+});
 //  Testing
 Route::get('test', function(){
 	return view('frontend.test');
 });
 Route::get('testing', 'MainController@testing');
-/*
+
 //Authentication routes...
 Route::get('login', 'Auth\AuthController@getLogin');
 Route::get('auth/login', 'Auth\AuthController@getLogin');

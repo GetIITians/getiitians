@@ -15,7 +15,7 @@ $(function () {
 		$('.signuppersonal .dob input').datepicker();
 	};
 
-	
+
 	if ($('.signupcalendar').length) {
 		var diff = null;
 		$('#start-date').datepicker({ startDate: '0' }).on('changeDate', function(e) {
@@ -25,7 +25,7 @@ $(function () {
 				startDate: '+'+diff+'d'
 			});
 		});
-	};	
+	};
 
 	var classList = {
 		500 : "five",
@@ -106,4 +106,5 @@ $(function () {
 		});
 		return false;
 	});
+	
 })

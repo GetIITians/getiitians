@@ -21,6 +21,16 @@
     </div>
     <div class="gutter-sm"></div>
     <div class="signuppersonal">
+        <div class="row" id="profile-pic">
+          <div class="col-xs-3">
+            <h5>Profile Picture</h5>
+          </div>
+          <div class="col-xs-5">
+            <form action="{{ url('/profile/'.$user->id.'/update/personal/picture') }}" class="dropzone" id="dp-upload">
+              {{ csrf_field() }}
+            </form>
+          </div>
+        </div>
         {!! Form::model($user, array('url' => '/profile/'.$user->id.'/update/personal', 'method' => 'POST')) !!}
             {{ csrf_field() }}
             <div class="row">
@@ -58,7 +68,7 @@
                 <h5>Profile Picture</h5>
               </div>
               <div class="col-xs-6">
-                <fieldset class="form-group">
+                <fieldset class="form-group" id="file-upload">
                   {!! Form::file('picture', ['class' => 'form-control']) !!}
                 </fieldset>
               </div>
@@ -95,7 +105,7 @@
                 </div>
                 <div class="col-xs-2">
                     <fieldset class="form-group">
-                        {!! Form::text('date_of_birth', null,['class' => 'form-control', 'placeholder' => 'yyyy-mm-dd']) !!}
+                        {!! Form::text('date_of_birth', $user->date_of_birth->format('d/m/Y'),['class' => 'form-control', 'placeholder' => 'dd/MM/YYYY']) !!}
                     </fieldset>
                 </div>
             </div>
@@ -134,4 +144,12 @@
         <div class="gutter-sm"></div>
     </div>
 </main>
+
+<script src="/js/vendor/dropzone.js"></script>
+<script type="text/javascript">
+  Dropzone.options.dpUpload = {
+    paramName: "picture", // The name that will be used to transfer the file
+    maxFilesize: 2, // MB
+  };
+</script>
 @endsection

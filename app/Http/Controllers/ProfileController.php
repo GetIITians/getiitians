@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use DB;
 use Gate;
 use Auth;
+use Carbon\Carbon;
 use App\User;
 use App\Teacher;
 use App\Http\Requests;
@@ -42,8 +43,24 @@ class ProfileController extends Controller
 		return view('frontend.profile.schedule', ['page' => 'profile', 'user' => $user, 'month' => $Month, 'year' => $Year]);
 	}
 
+	public function updateProfilePic()
+	{
+		$file = \Input::file('picture');
+		$destinationPath = 'uploads';
+		$filename = str_random(12);
+		$extension = $file->getClientOriginalExtension() ;
+		$upload_success = $file->move($destinationPath, $filename.".".$extension);
+
+    if( $upload_success ) {
+    	return \Response::json('success', 200);
+    } else {
+    	return \Response::json('error', 400);
+    }
+	}
+
 	public function updatePersonal(Request $request)
 	{
+		$request->offsetSet('date_of_birth', Carbon::createFromFormat('d/m/Y', $request->date_of_birth)->toDateTimeString());
 		//dd($request->all());
 		$request->user()->update($request->all());
 		flash('Your information has been updated.');
