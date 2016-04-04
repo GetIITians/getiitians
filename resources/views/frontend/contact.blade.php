@@ -6,11 +6,15 @@
 			<div class="container" id="contact">
 				<div class="row">
 					<div class="col-xs-12">
-						<h5>Contact US</h5>
+						<h3>Contact US</h3>
 						<hr class="purple">
-						<i class="material-icons md-18">pin_drop</i><p>58/1 2nd Floor, Kalu Sarai, Near Hauz Khas Metro Station, New Delhi - 110016, India</p><br>
 						<i class="material-icons md-18">email</i><p>info@getiitians.com</p><br>
-						<i class="material-icons md-18">phone</i><p>+91 9313394403</p>
+						<h5> India </h5>
+						<i class="material-icons md-18">pin_drop</i><p>58/1 2nd Floor, Kalu Sarai, Near Hauz Khas Metro Station, New Delhi - 110016, India</p><br>
+						<i class="material-icons md-18">phone</i><p>+91 9313394403 </p><br>
+						<h5> UAE </h5>
+						<i class="material-icons md-18">pin_drop</i><p>Electra Street, Near Lifeline Hospital, Abu Dhabi, UAE</p><br>
+						<i class="material-icons md-18">phone</i><p>+97 1564568431 </p>
 					</div>
 				</div>
 				<div class="gutter-sm"></div>
