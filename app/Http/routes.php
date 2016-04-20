@@ -41,7 +41,7 @@ Route::get('contact', function (){
 	return view('frontend.contact', ['page' => 'contact']);
 });
 
-/*
+
 //  Profile - Login
 Route::group(['middleware' => 'auth', 'prefix' => 'profile/{user}/update'], function () {
   Route::get('personal', function (App\User $user){
@@ -49,6 +49,19 @@ Route::group(['middleware' => 'auth', 'prefix' => 'profile/{user}/update'], func
   });
   Route::post('personal', 'ProfileController@updatePersonal');
 	Route::post('personal/picture', 'ProfileController@updateProfilePic');
+	Route::get('qualification', function (App\User $user){
+		$languages = App\Language::lists('language','id');
+		return view('frontend.profile.update.qualification', ['user' => $user, 'page' => 'profile', 'languages' => $languages]);
+  });
+  Route::post('qualification', 'ProfileController@updateQualification');
+	Route::get('subjects', function (App\User $user){
+		return view('frontend.profile.update.subjects', ['user' => $user, 'page' => 'profile', 'subjects' => App\Grade::all()]);
+  });
+	Route::post('subjects', 'ProfileController@updateSubjects');
+	Route::get('timeslots', function (App\User $user){
+		return view('frontend.profile.update.timeslots', ['user' => $user, 'page' => 'profile']);
+  });
+	Route::post('timeslots', 'ProfileController@updateTimeslots');
 });
 //  Testing
 Route::get('test', function(){
@@ -65,7 +78,7 @@ Route::get('logout', 'Auth\AuthController@getLogout');
 Route::get('signup', 'Auth\AuthController@getRegister');
 Route::post('signup', 'Auth\AuthController@postRegister');
 Route::get('signup/confirm/{token}', 'Auth\AuthController@confirmEmail');
-*/
+
 /*
 Route::get('test/{user}', 'ProfileController@test');
 //	www.getiitians.com/profile/5

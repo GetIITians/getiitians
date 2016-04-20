@@ -405,6 +405,9 @@
 			}
 		}
 		.signupsubjects{
+			.subjects-grade.collapse.in{
+				display: block;
+			}
 			.subject{
 				display: flex;
 				flex-wrap: wrap;

@@ -7,16 +7,16 @@
     <div class="gutter-sm"></div>
     <div class="row sections">
         <div class="col-xs-2">
-            <a href="personal"><span>1</span>PERSONAL</a>
+            <a href="/profile/{{ $user->id }}/update/personal"><span>1</span>PERSONAL</a>
         </div>
         <div class="col-xs-offset-1 col-xs-2">
-            <a href="qualification"><span>2</span>QUALIFICATION</a>
+            <a href="/profile/{{ $user->id }}/update/qualification"><span>2</span>QUALIFICATION</a>
         </div>
         <div class="col-xs-offset-1 col-xs-2">
-            <a href="subjects"><span>3</span>SUBJECTS</a>
+            <a href="/profile/{{ $user->id }}/update/subjects"><span>3</span>SUBJECTS</a>
         </div>
         <div class="col-xs-offset-1 col-xs-2">
-            <a href="calendar"><span>4</span>CALENDAR</a>
+            <a href="/profile/{{ $user->id }}/update/timeslots"><span>4</span>CALENDAR</a>
         </div>
     </div>
     <div class="gutter-sm"></div>
@@ -60,16 +60,6 @@
               <div class="col-xs-2">
                 <fieldset class="form-group">
                   {!! Form::text('email', null,['class' => 'form-control']) !!}
-                </fieldset>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-3">
-                <h5>Profile Picture</h5>
-              </div>
-              <div class="col-xs-6">
-                <fieldset class="form-group" id="file-upload">
-                  {!! Form::file('picture', ['class' => 'form-control']) !!}
                 </fieldset>
               </div>
             </div>

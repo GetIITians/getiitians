@@ -6006,6 +6006,8 @@ footer {
     background-color: white;
     border: 1px dotted #2C3E50;
     padding: .5rem; }
+  #profile .signup .signupsubjects .subjects-grade.collapse.in {
+    display: block; }
   #profile .signup .signupsubjects .subject {
     display: -webkit-flex;
     display: -ms-flexbox;
