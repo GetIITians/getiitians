@@ -29,6 +29,8 @@ Route::group(['prefix' => 'profile/{user}'], function () {
   Route::get('schedule', 'ProfileController@schedule');
   Route::get('schedule/{month}', 'ProfileController@schedule');
   Route::get('schedule/{month}/{year}', 'ProfileController@schedule');
+	Route::get('book', 'ProfileController@book');
+	Route::get('slots', 'ProfileController@slots');
 });
 
 //  Enquiry Messages

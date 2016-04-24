@@ -249,6 +249,8 @@ foreach (App\Grade::all() as $key => $grade) {
 	echo "<hr>";
 }
 */
+
+/*
 $time = [
     0 => "0",
     1 => "1",
@@ -285,7 +287,43 @@ for ($i=0; $i <= $diff; $i++) {
 		$date->subMinutes(30*end($time));
 	}
 }
+//dd($timeslots);
+*/
+\DB::listen(function($sql, $bindings, $time) {
+    var_dump($sql);
+    var_dump($bindings);
+    var_dump($time);
+});
 
-dd($timeslots);
+$teacher = Teacher::find(76);
+
+/*
+$dates = ["2016-04-24","2016-04-25","2016-04-26","2016-04-27"];
+
+
+$slots = \App\Timeslot::where('teacher_id',$teacher->id)
+				->where(function($query) use ($dates){
+					foreach ($dates as $date) {
+						$query->orWhereBetween('slot', [(new Carbon($date))->toDateTimeString(), (new Carbon($date))->addDay()->toDateTimeString()]);
+					}
+				})
+				->get();
+
+$available = [] ;
+foreach ($slots as $slot) {
+	$minute = (strlen($slot->slot->minute) == 1) ? '00' : '30' ;
+	$available[$slot->slot->day][] = $slot->slot->hour.':'.$minute;
+}
+
+$toBeSent = array_shift($available) ;
+foreach ($available as $value) {
+	$toBeSent = array_intersect($toBeSent,$value);
+}
+dd($toBeSent);
+//dd(array_intersect($available['24'], $available['25'], $available['26'], $available['27']));
+*/
+
+\App\Timeslot::where('teacher_id',$teacher->id)->whereBetween('slot', ['2016-04-25', '2016-04-26'])->delete();
+
 
 ?>

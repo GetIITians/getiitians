@@ -66,15 +66,15 @@ class ProfileController extends Controller
 	{
 		$request->offsetSet('date_of_birth', Carbon::createFromFormat('d/m/Y', $request->date_of_birth)->toDateTimeString());
 		//dd($request->all());
-		$request->user()->update($request->all());
+		$request->user->update($request->all());
 		flash('Your information has been updated.');
-		return redirect('/profile/'.$request->user()->id.'/update/personal');
+		return redirect('/profile/'.$request->user->id.'/update/personal');
 	}
 
 	public function updateQualification(Request $request)
 	{
 		//dd($request->all());
-		$teacher = $request->user()->deriveable;
+		$teacher = $request->user->deriveable;
 		if ($request->has('language')) {
 			$teacher->languages()->sync($request->input('language')) ;
 		}
@@ -93,7 +93,7 @@ class ProfileController extends Controller
 		}
 		$teacher->update($request->only(['experience','home_tuition']));
 		flash('Your information has been updated.');
-		return redirect('/profile/'.$request->user()->id.'/update/qualification');
+		return redirect('/profile/'.$request->user->id.'/update/qualification');
 	}
 
 	public function updateSubjects(Request $request)
@@ -108,9 +108,9 @@ class ProfileController extends Controller
 				}
 			}
 		}
-		$request->user()->deriveable->topics()->sync($teacher_topics);
+		$request->user->deriveable->topics()->sync($teacher_topics);
 		flash('Your information has been updated.');
-		return redirect('/profile/'.$request->user()->id.'/update/subjects');
+		return redirect('/profile/'.$request->user->id.'/update/subjects');
 	}
 
 	public function updateTimeslots(Request $request)
@@ -118,7 +118,7 @@ class ProfileController extends Controller
 		$start		= Carbon::createFromFormat('d-M-Y H:i:s', $request->input('start')." 00:00:00");
 		$end			= Carbon::createFromFormat('d-M-Y H:i:s', $request->input('end')." 00:00:00");
 		$dbStart	=	$start->toDateString();
-		$dbEnd		=	$end->toDateString();
+		$dbEnd		=	$end->addDay()->toDateString();
 		$time 		= $request->input('time');
 		$span 		= $end->diffInDays($start);
 		$slots 		= [];
@@ -128,13 +128,57 @@ class ProfileController extends Controller
 			{
 				foreach ($time as $key => $slot) {
 					$last 		= ($key===0) ? "0" : $time[$key-1] ;
-					$slots[] 	= $date->addMinutes((30*($slot-$last)))->toDateTimeString();
+					$slots[] 	= new \App\Timeslot(['slot' => $date->addMinutes((30*($slot-$last)))->toDateTimeString()]);
 				}
 				$date->subMinutes(30*end($time));
 			}
 		}
-		dd($request->user->deriveable->timeslots);
-		//dd($slots);
+		//var_dump($dbStart.''.$dbEnd);
+		\App\Timeslot::where('teacher_id',$request->user->deriveable->id)->whereBetween('slot', [$dbStart, $dbEnd])->delete();
+		$request->user->deriveable->timeslots()->saveMany($slots);
+		flash('Your information has been updated.');
+		return redirect('/profile/'.$request->user->id.'/update/timeslots');
+	}
+
+	public function book (User $user)
+	{
+		$topics = [];
+		foreach ($user->deriveable->topics as $topic) {
+			$topics[$topic->subject->grade->id]['name'] = $topic->subject->grade->name;
+			$topics[$topic->subject->grade->id]['id'] = $topic->subject->grade->id;
+			$topics[$topic->subject->grade->id]['subjects'][$topic->subject->id]['name'] = $topic->subject->name;
+			$topics[$topic->subject->grade->id]['subjects'][$topic->subject->id]['id'] = $topic->subject->id;
+			$topics[$topic->subject->grade->id]['subjects'][$topic->subject->id]['topics'][$topic->id]['name'] = $topic->name;
+			$topics[$topic->subject->grade->id]['subjects'][$topic->subject->id]['topics'][$topic->id]['id'] = $topic->id;
+			$topics[$topic->subject->grade->id]['subjects'][$topic->subject->id]['topics'][$topic->id]['fees'] = $topic->pivot->fees;
+		}
+		//dd($topics);
+		return view('frontend.profile.book', ['page' => 'profile', 'user' => $user, 'topics' => $topics]);
+	}
+
+	public function slots (Request $request, User $user)
+	{
+		$dates = json_decode($request->input('dates'));
+
+		$slots = \App\Timeslot::where('teacher_id',$user->deriveable->id)
+						->where(function($query) use ($dates){
+							foreach ($dates as $date) {
+								$query->orWhereBetween('slot', [(new Carbon($date))->toDateTimeString(), (new Carbon($date))->addDay()->toDateTimeString()]);
+							}
+						})
+						->get();
+
+		$available = [] ;
+		foreach ($slots as $slot) {
+			$available[$slot->slot->day][] = $slot->slot->hour.':'.$slot->slot->minute;
+		}
+
+		$toBeSent = array_shift($available) ;
+		foreach ($available as $value) {
+			$toBeSent = array_intersect($toBeSent,$value);
+		}
+
+		return response()->json($toBeSent);
 	}
 
 }
