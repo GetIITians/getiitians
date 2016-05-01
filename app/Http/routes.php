@@ -18,8 +18,7 @@ Route::get('about', function (){
 	return view('frontend.about', ['page' => 'about']);
 });
 //  Search Page
-Route::get('teachers', 'TeacherController@search');
-Route::post('teachers', 'TeacherController@search');
+Route::match(['get', 'post'], 'teachers', 'TeacherController@search');
 //  Profile - Guest
 Route::group(['prefix' => 'profile/{user}'], function () {
   Route::get('/', function(App\User $user){
@@ -30,7 +29,11 @@ Route::group(['prefix' => 'profile/{user}'], function () {
   Route::get('schedule/{month}', 'ProfileController@schedule');
   Route::get('schedule/{month}/{year}', 'ProfileController@schedule');
 	Route::get('book', 'ProfileController@book');
+	Route::post('book', 'ProfileController@bookClass');
 	Route::get('slots', 'ProfileController@slots');
+	Route::get('classes', 'ProfileController@classes');
+	Route::get('messages', 'ProfileController@messages');
+	Route::post('message', 'ProfileController@postMessage');
 });
 
 //  Enquiry Messages

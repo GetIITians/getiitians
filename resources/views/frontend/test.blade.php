@@ -1,6 +1,7 @@
 <?php
 use App\User;
 use App\Teacher;
+use App\Student;
 use Carbon\Carbon;
 use App\Subject;
 use App\Topic;
@@ -295,9 +296,10 @@ for ($i=0; $i <= $diff; $i++) {
     var_dump($time);
 });
 
-$teacher = Teacher::find(76);
 
 /*
+$teacher = Teacher::find(76);
+
 $dates = ["2016-04-24","2016-04-25","2016-04-26","2016-04-27"];
 
 
@@ -323,7 +325,20 @@ dd($toBeSent);
 //dd(array_intersect($available['24'], $available['25'], $available['26'], $available['27']));
 */
 
-\App\Timeslot::where('teacher_id',$teacher->id)->whereBetween('slot', ['2016-04-25', '2016-04-26'])->delete();
-
+//dd($teacher->topics);
+//dd(Student::find(3)->chats);
+$galBaat = [] ;
+$userType = Auth::user()->typeOfUser();
+//\App\Chat::where('student_id', 3)->orderBy('created_at', 'desc')->get()
+$galaan = Student::find(3)->chats()->orderBy('created_at', 'desc')->get();
+foreach ( $galaan as $id => $chat) {
+  $key = ( $userType == 'student') ? ucwords(strtolower($chat->teacher->user->name)) : ucwords(strtolower($chat->student->user->name)) ;
+  $keyID = ( $userType == 'student') ? ucwords(strtolower($chat->teacher->user->id)) : ucwords(strtolower($chat->student->user->id)) ;
+  $galBaat[$key]['content'][$id]['sender'] = ($chat->sender == Auth::user()->id) ? 'self' : 'other' ;
+  $galBaat[$key]['content'][$id]['message'] = $chat->message;
+  $galBaat[$key]['content'][$id]['ts'] = $chat->created_at;
+  $galBaat[$key]['id'] = $keyID;
+}
+echo "<pre>";print_r($galBaat);echo "</pre>";
 
 ?>

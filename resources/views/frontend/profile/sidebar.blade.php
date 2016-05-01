@@ -10,6 +10,8 @@
 		<li><a href="/profile/{{ $user->id }}/topics">Topics</a></li>
 		@endif
 		@if ($user->ownProfile())
+		<li><a href="/profile/{{ $user->id }}/classes">Classes</a></li>
+		<li><a href="/profile/{{ $user->id }}/messages">Messages</a></li>
 		<li><a href="/profile/{{ $user->id }}/update/personal">Update</a></li>
 		@endif
 	</ul>

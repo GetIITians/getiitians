@@ -3,8 +3,8 @@
 
 <main class="col-xs-10 signup">
   <div class="gutter-sm"></div>
-  <h2>Teacher Signup</h2>
-  <h4 class="pull-right">Profile | 3 of 4 steps completed</h4>
+  <h2>Profile Update</h2>
+<!--  <h4 class="pull-right">Profile | 3 of 4 steps completed</h4>  -->
   <div class="gutter-sm"></div>
   <div class="row sections">
     <div class="col-xs-2">

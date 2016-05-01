@@ -48,16 +48,30 @@
 		</div>
 		<div class="col-xs-12 col-sm-4">
       @if ($user->isTeacher())
-			<form id="messageTeacher" action="/teachers/message" method="POST">
-				{{ csrf_field() }}
-				<p>Send {{ ucwords(strtolower($user->name)) }} a message explaining your needs and you will recieve a response by email.</p>
-				<input type="hidden" id="recipient" value="{{ ucwords(strtolower($user->name)) }}">
-				<fieldset class="form-group">
-					<textarea class="form-control" id="message" rows="5" placeholder="Write your message here."></textarea>
-				</fieldset>
-				<small></small>
-				<button type="submit" class="btn btn-primary-reverse">MESSAGE {{ strtoupper($user->name) }}</button>
-			</form>
+				@if(!Auth::check())
+					<form id="messageTeacher" class="loggedOutMessage" action="/teachers/message" method="POST">
+						{{ csrf_field() }}
+						<p>Send {{ ucwords(strtolower($user->name)) }} a message explaining your needs and you will recieve a response by email.</p>
+						<input type="hidden" id="recipient" value="{{ ucwords(strtolower($user->name)) }}">
+						<fieldset class="form-group">
+							<textarea class="form-control" id="message" rows="5" placeholder="Write your message here."></textarea>
+						</fieldset>
+						<small></small>
+						<button type="submit" class="btn btn-primary-reverse">MESSAGE {{ strtoupper($user->name) }}</button>
+					</form>
+				@else
+				<form  id="messageTeacher" action="{{ url('profile/'.$user->id.'/message/') }}" method="POST">
+					{{ csrf_field() }}
+					<p>Contact {{ ucwords(strtolower($user->name)) }} to ask a doubt or setup a special class.</p>
+					<input type="hidden" name="teacher_id" value="{{ $user->id }}">
+					<input type="hidden" name="student_id" value="{{ Auth::user()->id }}">
+					<fieldset class="form-group">
+						<textarea class="form-control" id="message" name="message" rows="5" placeholder="Write your message here."></textarea>
+					</fieldset>
+					<small></small>
+					<button type="submit" class="btn btn-primary-reverse">MESSAGE {{ strtoupper($user->name) }}</button>
+				</form>
+				@endif
     	@endif
 		</div>
 	</div>

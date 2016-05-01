@@ -8,23 +8,24 @@
 						<div class="row">
 							<div class="col-xs-12">
 								<div class="gutter-sm"></div>
-								<form>
+								<form method="POST" action="{{ url('profile/'.$user->id.'/book') }}">
+                  {{ csrf_field() }}
 									<div class="row">
 										<fieldset class="form-group col-xs-3">
 											<label for="class">Class</label>
-											<select class="form-control form-control-sm c-select" id="class">
+											<select class="form-control form-control-sm c-select" id="class" name="class">
 												<option selected>CLASS</option>
 											</select>
 										</fieldset>
 										<fieldset class="form-group col-xs-offset-1 col-xs-3">
 											<label for="subject">Subject</label>
-											<select class="form-control form-control-sm c-select" id="subject">
+											<select class="form-control form-control-sm c-select" id="subject" name="subject">
 												<option selected>SUBJECT</option>
 											</select>
 										</fieldset>
 										<fieldset class="form-group col-xs-offset-1 col-xs-3">
 											<label for="topic">Topic</label>
-											<select class="form-control form-control-sm c-select" id="topic">
+											<select class="form-control form-control-sm c-select" id="topic" name="topic">
 												<option selected>TOPIC</option>
 											</select>
 										</fieldset>

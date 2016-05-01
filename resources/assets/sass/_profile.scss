@@ -225,7 +225,7 @@
 			overflow-y: scroll;
 			ul{
 				overflow: auto;
-				li{
+				a{
 					background-color: $flat-white;
 					border-color: $flat-purple;
 					color: $flat-purple;
@@ -243,8 +243,8 @@
 			}
 		}
 		.chat{
-			border: 1px solid $flat-purple;
-			overflow-y: scroll;
+/*			border: 1px solid $flat-purple;
+*/			overflow-y: scroll;
 			padding-left: 0;
 			button{
 				margin-top: 2rem;
@@ -260,6 +260,11 @@
 				}
 				.other{
 					margin-left: 1rem;
+				}
+				small{
+					display: block;
+					font-size: 70%;
+					color: $white-darkest;
 				}
 			}
 		}

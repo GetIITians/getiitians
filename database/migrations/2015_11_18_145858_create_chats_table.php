@@ -12,13 +12,14 @@ class CreateChatsTable extends Migration
      */
     public function up()
     {
-        Schema::create('chats', function (Blueprint $table) {
-            $table->increments('id');
-			$table->integer('teacher_id', false, true)->index();
-			$table->integer('student_id', false, true)->index();
-			$table->text('message');
-            $table->timestamps();
-        });
+      Schema::create('chats', function (Blueprint $table) {
+        $table->increments('id');
+  			$table->integer('teacher_id', false, true)->index();
+  			$table->integer('student_id', false, true)->index();
+  			$table->text('message');
+        $table->string('sender');
+        $table->timestamps();
+      });
     }
 
     /**

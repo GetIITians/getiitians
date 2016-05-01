@@ -362,7 +362,7 @@ $(function () {
 		})
 	});
 
-	$(document).on('submit','#messageTeacher', function(event) {
+	$(document).on('submit','.loggedOutMessage', function(event) {
 		event.preventDefault();
 		var form = $(this);
 		if(form.find('#message').val() == ''){
@@ -391,7 +391,7 @@ $(function () {
 /*---------------------------------
 		CLASS BOOKING STARTS BELOW
 */
-	book.initClassList(topics);
+	if($('.class').length){book.initClassList(topics);}
 	$('#class').change(function() {
 		var classVal = $(this).find('option:selected').val() ;
 		if ( classVal !== 'CLASS') {
@@ -487,7 +487,7 @@ $(function () {
 	  var day = 1;
 		for (var i = 0; i < 42; i++) {
 			if (day <= monthLength && i >= startingDay) {
-				html += '<input hidden type="checkbox" id="'+day+this.month+this.year+'" data-month="'+twoDigits(1 + this.month)+'" data-year="'+twoDigits(this.year)+'" data-day="'+day+'">';
+				html += '<input hidden name="date[]" value="'+this.year+'-'+(this.month+1)+'-'+day+'" type="checkbox" id="'+day+this.month+this.year+'" data-month="'+twoDigits(1 + this.month)+'" data-year="'+twoDigits(this.year)+'" data-day="'+day+'">';
 				html += '<label for="'+day+this.month+this.year+'" class="cell">'+day+'</label>';
 				day++;
 			} else {
@@ -551,7 +551,7 @@ $(function () {
 		getTimeSlots();
 	}
 
-	populateCalendar();
+	if($('.class').length){populateCalendar();}
 
 	$(document).on('change','#calendar input', function(event) { getTimeSlots(); });
 
@@ -560,8 +560,6 @@ $(function () {
 		$( "#calendar input:checked" ).each(function() {
 			days.push(($(this).data('year'))+'-'+($(this).data('month'))+'-'+($(this).data('day')));
 		});
-		//console.log(JSON.stringify(days));
-		//console.log(routeURL);
 		$.ajax({
 			url		: routeURL+'/slots',
 			method	: 'GET',
@@ -630,37 +628,71 @@ $(function () {
 		for (var time in timeslots) {
   		if (timeslots.hasOwnProperty(time)) {
 				var classes = '';
+				var disabled = '';
 				if ($.inArray(time,available) === -1) {
 					classes += 'time';
+					disabled += 'disabled="disabled"';
 				} else {
 					classes += 'time available';
 				}
-				html += '<input hidden type="checkbox" id="'+time+'" value="'+timeslots[time]+'"><label class="'+classes+'" for="'+time+'">'+timeslots[time]+'</label>';
+				html += '<input hidden name="time[]" type="checkbox" id="'+time+'" value="'+time+'" data-value="'+timeslots[time]+'" '+disabled+'><label class="'+classes+'" for="'+time+'">'+timeslots[time]+'</label>';
 	  	}
 		}
 		$('.timeslot').html(html);
 	}
 
 	$(document).on('change','.timeslot input', function(event) { bookClass(); });
+	$(document).on('change','#calendar input', function(event) { bookClass(); });
 
 	function bookClass (){
 		var days = [];
 		var slots = [];
 		if($("#calendar input:checked").length && ($('#topic').find('option:selected').val() != 'TOPIC')){
 			$( "#calendar input:checked" ).each(function() {
-				days.push(($(this).data('day'))+' '+(  cal_months_labels[$(this).data('month').replace(/^0+/, '')]  ));
+				days.push(($(this).data('day'))+' '+(  cal_months_labels[$(this).data('month').replace(/^0+/, '')-1]  ));
 			});
 			$( ".timeslot input:checked" ).each(function() {
-				slots.push($(this).val());
+				slots.push($(this).data('value'));
 			});
 			var topic = $('#topic').find('option:selected').text()+', '+$('#subject').find('option:selected').text()+', '+$('#class').find('option:selected').text();
 			var fees = $('#topic').find('option:selected').attr('fees');
 			$('#bookSubject').html(topic);
 			$('#bookDate').html(days.join(", "));
-			$('#bookTime').html(slots);
+			$('#bookTime').html(slots.join(", "));
 			$('#bookFees').html(fees);
 		}
 	}
+
+	$(document).on('submit','.send-message', function(event) {
+		event.preventDefault();
+		var form = $(this);
+		if(form.find('#message').val() == ''){
+			helper.flash('The message to be sent can\'t be empty');
+			form.find('#message').focus();
+			return false;
+		}
+		$.ajax({
+			url		: form.prop('action'),
+			method	: 'POST',
+			data 	: {
+				_token		: form.find('input[name=_token]').val(),
+				teacher_id: form.find('#teacher_id').val(),
+				student_id: form.find('#student_id').val(),
+				message		: form.find('#message').val()
+			},
+			success: function(response){
+				console.log(response);
+				var html = '<div class="col-xs-7 single-message self col-xs-offset-5">'+form.find('#message').val()+'<small>--&nbsp;Sent just now</small></div>';
+				form.parent().find('.chat-data').prepend(html);
+			},
+			error: function(response){
+				console.log(response);
+			}
+		});
+		return false;
+	});
+
+
 })
 
 $(function () {
