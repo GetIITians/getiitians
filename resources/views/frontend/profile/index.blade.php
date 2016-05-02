@@ -59,7 +59,7 @@
 						<small></small>
 						<button type="submit" class="btn btn-primary-reverse">MESSAGE {{ strtoupper($user->name) }}</button>
 					</form>
-				@else
+				@elseif(!$user->ownProfile())
 				<form  id="messageTeacher" action="{{ url('profile/'.$user->id.'/message/') }}" method="POST">
 					{{ csrf_field() }}
 					<p>Contact {{ ucwords(strtolower($user->name)) }} to ask a doubt or setup a special class.</p>

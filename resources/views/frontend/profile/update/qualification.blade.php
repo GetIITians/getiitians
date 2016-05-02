@@ -1,5 +1,9 @@
 @extends ('layouts.profile')
 @section('main')
+<?php $teacher = $user->deriveable; ?>
+<script>
+    var qualifications = <?php echo json_encode($teacher->qualifications->count()); ?>;
+</script>
     <main class="col-xs-10 signup">
       <div class="gutter-sm"></div>
       <h2>Profile Update</h2>
@@ -21,7 +25,6 @@
       </div>
       <div class="gutter-sm"></div>
         <div class="signupqualification">
-          <?php $teacher = $user->deriveable; ?>
           {!! Form::model($teacher, array('url' => '/profile/'.$user->id.'/update/qualification', 'method' => 'POST', 'files' => true)) !!}
               <div class="row">
                 <div class="col-xs-6">
@@ -60,7 +63,7 @@
                           </fieldset>
                         </div>
                       </div>
-                      <div class="row">
+                      <div class="row passout">
                         <div class="col-xs-4">
                           <h5>Year of Passout</h5>
                         </div>

@@ -20,6 +20,8 @@ class CreateUsersTable extends Migration
       			$table->string('picture')->nullable();
       			$table->string('gender', 6)->nullable()->default(null);
       			$table->timestamp('date_of_birth')->nullable()->default(null);
+            $table->string('house')->nullable()->default(null);
+            $table->string('street')->nullable()->default(null);
       			$table->string('country')->nullable()->default(null);
       			$table->string('city')->nullable()->default(null);
       			$table->string('state')->nullable()->default(null);

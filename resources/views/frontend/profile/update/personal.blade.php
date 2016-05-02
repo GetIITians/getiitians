@@ -108,17 +108,27 @@
                 </div>
                 <div class="col-xs-2">
                     <fieldset class="form-group">
-                        {!! Form::text('city', null,['class' => 'form-control']) !!}
+                        {!! Form::text('house', null,['class' => 'form-control', 'placeholder' => 'House No.']) !!}
                     </fieldset>
                 </div>
                 <div class="col-xs-2">
                     <fieldset class="form-group">
-                        {!! Form::text('state', null,['class' => 'form-control']) !!}
+                        {!! Form::text('street', null,['class' => 'form-control', 'placeholder' => 'Street Name']) !!}
                     </fieldset>
                 </div>
                 <div class="col-xs-2">
                     <fieldset class="form-group">
-                        {!! Form::text('pin', null,['class' => 'form-control']) !!}
+                        {!! Form::text('city', null,['class' => 'form-control', 'placeholder' => 'City']) !!}
+                    </fieldset>
+                </div>
+                <div class="col-xs-offset-3 col-xs-2">
+                    <fieldset class="form-group">
+                        {!! Form::text('state', null,['class' => 'form-control', 'placeholder' => 'State']) !!}
+                    </fieldset>
+                </div>
+                <div class="col-xs-2">
+                    <fieldset class="form-group">
+                        {!! Form::text('pin', null,['class' => 'form-control', 'placeholder' => 'ZIP Code']) !!}
                     </fieldset>
                 </div>
                 <div class="col-xs-2">

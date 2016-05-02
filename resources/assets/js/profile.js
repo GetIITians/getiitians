@@ -6,7 +6,7 @@ $(function () {
 	})
 
 	if (typeof $.fn.datepicker != 'undefined') {
-		$.fn.datepicker.defaults.format = "dd-M-yyyy";
+		$.fn.datepicker.defaults.format = "dd/mm/yyyy";
 		$.fn.datepicker.defaults.clearBtn = true;
 		$.fn.datepicker.defaults.orientation = "bottom auto";
 	};
@@ -14,6 +14,9 @@ $(function () {
 	if ($('.signuppersonal').length) {
 		$('.signuppersonal .dob input').datepicker();
 	};
+	if ($('.signupqualification').length) {
+		$('.passout input').datepicker();
+	}
 
 
 	if ($('.signupcalendar').length) {
@@ -66,7 +69,9 @@ $(function () {
 		}
 	})
 */
-	var insertData = "<div id='hidden' style='display:none;'><div class='row added'><div class='col-xs-12'><div class='col-xs-12'><div class='row'><div class='col-xs-offset-11 col-xs-1'><button type='button' class='close' aria-label='close'><span aria-hidden='true'>&times;</span></button></div></div><div class='row'><div class='col-xs-4'><h5>College</h5></div><div class='col-xs-6'><fieldset class='form-group'><select class='form-control c-select'><option selected>College</option><option value='1'>IIT Delhi</option><option value='2'>IIT Roorkee</option><option value='3'>IIT Madras</option></select></fieldset></div></div><div class='row'><div class='col-xs-4'><h5>Degree</h5></div><div class='col-xs-6'><fieldset class='form-group'><select class='form-control c-select'><option selected>Degree</option><option value='1'>B.Tech.</option><option value='2'>M.Tech.</option><option value='3'>Dual Degree</option></select></fieldset></div></div><div class='row'><div class='col-xs-4'><h5>Branch</h5></div><div class='col-xs-6'><fieldset class='form-group'><input type='text' class='form-control'></fieldset></div></div><div class='row'><div class='col-xs-4'><h5>Year of Passout</h5></div><div class='col-xs-6'><fieldset class='form-group'><input type='text' class='form-control'></fieldset></div></div><div class='row'><div class='col-xs-4'><h5>College Verification</h5></div><div class='col-xs-6'><fieldset class='form-group'><input type='file' id='file' class='form-control'></fieldset></div></div><hr></div></div></div>";
+	if (typeof qualifications !== 'undefined'){
+		var insertData = "<div id='hidden' style='display:none;'><div class='row added'><div class='col-xs-12'><div class='col-xs-12'><div class='row'><div class='col-xs-offset-11 col-xs-1'><button type='button' class='close' aria-label='close'><span aria-hidden='true'>&times;</span></button></div></div><div class='row'><div class='col-xs-4'><h5>College</h5></div><div class='col-xs-6'><fieldset class='form-group'><select class='form-control c-select' name='qualification["+qualifications+"][college]'><option selected>College</option><option value='IIT Delhi'>IIT Delhi</option><option value='IIT Roorkee'>IIT Roorkee</option><option value='IIT Madras'>IIT Madras</option></select></fieldset></div></div><div class='row'><div class='col-xs-4'><h5>Degree</h5></div><div class='col-xs-6'><fieldset class='form-group'><select class='form-control c-select' name='qualification["+qualifications+"][degree]'><option selected>Degree</option><option value='B.Tech.'>B.Tech.</option><option value='M.Tech.'>M.Tech.</option><option value='Dual Degree'>Dual Degree</option></select></fieldset></div></div><div class='row'><div class='col-xs-4'><h5>Branch</h5></div><div class='col-xs-6'><fieldset class='form-group'><input type='text' class='form-control' name='qualification["+qualifications+"][branch]'></fieldset></div></div><div class='row'><div class='col-xs-4'><h5>Year of Passout</h5></div><div class='col-xs-6'><fieldset class='form-group'><input type='text' class='form-control' name='qualification["+qualifications+"][passout]'></fieldset></div></div><div class='row'><div class='col-xs-4'><h5>College Verification</h5></div><div class='col-xs-6'><fieldset class='form-group'><input type='file' id='file' class='form-control' name='qualification["+qualifications+"][verification]'></fieldset></div></div><hr></div></div></div>";
+	}
 
 	$(document).on('click','.addanothercollege a.add', function(event) {
 		$(insertData).insertBefore('.addanothercollege');

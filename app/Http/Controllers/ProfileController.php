@@ -81,15 +81,39 @@ class ProfileController extends Controller
 		{
 			foreach ($request->input('qualification') as $key => $qualification)
 			{
+				$qualification['verification'] = $request->files->all()['qualification'][$key]['verification'];
+				$qualification['passout'] = Carbon::createFromFormat('d/m/Y', $qualification['passout'])->toDateTimeString();
+				if(array_key_exists('verification',$qualification) && $qualification['verification'] !== NULL){
+					$file = $qualification['verification'];
+					$destinationPath = 'img/uploads';
+					$filename = str_random(12);
+					$extension = $file->getClientOriginalExtension();
+					$upload_status = $file->move($destinationPath, $filename.".".$extension);
+
+					if( $upload_status ) {
+						$qualification['verification'] = $destinationPath."/".$filename.".".$extension;
+					}
+				}
 				if(array_key_exists('id',$qualification))
 				{
 					$id = $qualification['id'];
 					unset($qualification['id']);
-					$qualification['passout'] = Carbon::createFromFormat('d/m/Y', $qualification['passout'])->toDateTimeString();
 					Qualification::where('id',$id)->update($qualification);
+				}
+				else
+				{
+					$qual = new Qualification;
+					$qual->teacher_id = $request->user()->id;
+					$qual->college = $qualification['college'];
+					$qual->degree = $qualification['degree'];
+					$qual->branch = $qualification['branch'];
+					$qual->passout = $qualification['passout'];
+					$qual->verification = $qualification['verification'];
+					$qual->save();
 				}
 			}
 		}
+		//dd($request->all());
 		$teacher->update($request->only(['experience','home_tuition']));
 		flash('Your information has been updated.');
 		return redirect('/profile/'.$request->user->id.'/update/qualification');
@@ -108,7 +132,7 @@ class ProfileController extends Controller
 			}
 		}
 		$request->user->deriveable->topics()->sync($teacher_topics);
-		flash('Your information has been updated.');
+		flash('Your subjects have been updated.');
 		return redirect('/profile/'.$request->user->id.'/update/subjects');
 	}
 
@@ -135,7 +159,7 @@ class ProfileController extends Controller
 		//var_dump($dbStart.''.$dbEnd);
 		\App\Timeslot::where('teacher_id',$request->user->deriveable->id)->whereBetween('slot', [$dbStart, $dbEnd])->delete();
 		$request->user->deriveable->timeslots()->saveMany($slots);
-		flash('Your information has been updated.');
+		flash('Your timeslots have been updated.');
 		return redirect('/profile/'.$request->user->id.'/update/timeslots');
 	}
 

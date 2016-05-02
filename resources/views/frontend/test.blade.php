@@ -324,7 +324,7 @@ foreach ($available as $value) {
 dd($toBeSent);
 //dd(array_intersect($available['24'], $available['25'], $available['26'], $available['27']));
 */
-
+/*
 //dd($teacher->topics);
 //dd(Student::find(3)->chats);
 $galBaat = [] ;
@@ -340,5 +340,12 @@ foreach ( $galaan as $id => $chat) {
   $galBaat[$key]['id'] = $keyID;
 }
 echo "<pre>";print_r($galBaat);echo "</pre>";
+*/
+
+$verification = NULL;
+$veryfication = new Carbon();
+
+var_dump(is_object($verification));
+var_dump(is_object($veryfication));
 
 ?>

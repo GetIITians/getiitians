@@ -111,3 +111,12 @@ var general = {
 		};
 	}
 }
+
+$(function () {
+	if ($('#flashMessage').length) {
+		var flashMessage = $('#flashMessage');
+		var content = flashMessage.html();
+		flashMessage.hide();
+		helper.flash(content);
+	}
+})

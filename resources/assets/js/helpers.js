@@ -82,9 +82,7 @@ var helper = {
 }
 
 /*
-*
 *	Extend Jquery
-*
 */
 
 $.fn.serializeObject = function()
