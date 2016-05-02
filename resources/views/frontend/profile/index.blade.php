@@ -64,7 +64,7 @@
 					{{ csrf_field() }}
 					<p>Contact {{ ucwords(strtolower($user->name)) }} to ask a doubt or setup a special class.</p>
 					<input type="hidden" name="teacher_id" value="{{ $user->id }}">
-					<input type="hidden" name="student_id" value="{{ Auth::user()->id }}">
+					<input type="hidden" name="student_id" value="{{ Auth::user()->deriveable->id }}">
 					<fieldset class="form-group">
 						<textarea class="form-control" id="message" name="message" rows="5" placeholder="Write your message here."></textarea>
 					</fieldset>
