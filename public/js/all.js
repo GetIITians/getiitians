@@ -298,6 +298,7 @@ $(function () {
 		$.fn.datepicker.defaults.format = "dd/mm/yyyy";
 		$.fn.datepicker.defaults.clearBtn = true;
 		$.fn.datepicker.defaults.orientation = "bottom auto";
+		$.fn.datepicker.defaults.startDate = "-50y";
 	};
 
 	if ($('.signuppersonal').length) {
@@ -307,6 +308,14 @@ $(function () {
 		$('.passout input').datepicker();
 	}
 
+	$(document).on('submit','.signuppersonal > form', function(event){
+		if(!(/^(\d{2}\/\d{2}\/\d{4})/.test($(this).find('.dob input').val()))){
+			event.preventDefault();
+			helper.flash('Please use correct format [dd/mm/yyyy] for your Date of Birth.');
+			return false;
+		}
+		return true;
+	});
 
 	if ($('.signupcalendar').length) {
 		var diff = null;
@@ -316,6 +325,26 @@ $(function () {
 			$('#end-date').datepicker({
 				startDate: '+'+diff+'d'
 			});
+		});
+		$(document).on('submit','#signupcalendar', function(event){
+			if ($('#start-date input').val() == '' || $('#end-date input').val() == '') {
+				console.log($('#start-date input').val());
+				console.log($('#end-date input').val());
+				event.preventDefault();
+				helper.flash('Please fill out the Start & End date before saving your timeslots.');
+				return false;
+			}
+			if(!(/^(\d{2}\/\d{2}\/\d{4})/.test($('#start-date input').val()))){
+				event.preventDefault();
+				helper.flash('Please fill out the Start date in proper format [dd/mm/YYY] before saving your timeslots.');
+				return false;
+			}
+			if(!(/^(\d{2}\/\d{2}\/\d{4})/.test($('#end-date input').val()))){
+				event.preventDefault();
+				helper.flash('Please fill out the Start date in proper format [dd/mm/YYY] before saving your timeslots.');
+				return false;
+			}
+			return true;
 		});
 	};
 
@@ -359,7 +388,7 @@ $(function () {
 	})
 */
 	if (typeof qualifications !== 'undefined'){
-		var insertData = "<div id='hidden' style='display:none;'><div class='row added'><div class='col-xs-12'><div class='col-xs-12'><div class='row'><div class='col-xs-offset-11 col-xs-1'><button type='button' class='close' aria-label='close'><span aria-hidden='true'>&times;</span></button></div></div><div class='row'><div class='col-xs-4'><h5>College</h5></div><div class='col-xs-6'><fieldset class='form-group'><select class='form-control c-select' name='qualification["+qualifications+"][college]'><option selected>College</option><option value='IIT Delhi'>IIT Delhi</option><option value='IIT Roorkee'>IIT Roorkee</option><option value='IIT Madras'>IIT Madras</option></select></fieldset></div></div><div class='row'><div class='col-xs-4'><h5>Degree</h5></div><div class='col-xs-6'><fieldset class='form-group'><select class='form-control c-select' name='qualification["+qualifications+"][degree]'><option selected>Degree</option><option value='B.Tech.'>B.Tech.</option><option value='M.Tech.'>M.Tech.</option><option value='Dual Degree'>Dual Degree</option></select></fieldset></div></div><div class='row'><div class='col-xs-4'><h5>Branch</h5></div><div class='col-xs-6'><fieldset class='form-group'><input type='text' class='form-control' name='qualification["+qualifications+"][branch]'></fieldset></div></div><div class='row'><div class='col-xs-4'><h5>Year of Passout</h5></div><div class='col-xs-6'><fieldset class='form-group'><input type='text' class='form-control' name='qualification["+qualifications+"][passout]'></fieldset></div></div><div class='row'><div class='col-xs-4'><h5>College Verification</h5></div><div class='col-xs-6'><fieldset class='form-group'><input type='file' id='file' class='form-control' name='qualification["+qualifications+"][verification]'></fieldset></div></div><hr></div></div></div>";
+		var insertData = "<div id='hidden' style='display:none;'><div class='row added'><div class='col-xs-12'><div class='col-xs-12'><div class='row'><div class='col-xs-offset-11 col-xs-1'><button type='button' class='close' aria-label='close'><span aria-hidden='true'>&times;</span></button></div></div><div class='row'><div class='col-xs-4'><h5>College</h5></div><div class='col-xs-6'><fieldset class='form-group'><select class='form-control c-select' name='qualification["+qualifications+"][college]'><option selected>College</option><option value='IIT Delhi'>IIT Delhi</option><option value='IIT Roorkee'>IIT Roorkee</option><option value='IIT Madras'>IIT Madras</option></select></fieldset></div></div><div class='row'><div class='col-xs-4'><h5>Degree</h5></div><div class='col-xs-6'><fieldset class='form-group'><select class='form-control c-select' name='qualification["+qualifications+"][degree]'><option selected>Degree</option><option value='B.Tech.'>B.Tech.</option><option value='M.Tech.'>M.Tech.</option><option value='Dual Degree'>Dual Degree</option></select></fieldset></div></div><div class='row'><div class='col-xs-4'><h5>Branch</h5></div><div class='col-xs-6'><fieldset class='form-group'><input type='text' class='form-control addAnother' name='qualification["+qualifications+"][branch]'></fieldset></div></div><div class='row'><div class='col-xs-4'><h5>Year of Passout</h5></div><div class='col-xs-6'><fieldset class='form-group'><input type='text' class='form-control addAnother' name='qualification["+qualifications+"][passout]'></fieldset></div></div><div class='row'><div class='col-xs-4'><h5>College Verification</h5></div><div class='col-xs-6'><fieldset class='form-group'><input type='file' id='file' class='form-control' name='qualification["+qualifications+"][verification]'></fieldset></div></div><hr></div></div></div>";
 	}
 
 	$(document).on('click','.addanothercollege a.add', function(event) {
@@ -374,6 +403,22 @@ $(function () {
 		target.slideUp('slow', function(){
 			target.remove();
 		})
+	});
+
+	$(document).on('submit', '.signupqualification form', function(event){
+		var form = $(this);
+		var filled = true;
+		form.find('input.addAnother').each(function(){
+			if($.trim($(this).val()).length<=0){
+				filled = false;
+			}
+		});
+		if (!filled) {
+			event.preventDefault();
+			helper.flash('Please fill out all the values before submitting.');
+			return false;
+		}
+		return true;
 	});
 
 	$(document).on('submit','.loggedOutMessage', function(event) {
@@ -581,61 +626,31 @@ $(function () {
 				dates		: JSON.stringify(days),
 			},
 			complete: function(response){
-				console.log(JSON.parse(response.responseText));
-				populateTimeslots(JSON.parse(response.responseText));
+				var slots = JSON.parse(response.responseText);
+				if(slots !== null && slots instanceof Object){
+					slotsArray = $.map(slots, function(value, index) {
+				    return [value];
+					});
+					slots = slotsArray;
+				}
+				populateTimeslots(slots);
 			}
 		});
 	}
 
 	var timeslots = {
-		'0:0' 	: '12:00 - 12:30 AM',
-		'0:30'	: '12:30 - 1:00 AM',
-		'1:0' 	: '1:00 - 1:30 AM',
-		'1:30'	: '1:30 - 2:00 AM',
-		'2:0' 	: '2:00 - 2:30 AM',
-		'2:30'	: '2:30 - 3:00 AM',
-		'3:0' 	: '3:00 - 3:30 AM',
-		'3:30'	: '3:30 - 4:00 AM',
-		'4:0' 	: '4:00 - 4:30 AM',
-		'4:30'	: '4:30 - 5:00 AM',
-		'5:0' 	: '5:00 - 5:30 AM',
-		'5:30'	: '5:30 - 6:00 AM',
-		'6:0' 	: '6:00 - 6:30 AM',
-		'6:30'	: '6:30 - 7:00 AM',
-		'7:0' 	: '7:00 - 7:30 AM',
-		'7:30'	: '7:30 - 8:00 AM',
-		'8:0' 	: '8:00 - 8:30 AM',
-		'8:30'	: '8:30 - 9:00 AM',
-		'9:0' 	: '9:00 - 9:30 AM',
-		'9:30'	: '9:30 - 10:00 AM',
-		'10:0' 	: '10:00 - 10:30 AM',
-		'10:30'	: '10:30 - 11:00 AM',
-		'11:0' 	: '11:00 - 11:30 AM',
-		'11:30'	: '11:30 - 12:00 AM',
-		'12:0' 	: '12:00 - 12:30 PM',
-		'12:30'	: '12:30 - 1:00 PM',
-		'13:0' 	: '1:00 - 1:30 PM',
-		'13:30'	: '1:30 - 2:00 PM',
-		'14:0' 	: '2:00 - 2:30 PM',
-		'14:30'	: '2:30 - 3:00 PM',
-		'15:0' 	: '3:00 - 3:30 PM',
-		'15:30'	: '3:30 - 4:00 PM',
-		'16:0' 	: '4:00 - 4:30 PM',
-		'16:30'	: '4:30 - 5:00 PM',
-		'17:0' 	: '5:00 - 5:30 PM',
-		'17:30'	: '5:30 - 6:00 PM',
-		'18:0' 	: '6:00 - 6:30 PM',
-		'18:30'	: '6:30 - 7:00 PM',
-		'19:0' 	: '7:00 - 7:30 PM',
-		'19:30'	: '7:30 - 8:00 PM',
-		'20:0' 	: '8:00 - 8:30 PM',
-		'20:30'	: '8:30 - 9:00 PM',
-		'21:0' 	: '9:00 - 9:30 PM',
-		'21:30'	: '9:30 - 10:00 PM',
-		'22:0' 	: '10:00 - 10:30 PM',
-		'22:30'	: '10:30 - 11:00 PM',
-		'23:0' 	: '11:00 - 11:30 PM',
-		'23:30'	: '11:30 - 12:00 PM',
+		'0:0' 	: '12:00 - 12:30 AM',		'0:30'	: '12:30 - 1:00 AM',		'1:0' 	: '1:00 - 1:30 AM',		'1:30'	: '1:30 - 2:00 AM',
+		'2:0' 	: '2:00 - 2:30 AM',		'2:30'	: '2:30 - 3:00 AM',		'3:0' 	: '3:00 - 3:30 AM',		'3:30'	: '3:30 - 4:00 AM',
+		'4:0' 	: '4:00 - 4:30 AM',		'4:30'	: '4:30 - 5:00 AM',		'5:0' 	: '5:00 - 5:30 AM',		'5:30'	: '5:30 - 6:00 AM',
+		'6:0' 	: '6:00 - 6:30 AM',		'6:30'	: '6:30 - 7:00 AM',		'7:0' 	: '7:00 - 7:30 AM',		'7:30'	: '7:30 - 8:00 AM',
+		'8:0' 	: '8:00 - 8:30 AM',		'8:30'	: '8:30 - 9:00 AM',				'9:0' 	: '9:00 - 9:30 AM',		'9:30'	: '9:30 - 10:00 AM',
+		'10:0' 	: '10:00 - 10:30 AM',		'10:30'	: '10:30 - 11:00 AM',		'11:0' 	: '11:00 - 11:30 AM',		'11:30'	: '11:30 - 12:00 AM',
+		'12:0' 	: '12:00 - 12:30 PM',		'12:30'	: '12:30 - 1:00 PM',		'13:0' 	: '1:00 - 1:30 PM',		'13:30'	: '1:30 - 2:00 PM',
+		'14:0' 	: '2:00 - 2:30 PM',		'14:30'	: '2:30 - 3:00 PM',		'15:0' 	: '3:00 - 3:30 PM',		'15:30'	: '3:30 - 4:00 PM',
+		'16:0' 	: '4:00 - 4:30 PM',		'16:30'	: '4:30 - 5:00 PM',		'17:0' 	: '5:00 - 5:30 PM',		'17:30'	: '5:30 - 6:00 PM',
+		'18:0' 	: '6:00 - 6:30 PM',		'18:30'	: '6:30 - 7:00 PM',		'19:0' 	: '7:00 - 7:30 PM',		'19:30'	: '7:30 - 8:00 PM',
+		'20:0' 	: '8:00 - 8:30 PM',		'20:30'	: '8:30 - 9:00 PM',		'21:0' 	: '9:00 - 9:30 PM',		'21:30'	: '9:30 - 10:00 PM',
+		'22:0' 	: '10:00 - 10:30 PM',		'22:30'	: '10:30 - 11:00 PM',		'23:0' 	: '11:00 - 11:30 PM',		'23:30'	: '11:30 - 12:00 PM',
 	};
 	function populateTimeslots (available){
 		var html = '<div class="col-xs-4">Available</div><div class="col-xs-4">Booked</div><div class="col-xs-4">Unavailable</div>';
@@ -698,6 +713,7 @@ $(function () {
 				console.log(response);
 				var html = '<div class="col-xs-7 single-message self col-xs-offset-5">'+form.find('#message').val()+'<small>--&nbsp;Sent just now</small></div>';
 				form.parent().find('.chat-data').prepend(html);
+				form.parent().find('#message').val('');
 			},
 			error: function(response){
 				console.log(response);

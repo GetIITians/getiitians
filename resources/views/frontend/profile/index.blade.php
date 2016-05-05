@@ -81,17 +81,17 @@
 		<div class="col-xs-12">
 			<h3>Topics</h3>
 			<hr>
-			<p class="text-justify">
 			<?php
-				$i = 0;
+				$i = 0 ;
+				echo "<ul class='profileTopics'>";
 				foreach($user->deriveable->topics as $topic) {
 					$i++;
-					echo $topic->name.", ";
-					if($i>20) break;
+					echo "<li>".$topic->name."</li>";
+					if($i>19) break;
+					if($i%5===0){echo "</ul><ul class='profileTopics'>";}
 				}
-				echo ".....";
+				echo "</ul><br>";
 			?>
-			</p>
 			<small><a href="{{ $user->id }}/topics">View All</a></small>
 		</div>
 	</div>

@@ -69,7 +69,7 @@ function draw_calendar($month,$year,$timeslots){
 			if ($timeslot) {
 				$calendar.= "<ul>";
 				foreach ($timeslot as $key => $value) {
-					$calendar.="<li>".$value['start']."-".$value['end']."</li>"; 
+					$calendar.="<li>".$value['start']."-".$value['end']."</li>";
 				}
 				$calendar.= "</ul>";
 			}
@@ -100,7 +100,7 @@ function draw_calendar($month,$year,$timeslots){
 
 	/* end the table */
 	$calendar.= '</tbody></table>';
-	
+
 	/* all done, return result */
 	return $calendar;
 	//return $timeslots;

@@ -68,6 +68,9 @@
 			}
 		}
 	}
+	.profileTopics{
+		display: inline-block;
+	}
 	.schedule{
 		h2{
 			font-family: $font-medium;
@@ -408,6 +411,11 @@
 				border: 1px dotted $flat-purple;
 				padding: .5rem;
 			}
+		}
+		p.messages{
+			border: 1px solid $flat-purple;
+			color: $gray;
+			padding: 1rem;
 		}
 		.signupsubjects{
 			.subjects-grade.collapse.in{

@@ -5468,7 +5468,7 @@ footer {
   margin-bottom: 5rem;
   margin-top: 5rem; }
   .why-getIITians .card-title {
-    font-size: 1.7rem;
+    font-size: 1.6rem;
     font-family: "robotomedium", "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
 @media (max-width: 47.9em) {
@@ -5736,6 +5736,8 @@ footer {
         vertical-align: middle; }
       #profile main .incomplete a {
         color: #233140; }
+  #profile .profileTopics {
+    display: inline-block; }
   #profile .schedule h2 {
     font-family: "robotomedium", "Helvetica Neue", Helvetica, Arial, sans-serif; }
   #profile .schedule i.material-icons {
@@ -6011,6 +6013,10 @@ footer {
     background-color: white;
     border: 1px dotted #2C3E50;
     padding: .5rem; }
+  #profile .signup p.messages {
+    border: 1px solid #2C3E50;
+    color: #55595c;
+    padding: 1rem; }
   #profile .signup .signupsubjects .subjects-grade.collapse.in {
     display: block; }
   #profile .signup .signupsubjects .subject {

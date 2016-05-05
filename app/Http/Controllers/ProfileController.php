@@ -64,6 +64,7 @@ class ProfileController extends Controller
 
 	public function updatePersonal(Request $request)
 	{
+		//dd($request->all());
 		$request->offsetSet('date_of_birth', (new Carbon($request->date_of_birth))->toDateTimeString());
 		$request->user->update($request->all());
 		flash('Your information has been updated.');
@@ -138,28 +139,56 @@ class ProfileController extends Controller
 
 	public function updateTimeslots(Request $request)
 	{
-		$start		= Carbon::createFromFormat('d-M-Y H:i:s', $request->input('start')." 00:00:00");
-		$end			= Carbon::createFromFormat('d-M-Y H:i:s', $request->input('end')." 00:00:00");
-		$dbStart	=	$start->toDateString();
-		$dbEnd		=	$end->addDay()->toDateString();
-		$time 		= $request->input('time');
-		$span 		= $end->diffInDays($start);
-		$slots 		= [];
-		for ( $i 	= 0 ; $i <= $span ; $i++ ) {
-			$date 	= ($i===0) ? $start : $start->addDay() ;
-			if(in_array($date->dayOfWeek, $request->input('days')))
-			{
-				foreach ($time as $key => $slot) {
-					$last 		= ($key===0) ? "0" : $time[$key-1] ;
-					$slots[] 	= new \App\Timeslot(['slot' => $date->addMinutes((30*($slot-$last)))->toDateTimeString()]);
+		$teacher_id = $request->user->deriveable->id;
+		if(!empty($request->input('start')) && !empty($request->input('end'))){
+			$start 		= Carbon::createFromFormat('|d/m/Y',$request->input('start'));
+			$end 			= Carbon::createFromFormat('|d/m/Y',$request->input('end'));
+			$dbStart	=	$start->toDateString();
+			$dbEnd		=	$end->addDay()->toDateString();
+			$time 		= $request->input('time');
+			$span 		= $end->diffInDays($start);
+			$slots 		= [];
+			if($request->has('time')){
+				for ( $i 	= 0 ; $i < $span ; $i++ ) {
+					$date 	= ($i===0) ? $start : $start->addDay() ;
+					if($request->has('days')){
+						if(in_array($date->dayOfWeek, $request->input('days')))
+						{
+							foreach ($time as $key => $slot) {
+								$last 		= ($key===0) ? "0" : $time[$key-1] ;
+								$tym = $date->addMinutes((30*($slot-$last)))->toDateTimeString();
+								if(empty(\App\Timeslot::where('slot',$tym)->where('teacher_id',$teacher_id)->get()->first()->session_id)){
+									$slots[] 	= new \App\Timeslot(['slot' => $tym]);
+								}
+							}
+							$date->subMinutes(30*end($time));
+						}
+					} else {
+						foreach ($time as $key => $slot) {
+							$last 		= ($key===0) ? "0" : $time[$key-1] ;
+							$tym = $date->addMinutes((30*($slot-$last)))->toDateTimeString();
+							//var_dump(\App\Timeslot::where('slot',$tym)->where('teacher_id',$teacher_id)->get()->first());
+							if(empty(\App\Timeslot::where('slot',$tym)->where('teacher_id',$teacher_id)->get()->first()->session_id)){
+								$slots[] 	= new \App\Timeslot(['slot' => $tym]);
+							}
+						}
+						$date->subMinutes(30*end($time));
+					}
 				}
-				$date->subMinutes(30*end($time));
 			}
+			//dd($slots);
+			if(empty($slots) && \App\Timeslot::where('teacher_id',$teacher_id)->where('session_id','is not null')->whereBetween('slot', [$dbStart, $dbEnd])->get()->isEmpty()){
+				flash("Your timeslots can't be updated because one or more classes have been booked for them.");
+			} else {
+				\App\Timeslot::where('teacher_id',$teacher_id)->whereBetween('slot', [$dbStart, $dbEnd])->delete();
+				if(!empty($slots)){
+					$request->user->deriveable->timeslots()->saveMany($slots);
+				}
+				flash('Your timeslots have been updated.');
+			}
+		} else {
+			flash('Please fill in the Start and End date.');
 		}
-		//var_dump($dbStart.''.$dbEnd);
-		\App\Timeslot::where('teacher_id',$request->user->deriveable->id)->whereBetween('slot', [$dbStart, $dbEnd])->delete();
-		$request->user->deriveable->timeslots()->saveMany($slots);
-		flash('Your timeslots have been updated.');
 		return redirect('/profile/'.$request->user->id.'/update/timeslots');
 	}
 
@@ -183,6 +212,7 @@ class ProfileController extends Controller
 		$dates = json_decode($request->input('dates'));
 
 		$slots = \App\Timeslot::where('teacher_id',$user->deriveable->id)
+						->where('session_id',NULL)
 						->where(function($query) use ($dates){
 							foreach ($dates as $date) {
 								$query->orWhereBetween('slot', [(new Carbon($date))->toDateTimeString(), (new Carbon($date))->addDay()->subMinute()->toDateTimeString()]);
@@ -205,7 +235,6 @@ class ProfileController extends Controller
 
 	public function bookClass (Request $request, User $user)
 	{
-		$demoQuery = \App\Session::where('teacher_id',$user->deriveable->id)->where('student_id',Auth::user()->id)->where('demo',1)->get();
 //		var_dump($demoQuery->isEmpty());
 //		var_dump(Auth::user()->id);
 //		var_dump($user->id);
@@ -239,7 +268,7 @@ class ProfileController extends Controller
 				$groups[$i][] = $slot;
 			} else {
 				$diff = $slot->diffInMinutes(end($groups[$i-1]));
-				if (($demoQuery->isEmpty()) && ($key === 2)) {	//	Means demo not done yet
+				if ((\App\Session::where('teacher_id',$user->deriveable->id)->where('student_id',Auth::user()->id)->where('demo',1)->get()->isEmpty()) && ($key === 2)) {	//	Means demo not done yet
 					$groups[$i][] = $slot;
 					$i++;
 					continue;
@@ -311,14 +340,16 @@ class ProfileController extends Controller
 	{
 		$galBaat = [] ;
 		$userType = $user->typeOfUser();
-		foreach ($user->deriveable->chats()->orderBy('created_at', 'desc')->get() as $id => $chat) {
+		$chats = $user->deriveable->chats()->orderBy('created_at', 'desc')->get();
+		foreach ($chats as $id => $chat) {
 		  $key = ( $userType == 'student') ? ucwords(strtolower($chat->teacher->user->name)) : ucwords(strtolower($chat->student->user->name)) ;
-			$keyID = ( $userType == 'student') ? ucwords(strtolower($chat->teacher->user->id)) : ucwords(strtolower($chat->student->user->id)) ;
+			$keyID = ( $userType == 'student') ? ucwords(strtolower($chat->teacher->id)) : ucwords(strtolower($chat->student->id)) ;
 		  $galBaat[$key]['content'][$id]['sender']		= ($chat->sender == Auth::user()->id) ? 'self' : 'other' ;
 		  $galBaat[$key]['content'][$id]['message']	= $chat->message;
 			$galBaat[$key]['content'][$id]['time'] 		= $chat->created_at;
 			$galBaat[$key]['id'] = $keyID;
 		}
+		//dd($galBaat);
 		return view('frontend.profile.messages', ['page' => 'profile', 'user' => $user, 'chats' => $galBaat]);
 	}
 

@@ -60,7 +60,26 @@ Route::group(['middleware' => 'auth', 'prefix' => 'profile/{user}/update'], func
   });
   Route::post('qualification', 'ProfileController@updateQualification');
 	Route::get('subjects', function (App\User $user){
-		return view('frontend.profile.update.subjects', ['user' => $user, 'page' => 'profile', 'subjects' => App\Grade::all()]);
+		$topicsDetail = Cache::remember('topicsDetail', Carbon\Carbon::now()->addDay(), function() {
+			$topicsDetail = [] ;
+			$grades = App\Grade::all();
+			foreach ($grades as $gradeKey => $grade) {
+				$topicsDetail[$gradeKey]['name'] = $grade->name;
+				foreach ($grade->subjects as $subjectsKey => $subject) {
+					$topicsDetail[$gradeKey]['subjects'][$subjectsKey]['name'] = $subject->name;
+					foreach ($subject->topics as $topicsKey => $topic) {
+						$topicsDetail[$gradeKey]['subjects'][$subjectsKey]['topics'][$topicsKey]['name'] = $topic->name;
+						$topicsDetail[$gradeKey]['subjects'][$subjectsKey]['topics'][$topicsKey]['id'] = $topic->id;
+					}
+				}
+			}
+			return $topicsDetail;
+		});
+		$teacherTopics = [] ;
+		foreach ($user->deriveable->topics as $key => $topic) {
+			$teacherTopics[] = $topic->id;
+		}
+		return view('frontend.profile.update.subjects', ['user' => $user, 'page' => 'profile', 'subjects' => $topicsDetail, 'teacherTopics' => $teacherTopics]);
   });
 	Route::post('subjects', 'ProfileController@updateSubjects');
 	Route::get('timeslots', function (App\User $user){

@@ -27,7 +27,7 @@
           <div class="col-xs-3">
             <h5>Profile Picture</h5>
           </div>
-          <div class="col-xs-5">
+          <div class="col-xs-6">
             <form action="{{ url('/profile/'.$user->id.'/update/personal/picture') }}" class="dropzone" id="dp-upload">
               {{ csrf_field() }}
             </form>
@@ -39,7 +39,7 @@
               <div class="col-xs-3">
                 <h5>Name</h5>
               </div>
-              <div class="col-xs-2">
+              <div class="col-xs-6">
                 <fieldset class="form-group">
                   {!! Form::text('name', null,['class' => 'form-control']) !!}
                 </fieldset>
@@ -49,7 +49,7 @@
               <div class="col-xs-3">
                 <h5>Mobile Number</h5>
               </div>
-              <div class="col-xs-2">
+              <div class="col-xs-6">
                 <fieldset class="form-group">
                   {!! Form::text('phone', null,['class' => 'form-control']) !!}
                 </fieldset>
@@ -59,7 +59,7 @@
               <div class="col-xs-3">
                 <h5>Email ID</h5>
               </div>
-              <div class="col-xs-2">
+              <div class="col-xs-6">
                 <fieldset class="form-group">
                   {!! Form::text('email', null,['class' => 'form-control']) !!}
                 </fieldset>
@@ -95,7 +95,7 @@
                 <div class="col-xs-3">
                     <h5>Date of Birth</h5>
                 </div>
-                <div class="col-xs-2">
+                <div class="col-xs-6">
                     <fieldset class="form-group">
                         <?php $dob = ($user->date_of_birth) ? $user->date_of_birth->format('d/m/Y') : null ; ?>
                         {!! Form::text('date_of_birth', $dob,['class' => 'form-control', 'placeholder' => 'dd/MM/YYYY']) !!}
@@ -108,12 +108,12 @@
                 </div>
                 <div class="col-xs-2">
                     <fieldset class="form-group">
-                        {!! Form::text('house', null,['class' => 'form-control', 'placeholder' => 'House No.']) !!}
+                        {!! Form::text('house', null,['class' => 'form-control', 'placeholder' => 'House']) !!}
                     </fieldset>
                 </div>
                 <div class="col-xs-2">
                     <fieldset class="form-group">
-                        {!! Form::text('street', null,['class' => 'form-control', 'placeholder' => 'Street Name']) !!}
+                        {!! Form::text('street', null,['class' => 'form-control', 'placeholder' => 'Street']) !!}
                     </fieldset>
                 </div>
                 <div class="col-xs-2">
