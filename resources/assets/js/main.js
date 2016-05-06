@@ -1,3 +1,5 @@
+var showSignupShown = false;
+
 $(function () {
 	$(document).on('submit','.doubt form', function(event) {
 		event.preventDefault();
@@ -105,9 +107,19 @@ var general = {
 			var signupTop = (helper.getPosition(signupLink, 'top') + helper.getPosition(signupLink, 'height')+10);
 			signupTooltip.css({top: signupTop, left: signupLeft});
 			signupTooltip.fadeIn('slow');
+			showSignupShown = true;
 		};
 	}
 }
+
+$(document).on({
+	mouseenter: function() {
+		$(this).stop().fadeOut('fast');
+	},
+	mouseleave: function() {
+		$(this).stop().fadeIn('slow');
+	}
+},'#signup-tooltip');
 
 $(function () {
 	if ($('#flashMessage').length) {

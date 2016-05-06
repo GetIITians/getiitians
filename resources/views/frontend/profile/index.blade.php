@@ -56,7 +56,7 @@
 						<fieldset class="form-group">
 							<textarea class="form-control" id="message" rows="5" placeholder="Write your message here."></textarea>
 						</fieldset>
-						<small></small>
+						<small>The message to be sent can't be empty</small>
 						<button type="submit" class="btn btn-primary-reverse">MESSAGE {{ strtoupper($user->name) }}</button>
 					</form>
 				@elseif(!$user->ownProfile())
@@ -98,4 +98,5 @@
     @endif
     <div class="gutter-sm"></div>
 </main>
+
 @endsection

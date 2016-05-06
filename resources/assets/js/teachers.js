@@ -13,7 +13,7 @@ $(function () {
 		$(this).prev().fadeOut('fast');
 	});
 	/*------------------------------------*/
-	$(document).on('show.bs.modal','#messageModal', function(event) {
+	$(document).on('show.bs.modal','#messageModal.teachers', function(event) {
 		var modal = $(this);
 		modal.find('small').hide();
 		var button = $(event.relatedTarget); // Button that triggered the modal
@@ -43,7 +43,7 @@ $(function () {
 			},
 			complete: function(response){
 				modal.modal('hide');
-				helper.flash(response.message);
+				helper.flash(JSON.parse(response.responseText).message);
 			}
 		});
 		return false;
@@ -76,7 +76,7 @@ $(function () {
 			},
 			complete: function(response){
 				modal.modal('hide');
-				helper.flash(response.message);
+				helper.flash(JSON.parse(response.responseText).message);
 			}
 		});
 		return false;

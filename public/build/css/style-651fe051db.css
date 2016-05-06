@@ -5723,6 +5723,8 @@ footer {
       padding: 1rem;
       background-color: #2C3E50;
       color: #ECF0F1; }
+      #profile main #messageTeacher small {
+        display: none; }
     #profile main .media-body h4 {
       display: inline-block; }
     #profile main .incomplete {

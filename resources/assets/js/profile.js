@@ -1,4 +1,33 @@
 $(function () {
+
+	/*------------------------------------*/
+
+	$(document).on('submit','#messageTeacher', function() {
+		var form = $(this);
+		if(form.find('#message').val() == ''){
+			form.find('small').fadeIn('slow');
+			form.find('#message').focus();
+			return false;
+		}
+		$.ajax({
+			url		: form.prop('action'),
+			method	: 'POST',
+			data 	: {
+				_token		: form.find('input[name=_token]').val(),
+				recipient	: form.find('#recipient').val(),
+				message		: form.find('#message').val()
+			},
+			beforeSend: function(){
+				form.find('small').html('processing ...').fadeIn('slow');
+			},
+			complete: function(response){
+				form.find('small').hide();
+				helper.flash(JSON.parse(response.responseText).message);
+			}
+		});
+	});
+
+
 	$('[data-toggle="popover"]').popover({
 		trigger: 'focus',
 		animation: true,

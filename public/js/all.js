@@ -164,6 +164,8 @@ $(function() {
 		//
 	})
 });
+var showSignupShown = false;
+
 $(function () {
 	$(document).on('submit','.doubt form', function(event) {
 		event.preventDefault();
@@ -271,9 +273,19 @@ var general = {
 			var signupTop = (helper.getPosition(signupLink, 'top') + helper.getPosition(signupLink, 'height')+10);
 			signupTooltip.css({top: signupTop, left: signupLeft});
 			signupTooltip.fadeIn('slow');
+			showSignupShown = true;
 		};
 	}
 }
+
+$(document).on({
+	mouseenter: function() {
+		$(this).stop().fadeOut('fast');
+	},
+	mouseleave: function() {
+		$(this).stop().fadeIn('slow');
+	}
+},'#signup-tooltip');
 
 $(function () {
 	if ($('#flashMessage').length) {
@@ -288,6 +300,35 @@ $(function () {
 })
 
 $(function () {
+
+	/*------------------------------------*/
+
+	$(document).on('submit','#messageTeacher', function() {
+		var form = $(this);
+		if(form.find('#message').val() == ''){
+			form.find('small').fadeIn('slow');
+			form.find('#message').focus();
+			return false;
+		}
+		$.ajax({
+			url		: form.prop('action'),
+			method	: 'POST',
+			data 	: {
+				_token		: form.find('input[name=_token]').val(),
+				recipient	: form.find('#recipient').val(),
+				message		: form.find('#message').val()
+			},
+			beforeSend: function(){
+				form.find('small').html('processing ...').fadeIn('slow');
+			},
+			complete: function(response){
+				form.find('small').hide();
+				helper.flash(JSON.parse(response.responseText).message);
+			}
+		});
+	});
+
+
 	$('[data-toggle="popover"]').popover({
 		trigger: 'focus',
 		animation: true,
@@ -740,7 +781,7 @@ $(function () {
 		$(this).prev().fadeOut('fast');
 	});
 	/*------------------------------------*/
-	$(document).on('show.bs.modal','#messageModal', function(event) {
+	$(document).on('show.bs.modal','#messageModal.teachers', function(event) {
 		var modal = $(this);
 		modal.find('small').hide();
 		var button = $(event.relatedTarget); // Button that triggered the modal
@@ -770,7 +811,7 @@ $(function () {
 			},
 			complete: function(response){
 				modal.modal('hide');
-				helper.flash(response.message);
+				helper.flash(JSON.parse(response.responseText).message);
 			}
 		});
 		return false;
@@ -803,12 +844,13 @@ $(function () {
 			},
 			complete: function(response){
 				modal.modal('hide');
-				helper.flash(response.message);
+				helper.flash(JSON.parse(response.responseText).message);
 			}
 		});
 		return false;
 	});
 });
+
 /*--------------------------
 	"Back to Top" Button
 --------------------------*/

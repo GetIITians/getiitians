@@ -45,6 +45,9 @@
 			padding: 1rem;
 			background-color: $flat-purple;
 			color: $flat-white;
+			small{
+				display: none;
+			}
 		}
 		.media-body h4{
 			display: inline-block;
