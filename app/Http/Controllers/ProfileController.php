@@ -47,10 +47,10 @@ class ProfileController extends Controller
 	public function updateProfilePic()
 	{
 		$file = \Input::file('picture');
-		$destinationPath = 'img/uploads';
+		$destinationPath = '/img/uploads';
 		$filename = str_random(12);
 		$extension = $file->getClientOriginalExtension();
-		$upload_success = $file->move($destinationPath, $filename.".".$extension);
+		$upload_success = $file->move(public_path().$destinationPath, $filename.".".$extension);
 
     if( $upload_success ) {
 			$user = Auth::user();
