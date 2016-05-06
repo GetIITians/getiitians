@@ -195,8 +195,10 @@ div.one-line{
 	color: $flat-purple;
 	font-family: $font-bold;
 	line-height: .5;
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 4px rgba(255, 255, 255, 0.52);
 	&:hover{
 		color: $flat-white;
+		cursor: pointer;
 	}
 }
 

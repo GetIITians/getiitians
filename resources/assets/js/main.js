@@ -28,9 +28,6 @@ $(function () {
 			beforeSend: function(){
 				form.find('small').html('processing ...');
 			},
-			success: function(response){
-				helper.flash(response.message);
-			},
 			error: function(response){
 				helper.flash(response.message);
 			},
@@ -117,6 +114,9 @@ $(function () {
 		var flashMessage = $('#flashMessage');
 		var content = flashMessage.html();
 		flashMessage.hide();
-		helper.flash(content);
+//		console.log(content.constructor);
+//		console.log(content.replace(/\s/g, '').length);
+		if(content.replace(/\s/g, '').length > 0)
+			helper.flash(content);
 	}
 })

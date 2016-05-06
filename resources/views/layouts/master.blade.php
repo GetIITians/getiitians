@@ -260,8 +260,9 @@
     </div>
 </footer>
 <div id="flashMessage">
-
 </div>
+
+<div id="backToTop"><i class="material-icons md-18">vertical_align_top</i></div>
 
 <script src="/js/vendor/jquery-2.1.4.min.js"></script>
 <script src="/js/vendor/tether.min.js"></script>

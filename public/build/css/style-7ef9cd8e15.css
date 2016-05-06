@@ -5175,9 +5175,11 @@ div.one-line {
   background-color: #E74C3C;
   color: #2C3E50;
   font-family: "robotobold", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  line-height: .5; }
+  line-height: .5;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 4px rgba(255, 255, 255, 0.52); }
   #backToTop:hover {
-    color: #ECF0F1; }
+    color: #ECF0F1;
+    cursor: pointer; }
 
 #flashMessage {
   display: none;
