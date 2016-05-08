@@ -32,13 +32,6 @@ class AuthController extends Controller
 
 	protected $redirectPath = '/';
 
-	/*
-	protected $user_roles = [
-		'student' => 'App\Student',
-		'teacher' => 'App\Teacher'
-	];
-	*/
-
     /**
      * Create a new authentication controller instance.
      *
@@ -73,26 +66,19 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
-		if($data['signuptype'] === 'teacher')
-		{
-			$parent = new Teacher();
-		}
-		elseif($data['signuptype'] === 'student')
-		{
-			$parent = new Student();
-		}
 
-		$parent->save();
+      $parent = ($data['signuptype'] === 'teacher') ? new Teacher() : new Student();
+  		$parent->save();
 
-		$user = new User();
-		$user->name = $data['name'];
-		$user->email = $data['email'];
-		$user->password = bcrypt($data['password']);
-		$user->email_confirmation_code = str_random(30);
+  		$user = new User();
+  		$user->name = $data['name'];
+  		$user->email = $data['email'];
+  		$user->password = bcrypt($data['password']);
+  		$user->email_confirmation_code = str_random(30);
 
-		$parent->user()->save($user);
+  		$parent->user()->save($user);
 
-		return $user;
+  		return $user;
     }
 
 	protected function authenticated(Request $request, User $user)
@@ -120,7 +106,7 @@ class AuthController extends Controller
 
 		$mailer->sendEmailConfirmationTo($user);
 
-		$request->session()->flash('message', 'Thanks for signing up! Please confirm your email address.');
+		flash('Thanks for signing up! Please confirm your email address.');
 
 		return redirect()->back();
 	}

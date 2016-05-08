@@ -154,12 +154,13 @@
     paramName: "picture", // The name that will be used to transfer the file
     maxFilesize: 2, // MB
     init: function() {
-    this.on("addedfile", function() {
-      if (this.files[1]!=null){
-        this.removeFile(this.files[0]);
-      }
-    });
-  }
+      this.on("addedfile", function() {
+        if (this.files[1]!=null){
+          this.removeFile(this.files[0]);
+        }
+      });
+    },
+    dictDefaultMessage : 'Drag n drop or click here to upload'
   };
 </script>
 @endsection

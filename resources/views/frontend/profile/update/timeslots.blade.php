@@ -21,6 +21,14 @@
     </div>
   </div>
   <div class="gutter-sm"></div>
+  <div class="row">
+    <div class="col-xs-12">
+      <ol class="how-to-use">
+        <li><small>If no timeslot is selected while saving your calendar, all the timeslots previously added in date range will be removed [Except if a class has been booked for any of them].</small></li>
+        <li><small>If no days are selected, timeslots will be added for all days of the week.</small></li>
+      </ol>
+    </div>
+  </div>
   <div class="signupcalendar">
     <form id="signupcalendar" method="POST" action="{{ url('profile/'.$user->id.'/update/timeslots') }}">
       {{ csrf_field() }}

@@ -23,9 +23,11 @@
   <div class="gutter-sm"></div>
   <div class="row">
     <div class="col-xs-12">
-      <p class="messages">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      </p>
+      <ol class="how-to-use">
+        <li><small>Select a price for the class you want to teach.</small></li>
+        <li><small>Expand the topics for each class you want to teach.</small></li>
+        <li><small>Select the topics and click SAVE</small></li>
+      </ol>
     </div>
   </div>
   <div class="signupsubjects">
@@ -51,6 +53,9 @@
                     <option value="500">500</option>
                     <option value="700">700</option>
                     <option value="1000">1000</option>
+                    <option value="1000">1200</option>
+                    <option value="1000">1500</option>
+                    <option value="1000">2000</option>
                   </select>
                 </div>
               </div>

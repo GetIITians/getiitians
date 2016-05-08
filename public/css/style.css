@@ -6011,16 +6011,17 @@ footer {
   #profile .signup h5 {
     font-family: "robotolight", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: normal; }
+  #profile .signup .how-to-use {
+    border: 1px solid #2C3E50;
+    color: #55595c;
+    padding-top: 1rem;
+    padding-bottom: 1rem; }
   #profile .signup .signuppersonal #profile-pic {
     margin-bottom: 1rem; }
   #profile .signup .signuppersonal #dp-upload {
     background-color: white;
     border: 1px dotted #2C3E50;
     padding: .5rem; }
-  #profile .signup p.messages {
-    border: 1px solid #2C3E50;
-    color: #55595c;
-    padding: 1rem; }
   #profile .signup .signupsubjects .subjects-grade.collapse.in {
     display: block; }
   #profile .signup .signupsubjects .subject {

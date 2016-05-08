@@ -73,8 +73,8 @@ class TeacherController extends Controller
                 'emails.enquiry.message',
                 ['teacher' => $request->input('recipient'), 'content' => $request->input('message')],
                 function ($message) {
-                    $message->from('getiitians@gmail.com', 'getIITians');
-                    $message->to('narayanwaraich@gmail.com')->subject('Student Enquiry for a Teacher');
+                    $message->from('narayanwaraich@gmail.com', 'getIITians');
+                    $message->to('getiitians@gmail.com')->subject('Student Enquiry for a Teacher');
                 });
         return response()->json(['message' => "Your message has been sent to ".$request->input('recipient')]);
     }
@@ -89,8 +89,8 @@ class TeacherController extends Controller
                     'phone' => $request->input('phone')
                 ],
                 function ($message) {
-                    $message->from('getiitians@gmail.com', 'getIITians');
-                    $message->to('narayanwaraich@gmail.com')->subject('Student Enquiry');
+                    $message->from('narayanwaraich@gmail.com', 'getIITians');
+                    $message->to('getiitians@gmail.com')->subject('Student Enquiry');
                 });
         return response()->json(['message' => "Your enquiry has been successfully submitted."]);
     }
@@ -112,8 +112,8 @@ class TeacherController extends Controller
                     'messageBody' => $request->input('message')
                 ],
                 function ($message) {
-                    $message->from('getiitians@gmail.com', 'getIITians');
-                    $message->to('narayanwaraich@gmail.com')->subject('Student Enquiry');
+                    $message->from('narayanwaraich@gmail.com', 'getIITians');
+                    $message->to('getiitians@gmail.com')->subject('Student Enquiry');
                 });
         return response()->json(['message' => "Your enquiry has been successfully submitted."]);
         //return $request->input('email');
@@ -134,8 +134,8 @@ class TeacherController extends Controller
                     'phone' => $request->input('phone'),
                 ],
                 function ($message) {
-                    $message->from('getiitians@gmail.com', 'getIITians');
-                    $message->to('narayanwaraich@gmail.com')->subject('Student Enquiry');
+                    $message->from('narayanwaraich@gmail.com', 'getIITians');
+                    $message->to('getiitians@gmail.com')->subject('Student Enquiry');
                 });
         return response()->json(['message' => "Your enquiry has been successfully submitted."]);
         //return $request->input('email');

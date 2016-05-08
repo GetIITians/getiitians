@@ -405,6 +405,12 @@
 			font-family: $font-light;
 			font-weight: normal;
 		}
+		.how-to-use{
+			border: 1px solid $flat-purple;
+			color: $gray;
+			padding-top: 1rem;
+			padding-bottom: 1rem;
+		}
 		.signuppersonal{
 			#profile-pic{
 				margin-bottom: 1rem;
@@ -414,11 +420,6 @@
 				border: 1px dotted $flat-purple;
 				padding: .5rem;
 			}
-		}
-		p.messages{
-			border: 1px solid $flat-purple;
-			color: $gray;
-			padding: 1rem;
 		}
 		.signupsubjects{
 			.subjects-grade.collapse.in{
