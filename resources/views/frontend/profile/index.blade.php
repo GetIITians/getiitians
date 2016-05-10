@@ -59,7 +59,7 @@
 						<small>The message to be sent can't be empty</small>
 						<button type="submit" class="btn btn-primary-reverse">MESSAGE {{ strtoupper($user->name) }}</button>
 					</form>
-				@elseif(!$user->ownProfile())
+				@elseif(!$user->ownProfile() AND Auth::user()->isStudent())
 				<form  id="messageTeacher" action="{{ url('profile/'.$user->id.'/message/') }}" method="POST">
 					{{ csrf_field() }}
 					<p>Contact {{ ucwords(strtolower($user->name)) }} to ask a doubt or setup a special class.</p>

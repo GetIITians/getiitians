@@ -17,6 +17,30 @@ $(document).on('submit','#contact form', function(event) {
     }
   })
 });
+$(function () {
+
+    if($('#adminTeachers').length)
+    {
+        $(document).on('click','.teacher_accept, .teacher_reject', function(event) {
+          var clicked = $(this);
+          $.ajax({
+            url : clicked.parent().prop('action'),
+            method	 : 'POST',
+            data : {
+              _token		: clicked.parent().find('input[name=_token]').val(),
+              status	: clicked.data('status')
+            },
+            complete: function(response){
+//                console.log(response.responseText);
+                helper.flash(JSON.parse(response.responseText).message);
+            }
+          });
+        });
+
+    }
+
+})
+
 var helper = {
 	dateRegex : new RegExp("^(?:(?:31(-)(?:0?[13578]|1[02]|(?:Jan|Mar|May|Jul|Aug|Oct|Dec)))\1|(?:(?:29|30)(-)(?:0?[1,3-9]|1[0-2]|(?:Jan|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec))\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(-)(?:0?2|(?:Feb))\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(-)(?:(?:0?[1-9]|(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep))|(?:1[0-2]|(?:Oct|Nov|Dec)))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$"),
 	monthNames : ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
@@ -323,6 +347,7 @@ $(function () {
 			},
 			complete: function(response){
 				form.find('small').hide();
+				//console.log(response);
 				helper.flash(JSON.parse(response.responseText).message);
 			}
 		});

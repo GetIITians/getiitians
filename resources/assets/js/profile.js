@@ -22,6 +22,7 @@ $(function () {
 			},
 			complete: function(response){
 				form.find('small').hide();
+				//console.log(response);
 				helper.flash(JSON.parse(response.responseText).message);
 			}
 		});

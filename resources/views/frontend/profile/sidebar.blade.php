@@ -5,7 +5,7 @@
 	<div class="gutter-sm"></div>
 	<ul>
 		@if ($user->isTeacher())
-			@if(!$user->ownProfile())
+			@if(!$user->ownProfile() AND !Auth::guest() AND Auth::user()->isStudent())
 			<li><a href="/profile/{{ $user->id }}/book">Book class</a></li>
 			@endif
 		<li><a href="/profile/{{ $user->id }}/schedule/{{ date('n') }}">Schedule</a></li>

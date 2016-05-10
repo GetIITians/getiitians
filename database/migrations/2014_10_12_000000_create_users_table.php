@@ -28,6 +28,7 @@ class CreateUsersTable extends Migration
       			$table->string('pin')->nullable()->default(null);
             $table->text('introduction');
       			$table->bigInteger('phone', false, true)->nullable()->default(null);
+            $table->boolean('admin')->default(0);
             $table->rememberToken()->nullable()->default(null);
       			$table->boolean('email_confirmed')->default(0);
       			$table->string('email_confirmation_code')->nullable();

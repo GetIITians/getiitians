@@ -43,10 +43,10 @@
             <li class="nav-item {{matchValue('contact',$page,'active')}}">
                 <a class="nav-link" href="/contact">Contact Us</a>
             </li>
+            <?php /* ?>
             <li class="nav-item">
                 <a class="nav-link" href="{{ env('TEACHING_LINK') }}joinus">Become a teacher</a>
             </li>
-            <?php /* ?>
             <li class="nav-item">
                 <a class="nav-link" href="{{ env('TEACHING_LINK') }}login">Login</a>
             </li>
@@ -68,6 +68,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/profile/{{Auth::user()->id}}">{{ Auth::user()->name }}</a>
                 </li>
+                @if(Auth::user()->admin === 1)
+                <li class="nav-item  {{matchValue('dashboard',$page,'active')}}">
+                    <a class="nav-link" href="/dashboard">Dashboard</a>
+                </li>
+                @endif
             @endif
         </ul>
     </div>

@@ -28,9 +28,15 @@ Route::group(['prefix' => 'profile/{user}'], function () {
   Route::get('schedule', 'ProfileController@schedule');
   Route::get('schedule/{month}', 'ProfileController@schedule');
   Route::get('schedule/{month}/{year}', 'ProfileController@schedule');
+});
+Route::group(['prefix' => 'profile/{user}', 'middleware' => 'book'], function () {
 	Route::get('book', 'ProfileController@book');
 	Route::post('book', 'ProfileController@bookClass');
 	Route::get('slots', 'ProfileController@slots');
+});
+
+
+Route::group(['prefix' => 'profile/{user}','middleware' => 'self'], function () {
 	Route::get('classes', 'ProfileController@classes');
 	Route::get('messages', 'ProfileController@messages');
 	Route::post('message', 'ProfileController@postMessage');
@@ -48,7 +54,7 @@ Route::get('contact', function (){
 
 
 //  Profile - Login
-Route::group(['middleware' => 'auth', 'prefix' => 'profile/{user}/update'], function () {
+Route::group(['prefix' => 'profile/{user}/update', 'middleware' => 'self'], function () {
   Route::get('personal', function (App\User $user){
 		return view('frontend.profile.update.personal', ['user' => $user, 'page' => 'profile']);
   });
@@ -103,33 +109,8 @@ Route::get('signup', 'Auth\AuthController@getRegister');
 Route::post('signup', 'Auth\AuthController@postRegister');
 Route::get('signup/confirm/{token}', 'Auth\AuthController@confirmEmail');
 
-/*
-Route::get('test/{user}', 'ProfileController@test');
-//	www.getiitians.com/profile/5
-Route::get('profile/{user}', function(App\User $user){
-	return view('frontend.profile.index', ['user' => $user]);
+Route::get('dashboard', 'DashboardController@index');
+Route::post('dashboard/update/{teacher}/display', 'DashboardController@updateDisplay');
+Route::get('dashboard/{user}', function(App\User $user){
+		return view('dashboard.view', ['page' => 'dashboard', 'user' => $user, 'teacher' => $user->deriveable]);
 });
-
-Route::get('auth/register/confirm/{token}', 'Auth\AuthController@confirmEmail');
-Route::controllers([
-	'auth' => 'Auth\AuthController',
-	'password'	=>	'Auth\PasswordController',
-]);
-
-Route::group(['middleware' => 'auth', 'prefix' => 'profile/{user}/update'], function () {
-	//	www.getiitians.com/profile/4/update/personal
-	Route::get('personal', function (App\User $user){
-		return view('frontend.profile.update.personal', ['user' => $user, 'info' => $user->info]);
-	});
-	Route::post('personal', 'UserController@update');
-	Route::post('info', 'InfoController@update');
-
-	//	www.getiitians.com/profile/4/update/qualification
-	Route::get('qualification', function (App\User $user){
-		return view('frontend.profile.update.qualification', ['user' => $user]);
-	});
-	Route::post('qualifications', 'ProfileController@postQualifications');
-
-});
-*/
-//Route::resource('demo', 'DemoController');
