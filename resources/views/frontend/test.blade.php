@@ -290,11 +290,7 @@ for ($i=0; $i <= $diff; $i++) {
 }
 //dd($timeslots);
 */
-\DB::listen(function($sql, $bindings, $time) {
-    var_dump($sql);
-    var_dump($bindings);
-    var_dump($time);
-});
+
 
 
 /*
@@ -341,11 +337,29 @@ foreach ( $galaan as $id => $chat) {
 }
 echo "<pre>";print_r($galBaat);echo "</pre>";
 */
+/*
+\DB::listen(function($sql, $bindings, $time) {
+    var_dump($sql);
+    var_dump($bindings);
+    var_dump($time);
+});
+*/
 
-$verification = NULL;
-$veryfication = new Carbon();
+$teaching = 'http://teaching.getiitians.com/';
 
-var_dump(is_object($verification));
-var_dump(is_object($veryfication));
+foreach (Teacher::all() as $teacher) {
+  var_dump($teacher->resume);
+  if(substr($teacher->resume, 0, 11) === 'data/files/'){
+    $teacher->resume = $teaching.$teacher->resume;
+    $teacher->save();
+  }
+  foreach ($teacher->qualifications as $qualification) {
+    var_dump($qualification->verification);
+    if(substr($qualification->verification, 0, 11) === 'data/files/'){
+      $qualification->verification = $teaching.$qualification->verification;
+      $qualification->save();
+    }
+  }
+}
 
 ?>

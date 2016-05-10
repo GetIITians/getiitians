@@ -54,11 +54,11 @@
         {{ $user->city }}
       </div>
       <div class="col-xs-1">
-          @if($teacher->display === 'null')
+          @if($teacher->display == 'null')
           <h6><span class="label label-info">New</span></h6>
-          @elseif($teacher->display === 0)
+          @elseif($teacher->display == 0)
           <h6><span class="label label-warning">Rejected</span></h6>
-          @elseif($teacher->display === 1)
+          @elseif($teacher->display == 1)
           <h6><span class="label label-success">Accepted</span></h6>
           @endif
       </div>
