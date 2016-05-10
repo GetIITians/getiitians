@@ -1,3 +1,4 @@
+<?php $page = 'login'; ?>
 @extends('layouts.master')
 @section('content')
     <div class="gutter-md"></div>
@@ -5,7 +6,7 @@
     <!-- Display Validation Errors -->
     @include('layouts.includes.errors')
 <div class="row">
-    <form class="col-xs-offset-2 col-xs-8" action="/password/reset" method="POST">
+    <form class="col-xs-offset-3 col-xs-6" action="/password/reset" method="POST">
         {!! csrf_field() !!}
         <input type="hidden" name="token" value="{{ $token }}">
         <fieldset class="form-group">
@@ -29,9 +30,10 @@
                 <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Repeat password">
             </div>
         </fieldset>
-        <div class="col-xs-offset-3 col-xs-6">
+        <div>
             <button type="submit" class="btn btn-primary">RESET PASSWORD</button>
         </div>
     </form>
 </div>
+<div class="gutter-md"></div><div class="gutter-md"></div>
 @endsection

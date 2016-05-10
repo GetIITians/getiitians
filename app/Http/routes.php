@@ -11,6 +11,7 @@
 |
 */
 
+Route::get('/home', function(){ return redirect('/'); });
 //  Home Page
 Route::get('/', function () { return view('frontend.index', ['page' => 'home']); });
 //  Contact Us
@@ -108,6 +109,12 @@ Route::get('logout', 'Auth\AuthController@getLogout');
 Route::get('signup', 'Auth\AuthController@getRegister');
 Route::post('signup', 'Auth\AuthController@postRegister');
 Route::get('signup/confirm/{token}', 'Auth\AuthController@confirmEmail');
+//Password reset routes
+Route::get('password/email', 'Auth\PasswordController@getEmail');
+Route::post('password/email', 'Auth\PasswordController@postEmail');
+Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
+Route::post('password/reset', 'Auth\PasswordController@postReset');
+
 
 Route::get('dashboard', 'DashboardController@index');
 Route::post('dashboard/update/{teacher}/display', 'DashboardController@updateDisplay');
