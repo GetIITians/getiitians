@@ -224,8 +224,9 @@ $(function () {
 				helper.flash(response.message);
 			},
 			complete: function(response){
-				console.log(response);
-				helper.flash(response.message);
+				//console.log(response);
+				console.log(response.responseText);
+				helper.flash(JSON.parse(response.responseText).message);
 				form.find('small').html('Starred fields are compulsory');
 			}
 		});

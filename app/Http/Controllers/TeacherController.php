@@ -84,6 +84,9 @@ class TeacherController extends Controller
         Mail::send(
                 'emails.enquiry.enquiry',
                 [
+                    'class' => $request->input('class'),
+                    'subject' => $request->input('subject'),
+                    'topic' => $request->input('topic'),
                     'enquiry' => $request->input('enquiry'),
                     'email' => $request->input('email'),
                     'phone' => $request->input('phone')

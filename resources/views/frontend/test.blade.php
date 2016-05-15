@@ -344,7 +344,7 @@ echo "<pre>";print_r($galBaat);echo "</pre>";
     var_dump($time);
 });
 */
-
+/*
 $teaching = 'http://teaching.getiitians.com/';
 
 foreach (Teacher::all() as $teacher) {
@@ -361,5 +361,6 @@ foreach (Teacher::all() as $teacher) {
     }
   }
 }
+*/
 
 ?>

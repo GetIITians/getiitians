@@ -28,7 +28,7 @@
         <ul class="nav navbar-nav">
             <li class="nav-item">
                 <a class="nav-link phone-no">
-                    +91-8447731863
+                    +91-9313394403
                 </a>
             </li>
             <li class="nav-item {{matchValue('home',$page,'active')}}">
