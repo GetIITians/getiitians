@@ -6,6 +6,7 @@ use App\User;
 use App\Teacher;
 use App\Student;
 use Validator;
+use Mail;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
@@ -123,6 +124,7 @@ class AuthController extends Controller
 		$user->email_confirmed = 1;
 		$user->email_confirmation_code = null;
 		$user->save();
+		$this->emailAdmin($user);
 		flash('You are now confirmed. Please login.');
 		return redirect('/login');
 	}
@@ -139,5 +141,20 @@ class AuthController extends Controller
 
 		return array_add($credentials, 'email_confirmed', '1');
 	}
+
+	/**
+	 * Alert the admin about a new user signup.
+	 *
+	 * @param  \App\User  $user
+	 */
+	protected function emailAdmin(User $user)
+    {
+        Mail::send(
+                'emails.userSignup',['user' => $user],
+                function ($message) {
+                    $message->from('narayanwaraich@gmail.com', 'getIITians');
+                    $message->to('getiitians@gmail.com')->subject('User signup alert');
+                });
+    }
 
 }

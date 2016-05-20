@@ -64,8 +64,8 @@ class AppMailer
 	public function deliver()
 	{
 		$this->mailer->send($this->view, $this->data, function ($message) {
-			$message->from($this->from, 'getRep')
-				->to($this->to);
+			$message->from($this->from, 'getIITians')
+				->to($this->to)->subject('getIITians email confirmation');
 		});
 	}
 }
