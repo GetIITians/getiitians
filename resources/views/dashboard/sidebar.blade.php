@@ -2,6 +2,6 @@
   <img src="{!! asset(Auth::user()->picture) !!}" class="img-responsive">
   <div class="gutter-sm"></div>
   <ul>
-    <li class="active"><a href="dashboard.html">Teachers</a></li>
+    <li class="active"><a href="/dashboard">Teachers</a></li>
   </ul>
 </aside>

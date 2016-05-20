@@ -7,7 +7,7 @@
           <h5><i>Status</i></h5>
       </div>
       <div class="col-xs-9">
-        <h5><?php echo ($teacher->display === 1) ? "Accepted" : "Rejected" ; ?></h5>
+        <h5><?php echo ($teacher->display === 1) ? "Accepted" : ($teacher->display === 0) ? "Rejected" : "New" ; ?></h5>
       </div>
     </div>
     <hr>
@@ -53,6 +53,7 @@
         <p>{{$user->gender}}</p>
       </div>
     </div>
+    @if(!is_null($user->date_of_birth))
     <div class="row">
       <div class="col-xs-2">
           <p>Date of Birth</p>
@@ -69,6 +70,7 @@
         <p>{{$user->date_of_birth->age}} years</p>
       </div>
     </div>
+    @endif
     <div class="row">
       <div class="col-xs-2">
           <p>Address</p>

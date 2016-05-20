@@ -55,7 +55,7 @@ class AuthController extends Controller
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|confirmed|min:6',
-			      'signuptype' => 'required',
+			'signuptype' => 'required',
         ]);
     }
 
@@ -68,7 +68,7 @@ class AuthController extends Controller
     protected function create(array $data)
     {
 
-      $parent = ($data['signuptype'] === 'teacher') ? new Teacher() : new Student();
+        $parent = ($data['signuptype'] === 'teacher') ? new Teacher() : new Student();
   		$parent->save();
 
   		$user = new User();
