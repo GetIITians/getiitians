@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use DB;
 use Gate;
 use Auth;
 use Carbon\Carbon;
@@ -13,22 +12,59 @@ use App\Teacher;
 use App\Qualification;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Repositories\TopicRepository;
+use App\Repositories\QualificationRepository;
 
 class ProfileController extends Controller
 {
 	/**
-	 * Display the specified resource.
+	* The topic repository instance.
+	*
+	* @var TopicRepository
+	*/
+	protected $topic;
+
+	/**
+	* The qualification repository instance.
+	*
+	* @var QualificationRepository
+	*/
+	protected $qualification;
+
+	/**
+	* The timeslot repository instance.
+	*
+	* @var TimeslotRepository
+	*/
+	protected $timeslot;
+
+	/**
+	* Create a new controller instance.
+	*
+	* @param  TopicRepository  $topic
+	* @param  QualificationRepository  $qualification
+	* @return void
+	*/
+	public function __construct(
+		TopicRepository $topic, 
+		QualificationRepository $qualification, 
+		TimeslotRepository $timeslot)
+	{
+		$this->topic = $topic;
+		$this->qualification = $qualification;
+		$this->timeslot = $timeslot;
+	}
+
+	/**
+	 * Display the Teacher topics.
 	 *
-	 * @param  Request $request
+	 * @param  User $user
 	 * @return \Illuminate\Http\Response
 	 */
 	public function topics(User $user)
 	{
-		$topics = [];
-		foreach ($user->deriveable->topics as $topic) {
-			$topics[$topic->subject->grade->name][$topic->subject->name][] = $topic->name;
-		}
-		return view('frontend.profile.topics', ['page' => 'profile', 'user' => $user, 'topics' => $topics]);
+
+		return view('frontend.profile.topics', ['page' => 'profile', 'user' => $user, 'topics' => $this->topic->classSubjectTopic($user)]);
 	}
 
 	/**
@@ -37,7 +73,7 @@ class ProfileController extends Controller
 	 * @param  Request $request
 	 * @return \Illuminate\Http\Response
 	 */
-	public function schedule(User $user,$month = null,$year = null)
+	public function schedule(User $user, $month = null, $year = null)
 	{
  		$Month = ($month === null) ? date("n") : (int)$month ;
 		$Year = ($year === null) ? date("Y") : (int)$year ;
@@ -64,7 +100,6 @@ class ProfileController extends Controller
 
 	public function updatePersonal(Request $request)
 	{
-		//dd($request->all());
 		$request->offsetSet('date_of_birth', (new Carbon($request->date_of_birth))->toDateTimeString());
 		$request->user->update($request->all());
 		flash('Your information has been updated.');
@@ -73,48 +108,9 @@ class ProfileController extends Controller
 
 	public function updateQualification(Request $request)
 	{
-		//dd($request->all());
 		$teacher = $request->user->deriveable;
-		if ($request->has('language')) {
-			$teacher->languages()->sync($request->input('language')) ;
-		}
-		if ($request->has('qualification'))
-		{
-			foreach ($request->input('qualification') as $key => $qualification)
-			{
-				$qualification['verification'] = $request->files->all()['qualification'][$key]['verification'];
-				$qualification['passout'] = Carbon::createFromFormat('d/m/Y', $qualification['passout'])->toDateTimeString();
-				if(array_key_exists('verification',$qualification) && $qualification['verification'] !== NULL){
-					$file = $qualification['verification'];
-					$destinationPath = 'img/uploads';
-					$filename = str_random(12);
-					$extension = $file->getClientOriginalExtension();
-					$upload_status = $file->move($destinationPath, $filename.".".$extension);
-
-					if( $upload_status ) {
-						$qualification['verification'] = $destinationPath."/".$filename.".".$extension;
-					}
-				}
-				if(array_key_exists('id',$qualification))
-				{
-					$id = $qualification['id'];
-					unset($qualification['id']);
-					Qualification::where('id',$id)->update($qualification);
-				}
-				else
-				{
-					$qual = new Qualification;
-					$qual->teacher_id = $request->user()->id;
-					$qual->college = $qualification['college'];
-					$qual->degree = $qualification['degree'];
-					$qual->branch = $qualification['branch'];
-					$qual->passout = $qualification['passout'];
-					$qual->verification = $qualification['verification'];
-					$qual->save();
-				}
-			}
-		}
-		//dd($request->all());
+		if ($request->has('language'))	$teacher->languages()->sync($request->input('language')) ;
+		if ($request->has('qualification'))	$this->qualification->updateQualification($request);
 		$teacher->update($request->only(['experience','home_tuition']));
 		flash('Your information has been updated.');
 		return redirect('/profile/'.$request->user->id.'/update/qualification');
@@ -122,73 +118,18 @@ class ProfileController extends Controller
 
 	public function updateSubjects(Request $request)
 	{
-		//dd($request->all());
-		$teacher_topics = [];
-		if($request->has('subject'))
-		{
-			foreach ($request->input('subject') as $grade => $topics) {
-				foreach ($topics as $key => $id) {
-					$teacher_topics[$id] = ['fees' => $request->input('price')[$grade]];
-				}
-			}
-		}
-		$request->user->deriveable->topics()->sync($teacher_topics);
+		
+		$request->user->deriveable->topics()->sync($this->topic->updateTopics($request));
 		flash('Your subjects have been updated.');
 		return redirect('/profile/'.$request->user->id.'/update/subjects');
 	}
 
 	public function updateTimeslots(Request $request)
 	{
-		$teacher_id = $request->user->deriveable->id;
-		if(!empty($request->input('start')) && !empty($request->input('end'))){
-			$start 		= Carbon::createFromFormat('|d/m/Y',$request->input('start'));
-			$end 			= Carbon::createFromFormat('|d/m/Y',$request->input('end'));
-			$dbStart	=	$start->toDateString();
-			$dbEnd		=	$end->addDay()->toDateString();
-			$time 		= $request->input('time');
-			$span 		= $end->diffInDays($start);
-			$slots 		= [];
-			if($request->has('time')){
-				for ( $i 	= 0 ; $i < $span ; $i++ ) {
-					$date 	= ($i===0) ? $start : $start->addDay() ;
-					if($request->has('days')){
-						if(in_array($date->dayOfWeek, $request->input('days')))
-						{
-							foreach ($time as $key => $slot) {
-								$last 		= ($key===0) ? "0" : $time[$key-1] ;
-								$tym = $date->addMinutes((30*($slot-$last)))->toDateTimeString();
-								if(empty(\App\Timeslot::where('slot',$tym)->where('teacher_id',$teacher_id)->get()->first()->session_id)){
-									$slots[] 	= new \App\Timeslot(['slot' => $tym]);
-								}
-							}
-							$date->subMinutes(30*end($time));
-						}
-					} else {
-						foreach ($time as $key => $slot) {
-							$last 		= ($key===0) ? "0" : $time[$key-1] ;
-							$tym = $date->addMinutes((30*($slot-$last)))->toDateTimeString();
-							//var_dump(\App\Timeslot::where('slot',$tym)->where('teacher_id',$teacher_id)->get()->first());
-							if(empty(\App\Timeslot::where('slot',$tym)->where('teacher_id',$teacher_id)->get()->first()->session_id)){
-								$slots[] 	= new \App\Timeslot(['slot' => $tym]);
-							}
-						}
-						$date->subMinutes(30*end($time));
-					}
-				}
-			}
-			//dd($slots);
-			if(empty($slots) && \App\Timeslot::where('teacher_id',$teacher_id)->where('session_id','is not null')->whereBetween('slot', [$dbStart, $dbEnd])->get()->isEmpty()){
-				flash("Your timeslots can't be updated because one or more classes have been booked for them.");
-			} else {
-				\App\Timeslot::where('teacher_id',$teacher_id)->whereBetween('slot', [$dbStart, $dbEnd])->delete();
-				if(!empty($slots)){
-					$request->user->deriveable->timeslots()->saveMany($slots);
-				}
-				flash('Your timeslots have been updated.');
-			}
-		} else {
+		if(!empty($request->input('start')) && !empty($request->input('end')))
+			$this->timeslot->updateTimeslots($request);
+		else
 			flash('Please fill in the Start and End date.');
-		}
 		return redirect('/profile/'.$request->user->id.'/update/timeslots');
 	}
 

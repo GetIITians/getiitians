@@ -363,7 +363,10 @@ foreach (Teacher::all() as $teacher) {
 }
 */
 
+$one = 't3gg';
+$two = 'jnekj';
 
+var_dump(compact('one','two'));
 
 
 ?>

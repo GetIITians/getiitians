@@ -7,6 +7,7 @@ use Mail;
 use DB;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Mailers\AppMailer;
 
 class TeacherController extends Controller
 {
@@ -67,81 +68,28 @@ class TeacherController extends Controller
 		return view('frontend.teachers', ['teachers'  => $teachers, 'page' => 'teachers', 'results' => $results]);
 	}
 
-    public function postMessage(Request $request)
+    public function postMessage(Request $request, AppMailer $mailer)
     {
-        Mail::send(
-                'emails.enquiry.message',
-                ['teacher' => $request->input('recipient'), 'content' => $request->input('message')],
-                function ($message) {
-                    $message->from('narayanwaraich@gmail.com', 'getIITians');
-                    $message->to('getiitians@gmail.com')->subject('Student Enquiry for a Teacher');
-                });
+        $mailer->sendMessageToTeacher($request);
         return response()->json(['message' => "Your message has been sent to ".$request->input('recipient')]);
     }
 
-    public function postEnquiry(Request $request)
+    public function postEnquiry(Request $request, AppMailer $mailer)
     {
-        Mail::send(
-                'emails.enquiry.enquiry',
-                [
-                    'class' => $request->input('class'),
-                    'subject' => $request->input('subject'),
-                    'topic' => $request->input('topic'),
-                    'enquiry' => $request->input('enquiry'),
-                    'email' => $request->input('email'),
-                    'phone' => $request->input('phone')
-                ],
-                function ($message) {
-                    $message->from('narayanwaraich@gmail.com', 'getIITians');
-                    $message->to('getiitians@gmail.com')->subject('Student Enquiry');
-                });
+        $mailer->sendEnquiryToAdmin($request);
         return response()->json(['message' => "Your enquiry has been successfully submitted."]);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function postContact(Request $request)
+    public function postContact(Request $request, AppMailer $mailer)
     {
-        Mail::send(
-                'emails.contact',
-                [
-                    'name' => $request->input('name'),
-                    'email' => $request->input('email'),
-                    'phone' => $request->input('phone'),
-                    'messageBody' => $request->input('message')
-                ],
-                function ($message) {
-                    $message->from('narayanwaraich@gmail.com', 'getIITians');
-                    $message->to('getiitians@gmail.com')->subject('Student Enquiry');
-                });
+        $mailer->sendContactToAdmin($request);
         return response()->json(['message' => "Your enquiry has been successfully submitted."]);
-        //return $request->input('email');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function postCall(Request $request)
+    public function postCall(Request $request, AppMailer $mailer)
     {
-        Mail::send(
-                'emails.enquiry.call',
-                [
-                    'email' => $request->input('email'),
-                    'phone' => $request->input('phone'),
-                ],
-                function ($message) {
-                    $message->from('narayanwaraich@gmail.com', 'getIITians');
-                    $message->to('getiitians@gmail.com')->subject('Student Enquiry');
-                });
+        $mailer->sendCallToTeacher($request);
         return response()->json(['message' => "Your enquiry has been successfully submitted."]);
-        //return $request->input('email');
     }
 
 }
